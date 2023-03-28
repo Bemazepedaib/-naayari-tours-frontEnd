@@ -4,7 +4,7 @@ const video = 'https://drive.google.com/uc?export=view&id=1wohdi1Xvr0ktmePLGrm1E
 function MainVideo() {
   return (
     <div>
-      <div classname={Styles.MyVideo}>
+      <div className={Styles.MyVideo}>
         <video className={Styles.video} src={video} autoPlay loop muted></video>
       </div>
       <div>

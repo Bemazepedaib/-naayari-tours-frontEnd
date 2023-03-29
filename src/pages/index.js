@@ -31,4 +31,15 @@ export default function Home() {
 
     </div>
   )
+
+  return <>{!loading && !error && (
+      <div>
+        <MainVideo></MainVideo>
+          <div id="catalogue">{data.trips.map(trip => (
+              <Catalogue  key={key++} trip={trip}>
+              </Catalogue>
+          ))}
+          </div>
+      </div>
+  )}</>
 }

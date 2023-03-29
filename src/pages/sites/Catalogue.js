@@ -3,8 +3,6 @@ import Styles from '../../styles/Catalogue.module.css'
 
 
 function Catalogue({ trip }) {
-    
-
 
     function clickViajes() {
         console.log(trip.tripName)

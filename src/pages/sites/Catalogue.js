@@ -3,8 +3,6 @@ import Styles from '../../styles/Catalogue.module.css'
 
 
 function Catalogue({ trip }) {
-    
-
 
     function clickViajes() {
         console.log(trip.tripName)
@@ -27,9 +25,9 @@ function Catalogue({ trip }) {
     }
     return (
         <div>
-            <section className={Styles.popular-section-container} onClick={clickViajes}>
+            <section className={Styles.popular - section - container} onClick={clickViajes}>
                 <div className={Styles.secContainer} >
-                    <div className={Styles.mainContent-grid}>
+                    <div className={Styles.mainContent - grid}>
                         <div className={Styles.singleDestination}>
                             <div className={Styles.destImage}>
                                 <Image className={Styles.img} src={link + back} alt="Imagen tour" />
@@ -64,7 +62,7 @@ function Catalogue({ trip }) {
                                     )) : <p />
                                     }
                                 </div>
-                                <div className={Styles.descuentos-precios}>
+                                <div className={Styles.descuentos - precios}>
                                     {disc === true ? trip.tripInformation.price.map(p => (
                                         <p className={Styles.catp} key={keyp++}>{p.priceType} ${Math.round(p.priceAmount - discAmount)}</p>
                                     )) : trip.tripInformation.price.map(p => (

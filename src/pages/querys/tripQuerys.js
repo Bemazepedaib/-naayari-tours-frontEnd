@@ -23,4 +23,4 @@ const GET_TRIPTYPES = gql`
     }
 `;
 
-export { GET_TRIPTYPES }
+export { GET_TRIPTYPES, GET_TRIPS }

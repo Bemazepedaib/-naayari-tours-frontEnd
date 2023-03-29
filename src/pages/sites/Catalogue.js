@@ -1,7 +1,4 @@
 import React from "react";
-import { Link, Outlet } from "react-router-dom";
-
-
 import Styles from '../../styles/Catalogue.module.css'
 
 
@@ -30,13 +27,12 @@ function Catalogue({ trip }) {
     }
     return (
         <div>
-        <Link className={Styles.cam} to={'/Viaje/'+trip.tripName} state={trip}>
             <section className={Styles.popular-section-container} onClick={clickViajes}>
                 <div className={Styles.secContainer} >
                     <div className={Styles.mainContent-grid}>
                         <div className={Styles.singleDestination}>
                             <div className={Styles.destImage}>
-                                <img src={link + back} alt="Imagen tour" />
+                                <Image className={Styles.img} src={link + back} alt="Imagen tour" />
                                 <div className={Styles.overlayTitle}>
                                     {
                                         disc === true ?
@@ -61,7 +57,7 @@ function Catalogue({ trip }) {
                                         <p className={Styles.stars}>{stars}</p>
                                     </div>
                                 </div>
-                                <hr></hr>
+                                <hr className={Styles.hr}></hr>
                                 <div className={Styles.precios}>
                                     {disc === true ? trip.tripInformation.price.map(p => (
                                         <p className={Styles.catp} key={keyp++}>{p.priceType} ${p.priceAmount}</p>
@@ -76,7 +72,7 @@ function Catalogue({ trip }) {
                                     ))}
 
                                 </div>
-                                <hr></hr>
+                                <hr className={Styles.hr}></hr>
                                 TAGS
                             </div>
                         </div>
@@ -84,7 +80,6 @@ function Catalogue({ trip }) {
 
                 </div>
             </section>
-            </Link>
         </div>
     )
 }

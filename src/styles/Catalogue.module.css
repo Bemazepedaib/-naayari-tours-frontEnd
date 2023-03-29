@@ -1,17 +1,16 @@
 @import url(https://fonts.googleapis.com/css?family=Lato:300,400,700%7CRaleway:400,300,700);
 
 .cam{
-    
     text-decoration: none;
     color: #000000;
 }
 
-.popular-section-container{
+.popularSectionContainer{
     width: 350px;
     box-shadow: inset;
 }
 
-.mainContent-grid{
+.mainContentGrid{
     gap: 1rem;
 }
     
@@ -19,6 +18,7 @@
      overflow: hidden;
      border-radius: 1rem;   
      box-shadow: 0 5px 10px rgba(0,0,0,0.2);   
+     background: #FFf;
 }
 
 .destImage{
@@ -99,7 +99,7 @@
     background-color: rgb(0, 0, 0);
   }
 
-  .precios  p{
+  .precios  .catp{
     color: black;
     display: inline;
     justify-content:center;
@@ -114,11 +114,11 @@
   .precios{
     text-align: center;
   }
-  .descuentos-precios{
+  .descuentosPrecios{
     text-align: center;
    
   }
-  .descuentos-precios  p{
+  .descuentosPrecios  .catp{
     color: rgb(0, 0, 0);
     display: inline;
     align-items: center;
@@ -132,7 +132,7 @@
 
 
 
-.destText-flex{
+.destTextFlex{
     justify-content: space-between;
 }
 
@@ -183,7 +183,7 @@ text-align:center;
     color: rgb(0, 0, 0);
 }
 
-.destFooter__contenedor{
+.destFooterContenedor{
     display: grid;
     grid-template-columns: repeat(2,1fr);
     grid-row-gap: 2px;
@@ -230,7 +230,7 @@ text-align:center;
     font-weight: bold;
     
 }
-.card p{
+.card .catp{
     font-size: medium;
     opacity: 1;
 }

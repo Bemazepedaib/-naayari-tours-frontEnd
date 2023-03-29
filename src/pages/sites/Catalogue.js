@@ -27,12 +27,12 @@ function Catalogue({ trip }) {
     }
     return (
         <div>
-            <section className={Styles.popular-section-container} onClick={clickViajes}>
+            <section className={Styles.popularSectionContainer} onClick={clickViajes}>
                 <div className={Styles.secContainer} >
-                    <div className={Styles.mainContent-grid}>
+                    <div className={Styles.mainContentGrid}>
                         <div className={Styles.singleDestination}>
                             <div className={Styles.destImage}>
-                                <Image className={Styles.img} src={link + back} alt="Imagen tour" />
+                                <img className={Styles.img} src={link + back} alt="Imagen tour" />
                                 <div className={Styles.overlayTitle}>
                                     {
                                         disc === true ?
@@ -49,7 +49,7 @@ function Catalogue({ trip }) {
                                 </div>
                             </div>
                             <div id={Styles.destFooter}>
-                                <div className={Styles.destFooter__contenedor}>
+                                <div className={Styles.destFooterContenedor}>
                                     <p className={Styles.lugar}>{trip.tripInformation.place}</p>
                                     <p className={Styles.tiempo}>Aproximadamente 8 hrs.</p>
                                     <div className={Styles.StarsContainer}>
@@ -64,7 +64,7 @@ function Catalogue({ trip }) {
                                     )) : <p />
                                     }
                                 </div>
-                                <div className={Styles.descuentos-precios}>
+                                <div className={Styles.descuentosPrecios}>
                                     {disc === true ? trip.tripInformation.price.map(p => (
                                         <p className={Styles.catp} key={keyp++}>{p.priceType} ${Math.round(p.priceAmount - discAmount)}</p>
                                     )) : trip.tripInformation.price.map(p => (

@@ -113,6 +113,7 @@
   .contenedor {
     height: 200vh;
   }
+
   .formulario {
     display: grid;
     grid-template-columns: 1fr;

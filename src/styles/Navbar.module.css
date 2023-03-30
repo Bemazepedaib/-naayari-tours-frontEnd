@@ -1,41 +1,46 @@
 @import url(https://fonts.googleapis.com/css?family=Lato:300,400,700|Raleway:400,300,700);
+
 @font-face {
 	font-family: 'codropsicons';
-	src:url('https://tympanus.net/Development/IconHoverEffects/fonts/codropsicons/codropsicons.eot');
-	src:url('https://tympanus.net/Development/IconHoverEffects/fonts/codropsicons/codropsicons.eot?#iefix') format('embedded-opentype'),
+	src: url('https://tympanus.net/Development/IconHoverEffects/fonts/codropsicons/codropsicons.eot');
+	src: url('https://tympanus.net/Development/IconHoverEffects/fonts/codropsicons/codropsicons.eot?#iefix') format('embedded-opentype'),
 		url('https://tympanus.net/Development/IconHoverEffects/fonts/codropsicons/codropsicons.woff') format('woff'),
 		url('https://tympanus.net/Development/IconHoverEffects/fonts/codropsicons/codropsicons.ttf') format('truetype'),
 		url('https://tympanus.net/Development/IconHoverEffects/fonts/codropsicons/codropsicons.svg#codropsicons') format('svg');
 	font-weight: normal;
 	font-style: normal;
 }
-.a {text-decoration: none;
+
+.a {
+	text-decoration: none;
 }
 
 
-.container > section {
+.container>section {
 	margin: 0 auto;
 	padding: 1.5em 1.5em;
 	text-align: center;
-    box-shadow: 0 5px 10px rgba(0,0,0,.3);
+	box-shadow: 0 5px 10px rgba(0, 0, 0, .3);
 }
 
-.color1 {	
-background: linear-gradient(transparent,transparent,#007332,#00A748,#00A748,#00A748,#00A748,#007332);
-opacity: .85;}
-
-@media screen and (max-width: 5em) {
-
+.color1 {
+	background: linear-gradient(transparent, transparent, #007332, #00A748, #00A748, #00A748, #00A748, #007332);
+	opacity: .85;
 }
+
+@media screen and (max-width: 5em) {}
+
 *,
 *:after,
 *::before {
-    -webkit-box-sizing: border-box;
-    -moz-box-sizing: border-box;
-    box-sizing: border-box;
+	-webkit-box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	box-sizing: border-box;
 }
 
-.body {	font-family: 'Raleway', sans-serif;}
+.body {
+	font-family: 'Raleway', sans-serif;
+}
 
 nav a {
 	position: relative;
@@ -47,13 +52,14 @@ nav a {
 	text-transform: uppercase;
 	letter-spacing: 1px;
 	font-weight: 100;
-    text-shadow: 2px 6px 4px rgba(0, 0, 0, 0.5);
+	text-shadow: 2px 6px 4px rgba(0, 0, 0, 0.5);
 	font-size: 0.8em;
-    
+
 }
-img{
-    width: 100px;
-    width: 100px;
+
+img {
+	width: 100px;
+	width: 100px;
 }
 
 nav a:hover,
@@ -96,6 +102,7 @@ nav a:focus {
 	-moz-transform: translateX(0px);
 	transform: translateX(0px);
 }
+
 @media screen and (max-width:769px) {
 
 	.body {
@@ -104,29 +111,30 @@ nav a:focus {
 		background-size: cover;
 		padding: 0px;
 		margin: 0;
-	  }
-	  
-	  nav {
+	}
+
+	nav {
 		width: 100%;
-		background: black;/*linear-gradient(transparent,transparent,#007332,#00A748,#00A748,#00A748,#00A748,#007332); */
+		background: black;
+		/*linear-gradient(transparent,transparent,#007332,#00A748,#00A748,#00A748,#00A748,#007332); */
 		opacity: .9;
 		color: rgba(0, 0, 0, 0.87);
 		-webkit-clip-path: circle(50px at 100px 100px);
 		clip-path: circle(24px at 30px 24px);
 		-webkit-transition: -webkit-clip-path 0.5625s, clip-path 0.375s;
 		transition: -webkit-clip-path 0.5625s, clip-path 0.375s;
-	  }
-	  
-	  nav:hover {
+	}
+
+	nav:hover {
 		-webkit-transition-timing-function: ease-out;
 		transition-timing-function: ease-out;
 		-webkit-transition-duration: 2.75s;
-		transition-duration:  2.75s;
+		transition-duration: 2.75s;
 		-webkit-clip-path: circle(1000px at 200px 200px);
 		clip-path: circle(5000px at 100px 500px);
-	  }
-	  
-	  a {
+	}
+
+	a {
 		display: flex;
 		line-height: 50px;
 		padding: 0 20px;
@@ -136,38 +144,46 @@ nav a:focus {
 		-moz-user-select: none;
 		-ms-user-select: none;
 		user-select: none;
-	  }
-	  
-	  a:hover { background: rgba(247, 3, 3, 0.1); }
-	  
-	  a:active { background: rgba(0, 0, 0, 0.1); }
-	  
-	  .navicon {
+	}
+
+	a:hover {
+		background: rgba(247, 3, 3, 0.1);
+	}
+
+	a:active {
+		background: rgba(0, 0, 0, 0.1);
+	}
+
+	.navicon {
 		padding: 23px 20px;
 		cursor: pointer;
 		-webkit-transform-origin: 32px 24px;
 		-ms-transform-origin: 32px 24px;
 		transform-origin: 32px 24px;
-	  }
-	  
-	  .navicon div {
+	}
+
+	.navicon div {
 		position: relative;
 		width: 20px;
 		height: 2px;
 		background: rgba(255, 255, 255, 0.87);
-	  }
-	  
-	  .navicon div:before,
-	  .navicon div:after {
+	}
+
+	.navicon div:before,
+	.navicon div:after {
 		display: block;
 		content: "";
 		width: 20px;
 		height: 2px;
 		background: rgba(255, 255, 255, 0.87);
 		position: absolute;
-	  }
-	  
-	  .navicon div:before { top: -7px; }
-	  
-	  .navicon div:after { top: 7px; }
+	}
+
+	.navicon div:before {
+		top: -7px;
+	}
+
+	.navicon div:after {
+		top: 7px;
+	}
 }

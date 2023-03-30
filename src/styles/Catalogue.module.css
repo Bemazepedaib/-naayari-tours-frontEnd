@@ -1,49 +1,49 @@
 @import url(https://fonts.googleapis.com/css?family=Lato:300,400,700%7CRaleway:400,300,700);
 
-.cam{
+.cam {
     text-decoration: none;
     color: #000000;
 }
 
-.popularSectionContainer{
+.popularSectionContainer {
     width: 350px;
     box-shadow: inset;
 }
 
-.mainContentGrid{
+.mainContentGrid {
     gap: 1rem;
 }
-    
-.singleDestination{
-     overflow: hidden;
-     border-radius: 1rem;   
-     box-shadow: 0 5px 10px rgba(0,0,0,0.2);   
-     background: #FFf;
+
+.singleDestination {
+    overflow: hidden;
+    border-radius: 1rem;
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+    background: #FFf;
 }
 
-.destImage{
+.destImage {
     height: 250px;
     width: 100%;
     position: relative;
     overflow: hidden;
 }
 
-.img{
+.img {
     height: 100%;
     width: 100%;
     object-fit: cover;
 }
 
-.overlayInfo{
+.overlayInfo {
     overflow: hidden;
     position: absolute;
     display: flex;
     align-items: flex-start;
-    padding-left:2rem  ;
+    padding-left: 2rem;
     justify-content: center;
     flex-direction: column;
-    
-    background: linear-gradient(to top,black 10%,transparent 100% );
+
+    background: linear-gradient(to top, black 10%, transparent 100%);
     bottom: 0;
     height: 0;
     width: 90%;
@@ -51,16 +51,16 @@
 }
 
 
-.overlayTitle{
+.overlayTitle {
     /*overflow: hidden;*/
     position: absolute;
     display: flex;
     align-items: flex-start;
-    padding-left:2rem  ;
-    padding-right:2rem  ;
+    padding-left: 2rem;
+    padding-right: 2rem;
     justify-content: center;
-    flex-direction: column;    
-    background: linear-gradient(to top,black 20%,transparent 100% );
+    flex-direction: column;
+    background: linear-gradient(to top, black 20%, transparent 100%);
     opacity: .8;
     bottom: 0;
     height: 20%;
@@ -68,147 +68,165 @@
     transition: 0.4s;
 }
 
-.title{
+.title {
     color: white;
     font-weight: 600;
     width: 100%;
     transition: .8s;
-    text-align:center;
+    text-align: center;
 }
-.catp{
+
+.catp {
     color: white;
     opacity: 1;
     font-size: 13px;
     font-weight: bold;
-    
+
 }
-#destFooter{
+
+#destFooter {
     display: inline;
     height: 50px;
 }
 
 
-.lugar{
+.lugar {
     color: black;
-    
+
 }
-.descripcion{
+
+.descripcion {
     color: black;
 }
+
 .hr {
     background-color: rgb(0, 0, 0);
-  }
+}
 
-  .precios  .catp{
+.precios .catp {
     color: black;
     display: inline;
-    justify-content:center;
+    justify-content: center;
     margin: 10px;
     color: rgb(133, 132, 132);
     text-decoration: line-through;
     font-weight: bold;
-  }
-  .precios b{
+}
+
+.precios b {
     margin: 10px;
-  }
-  .precios{
+}
+
+.precios {
     text-align: center;
-  }
-  .descuentosPrecios{
+}
+
+.descuentosPrecios {
     text-align: center;
-   
-  }
-  .descuentosPrecios  .catp{
+
+}
+
+.descuentosPrecios .catp {
     color: rgb(0, 0, 0);
     display: inline;
     align-items: center;
     font-weight: bold;
     margin: 10px;
-  }
-  
-  .ahorro{
-    color:rgb(36, 102, 9)
-  }
+}
+
+.ahorro {
+    color: rgb(36, 102, 9)
+}
 
 
 
-.destTextFlex{
+.destTextFlex {
     justify-content: space-between;
 }
 
-.flex{
+.flex {
     font-size: 16px;
     font-weight: 600;
     align-items: flex-start;
-    transform:  translateY(5px);
+    transform: translateY(5px);
 }
-.destImage:hover .overlayInfo{
+
+.destImage:hover .overlayInfo {
     overflow: visible;
     padding: 1rem 1.5rem;
     height: 100%;
 }
-.destImage:hover .overlayTitle{
+
+.destImage:hover .overlayTitle {
     height: 0%;
 }
-.destImage:hover .title{
+
+.destImage:hover .title {
     height: 0%;
 }
-.destImage:hover .title{
-transform: translateY(-100%);
-text-align:center;
+
+.destImage:hover .title {
+    transform: translateY(-100%);
+    text-align: center;
 }
-.secContainer{ 
+
+.secContainer {
     border-radius: 1rem;
     height: 100%;
     transition: 0.8s;
 }
-.secContainer:hover{
-    transform:translateY(5px); 
-    transform:scale(1.05);
+
+.secContainer:hover {
+    transform: translateY(5px);
+    transform: scale(1.05);
 }
-.revs{
+
+.revs {
     text-align: center;
     transform: translateY(10%);
 }
-@media screen and (max-width:920px){
-    .title{
+
+@media screen and (max-width:920px) {
+    .title {
         color: white;
         font-weight: 200;
         text-align: center;
     }
 
-  }
+}
 
-.tiempo{
+.tiempo {
     color: rgb(0, 0, 0);
 }
 
-.destFooterContenedor{
+.destFooterContenedor {
     display: grid;
-    grid-template-columns: repeat(2,1fr);
+    grid-template-columns: repeat(2, 1fr);
     grid-row-gap: 2px;
     grid-column-gap: 20px;
     padding: 2px;
 }
 
-.lugar{
+.lugar {
     padding-left: 15px;
 }
 
-.stars{
+.stars {
     margin-left: 15%;
     color: gold;
-    transform: scale(2 );
+    transform: scale(2);
     padding: 2%;
 }
-.starsNumber{
-    
-    transform: scale(1.5 );
+
+.starsNumber {
+
+    transform: scale(1.5);
     margin-left: 1rem;
     color: black;
 }
-.StarsContainer{
-   display: flex; 
+
+.StarsContainer {
+    display: flex;
 }
 
 
@@ -223,20 +241,20 @@ text-align:center;
     height: 50px;
     text-align: center;
     justify-content: center;
-    
-    background: #f00 ;
+
+    background: #f00;
     transform: rotate(45deg);
     color: #FFf;
     font-weight: bold;
-    
+
 }
-.card .catp{
+
+.card .catp {
     font-size: medium;
     opacity: 1;
 }
 
-.destImage:hover .card{
+.destImage:hover .card {
     transition: .5s;
     opacity: 0;
 }
-

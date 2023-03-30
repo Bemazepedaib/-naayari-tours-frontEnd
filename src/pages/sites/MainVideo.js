@@ -4,13 +4,11 @@ const video = 'https://drive.google.com/uc?export=view&id=1wohdi1Xvr0ktmePLGrm1E
 function MainVideo() {
   return (
     <div className={Styles.MyVideoContainer}>
-      <div className={Styles.MyVideo}>
-        <video className={Styles.video} src={video} autoPlay loop muted></video>
-      </div>
-      <div>
+      <div className={Styles.texts}>
         <p className={Styles.ecoText}>ECOTURISMO RURAL, SUSTENTABLE Y DE AVENTURA</p>
         <p className={Styles.tripText}>¡VIAJAR ES CULTURA!</p>
       </div>
+      <video className={Styles.video} src={video} autoPlay loop muted></video>
     </div>
   )
 }

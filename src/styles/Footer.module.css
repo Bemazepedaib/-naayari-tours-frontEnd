@@ -17,16 +17,16 @@
 
 /* Footer left */
 .footerDistributed .footerLeft {
-    width:33%;
-    float:left;
+    width: 33%;
+    float: left;
     text-align: center;
 }
 
 /* Footer Center */
 
 .footerDistributed .footerCenter {
-    width:33%;
-    float:left;
+    width: 33%;
+    float: left;
     text-align: center;
 }
 
@@ -47,7 +47,7 @@
     font-family: 'Oswald', sans-serif;
 }
 
-.footerDistributed .footerCenter .text{
+.footerDistributed .footerCenter .text {
     color: rgb(255, 255, 255);
     text-decoration: none;
 }
@@ -55,13 +55,15 @@
 .footerDistributed .footerCenter p span {
     display: block;
 }
-.footerDistributed .footerCenter p span a{
+
+.footerDistributed .footerCenter p span a {
     display: block;
 }
+
 /* Footer Right */
 .footerDistributed .footerRight {
-    width:33%;
-    float:left;
+    width: 33%;
+    float: left;
     text-align: center;
 }
 
@@ -82,7 +84,8 @@
 .footerDistributed .footerIcons {
     margin-top: 10px;
 }
-.footerDistributed .footerIcons .icon{
+
+.footerDistributed .footerIcons .icon {
     margin-top: 3px;
 }
 
@@ -102,19 +105,22 @@
 
 /* If you don't want the footer to be responsive, remove these media queries */
 
-@media (max-width: 780px){
+@media (max-width: 780px) {
 
     .footerDistributed {
         font-size: 15px;
     }
+
     .footerDistributed .footerCompanyAbout span {
         font-size: 25px;
     }
+
     .footerDistributed .footerIcons a {
         width: 37px;
         height: 27px;
         font-size: 22px;
     }
+
     .footerDistributed .footerCompanyAbout {
         line-height: 20px;
     }

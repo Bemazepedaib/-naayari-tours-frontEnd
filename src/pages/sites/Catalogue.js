@@ -56,19 +56,21 @@ function Catalogue({ trip }) {
                                     </div>
                                 </div>
                                 <hr className={Styles.hr}></hr>
-                                <div className={Styles.precios}>
-                                    {disc === true ? trip.tripInformation.price.map(p => (
-                                        <p className={Styles.catp} key={keyp++}>{p.priceType} ${p.priceAmount}</p>
-                                    )) : <p />
-                                    }
-                                </div>
-                                <div className={Styles.descuentosPrecios}>
-                                    {disc === true ? trip.tripInformation.price.map(p => (
-                                        <p className={Styles.catp} key={keyp++}>{p.priceType} ${Math.round(p.priceAmount - discAmount)}</p>
-                                    )) : trip.tripInformation.price.map(p => (
-                                        <p className={Styles.catp} key={keyp++}>{p.priceType} ${p.priceAmount}</p>
-                                    ))}
+                                <div className={Styles.Prices}>
+                                    <div className={Styles.precios}>
+                                        {disc === true ? trip.tripInformation.price.map(p => (
+                                            <p className={Styles.catp} key={keyp++}>{p.priceType} ${p.priceAmount}</p>
+                                        )) : <p />
+                                        }
+                                    </div>
+                                    <div className={Styles.descuentosPrecios}>
+                                        {disc === true ? trip.tripInformation.price.map(p => (
+                                            <p className={Styles.catp} key={keyp++}>{p.priceType} ${Math.round(p.priceAmount - discAmount)}</p>
+                                        )) : trip.tripInformation.price.map(p => (
+                                            <p className={Styles.catp} key={keyp++}>{p.priceType} ${p.priceAmount}</p>
+                                        ))}
 
+                                    </div>
                                 </div>
                                 <hr className={Styles.hr}></hr>
                                 TAGS

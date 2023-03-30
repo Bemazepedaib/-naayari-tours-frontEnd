@@ -102,6 +102,15 @@
 .hr {
     background-color: rgb(0, 0, 0);
 }
+.Prices{
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    height: 30px;
+    padding-bottom: 3px;
+    
+}
 
 .precios .catp {
     color: black;

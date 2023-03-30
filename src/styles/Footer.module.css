@@ -1,128 +1,105 @@
 @import url('https://fonts.googleapis.com/css2?family=Oswald:wght@300&display=swap');
 
-.footerLeft img {
-    width: 100px;
-    height: 100px;
+.titleImg {
+    display: flex;
+    gap: 10px;
+    flex-direction: row;
+    align-items: center;
+    grid-column: span 3;
+    margin-top: 15px;
 }
 
 .footerDistributed {
     background: #1D2128;
-    width: 100%;
-    height: 320px;
     font-family: 'Oswald', sans-serif;
     font-size: 20px;
     color: #ffffff;
-}
-
-
-/* Footer left */
-.footerDistributed .footerLeft {
-    width: 33%;
-    float: left;
+    display: grid;
+    align-items: top;
     text-align: center;
+    grid-template-columns: repeat(3, 33%);
+    grid-gap: 10px;
+    padding: 0px 10px 0px 10px;
 }
 
-/* Footer Center */
-
-.footerDistributed .footerCenter {
-    width: 33%;
-    float: left;
-    text-align: center;
-}
-
-.footerDistributed .footerCenter .icon {
-    width: 40px;
-    height: 40px;
+.icon {
+    width: 30px;
+    height: 30px;
     border-radius: 50%;
     text-align: center;
-    margin: 10px 15px;
+    margin: 0px 10px 0px 5px;
     vertical-align: middle;
     cursor: pointer;
     color: #ffffff;
+    transition: all 0.5s;
 }
 
-.footerDistributed .footerCenter p {
-    display: inline-block;
-    vertical-align: middle;
-    font-family: 'Oswald', sans-serif;
+.icon:hover {
+    color: #00a748;
 }
 
-.footerDistributed .footerCenter .text {
-    color: rgb(255, 255, 255);
+.text {
+    color: #fff;
     text-decoration: none;
+    transition: all 0.5s;
 }
 
-.footerDistributed .footerCenter p span {
-    display: block;
+.text:hover {
+    color: #00a748;
 }
 
-.footerDistributed .footerCenter p span a {
-    display: block;
-}
-
-/* Footer Right */
-.footerDistributed .footerRight {
-    width: 33%;
-    float: left;
-    text-align: center;
-}
-
-.footerDistributed .footerCompanyAbout {
-    line-height: 30px;
-    color: #92999f;
-}
-
-.footerDistributed .footerCompanyAbout span {
-    display: block;
-    color: #ffffff;
+.title {
     font-weight: bold;
-    font-size: 30px;
-    margin-bottom: 20px;
-    margin-top: 20px;
-}
-
-.footerDistributed .footerIcons {
+    font-size: 20px;
+    margin-bottom: 10px;
     margin-top: 10px;
 }
 
-.footerDistributed .footerIcons .icon {
-    margin-top: 3px;
-}
-
-.footerDistributed .footerIcons a {
-    display: inline-block;
-    width: 50px;
-    height: 40px;
-    cursor: pointer;
-    background-color: #33383b;
-    border-radius: 2px;
-    font-size: 35px;
-    color: #ffffff;
-    text-align: center;
-    line-height: 0px;
+.titleRight {
+    position: absolute;
+    right: 0;
+    font-weight: bold;
+    font-size: 20px;
+    margin-bottom: 10px;
+    margin-top: 10px;
     margin-right: 15px;
 }
 
-/* If you don't want the footer to be responsive, remove these media queries */
 
-@media (max-width: 780px) {
+.footerLeft {
+    margin: 0px 10px;
+    margin-bottom: 20px;
+}
 
-    .footerDistributed {
-        font-size: 15px;
+.footerCenter {
+    margin: 0px 10px;
+    margin-bottom: 20px;
+}
+
+.footerRight {
+    margin: 0px 10px;
+    margin-bottom: 20px;
+}
+
+.footerIcons {
+    margin-top: 5px;
+}
+
+@media (max-width: 1025px) {
+
+    .titleImg {
+        grid-column: span 3;
     }
 
-    .footerDistributed .footerCompanyAbout span {
-        font-size: 25px;
+    .footerLeft {
+        grid-column: span 3;
     }
 
-    .footerDistributed .footerIcons a {
-        width: 37px;
-        height: 27px;
-        font-size: 22px;
+    .footerCenter {
+        grid-column: span 3;
     }
 
-    .footerDistributed .footerCompanyAbout {
-        line-height: 20px;
+    .footerRight {
+        grid-column: span 3;
     }
-
 }

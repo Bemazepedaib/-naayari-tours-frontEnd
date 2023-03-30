@@ -17,7 +17,6 @@ export default function Home() {
       <div>
         {!loading && !error && (
           <div>
-
             <div id={Styles.catalogue}>{data.trips.map(trip => (
               <Catalogue key={key++} trip={trip}>
               </Catalogue>

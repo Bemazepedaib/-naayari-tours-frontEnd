@@ -24,7 +24,7 @@ function Footer() {
                             <FontAwesomeIcon icon={faComment} className={Styles.icon} />
                         </a>
                         <a href="//api.whatsapp.com/send?phone=523119104138&text=¡Hola!, necesito información.">
-                            <p>+52 311 910 4138</p>
+                            <p className={Styles.text}>+52 311 910 4138</p>
                         </a>
                     </div>
                     <div>
@@ -33,11 +33,11 @@ function Footer() {
                         </a>
                         <p>
                             <span>
-                                <a href="https://www.google.com/maps/@21.4811868,-104.867171,3a,75y,119.94h,86.92t/data=!3m7!1e1!3m5!1s8QHh_X8lk1xe6fX13yxktA!2e0!6shttps:%2F%2Fstreetviewpixels-pa.googleapis.com%2Fv1%2Fthumbnail%3Fpanoid%3D8QHh_X8lk1xe6fX13yxktA%26cb_client%3Dmaps_sv.tactile.gps%26w%3D203%26h%3D100%26yaw%3D156.55252%26pitch%3D0%26thumbfov%3D100!7i16384!8i8192">
+                                <a className={Styles.text} href="https://www.google.com/maps/@21.4811868,-104.867171,3a,75y,119.94h,86.92t/data=!3m7!1e1!3m5!1s8QHh_X8lk1xe6fX13yxktA!2e0!6shttps:%2F%2Fstreetviewpixels-pa.googleapis.com%2Fv1%2Fthumbnail%3Fpanoid%3D8QHh_X8lk1xe6fX13yxktA%26cb_client%3Dmaps_sv.tactile.gps%26w%3D203%26h%3D100%26yaw%3D156.55252%26pitch%3D0%26thumbfov%3D100!7i16384!8i8192">
                                     Av. Cheguevara No. 84
                                 </a>
                             </span>
-                            <a href="https://www.google.com/maps/@21.4811868,-104.867171,3a,75y,119.94h,86.92t/data=!3m7!1e1!3m5!1s8QHh_X8lk1xe6fX13yxktA!2e0!6shttps:%2F%2Fstreetviewpixels-pa.googleapis.com%2Fv1%2Fthumbnail%3Fpanoid%3D8QHh_X8lk1xe6fX13yxktA%26cb_client%3Dmaps_sv.tactile.gps%26w%3D203%26h%3D100%26yaw%3D156.55252%26pitch%3D0%26thumbfov%3D100!7i16384!8i8192">
+                            <a className={Styles.text} href="https://www.google.com/maps/@21.4811868,-104.867171,3a,75y,119.94h,86.92t/data=!3m7!1e1!3m5!1s8QHh_X8lk1xe6fX13yxktA!2e0!6shttps:%2F%2Fstreetviewpixels-pa.googleapis.com%2Fv1%2Fthumbnail%3Fpanoid%3D8QHh_X8lk1xe6fX13yxktA%26cb_client%3Dmaps_sv.tactile.gps%26w%3D203%26h%3D100%26yaw%3D156.55252%26pitch%3D0%26thumbfov%3D100!7i16384!8i8192">
                                 Col. 2 de Agosto, Tepic, Mexico
                             </a>
                         </p>
@@ -45,7 +45,7 @@ function Footer() {
                     <div>
                         <a href="mailto:naayaritour@gmail.com"><FontAwesomeIcon icon={faEnvelope} className={Styles.icon} /></a>
                         <p>
-                            <a href="mailto:naayaritour@gmail.com">Naayaritour@gmail.com
+                            <a className={Styles.text} href="mailto:naayaritour@gmail.com">Naayaritour@gmail.com
                             </a>
                         </p>
                     </div>

@@ -7,8 +7,6 @@ import Styles from '../styles/Home.module.css';
 import Footer from './sites/Footer';
 import Navbar from './sites/Navbar';
 
-import 'bootstrap/dist/css/bootstrap.min.css';
-
 export default function Home() {
 
   var key = 0;

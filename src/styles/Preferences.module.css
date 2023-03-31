@@ -5,7 +5,7 @@
     min-height: 100vh;
     min-width: 100vh;
 }
-.titleContainer .tittle {
+.tittleContainer .tittle {
     mix-blend-mode: multiply;
     background: black;
     font-family: 'Oswald', sans-serif;

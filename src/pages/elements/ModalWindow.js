@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import Modal from 'react-bootstrap/Modal';
-import Styles from '../../styles/ModalWindow.module.css'
+import Styles from '../../styles/elementStyles/ModalWindow.module.css'
 
 import Image from 'next/image'
 const image = 'https://drive.google.com/uc?export=view&id=1Gx08yGg-rGq0tUe5yVHWxbkaMfmrUOk0'
@@ -32,9 +32,9 @@ function ModalWindow({titleText,text,send}) {
             </Modal.Title>
         </Modal.Header>
         <Modal.Body>{text}</Modal.Body>
-        <Modal.Footer className={CenterModalFooter}>
+        <Modal.Footer className={Styles.centerModalFooter}>
           <div className={Styles.buttonWbords} onClick={handleClose}>
-            <p>Aceptar</p>
+            <p className={Styles.paragraph}>Aceptar</p>
           </div>
         </Modal.Footer>
       </Modal>

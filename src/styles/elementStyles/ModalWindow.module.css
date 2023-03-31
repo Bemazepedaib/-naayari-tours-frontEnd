@@ -1,0 +1,36 @@
+@import url('https://fonts.googleapis.com/css2?family=Oswald:wght@300&display=swap');
+
+.modalTitle .image {
+  margin-right: 50px;
+}
+
+.centerModalFooter {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.buttonWbords {
+  background-color: #00a748;
+  width: 200px;
+  height: 40px;
+  margin: 10px 40px;
+  border-radius: 10px;
+  color: white;
+  font-size: 1.6em;
+  box-shadow: 0 5px 10px rgba(0, 0, 0, .3);
+  cursor: pointer;
+}
+
+.buttonWbords:hover {
+  background-color: #00a748;
+  opacity: .8;
+}
+
+.buttonWbords .paragraph {
+  text-align: center;
+  cursor: pointer;
+  font-family: 'Oswald', sans-serif;
+  font-size: 1em;
+}

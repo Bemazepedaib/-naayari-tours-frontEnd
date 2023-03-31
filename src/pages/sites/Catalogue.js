@@ -1,6 +1,6 @@
 import React from "react";
 import Styles from '../../styles/Catalogue.module.css'
-
+import Image from "next/image";
 
 function Catalogue({ trip }) {
 
@@ -30,7 +30,8 @@ function Catalogue({ trip }) {
                     <div className={Styles.mainContentGrid}>
                         <div className={Styles.singleDestination}>
                             <div className={Styles.destImage}>
-                                <img className={Styles.img} src={link + back} alt="Imagen tour" />
+                                <Image height={1000}
+                                    width={1000} className={Styles.img} src={link + back} alt="Imagen tour" />
                                 <div className={Styles.overlayTitle}>
                                     {
                                         disc === true ?

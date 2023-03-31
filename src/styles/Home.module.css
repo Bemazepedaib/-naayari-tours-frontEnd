@@ -1,6 +1,17 @@
 .MainContainer {
   background-image: url('https://drive.google.com/uc?export=view&id=14gE1m9trO_XCBbPC8jBy1vvQpVGnak3A');
   background-size: cover;
+  position: relative;
+}
+
+.VideoC{
+  position: relative;
+}
+
+.NavbarC{
+  position: sticky;
+  z-index: 9999999;
+  top: 0;
 }
 
 #catalogue {

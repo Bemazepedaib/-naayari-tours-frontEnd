@@ -5,6 +5,7 @@ import { GET_TRIPS } from './querys/tripQuerys';
 import { useQuery } from '@apollo/client';
 import Styles from '../styles/Home.module.css';
 import Footer from './sites/Footer';
+import Navbar from './sites/Navbar';
 
 export default function Home() {
 
@@ -13,7 +14,13 @@ export default function Home() {
   return (
 
     <div className={Styles.MainContainer}>
+      <div className={Styles.VideoC}>
       <MainVideo />
+      </div>
+      <div className={Styles.NavbarC}>
+        <Navbar/>
+      </div>
+
       <div>
         {!loading && !error && (
           <div>
@@ -29,14 +36,4 @@ export default function Home() {
     </div>
   )
 
-  return <>{!loading && !error && (
-    <div>
-      <MainVideo></MainVideo>
-      <div id="catalogue">{data.trips.map(trip => (
-        <Catalogue key={key++} trip={trip}>
-        </Catalogue>
-      ))}
-      </div>
-    </div>
-  )}</>
 }

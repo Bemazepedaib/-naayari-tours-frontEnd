@@ -19,7 +19,6 @@ function Catalogue({ trip }) {
     {
         for (let index = 1; index <= trip.tripRating; index++) {
             stars = stars + "⋆";
-
         }
 
     }

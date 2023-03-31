@@ -31,7 +31,8 @@ function Navbar() {
                 <Link className={Styles.link} href="/sites/Footer">Home</Link>
                 <Link className={Styles.link} href="/sites/Footer">My work</Link>
                 <Link className={Styles.link} href="/sites/Footer">Blog</Link>
-                <Link className={Styles.link} href="/sites/Footer">About me</Link>
+                <Link className={Styles.link} href="/sites/Preferences">Preferences</Link>
+                <Link className={Styles.link} href="/sites/Login">Login</Link>
                 <button
                     className={`${Styles.navBtn} ${Styles.navCBtn}`}
                     onClick={showNavbar}>

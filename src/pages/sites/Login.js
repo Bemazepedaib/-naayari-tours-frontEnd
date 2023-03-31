@@ -8,7 +8,6 @@ import InputComponent from '../elements/Input';
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faTriangleExclamation } from '@fortawesome/free-solid-svg-icons';
-import { Fade } from 'react-reveal';
 
 //const emailRegexp = /^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$/
 
@@ -51,6 +50,7 @@ function Login() {
             setValidLog(false)
         }
     }
+    
 
     return <>{!loading && !error && (
         <div className={styles.body}>
@@ -88,12 +88,10 @@ function Login() {
                                 auto="on"
                             />
                             <div className={styles.grupoBoton}>
-                                {validLog === false && <Fade bottom>
-                                    <div className={styles.msgError}>
-                                        <FontAwesomeIcon icon={faTriangleExclamation} />
-                                        &nbsp; Los datos de inicio de sesión son incorrectos
-                                    </div>
-                                </Fade>}
+                                {validLog === false && <div className={styles.msgError}>
+                                    <FontAwesomeIcon icon={faTriangleExclamation} />
+                                    &nbsp; Los datos de inicio de sesión son incorrectos
+                                </div>}
                                 <button type="submit" className={styles.primaryBtn}><label>Iniciar sesión</label></button>
                             </div>
                         </form>
@@ -105,7 +103,7 @@ function Login() {
                             <span>Ó</span>
                             <hr className={styles.bar} />
                         </div>
-                        <Link href={{pathname: '/sites/Registro'}} className={styles.secondaryBtn}>Crear una cuenta</Link>
+                        <Link href={{ pathname: '/sites/Registro' }} className={styles.secondaryBtn}>Crear una cuenta</Link>
                         <footer className={styles.mainFooter}>
                             <div>
                                 <a href={terminos}>Terminos de uso</a> | <a href={privacidad}>Politica de Privacidad</a>

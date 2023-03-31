@@ -15,8 +15,8 @@ function MainVideo() {
         </div>
       </div>
       <div className={Styles.texts}>
-        <p className={Styles.ecoText}>ECOTURISMO RURAL, SUSTENTABLE Y DE AVENTURA</p>
-        <p className={Styles.tripText}>¡VIAJAR ES CULTURA!</p>
+        <div className={Styles.ecoText}>ECOTURISMO RURAL, SUSTENTABLE Y DE AVENTURA</div>
+        <div className={Styles.tripText}>¡VIAJAR ES CULTURA!</div>
       </div>
 
       <video className={Styles.video} src={video} autoPlay loop muted>

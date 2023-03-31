@@ -4,7 +4,6 @@ import InputComponent from '../elements/Input';
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faTriangleExclamation } from '@fortawesome/free-solid-svg-icons';
-import { Fade } from 'react-reveal';
 
 import { useMutation, useQuery } from '@apollo/client';
 import { ADD_USER } from '../mutations/userMutations';
@@ -202,12 +201,10 @@ function Registro() {
                         </label>
                     </div>
                     <div className={styles.grupoBoton}>
-                        {validForm === false && <Fade bottom>
-                            <div className={styles.msgError}>
-                                <FontAwesomeIcon icon={faTriangleExclamation} />
-                                Porfavor rellene correctamente el formulario
-                            </div>
-                        </Fade>}
+                        {validForm === false && <div className={styles.msgError}>
+                            <FontAwesomeIcon icon={faTriangleExclamation} />
+                            Porfavor rellene correctamente el formulario
+                        </div>}
                         <button type="submit" className={styles.primaryBtn}>Crear cuenta</button>
                         {validForm === true && <div className={styles.msgExito}>¡Formulario enviado exitósamente!</div>}
                     </div>

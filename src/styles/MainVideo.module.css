@@ -2,9 +2,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Genos:ital,wght@1,700&display=swap');
 
 .MainVideoContainer {
-
-    position: relative;
-    
+    position: relative;    
 }
 
 .video {
@@ -34,7 +32,7 @@
     display: flex;
     
     justify-content: center;
-    background: linear-gradient(to top, rgb(0, 0, 0) 80%, transparent 90%);
+    background: linear-gradient(to top, #1d2128 80%, transparent 90%);
     opacity: .8;
     bottom: 0;
     height: 20%;

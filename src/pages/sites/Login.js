@@ -1,4 +1,5 @@
 import Link from 'next/link';
+import Image from 'next/image';
 import styles from "../../styles/Login.module.css";
 
 import React from "react"
@@ -13,7 +14,7 @@ import { faTriangleExclamation } from '@fortawesome/free-solid-svg-icons';
 
 function Login() {
 
-    const logoNaayari = "https://drive.google.com/uc?export=view&id=1788oTZ-Mfs-oYI8SyymPibHNa7HtQvJ3"
+    const logoNaayari = "https://drive.google.com/uc?export=view&id=1N_BZ6IgIMASpQ3FCw2ZpS-jV3HKU2dNI"
 
     const { loading, error, data } = useQuery(GET_USERS)
     const terminos = ""
@@ -65,7 +66,7 @@ function Login() {
                     </div>
                 </div>
                 <div className={styles.right}>
-                    <img src={logoNaayari} className={styles.logo} alt="" />
+                    <Image src={logoNaayari} width={200} height={200} className={styles.logo} alt="" />
                     <div className={styles.signin}>
                         <form className={styles.formulario} onSubmit={onSubmit}>
                             <InputComponent

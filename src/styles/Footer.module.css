@@ -98,6 +98,11 @@
 
     .titleImg {
         grid-column: span 3;
+        flex-direction: row;
+    }
+
+    .titleRight {
+        position: relative;
     }
 
     .footerLeft {

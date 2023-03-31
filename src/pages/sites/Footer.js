@@ -7,25 +7,26 @@ import { faFacebook, faInstagram, faPadlet, faTiktok, faWhatsapp } from '@fortaw
 import Styles from '../../styles/Footer.module.css'
 
 const image = 'https://drive.google.com/uc?export=view&id=1Gx08yGg-rGq0tUe5yVHWxbkaMfmrUOk0'
+const imageSvg = 'https://drive.google.com/uc?export=view&id=1hKQxSheX5io9bPjn99_TedN8SCTNcsoK'
 
 function Footer() {
     return (
         <div>
             <div className={Styles.footerDistributed}>
                 <div className={Styles.titleImg}>
-                    <Image src={image} width={50} height={50} alt="Naayari tours" />
+                    <Image src={imageSvg} width={75} height={75}  alt="Naayari tours" />
                     <div className={Styles.title}>Naayari Tours © 2023</div>
-                    <div className={Styles.titleRight}>#Viajar es cultura</div>
+                    <div className={Styles.titleRight}>#ViajarEsCultura</div>
                 </div>
                 <div className={Styles.footerLeft}>
-                    <div className={Styles.title}>¡CONOCENOS!</div>
+                    <div className={Styles.title}>¡CONÓCENOS!</div>
                     <p>
                         Somos una tour operadora de turismo Rural, Ecoturismo y de Aventura,
                         nuestro objetivo es mostrarte las riquezas naturales de Nayarit.
                     </p>
                 </div>
                 <div className={Styles.footerCenter}>
-                    <div className={Styles.title}>¡CONTACTANOS!</div>
+                    <div className={Styles.title}>¡CONTÁCTANOS!</div>
                     <div>
                         <a href="//api.whatsapp.com/send?phone=523119104138&text=¡Hola!, necesito información.">
                             <FontAwesomeIcon icon={faPhone} className={Styles.icon} />
@@ -51,7 +52,7 @@ function Footer() {
                 <div className={Styles.footerRight}>
                     <div>
                         <div className={Styles.title}>¡VISITA NUESTRAS REDES SOCIALES!</div>
-                        Siguenos y enterate de las novedades que Naayari tours tiene para ti.
+                        Siguenos y entérate de las novedades que Naayari tours tiene para ti.
                     </div>
                     <div className={Styles.footerIcons}>
                         <a href="https://www.facebook.com/naayaritours"><FontAwesomeIcon icon={faFacebook} className={Styles.icon} /></a>

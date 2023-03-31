@@ -1,0 +1,101 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Oswald:wght@300&display=swap');
+  .cardContainer {
+    color: rgb(255, 255, 255);
+    font-family: 'Oswald', sans-serif;
+    font-size: 15px;
+    margin: 10px 40px;
+    width: 200px;
+    height: 300px;
+    text-shadow: 2px 6px 4px rgba(0, 0, 0, 1);
+    
+  }
+  .cardContainer:hover > .card {
+    cursor: pointer;
+    transform: rotateY(180deg);
+  }
+  .buttonWbords{
+    background-color: #00a748;
+    width: 200px;
+    height: 40px;
+    margin: 10px 40px;
+    border-radius: 10px;
+    color: white;
+    font-size: 1.6em;
+    box-shadow: 0 5px 10px rgba(0, 0, 0, .3);
+    cursor: pointer;
+  }
+  .buttonWbordsOk{
+    background-color: #00a748;
+    width: 200px;
+    height: 40px;
+    margin: 0px 40px;
+    border-radius: 10px;
+    color: white;
+    font-size: 1.6em;
+    box-shadow: 0 5px 10px rgba(0, 0, 0, .3);
+    cursor: pointer;
+    opacity: .8;
+  }
+  .buttonWbords:hover {
+    background-color: #00a748;
+    opacity: .8;
+  }
+  .buttonWbords .paragraph{
+    text-align: center;
+    cursor: pointer;
+    font-family: 'Oswald', sans-serif;
+    font-size: 1em;
+  }
+  .buttonWbordsOk .paragraph{
+    text-align: center;
+    cursor: pointer;
+    font-family: 'Oswald', sans-serif;
+    font-size: 1em;
+  }
+  .card {
+    width: 200px;
+    height: 300px;
+    border-radius: 1rem;
+    transition: transform 1500ms;
+    transform-style: preserve-3d;
+    box-shadow: 0 5px 10px rgba(0, 0, 0, .5);
+ 
+  }
+  .front,
+  .back {
+    width: 200px;
+    height: 300px;
+    border-radius: 1rem;
+    position: absolute;
+    backface-visibility: hidden;
+  }
+  .front .images {
+    width: 200px;
+    height: 300px;
+    border-radius: 1rem;
+    object-fit: cover;
+  }
+  .front .paragraph {
+    font-size: 2rem;
+    color: white;
+    position: absolute;
+    top: 80%;
+    left: 40%;
+    transform: translate(-50%,-50%);
+  }
+  .hr {
+    width: 100%;
+  }
+  .back {
+    background-color: #000000;
+    transform: rotateY(180deg);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+    align-items: center;
+    padding: 20px;
+    margin: 0px 0px;
+    box-shadow: 0 5px 10px rgba(0, 0, 0, .5);
+  }

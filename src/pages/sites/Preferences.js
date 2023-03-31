@@ -42,7 +42,7 @@ function Preferences() {
                         <PreferenceCard key={id++} cart={preference} isOk={isOk} isNotOk={isNotOk} />
                     ))}
                 </div>
-                <div>
+                <div className={Styles.send}>
                     <ModalWindow titleText='Naayari Tours te dice...'
                         text='Da clic a una actividad que sea de tu agrado para poder continuar.' send={send}></ModalWindow>
                 </div>

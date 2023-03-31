@@ -7,7 +7,7 @@
 }
 .tittleContainer .tittle {
     mix-blend-mode: multiply;
-    background: black;
+    background: #1d2128;
     font-family: 'Oswald', sans-serif;
     color: rgb(255, 255, 255);
     text-align: center;
@@ -23,4 +23,9 @@
     flex-wrap: wrap;
     justify-content: center;
     padding: 50px;
+}
+.send{
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }

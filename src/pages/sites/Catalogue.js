@@ -34,13 +34,13 @@ function Catalogue({ trip }) {
                                 <div className={Styles.overlayTitle}>
                                     {
                                         disc === true ?
-                                            [<div key={tok++} className={Styles.card}><p>En descuento!!</p></div>] : ""
+                                            [<div key={tok++} className={Styles.card}><p className={Styles.p}>En descuento!!</p></div>] : ""
                                     }
                                     <h3 className={Styles.title}>{trip.tripName}</h3>
                                 </div>
                                 <div className={Styles.overlayInfo}>
                                     <h3 className={Styles.title}>{trip.tripName}</h3>
-                                    <p className={Styles.catp}>
+                                    <p className={Styles.catpd}>
                                         {trip.tripInformation.description}
                                     </p>
 

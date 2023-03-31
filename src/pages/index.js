@@ -14,7 +14,13 @@ export default function Home() {
   return (
 
     <div className={Styles.MainContainer}>
-      <MainVideo/><Navbar></Navbar>
+      <div className={Styles.VideoC}>
+      <MainVideo />
+      </div>
+      <div className={Styles.NavbarC}>
+        <Navbar/>
+      </div>
+
       <div>
         {!loading && !error && (
           <div>

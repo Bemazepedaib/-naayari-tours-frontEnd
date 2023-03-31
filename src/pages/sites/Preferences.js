@@ -1,4 +1,4 @@
-import GET_PREFERENCES from './Querys/UserQuerys'
+import {GET_PREFERENCES} from '../querys/userQuerys'
 import { useQuery } from '@apollo/client'
 import Styles from '../../styles/Preferences.module.css'
 import PreferenceCard from '../elements/PreferenceCard'

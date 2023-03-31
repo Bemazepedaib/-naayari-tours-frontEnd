@@ -30,7 +30,7 @@
     background: #fff;
     border: 2px solid #181818;
     color: #181818;
-    padding: 0 30px 0 10px;
+    padding-left: 10px;
     transition: .3s ease all;
     height: 40px;
     width: 100%;
@@ -47,7 +47,7 @@
     background: #fff;
     border: 2px solid #ff0000 !important;
     color: #181818;
-    padding: 0 30px 0 10px;
+    padding-left: 10px;
     transition: .3s ease all;
     height: 40px;
     width: 100%;

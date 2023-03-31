@@ -2,11 +2,10 @@ import React from 'react'
 import styles from '../../styles/elementStyles/Input.module.css'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCheckCircle, faTimesCircle } from '@fortawesome/free-solid-svg-icons';
-import Fade from 'react-reveal/Fade';
 
 const InputComponent = ({ estado, cambiarEstado, tipo, label, placeholder, name, errorMsg, regExp, funcion, auto }) => {
 
-    const onChange = (e) => { cambiarEstado({ ...estado, value: e.target.value })}
+    const onChange = (e) => { cambiarEstado({ ...estado, value: e.target.value }) }
 
     const validacion = () => {
         if (funcion) {
@@ -41,9 +40,7 @@ const InputComponent = ({ estado, cambiarEstado, tipo, label, placeholder, name,
                     className={estado.valid ? styles.icono : styles.iconoError}>
                 </FontAwesomeIcon>
             </div>
-            <Fade top oposite when={!estado.valid}>
-                <div className={estado.valid ? styles.error : styles.errorActivo}>{errorMsg}</div>
-            </Fade>
+            <div className={estado.valid ? styles.error : styles.errorActivo}>{errorMsg}</div>
         </div>
     );
 }

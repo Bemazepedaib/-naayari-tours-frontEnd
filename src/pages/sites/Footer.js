@@ -14,7 +14,7 @@ function Footer() {
         <div>
             <div className={Styles.footerDistributed}>
                 <div className={Styles.titleImg}>
-                    <Image src={imageSvg} width={75} height={75}  alt="Naayari tours" />
+                    <Image src={image} width={75} height={75}  alt="Naayari tours" />
                     <div className={Styles.title}>Naayari Tours © 2023</div>
                     <div className={Styles.titleRight}>#ViajarEsCultura</div>
                 </div>

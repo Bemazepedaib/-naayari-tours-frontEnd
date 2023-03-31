@@ -1,106 +1,111 @@
 @import url('https://fonts.googleapis.com/css2?family=Oswald:wght@300&display=swap');
+
 .navbarHeader {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    height: 120px;
-    padding: 0 2rem;
-    background-color: #1D2128;
-    color: #fff;
-    font-family: 'Oswald', sans-serif;
-    font-size: 1.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 120px;
+  padding: 0 2rem;
+  background-color: #1D2128;
+  color: #fff;
+  font-family: 'Oswald', sans-serif;
+  font-size: 1.5rem;
 }
 
 .navbar .link {
-    margin: 0 1rem;
-    color: #fff;
-    text-decoration: none;
-    padding: 20px;
-    text-transform: uppercase;
-    margin: 0 10px;
+  margin: 0 1rem;
+  color: #fff;
+  text-decoration: none;
+  padding: 20px;
+  text-transform: uppercase;
+  margin: 0 10px;
 }
 
-  .navbar .link,
-  .navbar .link:after,
-  .navbar .link:before {
-    transition: all .5s;
-  }
-  .navbar .link:hover {
-    color: #00a748;
-  }
-  
-  .navbar .link,
-  .navbar .link {
-    position: relative;
-  }
-  .navbar .link:after,
-  .navbar .link:after {
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    margin: auto;
-    width: 0%;
-    content: '.';
-    color: transparent;
-    background: #00a748;;
-    height: 1px;
-  }
-  .navbar .link:hover:after {
-    width: 100%;
-  }
-  
+.navbar .link,
+.navbar .link:after,
+.navbar .link:before {
+  transition: all .5s;
+}
+
+.navbar .link:hover {
+  color: #00a748;
+}
+
+.navbar .link,
+.navbar .link {
+  position: relative;
+}
+
+.navbar .link:after,
+.navbar .link:after {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  margin: auto;
+  width: 0%;
+  content: '.';
+  color: transparent;
+  background: #00a748;
+  ;
+  height: 1px;
+}
+
+.navbar .link:hover:after {
+  width: 100%;
+}
+
 
 .navbarHeader .navBtn {
-    padding: 5px;
-    cursor: pointer;
-    background: transparent;
-    border: none;
-    outline: none;
-    color: #fff;
-    visibility: hidden;
-    opacity: 0;
-    font-size: 1.8rem;
+  padding: 5px;
+  cursor: pointer;
+  background: transparent;
+  border: none;
+  outline: none;
+  color: #fff;
+  visibility: hidden;
+  opacity: 0;
+  font-size: 1.8rem;
 }
 
 .navbarHeader,
 .navbar {
-    display: flex;
-    align-items: center;
+  display: flex;
+  align-items: center;
 }
 
 @media only screen and (max-width: 1024px) {
-    .navbarHeader .navBtn {
-        visibility: visible;
-        opacity: 1;
-    }
+  .navbarHeader .navBtn {
+    visibility: visible;
+    opacity: 1;
+  }
 
-    .navbarHeader .navbar {
-        position: fixed;
-        top: -100vh;
-        left: 0;
-        height: 100%;
-        width: 100%;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: center;
-        gap: 1.5rem;
-        background-color: #1D2128;
-        transition: 1s;
-    }
+  .navbarHeader .navbar {
+    position: fixed;
+    top: -100vh;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 1.5rem;
+    background-color: #1D2128;
+    transition: 1s;
+  }
 
-    .navbarHeader .responsiveNav {
-        transform: translateY(100vh);
-	}
+  .navbarHeader .responsiveNav {
+    transform: translateY(100vh);
+  }
 
-    .navbar .navCBtn {
-        position: absolute;
-        top: 2rem;
-        right: 2rem;
-    }
+  .navbar .navCBtn {
+    position: absolute;
+    top: 2rem;
+    right: 2rem;
+  }
 
-    .navbar .link {
-        font-size: 1.5rem;
-    }
+  .navbar .link {
+    font-size: 1.5rem;
+  }
 }

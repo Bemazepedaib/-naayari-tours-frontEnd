@@ -1,29 +1,48 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import Styles from '../../styles/Navbar.module.css'
-import naayariLogo from 'https://drive.google.com/file/d/1788oTZ-Mfs-oYI8SyymPibHNa7HtQvJ3/view?usp=share_link';
+import Link from 'next/link'
+import { useRef } from "react";
+
+import { faBars, faX } from '@fortawesome/free-solid-svg-icons'
+import Image from 'next/image'
+
+const image = 'https://drive.google.com/uc?export=view&id=1Gx08yGg-rGq0tUe5yVHWxbkaMfmrUOk0'
 
 function Navbar() {
+	const navRef = useRef();
+
+	const showNavbar = () => {
+		navRef.current.classList.toggle(
+			Styles.responsiveNav
+		);
+	};
+
     return (
-        <div>
-            <div className={Styles.body}>
-                <div className={Styles.container}>
-                    <section className={Styles.color1}>
-                        <img src={imgLogo} alt="" />
-                        <nav className='cleffect1'>
-                            <div className={Styles.navicon}>
-                                <div></div>
-                            </div>
-                            <a href="index.html">Reservación</a>
-                            <a href="index.html">Mocovid</a>
-                            <a href="index.html">Viajes</a>
-                            <a href="index.html">Contactos</a>
-                            <a href="index.html">ETESECHU</a>
-                            <a href="index.html">Acerca de nosotros</a>
-                            <a href="index.html">Iniciar sesión</a>
-                        </nav>
-                    </section>
-                </div>
-            </div>
+        <div className={Styles.navbarHeader}>
+            <Link className={Styles.link} href="/sites/Footer">
+                <Image src="https://drive.google.com/uc?export=view&id=1Gx08yGg-rGq0tUe5yVHWxbkaMfmrUOk0"
+                    width={100}
+                    height={100}
+                    alt="Naayari Tours"
+            />
+            </Link>
+            <nav className={Styles.navbar} ref={navRef}>
+                <Link className={Styles.link} href="/sites/Footer">Home</Link>
+                <Link className={Styles.link} href="/sites/Footer">My work</Link>
+                <Link className={Styles.link} href="/sites/Footer">Blog</Link>
+                <Link className={Styles.link} href="/sites/Footer">About me</Link>
+                <button
+                    className={`${Styles.navBtn} ${Styles.navCBtn}`}
+                    onClick={showNavbar}>
+                    <FontAwesomeIcon icon={faX} />
+                </button>
+            </nav>
+            <button
+                className={Styles.navBtn}
+                onClick={showNavbar}>
+                <FontAwesomeIcon icon={faBars} />
+            </button>
         </div>
     )
 }

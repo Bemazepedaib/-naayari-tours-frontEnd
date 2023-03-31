@@ -1,0 +1,26 @@
+@import url('https://fonts.googleapis.com/css2?family=Oswald:wght@300&display=swap');
+
+.PreferenceContainer{
+    background-image: url('../images/NaayariFondoGris.jpg');
+    min-height: 100vh;
+    min-width: 100vh;
+}
+.titleContainer .tittle {
+    mix-blend-mode: multiply;
+    background: black;
+    font-family: 'Oswald', sans-serif;
+    color: rgb(255, 255, 255);
+    text-align: center;
+    font-size: 3rem;
+    padding: 16px;
+    box-shadow: 0 5px 10px rgba(0, 0, 0, .3);
+    display: block;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+.imgCards {
+    display: inline-flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    padding: 50px;
+}

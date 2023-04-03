@@ -1,16 +1,29 @@
 import React from "react";
-import { useOutletContext, useParams,useLocation } from "react-router-dom";
 import Styles from '../../styles/Details.module.css'
+import { useRouter } from "next/router";
+import Image from "next/image";
 
 
-const Detalles = (props) => {
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faCalendarDays, faClock, faTags } from '@fortawesome/free-solid-svg-icons'
 
-    const trip=useLocation()
+const Detalles = () => {
 
+const router = useRouter()
 
+const { 
+    query:{name, photo, desc}
+} = router;
+
+const props={
+   name,
+   photo,
+   desc
+}
+
+console.log(name)
     const link="https://drive.google.com/uc?export=view&id="
-    var fondo =trip.state.tripInformation.photo;
-    const back=link+fondo;
+    const back=link+photo;
     var tirolesa = "1EAP23WphKNrZnEZz2kLm1g51DHaZ4PUg";
     var tiro = "1xdUNPdRPW-99dalM7wgirY-Ea6pP103P";
     var guia = "17YdPzvN4BuYbSpjA5wJxDWq2TyYbO23E";
@@ -19,49 +32,55 @@ const Detalles = (props) => {
 
 
     return (
-        <div className="principal" style={{backgroundImage:"url("+back+")"}}>{console.log(trip)}
-            <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css" integrity="sha512-SzlrxWUlpfuzQ+pcUCosxcglQRNAq/DZjVsC0lE40xsADsfeQoEypE+enwcOiGjk/bSuGGKHEyjSoQ1zVisanQ==" crossOrigin="anonymous" referrerPolicy="no-referrer" />
-            <div className="gradient">
+        <div className={Styles.principal} style={{backgroundImage:"url("+back+")"}}>
+            <div className={Styles.gradient}>
                 <title>Tour</title>
-                <div className="container">
+                <div className={Styles.container}>
 
-                    <div className="info">
-                        <div className="tour-title">{trip.state.tripName}</div>
-                        <div className="tour-detail">
-                            <div className="tour-info">
-                                <label>Fecha <i className="fa-solid fa-calendar-days"></i></label>
-                                <span>Marzo 18 Marzo</span>
+                    <div className={Styles.info}>
+                        <div className={Styles.tourTitle}>{props.name}</div>
+                        <div className={Styles.tourDetail}>
+                            <div className={Styles.tourInfo}>
+                                <label className={Styles.label}>Fecha 
+                                <i className={Styles.icons}><FontAwesomeIcon icon={faCalendarDays}/></i></label>
+                                <span className={Styles.span}>Marzo 18 Marzo</span>
                             </div>
-                            <div className="tour-info">
-                                <label>Tiempo Aproximado <i className="fa-solid fa-clock"></i></label>
-                                <span>10 horas</span>
+                            <div className={Styles.tourInfo}>
+                                <label className={Styles.label}>Tiempo Aproximado 
+                                <i className={Styles.icons}><FontAwesomeIcon icon={faClock}/></i></label>
+                                <span className={Styles.span}>10 horas</span>
                             </div>
-                            <div className="tour-info">
-                                <label>Categorias <i className="fa-solid fa-tags"></i></label>
-                                <span>Agua / Extremo / Naturaleza</span>
+                            <div className={Styles.tourInfo}>
+                                <label className={Styles.label}>Categorias 
+                                <i className={Styles.icons}><FontAwesomeIcon icon={faTags}/></i></label>
+                                <span className={Styles.span}>Agua / Extremo / Naturaleza</span>
                             </div>
                         </div>
-                        <div className="tour-description">
-                            {trip.state.tripInformation.description}
+                        <div className={Styles.tourDescription}>
+                            {props.desc}
                         </div>
-                        <div className="tour-activities">
-                            <div className="header">Actividades</div>
-                            <div className="list">
-                                <div className="activities">
-                                    <img src={link + tirolesa} alt="" />
-                                    <label>Tirolesa</label>
+                        <div className={Styles.tourActivities}>
+                            <div className={Styles.header}>Actividades</div>
+                            <div className={Styles.list}>
+                                <div className={Styles.activities}>
+                                <Image height={1000}
+                                    width={1000} className={Styles.img} src={link + tirolesa} alt="" />
+                                    <label className={Styles.label}>Tirolesa</label>
                                 </div>
-                                <div className="activities">
-                                    <img src={link + tiro} alt="" />
-                                    <label>Tiro al blanco</label>
+                                <div className={Styles.activities}>
+                                <Image height={1000}
+                                    width={1000} className={Styles.img} src={link + tiro} alt="" />
+                                    <label className={Styles.label}>Tiro al blanco</label>
                                 </div>
-                                <div className="activities">
-                                    <img src={link + guia} alt="" />
-                                    <label>Guias especializados</label>
+                                <div className={Styles.activities}>
+                                <Image height={1000}
+                                    width={1000} className={Styles.img} src={link + guia} alt="" />
+                                    <label className={Styles.label}>Guias especializados</label>
                                 </div>
-                                <div className="activities">
-                                    <img src={link + balneario} alt="" />
-                                    <label>Balneario</label>
+                                <div className={Styles.activities}>
+                                <Image height={1000}
+                                    width={1000} className={Styles.img} src={link + balneario} alt="" />
+                                    <label className={Styles.label}>Balneario</label>
                                 </div>
                             </div>
                         </div>

@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import Image from 'next/image';
 import styles from '../../styles/Registro.module.css';
 import InputComponent from '../elements/Input';
 
@@ -11,7 +12,7 @@ import { GET_USERS } from '../querys/userQuerys';
 
 function Registro() {
 
-    const logoNaayari = "https://drive.google.com/uc?export=view&id=1788oTZ-Mfs-oYI8SyymPibHNa7HtQvJ3"
+    const logoNaayari = "https://drive.google.com/uc?export=view&id=1N_BZ6IgIMASpQ3FCw2ZpS-jV3HKU2dNI"
 
     const [name, setName] = useState({ value: "", valid: true });
     const [cell, setCell] = useState({ value: "", valid: true });
@@ -96,7 +97,7 @@ function Registro() {
     return <>{!loading && !error &&
         (
             <div className={styles.contenedor}>
-                <img src={logoNaayari} alt="" className={styles.logo} />
+                <Image src={logoNaayari} alt="" width={200} height={200} className={styles.logo} />
                 <form action="" onSubmit={onSubmit} className={styles.formulario} autoComplete="off" >
                     <InputComponent
                         estado={name}

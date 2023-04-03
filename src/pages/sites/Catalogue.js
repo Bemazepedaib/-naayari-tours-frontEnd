@@ -1,21 +1,39 @@
 import React from "react";
 import Styles from '../../styles/Catalogue.module.css'
 import Image from "next/image";
+import Link from 'next/link';
+import Router from "next/router";
+
 
 function Catalogue({ trip }) {
 
+    
+const name =trip.tripName;
+const photo=trip.tripInformation.photo;
+const desc= trip.tripInformation.description;
+var back = photo
+const disc = trip.tripInformation.discount.available;
+const discAmount = trip.tripInformation.discount.amount;
+const link = "https://drive.google.com/uc?export=view&id=";
+var keyp = 0;
+var stars = "";
+var tok = 0;
+
+console.log(discAmount);
+
     function clickViajes() {
-        console.log(trip.tripName)
+        Router.push({
+            pathname: '/sites/Details',
+            query: {
+                    name,
+                    photo,
+                    desc
+            }
+        })
+
     }
 
-    var tok = 0;
-    const link = "https://drive.google.com/uc?export=view&id="
-    var back = trip.tripInformation.photo
-    var keyp = 0;
-    var stars = "";
-    var disc = trip.tripInformation.discount.available;
-    var discAmount = trip.tripInformation.discount.amount;
-    console.log(discAmount);
+
     {
         for (let index = 1; index <= trip.tripRating; index++) {
             stars = stars + "⋆";

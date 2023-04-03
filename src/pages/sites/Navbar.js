@@ -7,7 +7,7 @@ import { useRef } from "react";
 import { faBars, faX } from '@fortawesome/free-solid-svg-icons'
 import Image from 'next/image'
 
-const image = 'https://drive.google.com/uc?export=view&id=1Gx08yGg-rGq0tUe5yVHWxbkaMfmrUOk0'
+const image = 'https://drive.google.com/uc?export=view&id=1hKQxSheX5io9bPjn99_TedN8SCTNcsoK'
 
 function Navbar() {
 	const navRef = useRef();
@@ -20,18 +20,18 @@ function Navbar() {
 
     return (
         <div className={Styles.navbarHeader}>
-            <Link className={Styles.link} href="/sites/Footer">
-                <Image src="https://drive.google.com/uc?export=view&id=1Gx08yGg-rGq0tUe5yVHWxbkaMfmrUOk0"
+            <Link className={Styles.link} href="/">
+                <Image src={image}
                     width={100}
                     height={100}
                     alt="Naayari Tours"
             />
             </Link>
             <nav className={Styles.navbar} ref={navRef}>
-                <Link className={Styles.link} href="/sites/Footer">Home</Link>
-                <Link className={Styles.link} href="/sites/Footer">My work</Link>
-                <Link className={Styles.link} href="/sites/Footer">Blog</Link>
-                <Link className={Styles.link} href="/sites/Preferences">Preferences</Link>
+                <Link className={Styles.link} href="/">Inicio</Link>
+                <Link className={Styles.link} href="/sites/AboutUs">Acerca de Nosotros</Link>
+                <Link className={Styles.link} href="/sites/FAQ">Preguntas Frecuentes</Link>
+                <Link className={Styles.link} href="#Footer" scroll={false} >Contacto</Link>
                 <Link className={Styles.link} href="/sites/Login">Login</Link>
                 <button
                     className={`${Styles.navBtn} ${Styles.navCBtn}`}

@@ -27,45 +27,49 @@
     padding-left: 24px;
 }
 
-.info>div {
+.info > div {
     margin-top: 32px;
     margin-bottom: 32px;
     margin-right: 32px;
 }
 
-.tour-title {
+.tourTitle {
     width: 100%;
     font-size: 64px;
     font-weight: bold;
 }
 
-.tour-detail .tour-info {
+.tourDetail .tourInfo {
     display: inline-block;
     margin-right: 64px;
     margin-top: 10px;
 }
 
-.tour-detail label {
+.icons{
+ margin: 0 10px;
+}
+
+.tour-detail .label {
     font-size: 14px;
     color: #ededed;
     display: block;
 }
 
-.tour-detail span {
+.tourDetail .span {
     font-size: 22px;
 }
 
-.tour-descrption {
+.tourDescription {
     line-height: 24px;
 }
 
-.tour-activities .list {
+.tourActivities .list {
     display: grid;
     grid-template-columns: repeat(6, 120px);
     grid-gap: 32px;
 }
 
-.tour-activities .activities {
+.tourActivities .activities {
     width: 120px;
     height: 160px;
     cursor: pointer;
@@ -76,7 +80,7 @@
     margin-bottom: 30px;
 }
 
-.tour-activities img {
+.tourActivities .img {
     width: 100%;
     height: 100%;
     object-fit: cover;
@@ -84,17 +88,17 @@
     transition: 1s;
 }
 
-.tour-activities .activities:hover img {
+.tourActivities .activities:hover .img {
     transform: scale(1.1) rotateZ(-2deg);
 }
 
-.tour-activities label {
+.tourActivities .label {
     margin-top: 8px;
     display: block;
     transition: 1s
 }
 
-.tour-activities .activities:hover label {
+.tourActivities .activities:hover .label {
     margin-top: 24px;
     font-weight: medium;
 }
@@ -104,7 +108,7 @@
         display: flex;
     }
 
-    .tour-activities .list {
+    .tourActivities .list {
         display: flex;
         flex-wrap: wrap;
     }

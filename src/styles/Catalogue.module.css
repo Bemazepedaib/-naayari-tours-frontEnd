@@ -76,12 +76,14 @@
     text-align: center;
     top: 0;
 }
+
 .catp {
     color: white;
     opacity: 1;
     font-size: 13px;
     font-weight: bold;
 }
+
 .catpd {
     position: absolute;
     bottom: 0;
@@ -93,6 +95,7 @@
 }
 
 #destFooter {
+    position: relative;
     display: inline;
     height: 50px;
 }
@@ -103,35 +106,33 @@
 
 }
 
+.Prices {
+    position: relative;
+    height: 55px;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    top: 0  ;
+    padding: 5px;
+}
+
 .descripcion {
     color: black;
 }
 
 .hr {
     background-color: rgb(0, 0, 0);
-}
-.Prices{
-    display: flex;
-    flex-wrap: wrap;
-    align-items: center;
-    justify-content: center;
-    height: 30px;
-    padding-bottom: 3px;
-    
+    margin: 8px 0;
 }
 
-.precios .catp {
+
+.precios  .catp {
     color: black;
-    display: inline;
-    justify-content: center;
-    margin: 10px;
+        display: inline;
+        margin: 10px;
     color: rgb(133, 132, 132);
     text-decoration: line-through;
     font-weight: bold;
-}
-
-.precios b {
-    margin: 10px;
 }
 
 .precios {
@@ -140,13 +141,11 @@
 
 .descuentosPrecios {
     text-align: center;
-
 }
 
 .descuentosPrecios .catp {
     color: rgb(0, 0, 0);
     display: inline;
-    align-items: center;
     font-weight: bold;
     margin: 10px;
 }
@@ -269,7 +268,8 @@
     font-weight: bold;
 
 }
-.p{
+
+.p {
     position: relative;
     top: 25%;
 }

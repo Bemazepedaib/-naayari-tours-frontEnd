@@ -20,7 +20,7 @@ function Navbar() {
 
     return (
         <div className={Styles.navbarHeader}>
-            <Link className={Styles.link} href="/">
+            <Link  href="/">
                 <Image src={image}
                     width={100}
                     height={100}
@@ -32,7 +32,7 @@ function Navbar() {
                 <Link className={Styles.link} href="/sites/AboutUs">Acerca de Nosotros</Link>
                 <Link className={Styles.link} href="/sites/FAQ">Preguntas Frecuentes</Link>
                 <Link className={Styles.link} href="#Footer" scroll={false} >Contacto</Link>
-                <Link className={Styles.link} href="/sites/Login">Login</Link>
+                <Link  href="/sites/Login"><button className={Styles.btnLogin}>Iniciar Sesión</button></Link>
                 <button
                     className={`${Styles.navBtn} ${Styles.navCBtn}`}
                     onClick={showNavbar}>

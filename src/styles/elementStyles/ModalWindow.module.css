@@ -1,6 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Oswald:wght@300&display=swap');
 
-.modalTitle .image {
+.image {
   margin-right: 50px;
 }
 
@@ -28,7 +28,7 @@
   opacity: .8;
 }
 
-.buttonWbords .paragraph {
+.paragraph {
   text-align: center;
   cursor: pointer;
   font-family: 'Oswald', sans-serif;

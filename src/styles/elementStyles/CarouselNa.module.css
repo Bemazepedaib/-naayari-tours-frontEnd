@@ -1,0 +1,13 @@
+@import url('https://fonts.googleapis.com/css2?family=Oswald:wght@300&display=swap');
+.carouselContainer .carouselItem{
+    width: 100%;  
+    height: 800px;
+}
+.carouselContainer .carouselItem .CarouselImage{
+    width:100%;
+    height:100%;
+}
+.carouselContainer .carouselCaption{
+    font-family: 'Oswald', sans-serif;
+    font-size: 4rem;
+}

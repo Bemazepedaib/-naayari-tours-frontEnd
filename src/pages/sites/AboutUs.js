@@ -107,7 +107,7 @@ function AboutUs() {
                 <CarouselNa />
             </div>
             <div className={Styles.firstSection}>
-            <Slide direction="up">
+                <Slide direction="up" triggerOnce={true}>
                     <div className={Styles.headerSection}>
                         <div className={Styles.headerContainer}>
                             <h2 className={Styles.headerTittle}>PERSONAL DE NAAYARI TOURS</h2>
@@ -115,7 +115,7 @@ function AboutUs() {
                     </div>
                 </Slide>
                 <div className={Styles.orgSection}>
-                <Slide direction="up">
+                    <Slide direction="up" triggerOnce={true}>
                         {
                             personalInfo.map(personal => <PersonalCard key={personal.id} personal={personal}></PersonalCard>)
                         }
@@ -125,7 +125,7 @@ function AboutUs() {
             <div className={Styles.infoSection}>
                 <div className={Styles.infoContainer}>
                     <div className={Styles.infoImageContainer}>
-                    <Slide direction="up">
+                        <Slide direction="up" triggerOnce={true}>
                             <Image
                                 width={500}
                                 alt='ProfileImage'
@@ -135,11 +135,11 @@ function AboutUs() {
                             />
                         </Slide>
                     </div>
-                    <Slide direction="up">
+                    <Slide direction="up" triggerOnce={true}>
                         <h2 className={Styles.infoMainTittle}>Naayari Tours nos cuenta</h2>
                     </Slide>
                     <hr />
-                    <Slide direction="up">
+                    <Slide direction="up" triggerOnce={true}>
                         <div className={Styles.infoCards}>
                             {
                                 companyInfo.map(card => <GreenCard key={card.id} card={card}></GreenCard>)
@@ -149,7 +149,7 @@ function AboutUs() {
                 </div>
             </div>
             <div className={Styles.thirdSection}>
-                <Slide direction="up">
+                <Slide direction="up" triggerOnce={true}>
                     <div className={Styles.headerSection}>
                         <div className={Styles.headerContainer}>
                             <h2 className={Styles.headerTittle}>VALORES DE NAAYARI TOURS</h2>
@@ -158,7 +158,7 @@ function AboutUs() {
                 </Slide>
                 <div className={Styles.valuesSection}>
                     <div className={Styles.valuesContainer}>
-                        <Slide direction="up">
+                        <Slide direction="up" triggerOnce={true}>
                             <div className={Styles.valueContainerImg}>
                                 <Image className={Styles.valueImg}
                                     alt='ProfileImage'
@@ -168,7 +168,7 @@ function AboutUs() {
                                 />
                             </div>
                         </Slide>
-                        <Slide direction="up">
+                        <Slide direction="up" triggerOnce={true}>
                             <div className={Styles.valuesCards}>
                                 {
                                     valuesInfo.map(card => <GreenCard key={card.id} card={card}></GreenCard>)

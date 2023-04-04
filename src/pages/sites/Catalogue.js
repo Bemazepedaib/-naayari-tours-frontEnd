@@ -6,29 +6,26 @@ import Router from "next/router";
 
 
 function Catalogue({ trip }) {
+    const id = trip.id.toString();
+    const name = trip.tripName;
+    const photo = trip.tripInformation.photo;
+    const desc = trip.tripInformation.description;
+    var back = photo
+    const disc = trip.tripInformation.discount.available;
+    const discAmount = trip.tripInformation.discount.amount;
+    const link = "https://drive.google.com/uc?export=view&id=";
+    var keyp = 0;
+    var stars = "";
+    var tok = 0;
 
-    
-const name =trip.tripName;
-const photo=trip.tripInformation.photo;
-const desc= trip.tripInformation.description;
-var back = photo
-const disc = trip.tripInformation.discount.available;
-const discAmount = trip.tripInformation.discount.amount;
-const link = "https://drive.google.com/uc?export=view&id=";
-var keyp = 0;
-var stars = "";
-var tok = 0;
-
-console.log(discAmount);
+    console.log(discAmount);
 
     function clickViajes() {
         Router.push({
             pathname: '/sites/Details',
             query: {
-                    name,
-                    photo,
-                    desc
-            }
+                name
+            },
         })
 
     }

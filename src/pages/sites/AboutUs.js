@@ -8,7 +8,7 @@ import Navbar from './Navbar'
 
 const NayaariLogo = 'https://drive.google.com/uc?export=view&id=1Gx08yGg-rGq0tUe5yVHWxbkaMfmrUOk0'
 const personalImage = 'https://drive.google.com/uc?export=view&id=1qNHWRp0bzELTHr12AUKak1jSNNziG1k7'
-import Slide from 'react-reveal/Slide';
+import { Fade, Slide } from "react-awesome-reveal";
 import Image from 'next/image';
 function AboutUs() {
     const valuesInfo = [
@@ -107,7 +107,7 @@ function AboutUs() {
                 <CarouselNa />
             </div>
             <div className={Styles.firstSection}>
-                <Slide bottom>
+            <Slide direction="up">
                     <div className={Styles.headerSection}>
                         <div className={Styles.headerContainer}>
                             <h2 className={Styles.headerTittle}>PERSONAL DE NAAYARI TOURS</h2>
@@ -115,7 +115,7 @@ function AboutUs() {
                     </div>
                 </Slide>
                 <div className={Styles.orgSection}>
-                    <Slide bottom>
+                <Slide direction="up">
                         {
                             personalInfo.map(personal => <PersonalCard key={personal.id} personal={personal}></PersonalCard>)
                         }
@@ -125,7 +125,7 @@ function AboutUs() {
             <div className={Styles.infoSection}>
                 <div className={Styles.infoContainer}>
                     <div className={Styles.infoImageContainer}>
-                        <Slide bottom>
+                    <Slide direction="up">
                             <Image
                                 width={500}
                                 alt='ProfileImage'
@@ -135,21 +135,21 @@ function AboutUs() {
                             />
                         </Slide>
                     </div>
-                    <Slide bottom>
+                    <Slide direction="up">
                         <h2 className={Styles.infoMainTittle}>Naayari Tours nos cuenta</h2>
                     </Slide>
                     <hr />
-                    <Slide bottom>
+                    <Slide direction="up">
                         <div className={Styles.infoCards}>
                             {
-                                companyInfo.map(card => <GreenCard key={card.id}  card={card}></GreenCard>)
+                                companyInfo.map(card => <GreenCard key={card.id} card={card}></GreenCard>)
                             }
                         </div>
                     </Slide>
                 </div>
             </div>
             <div className={Styles.thirdSection}>
-                <Slide bottom>
+                <Slide direction="up">
                     <div className={Styles.headerSection}>
                         <div className={Styles.headerContainer}>
                             <h2 className={Styles.headerTittle}>VALORES DE NAAYARI TOURS</h2>
@@ -158,7 +158,7 @@ function AboutUs() {
                 </Slide>
                 <div className={Styles.valuesSection}>
                     <div className={Styles.valuesContainer}>
-                        <Slide bottom>
+                        <Slide direction="up">
                             <div className={Styles.valueContainerImg}>
                                 <Image className={Styles.valueImg}
                                     alt='ProfileImage'
@@ -168,10 +168,10 @@ function AboutUs() {
                                 />
                             </div>
                         </Slide>
-                        <Slide bottom>
+                        <Slide direction="up">
                             <div className={Styles.valuesCards}>
                                 {
-                                    valuesInfo.map(card => <GreenCard key={card.id}  card={card}></GreenCard>)
+                                    valuesInfo.map(card => <GreenCard key={card.id} card={card}></GreenCard>)
                                 }
                             </div>
                         </Slide>

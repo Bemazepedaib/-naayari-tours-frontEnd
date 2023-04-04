@@ -3,11 +3,11 @@ import Styles from '../../styles/Catalogue.module.css'
 import Image from "next/image";
 import Link from 'next/link';
 import Router from "next/router";
+import DetailCard from "../elements/DetailCard";
 
 
 function Catalogue({ trip }) {
-    const id = trip.id.toString();
-    const name = trip.tripName;
+    
     const photo = trip.tripInformation.photo;
     const desc = trip.tripInformation.description;
     var back = photo
@@ -17,16 +17,15 @@ function Catalogue({ trip }) {
     var keyp = 0;
     var stars = "";
     var tok = 0;
-
     console.log(discAmount);
 
     function clickViajes() {
-        Router.push({
-            pathname: '/sites/Details',
-            query: {
-                name
-            },
-        })
+        const name = trip.tripName;
+    Router.push({
+        pathname:'elements/DetailCard',
+        query:{name}
+    })
+    console.log(name)
 
     }
 

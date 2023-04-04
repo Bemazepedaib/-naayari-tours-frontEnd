@@ -7,21 +7,11 @@ import Image from "next/image";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faCalendarDays, faClock, faTags } from '@fortawesome/free-solid-svg-icons'
 
-const Detalles = () => {
+const Detalles = ({trip}) => {
 
-const router = useRouter()
-
-const { 
-    query:{name, photo, desc}
-} = router;
-
-const props={
-   name
-}
-
-console.log(name)
+    console.log(trip)
     const link="https://drive.google.com/uc?export=view&id="
-    const back=link+photo;
+    const back=link+trip.trip.tripInformation.photo;
     var tirolesa = "1EAP23WphKNrZnEZz2kLm1g51DHaZ4PUg";
     var tiro = "1xdUNPdRPW-99dalM7wgirY-Ea6pP103P";
     var guia = "17YdPzvN4BuYbSpjA5wJxDWq2TyYbO23E";
@@ -36,26 +26,26 @@ console.log(name)
                 <div className={Styles.container}>
 
                     <div className={Styles.info}>
-                        <div className={Styles.tourTitle}>{props.name}</div>
+                        <div className={Styles.tourTitle}>{trip.trip.name}</div>
                         <div className={Styles.tourDetail}>
                             <div className={Styles.tourInfo}>
-                                <label className={Styles.label}>Fecha 
+                                <label className={Styles.labelTitle}>Fecha 
                                 <i className={Styles.icons}><FontAwesomeIcon icon={faCalendarDays}/></i></label>
                                 <span className={Styles.span}>Marzo 18 Marzo</span>
                             </div>
                             <div className={Styles.tourInfo}>
-                                <label className={Styles.label}>Tiempo Aproximado 
+                                <label className={Styles.labelTitle}>Tiempo Aproximado 
                                 <i className={Styles.icons}><FontAwesomeIcon icon={faClock}/></i></label>
                                 <span className={Styles.span}>10 horas</span>
                             </div>
                             <div className={Styles.tourInfo}>
-                                <label className={Styles.label}>Categorias 
+                                <label className={Styles.labelTitle}>Categorias 
                                 <i className={Styles.icons}><FontAwesomeIcon icon={faTags}/></i></label>
                                 <span className={Styles.span}>Agua / Extremo / Naturaleza</span>
                             </div>
                         </div>
                         <div className={Styles.tourDescription}>
-                            {props.desc}
+                            {trip.trip.tripInformation.description}
                         </div>
                         <div className={Styles.tourActivities}>
                             <div className={Styles.header}>Actividades</div>

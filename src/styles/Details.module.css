@@ -49,10 +49,11 @@
  margin: 0 10px;
 }
 
-.tour-detail .label {
+
+.labelTitle{
     font-size: 14px;
     color: #ededed;
-    display: block;
+    display: block;  
 }
 
 .tourDetail .span {

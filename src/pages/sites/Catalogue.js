@@ -4,20 +4,17 @@ import Image from "next/image";
 import Link from 'next/link';
 import Router from "next/router";
 import DetailCard from "../elements/DetailCard";
+import CataloguePrices from "../elements/CataloguePrices"
 
 
 function Catalogue({ trip }) {
     
     const photo = trip.tripInformation.photo;
-    const desc = trip.tripInformation.description;
     var back = photo
     const disc = trip.tripInformation.discount.available;
-    const discAmount = trip.tripInformation.discount.amount;
     const link = "https://drive.google.com/uc?export=view&id=";
-    var keyp = 0;
     var stars = "";
     var tok = 0;
-    console.log(discAmount);
 
     function clickViajes() {
         const name = trip.tripName;
@@ -71,20 +68,7 @@ function Catalogue({ trip }) {
                                 </div>
                                 <hr className={Styles.hr}></hr>
                                 <div className={Styles.Prices}>
-                                    <div className={Styles.precios}>
-                                        {disc === true ? trip.tripInformation.price.map(p => (
-                                            <p className={Styles.catp} key={keyp++}>{p.priceType} ${p.priceAmount}</p>
-                                        )) : <p />
-                                        }
-                                    </div>
-                                    <div className={Styles.descuentosPrecios}>
-                                        {disc === true ? trip.tripInformation.price.map(p => (
-                                            <p className={Styles.catp} key={keyp++}>{p.priceType} ${Math.round(p.priceAmount - discAmount)}</p>
-                                        )) : trip.tripInformation.price.map(p => (
-                                            <p className={Styles.catp} key={keyp++}>{p.priceType} ${p.priceAmount}</p>
-                                        ))}
-
-                                    </div>
+                                <CataloguePrices trip={trip.tripInformation}/>
                                 </div>
                                 <hr className={Styles.hr}></hr>
                                 TAGS

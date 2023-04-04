@@ -1,7 +1,7 @@
 import React from 'react'
 import Styles from '../../styles/elementStyles/PersonalCard.module.css'
 import Image from 'next/image';
-function PersonalCard({ pImage, role, roleInfo }) {
+function PersonalCard({personal}) {
     return (
         <div>
                 <div className={Styles.orgCards}>
@@ -10,12 +10,13 @@ function PersonalCard({ pImage, role, roleInfo }) {
                             <Image className={Styles.personalImage}
                                 width={500}
                                 height={500}
-                                src={pImage}
+                                alt='ProfileImage'
+                                src={personal.pImage}
                             />
                         </div>
                         <div className={Styles.orgInfo}>
-                            <h3 className={Styles.orgRoleTittle}>{role}</h3>
-                            <p className={Styles.orgRoleInfo}>{roleInfo}</p>
+                            <h3 className={Styles.orgRoleTittle}>{personal.role}</h3>
+                            <p className={Styles.orgRoleInfo}>{personal.roleInfo}</p>
                         </div>
                     </div>
                 </div>

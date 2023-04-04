@@ -1,7 +1,12 @@
 @import url('https://fonts.googleapis.com/css2?family=Oswald:wght@300&display=swap');
 
-/*SECTION NUMBER 1*/
-.orgSection {
+/*SECTION 1 and 3*/
+.firstSection,
+.thirdSection {
+    background-image: url('https://drive.google.com/uc?export=view&id=14gE1m9trO_XCBbPC8jBy1vvQpVGnak3A');
+}
+
+.orgSection,.valuesSection {
     min-height: 100vh;
     display: flex;
     justify-content: center;
@@ -11,87 +16,27 @@
     background-image: url('https://drive.google.com/uc?export=view&id=14gE1m9trO_XCBbPC8jBy1vvQpVGnak3A');
 }
 
-.orgContainer {
-    padding: 0;
-    margin: 0;
-}
-
-.persoContainer {
-    background: #1D2128;
-    border-radius: 1rem;
-    width: 100%;
-    height: 100px;
-    margin-top: 70px;
-}
-
-.persoTittle {
-    color: #fff;
-    text-shadow: 2px 6px 4px rgba(0, 0, 0, 0.4);
-    text-align: center;
-    font-size: 4rem;
-    padding-top: 10px;
-}
-
-.orgCards {
+/*HEADER SECTION*/
+.headerSection {
     display: flex;
     align-items: center;
     justify-content: center;
 }
 
-.orgtextCard {
-    background: transparent;
-    margin: 20px;
-    padding: 20px;
-    text-align: center;
+.headerContainer {
+    background: #1D2128;
     border-radius: 1rem;
+    width: 90%;
+    height: 100px;
+    margin-top: 70px;
 }
 
-.orgRoleInfo {
-    margin-left: 10px;
-    margin-right: 10px;
-    font-size: 20px;
+.headerTittle {
+    color: #fff;
+    text-shadow: 2px 6px 4px rgba(0, 0, 0, 0.4);
     text-align: center;
-}
-
-.orgRoleTittle {
-    font-size: 25px;
-    box-shadow: 0 5px 10px rgba(0, 0, 0, .1);
-    border-radius: 1rem;
-    margin-top: 10px;
-    text-align: center;
-    text-transform: uppercase;
-    margin-bottom: 10px;
-    font-weight: bold;
-}
-
-.orgImage {
-    width: 300px;
-    height: 400px;
-    border-top-right-radius: 1rem;
-    border-top-left-radius: 1rem;
-    background: #00a748;
-    overflow: hidden;
-}
-
-.orgInfo {
-    width: 300px;
-    height: 220px;
-    margin-top: 10px;
-    border-bottom-right-radius: 1rem;
-    border-bottom-left-radius: 1rem;
-    background: #00a748;
-    overflow: hidden;
-}
-
-.personalImage {
-    width: 300px;
-    height: 400px;
-    transition: 1s all;
-}
-
-.personalImage:hover {
-    -webkit-transform: scale(1.1);
-    transform: scale(1.1);
+    font-size: 4rem;
+    padding-top: 10px;
 }
 
 /*SECTION NUMBER 2*/
@@ -121,32 +66,6 @@
     display: flex;
 }
 
-.infoTextCards {
-    background: #00a748;
-    margin: 20px;
-    padding: 20px;
-    text-align: center;
-    border-radius: 1rem;
-}
-
-.infoSection .infoCards :hover {
-    background: #00a748;
-    opacity: .9;
-}
-
-.infoTitle {
-    font-size: 30px;
-    text-align: center;
-    text-transform: uppercase;
-    margin-bottom: 10px;
-
-}
-
-.infoParagraph {
-    font-size: 20px;
-    text-align: center;
-}
-
 .infoImageContainer {
     display: flex;
     justify-content: center;
@@ -160,55 +79,17 @@
 }
 
 /*SECTION NUMBER 3*/
-.valuesSection {
-    min-height: 100vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    font-family: 'Oswald', sans-serif;
-    background-image: url('https://drive.google.com/uc?export=view&id=14gE1m9trO_XCBbPC8jBy1vvQpVGnak3A');
-    color: #ffffff;
-}
-.valuesCards{
+
+.valuesCards {
     display: grid;
-    grid-template-columns: repeat(3,1fr);
+    grid-template-columns: repeat(3, 1fr);
 }
-.valuesTextCard{    
-    background: #00a748;
-    margin: 20px;
-    padding: 20px;
-    text-align: center;
-    border-radius: 1rem;
-}
-.valuesSubtittle{
-    font-size: 30px;
-    text-align: center;
-    text-transform: uppercase;
-    margin-bottom: 10px;
-    font-weight: bold;
-}
-.valuesDescription{
-    font-size: 20px;
-    text-align: center;
-}
+
+
+
 .valuesContainer {
     padding: 0;
     margin: 0;
-}
-.valuesContainerTitle {
-    background: #1D2128;
-    border-radius: 1rem;
-    width: 100%;
-    height: 100px;
-    margin-top: 70px;
-}
-
-.valuesTitle {
-    color: #fff;
-    text-shadow: 2px 6px 4px rgba(0, 0, 0, 0.4);
-    text-align: center;
-    font-size: 4rem;
-    padding-top: 10px;
 }
 .valueImg {
     width: 500px;
@@ -218,39 +99,34 @@
     box-shadow: 0 5px 10px rgba(0, 0, 0, .5);
     margin-top: 20px;
 }
-.valueImg:hover{
+
+.valueImg:hover {
     opacity: .9;
 }
-.valueContainerImg{
+
+.valueContainerImg {
     display: flex;
     justify-content: center;
     align-items: center;
 }
-.valuesSubtittle::after{
-    content: "<";
-    opacity: 0;
-    padding-left: 1vh;
-    transition: 0.5s;
-}
-
-.valuesSubtittle:hover::after{
-    content: "<";
-    padding-left: 5vh;
-    opacity: 1;
-}
 @media (max-width: 1150px) {
-    .orgCards,.valuesCards {
+
+    .orgSection,
+    .infoCards,
+    .valuesCards {
         grid-template-columns: 1fr;
         display: flex;
         align-items: center;
         justify-content: center;
         flex-direction: column;
     }
-    .persoTittle,.valuesTitle{
-        font-size: 2.5rem;
-        padding-top: 20px;
+
+    .headerTittle {
+        font-size: 2rem;
+        padding-top: 25px;
     }
-    .infoCards, .valuesCards{
-        flex-direction: column;
+
+    .valueImg {
+        width: 450px;
     }
 }

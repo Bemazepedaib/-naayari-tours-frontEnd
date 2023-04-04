@@ -1,0 +1,33 @@
+.card {
+    background: #00a748;
+    margin: 20px;
+    padding: 20px;
+    text-align: center;
+    border-radius: 1rem;
+}
+.tittle {
+    font-size: 30px;
+    text-align: center;
+    text-transform: uppercase;
+    margin-bottom: 10px;
+}
+.text {
+    font-size: 20px;
+    text-align: center;
+}
+.card:hover{
+    background: #00a748;
+    opacity: .9;
+}
+.tittle::after{
+    content: "<";
+    opacity: 0;
+    padding-left: 1vh;
+    transition: 0.5s;
+}
+
+.tittle:hover::after{
+    content: "<";
+    padding-left: 5vh;
+    opacity: 1;
+}

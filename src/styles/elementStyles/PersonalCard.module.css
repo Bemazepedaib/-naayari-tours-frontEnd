@@ -1,0 +1,64 @@
+@import url('https://fonts.googleapis.com/css2?family=Oswald:wght@300&display=swap');
+
+/*SECTION NUMBER 1*/
+.orgCards {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.orgtextCard {
+    background: transparent;
+    margin: 20px;
+    padding: 20px;
+    text-align: center;
+    border-radius: 1rem;
+}
+
+.orgRoleInfo {
+    margin-left: 10px;
+    margin-right: 10px;
+    font-size: 20px;
+    text-align: center;
+}
+
+.orgRoleTittle {
+    font-size: 25px;
+    box-shadow: 0 5px 10px rgba(0, 0, 0, .1);
+    border-radius: 1rem;
+    margin-top: 10px;
+    text-align: center;
+    text-transform: uppercase;
+    margin-bottom: 10px;
+    font-weight: bold;
+}
+
+.orgImage {
+    width: 300px;
+    height: 400px;
+    border-top-right-radius: 1rem;
+    border-top-left-radius: 1rem;
+    background: #00a748;
+    overflow: hidden;
+}
+
+.orgInfo {
+    width: 300px;
+    height: 220px;
+    margin-top: 10px;
+    border-bottom-right-radius: 1rem;
+    border-bottom-left-radius: 1rem;
+    background: #00a748;
+    overflow: hidden;
+}
+
+.personalImage {
+    width: 300px;
+    height: 400px;
+    transition: 1s all;
+}
+
+.personalImage:hover {
+    -webkit-transform: scale(1.1);
+    transform: scale(1.1);
+}

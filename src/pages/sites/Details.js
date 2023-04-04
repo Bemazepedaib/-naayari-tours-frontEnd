@@ -16,9 +16,7 @@ const {
 } = router;
 
 const props={
-   name,
-   photo,
-   desc
+   name
 }
 
 console.log(name)

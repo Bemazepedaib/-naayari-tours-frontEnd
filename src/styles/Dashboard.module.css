@@ -1,0 +1,9 @@
+/* styling scrollbars */
+
+
+.DashBoardContainer{
+    display: grid;
+    gap: 5px;
+    grid-template-columns: repeat(4,1);
+    grid-template-rows:  2
+}

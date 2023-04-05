@@ -1,0 +1,249 @@
+
+.textPrimaryP {
+    color: #a5aaad;
+    font-size: 14px;
+    font-weight: 700;
+}
+
+.fontBold {
+    font-weight: 700;
+}
+
+.textTitle{
+    color: #2e4a66;
+}
+
+.textLightblue{
+    color:#469cac;
+}
+
+.textRed{
+    color:#cc3d38;
+}
+
+.textYellow{
+    color:#a98921;
+}
+
+.textGreen{
+    color: #3b9668;;
+}
+
+.mainAdmin {
+    grid-column: span 3;
+    grid-column-start: 2;
+    
+    background: #d0d2d3;
+    height: 100%;
+}
+
+.mainContainerAdmin {
+    padding: 20px 35px;
+}
+
+.mainTitleAdmin {
+    display: flex;
+    align-items: center;
+}
+
+.mainTitleAdmin>img {
+    max-height: 100px;
+    object-fit: contain;
+    margin-right: 20px;
+}
+
+.mainGreeting>h1 {
+    font-size: 24px;
+    color: #2e4a66;
+    margin-bottom: 5px;
+}
+
+.mainGreeting>p {
+    font-size: 14px;
+    font-weight: 700;
+    color: #a5aaad;
+}
+
+.mainCardsAdmin {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    margin: 20px;
+}
+
+.cardAdmin {
+    margin: 20px 10px;
+    display: flex;
+    align-items: center;
+    width:180px;
+    height: 70px;
+    padding: 25px;
+    border-radius: 5px;
+    background: #ffffff;
+    box-shadow: 5px 5px 13px #ededed, -5px -5p 13px #ffffff;
+}
+
+.cardInner {
+    margin-left: 15px;
+    display: flex;
+    align-items: center;
+}
+
+.cardInner>span {
+    font-size: 25px;
+}
+
+.charts {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+    margin-top: 50px;
+}
+
+.chartsLeft {
+    margin: 10px;
+    width: 380px;
+    padding: 25px;
+    border-radius: 5px;
+    background: #ffffff;
+    box-shadow: 5px 5px 13px #ededed, -5px -5px 13ox #ffffff;
+}
+
+.chartPrins{
+    display: flex;
+    justify-content: center;
+}
+
+.chartsLeftTitle>div>h1 {
+    font-size: 24px;
+    color: #2e4a66;
+    margin-bottom: 5px;
+}
+
+.chartsLeftTitle>div>p {
+    font-size: 14px;
+    font-weight: 700;
+    color: #a5aaad;
+}
+
+.chartsLeftTitle>i {
+    color: #ffffff;
+    font-size: 20px;
+    background: #ffc100;
+    border-radius: 200px 0px 200px 200px;
+    -moz-border-radius: 200px 0px 200px 200px;
+    -webkit-border-radius: 200px 0px 200px 200px;
+    border: 0px solid #000000;
+    padding: 15px;
+}
+
+.chartsRight {
+    margin: 10px;
+    width: 380px;
+    padding: 25px;
+    border-radius: 5px;
+    background: #ffffff;
+}
+
+.chartsRightTitle {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.chartsRightTitle>div>h1 {
+    font-size: 24px;
+    color: #2e4a66;
+    margin-bottom: 5px;
+}
+
+.chartsRightTitle>div>p {
+    font-size: 14px;
+    font-weight: 700;
+    color: #a5aaad;
+}
+
+.chartsRightTitle>i {
+    color: #ffffff;
+    font-size: 20px;
+    background: #39447a;
+    border-radius: 200px 0px 200px 200px;
+    border: 0px solid #000000;
+    padding: 15px;
+}
+
+.chartsRightCards {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin-top: 30px;
+}
+
+.PrinsCard1 {
+    
+    margin: 20px;
+    width: 100px;
+    background: #d1ecf1;
+    color: #35a4ba;
+    text-align: center;
+    padding: 25px;
+    border-radius: 5px;
+    font-size: 14px;
+}
+
+.PrinsCard2 {
+    
+    margin: 20px;
+    width: 100px;
+    background: #d2f9ee;
+    color: #38e1b0;
+    text-align: center;
+    padding: 25px;
+    border-radius: 5px;
+    font-size: 14px;
+}
+
+.PrinsCard3 {
+    
+    margin: 20px;
+    width: 100px;
+    background: #d6d8d9;
+    color: #3a3e41;
+    text-align: center;
+    padding: 25px;
+    border-radius: 5px;
+    font-size: 14px;
+}
+
+.PrinsCard4 {
+    
+    margin: 20px;
+    width: 100px;
+    background: #fddcdf;
+    color: #f65a6f;
+    text-align: center;
+    padding: 25px;
+    border-radius: 5px;
+    font-size: 14px;
+}
+
+@media screen and(max-width: 920px) {
+    .mainAdmin {
+        display: block;
+        width: 0;
+    }
+
+    .mainCardsAdmin {
+        grid-template-columns: 1fr;
+        gap: 10px;
+        margin-bottom: 0;
+    }
+
+    .charts {
+        display: flex;
+        flex-wrap: wrap;
+        margin-top: 30px;
+    }
+
+}

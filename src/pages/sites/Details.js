@@ -2,7 +2,8 @@ import React from "react";
 import Styles from '../../styles/Details.module.css'
 import { useRouter } from "next/router";
 import Image from "next/image";
-import ReviewSection from "../elements/ReviewSection";
+import ReviewSection from "../elements/ReviewSection"
+import ReviewImages from "../elements/ReviewImages";
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faCalendarDays, faClock, faTags } from '@fortawesome/free-solid-svg-icons'
@@ -78,7 +79,10 @@ const Detalles = ({ trip }) => {
                 </div>
             </div>
             <div>
-            <ReviewSection/>
+                <ReviewImages />
+            </div>
+            <div>
+                <ReviewSection />
             </div>
         </div>
     )

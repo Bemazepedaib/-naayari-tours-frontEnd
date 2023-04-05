@@ -20,7 +20,7 @@ function CataloguePrices({trip}) {
                 )) : trip.price.map(p => (
                     <p className={Styles.catp} key={keyp++}>{p.priceType} ${p.priceAmount}</p>
                 ))}
-
+    
             </div>
         </div>
     )

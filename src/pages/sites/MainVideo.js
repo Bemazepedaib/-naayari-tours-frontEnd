@@ -9,9 +9,7 @@ function MainVideo() {
     <div className={Styles.MyVideoContainer}>
       <div className={Styles.seeMore}>
         <div className={Styles.arrows}>
-          <span className={`${Styles.icons} ${Styles.n1}`}></span>
-          <span className={`${Styles.icons} ${Styles.n2}`}></span>
-          <span className={`${Styles.icons} ${Styles.n3}`}></span>
+          <span className={Styles.icons}>↓</span>
         </div>
       </div>
       <div className={Styles.texts}>

@@ -21,30 +21,6 @@
     color: #ffffff;
     background-image: url('https://drive.google.com/uc?export=view&id=14gE1m9trO_XCBbPC8jBy1vvQpVGnak3A');
 }
-
-/*HEADER SECTION*/
-.headerSection {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
-.headerContainer {
-    background: #1D2128;
-    border-radius: 1rem;
-    width: 90%;
-    height: 100px;
-    margin-top: 70px;
-}
-
-.headerTittle {
-    color: #fff;
-    text-shadow: 2px 6px 4px rgba(0, 0, 0, 0.4);
-    text-align: center;
-    font-size: 4rem;
-    padding-top: 10px;
-}
-
 /*SECTION NUMBER 2*/
 .infoSection {
     min-height: 100vh;

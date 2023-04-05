@@ -10,9 +10,9 @@ function SidebarAdmin() {
     const avatar = "1c0JUYO3Kta4vIAd3oTJfNwd4bXBKkzFJ";
 
     return (
-        <div className={Styles.sidebarResponsive}  id={Styles.sidebarAdmin}>
+        <div className={Styles.sidebar}  id={Styles.sidebarAdmin}>
             <div className={Styles.sidebarAdminTitle}>
-                <div className={Styles.sidebarAdminImg}>
+                <div>
                     <h1 className={Styles.fTitle}>Naayari tours</h1>
                 </div>
                 <i className={Styles.fIcons}><FontAwesomeIcon icon={faTimes} /></i>

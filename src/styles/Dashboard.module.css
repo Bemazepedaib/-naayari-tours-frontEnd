@@ -4,6 +4,6 @@
 .DashBoardContainer{
     display: grid;
     gap: 5px;
-    grid-template-columns: repeat(4,1);
-    grid-template-rows:  2
+    grid-template-columns: repeat(3,1);
+    grid-template-rows:  repeat(3,1);
 }

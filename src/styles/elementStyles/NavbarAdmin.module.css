@@ -1,6 +1,7 @@
 .navbarAdminContent{
     grid-column-start: 2;
-    grid-column-end: 5;
+    grid-column-end: 4;
+    grid-row-end: 2;
     justify-items: center;
     position: sticky;
     top: 0;
@@ -14,7 +15,7 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
-    padding:0 30px 0 30px;
+    padding:0 30px;
     border-bottom: 1px solid lightgray;
 }
 .avatar{

@@ -23,8 +23,8 @@ function Princ() {
                     <div className={Styles.cardAdmin}>
                         <i className={Styles.textLightblue}><FontAwesomeIcon icon={faUser} /></i>
                         <div className={Styles.cardInner}>
-                            <p className={Styles.textPrimaryP}>Number of suscribers</p>
-                            <span className={`${Styles.fontBold} ${Styles.textTitle}`}>578</span>
+                            <p className={`${Styles.textPrimaryP}`}>Number of suscribers</p>
+                            <span className={`${Styles.fontBold} ${Styles.textTitle} ${Styles.spanNumbers}`}>578</span>
                         </div>
                     </div>
 
@@ -32,7 +32,7 @@ function Princ() {
                         <i className={Styles.textRed}><FontAwesomeIcon icon={faCalendar} /></i>
                         <div className={Styles.cardInner}>
                             <p className={Styles.textPrimaryP}> Times of Watching</p>
-                            <span className={`${Styles.fontBold} ${Styles.textTitle}`}> 2467</span>
+                            <span className={`${Styles.fontBold} ${Styles.textTitle} ${Styles.spanNumbers}`}> 2467</span>
                         </div>
                     </div>
 
@@ -40,7 +40,7 @@ function Princ() {
                         <i className={Styles.textYellow}><FontAwesomeIcon icon={faVideoCamera} /></i>
                         <div className={Styles.cardInner}>
                             <p className={Styles.textPrimaryP}>Number of Videos</p>
-                            <span className={Styles.fontBoldTextTitle}>340</span>
+                            <span className={`${Styles.fontBold} ${Styles.textTitle} ${Styles.spanNumbers}`}>340</span>
                         </div>
                     </div>
 
@@ -48,7 +48,7 @@ function Princ() {
                         <i className={Styles.textGreen}><FontAwesomeIcon icon={faThumbsUp} /></i>
                         <div className={Styles.cardInner}>
                             <p className={Styles.textPrimaryP}>Number of Likes</p>
-                            <span className={`${Styles.fontBold} ${Styles.textTitle}`}>645</span>
+                            <span className={`${Styles.fontBold} ${Styles.textTitle} ${Styles.spanNumbers}`}>645</span>
                         </div>
                     </div>
                 </div>
@@ -70,26 +70,26 @@ function Princ() {
                     <div className={Styles.chartsRight}>
                         <div className={Styles.chartsRightTitle}>
                             <div>
-                                <h1>Stats Reports</h1>
-                                <p className={Styles.Stats}>Cupertino, California, USA</p>
+                                <h1 className={Styles.CRh1}>Stats Reports</h1>
+                                <p className={`${Styles.Stats} ${Styles.CRp}`}>Cupertino, California, USA</p>
                             </div>
                             <i><FontAwesomeIcon icon={faUsd} /></i>
                         </div>
                         <div className={Styles.chartsRightCards}>
                             <div className={Styles.PrinsCard1}>
-                                <h1>Income</h1>
+                                <h1 className={Styles.crh1}>Income</h1>
                                 <p className={Styles.PrinsIncome}>$75,300</p>
                             </div>
                             <div className={Styles.PrinsCard2}>
-                                <h1>Sales</h1>
+                                <h1 className={Styles.crh1}>Sales</h1>
                                 <p className={Styles.PrinsSales}>$124,200</p>
                             </div>
                             <div className={Styles.PrinsCard3}>
-                                <h1>Users</h1>
+                                <h1 className={Styles.crh1}>Users</h1>
                                 <p className={Styles.PrinsUsers}>3900</p>
                             </div>
                             <div className={Styles.PrinsCard4}>
-                                <h1>Orders</h1>
+                                <h1 className={Styles.crh1}>Orders</h1>
                                 <p className={Styles.PrinsOrders}>1881</p>
                             </div>
                         </div>

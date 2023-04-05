@@ -30,11 +30,10 @@
 }
 
 .mainAdmin {
-    grid-column: span 3;
+    grid-row-start: 2;
     grid-column-start: 2;
-    
+    grid-column-end: 4;
     background: #d0d2d3;
-    height: 100%;
 }
 
 .mainContainerAdmin {
@@ -71,25 +70,27 @@
     margin: 20px;
 }
 
-.cardAdmin {
+.cardAdmin{
     margin: 20px 10px;
     display: flex;
     align-items: center;
-    width:180px;
-    height: 70px;
-    padding: 25px;
+    width:20%;
+    height: 100%;
+    padding: 20px;
     border-radius: 5px;
     background: #ffffff;
     box-shadow: 5px 5px 13px #ededed, -5px -5p 13px #ffffff;
 }
 
+
 .cardInner {
     margin-left: 15px;
     display: flex;
     align-items: center;
+    justify-content: center;
 }
 
-.cardInner>span {
+.spanNumbers{
     font-size: 25px;
 }
 
@@ -103,7 +104,7 @@
 
 .chartsLeft {
     margin: 10px;
-    width: 380px;
+    width: 450px;
     padding: 25px;
     border-radius: 5px;
     background: #ffffff;
@@ -140,7 +141,7 @@
 
 .chartsRight {
     margin: 10px;
-    width: 380px;
+    width: 450px;
     padding: 25px;
     border-radius: 5px;
     background: #ffffff;
@@ -152,13 +153,16 @@
     justify-content: space-between;
 }
 
-.chartsRightTitle>div>h1 {
+.CRh1 {
     font-size: 24px;
     color: #2e4a66;
     margin-bottom: 5px;
 }
 
-.chartsRightTitle>div>p {
+.crh1{
+    font-size: 30px;
+}
+.CRp {
     font-size: 14px;
     font-weight: 700;
     color: #a5aaad;
@@ -183,7 +187,7 @@
 .PrinsCard1 {
     
     margin: 20px;
-    width: 100px;
+    width: 150px;
     background: #d1ecf1;
     color: #35a4ba;
     text-align: center;
@@ -195,7 +199,7 @@
 .PrinsCard2 {
     
     margin: 20px;
-    width: 100px;
+    width: 150px;
     background: #d2f9ee;
     color: #38e1b0;
     text-align: center;
@@ -207,7 +211,7 @@
 .PrinsCard3 {
     
     margin: 20px;
-    width: 100px;
+    width: 150px;
     background: #d6d8d9;
     color: #3a3e41;
     text-align: center;
@@ -219,7 +223,7 @@
 .PrinsCard4 {
     
     margin: 20px;
-    width: 100px;
+    width: 150px;
     background: #fddcdf;
     color: #f65a6f;
     text-align: center;

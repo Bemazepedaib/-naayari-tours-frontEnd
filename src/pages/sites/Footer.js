@@ -3,7 +3,7 @@ import Image from 'next/image'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
 import { faLocationDot, faPhone, faEnvelope } from '@fortawesome/free-solid-svg-icons'
-import { faFacebook, faInstagram, faPadlet, faTiktok, faWhatsapp } from '@fortawesome/free-brands-svg-icons'
+import { faFacebook, faInstagram, faTiktok } from '@fortawesome/free-brands-svg-icons'
 import Styles from '../../styles/Footer.module.css'
 
 const image = 'https://drive.google.com/uc?export=view&id=1hKQxSheX5io9bPjn99_TedN8SCTNcsoK'

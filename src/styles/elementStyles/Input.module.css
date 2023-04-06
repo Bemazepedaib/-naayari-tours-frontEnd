@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css?family=Oswald:400');
+@import url('https://fonts.googleapis.com/css2?family=Oswald:wght@300&display=swap');
 
 .grupoInput {
     padding-left: 30px;
@@ -62,7 +62,7 @@
     right: 10px;
     bottom: 18px;
     z-index: 100;
-    font-size: 16px;
+    height: 16px;
     opacity: 0;
 }
 
@@ -71,17 +71,8 @@
     right: 10px;
     bottom: 20px;
     z-index: 100;
-    font-size: 16px;
+    height: 16px;
     color: #ff0000;
-}
-
-.iconoOk {
-    position: absolute;
-    right: 10px;
-    bottom: 20px;
-    z-index: 100;
-    font-size: 16px;
-    color: #00a748;
 }
 
 .error {

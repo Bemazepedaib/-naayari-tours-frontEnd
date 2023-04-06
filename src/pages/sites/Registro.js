@@ -10,6 +10,8 @@ import { useMutation, useQuery } from '@apollo/client';
 import { ADD_USER } from '../mutations/userMutations';
 import { GET_USERS } from '../querys/userQuerys';
 
+import Navbar from './Navbar';
+
 function Registro() {
 
     const logoNaayari = "https://drive.google.com/uc?export=view&id=1N_BZ6IgIMASpQ3FCw2ZpS-jV3HKU2dNI"
@@ -96,120 +98,124 @@ function Registro() {
 
     return <>{!loading && !error &&
         (
-            <div className={styles.contenedor}>
-                <Image src={logoNaayari} alt="" width={200} height={200} className={styles.logo} />
-                <form action="" onSubmit={onSubmit} className={styles.formulario} autoComplete="off" >
-                    <InputComponent
-                        estado={name}
-                        cambiarEstado={setName}
-                        tipo="text"
-                        label="Nombre Completo"
-                        placeholder="Nombre Completo"
-                        name="nombre"
-                        errorMsg="El nombre solo debe incluir letras"
-                        regExp={expresiones.nombre}
-                    />
-                    <InputComponent
-                        estado={cell}
-                        cambiarEstado={setCell}
-                        tipo="text"
-                        label="Número de Celular"
-                        placeholder="Número de Celular"
-                        name="celular"
-                        errorMsg="El Número de celular solo debe incluir dígitos"
-                        regExp={expresiones.telefono}
-                    />
-                    <InputComponent
-                        estado={mail}
-                        cambiarEstado={setMail}
-                        tipo="text"
-                        label="Correo electrónico"
-                        placeholder="Correo electrónico"
-                        name="correo"
-                        errorMsg="El correo debe ser válido"
-                        regExp={expresiones.correo}
-                    />
-                    <InputComponent
-                        estado={pass}
-                        cambiarEstado={setPass}
-                        tipo="password"
-                        label="Contraseña"
-                        placeholder="Contraseña"
-                        name="pass"
-                        errorMsg="La contraseña debe ser segura"
-                        regExp={expresiones.password}
-                        auto="on"
-                    />
-                    <InputComponent
-                        estado={pass2}
-                        cambiarEstado={setPass2}
-                        tipo="password"
-                        label="Repite Contraseña"
-                        placeholder="Repite Contraseña"
-                        name="pass2"
-                        errorMsg="Las contraseñas deben coincidir"
-                        funcion={validarPassword2}
-                        auto="on"
-                    />
-                    <InputComponent
-                        estado={date}
-                        cambiarEstado={setDate}
-                        tipo="date"
-                        label="Fecha de nacimiento"
-                        placeholder="Fecha de nacimiento"
-                        name="dateNac"
-                        errorMsg="Elija una fecha válida"
-                        funcion={validarFecha}
-                    />
-                    <div className={styles.grupoInput}>
-                        <label htmlFor='Sexo'>Sexo</label>
-                        <select
-                            value={sex}
-                            onBlur={e => { setSex(e.target.value); }}
-                            onChange={e => { setSex(e.target.value); }}
-                            className={styles.textInput}
-                        >
-                            <option value="male">Hombre</option>
-                            <option value="female">Mujer</option>
-                            <option value="other">Otro</option>
-                        </select>
-                    </div>
-                    <div className={styles.grupoInput}>
-                        <label htmlFor='Publicidad'>¿Cómo nos conoce?</label>
-                        <select
-                            value={adv}
-                            onBlur={e => { setAdv(e.target.value); }}
-                            onChange={e => { setAdv(e.target.value); }}
-                            className={styles.textInput}
-                        >
-                            <option value="a friend">Un amigo o conocido</option>
-                            <option value="an ad">Un anuncio</option>
-                            <option value="facebook">Facebook</option>
-                            <option value="none">Ninguno de los anteriores</option>
-                        </select>
-                    </div>
-                    <div className={styles.grupoTerminos}>
-                        <label className={styles.text}>
-                            <input
-                                type="checkbox"
-                                name="terminos"
-                                id="terminos"
-                                checked={terminos}
-                                onChange={onChangeTerminos}
-                                className={styles.checkBox}
-                            />
-                            Acepto los Términos y Condiciones
-                        </label>
-                    </div>
-                    <div className={styles.grupoBoton}>
-                        {validForm === false && <div className={styles.msgError}>
-                            <FontAwesomeIcon icon={faTriangleExclamation} />
-                            Porfavor rellene correctamente el formulario
-                        </div>}
-                        <button type="submit" className={styles.primaryBtn}>Crear cuenta</button>
-                        {validForm === true && <div className={styles.msgExito}>¡Formulario enviado exitósamente!</div>}
-                    </div>
-                </form>
+            <div>
+                <Navbar />
+
+                <div className={styles.contenedor}>
+                    <Image src={logoNaayari} alt="" width={200} height={200} className={styles.logo} />
+                    <form action="" onSubmit={onSubmit} className={styles.formulario} autoComplete="off" >
+                        <InputComponent
+                            estado={name}
+                            cambiarEstado={setName}
+                            tipo="text"
+                            label="Nombre Completo"
+                            placeholder="Nombre Completo"
+                            name="nombre"
+                            errorMsg="El nombre solo debe incluir letras"
+                            regExp={expresiones.nombre}
+                        />
+                        <InputComponent
+                            estado={cell}
+                            cambiarEstado={setCell}
+                            tipo="text"
+                            label="Número de Celular"
+                            placeholder="Número de Celular"
+                            name="celular"
+                            errorMsg="El Número de celular solo debe incluir dígitos"
+                            regExp={expresiones.telefono}
+                        />
+                        <InputComponent
+                            estado={mail}
+                            cambiarEstado={setMail}
+                            tipo="text"
+                            label="Correo electrónico"
+                            placeholder="Correo electrónico"
+                            name="correo"
+                            errorMsg="El correo debe ser válido"
+                            regExp={expresiones.correo}
+                        />
+                        <InputComponent
+                            estado={pass}
+                            cambiarEstado={setPass}
+                            tipo="password"
+                            label="Contraseña"
+                            placeholder="Contraseña"
+                            name="pass"
+                            errorMsg="La contraseña debe ser segura"
+                            regExp={expresiones.password}
+                            auto="on"
+                        />
+                        <InputComponent
+                            estado={pass2}
+                            cambiarEstado={setPass2}
+                            tipo="password"
+                            label="Repite Contraseña"
+                            placeholder="Repite Contraseña"
+                            name="pass2"
+                            errorMsg="Las contraseñas deben coincidir"
+                            funcion={validarPassword2}
+                            auto="on"
+                        />
+                        <InputComponent
+                            estado={date}
+                            cambiarEstado={setDate}
+                            tipo="date"
+                            label="Fecha de nacimiento"
+                            placeholder="Fecha de nacimiento"
+                            name="dateNac"
+                            errorMsg="Elija una fecha válida"
+                            funcion={validarFecha}
+                        />
+                        <div className={styles.grupoInput}>
+                            <label htmlFor='Sexo'>Sexo</label>
+                            <select
+                                value={sex}
+                                onBlur={e => { setSex(e.target.value); }}
+                                onChange={e => { setSex(e.target.value); }}
+                                className={styles.textInput}
+                            >
+                                <option value="male">Hombre</option>
+                                <option value="female">Mujer</option>
+                                <option value="other">Otro</option>
+                            </select>
+                        </div>
+                        <div className={styles.grupoInput}>
+                            <label htmlFor='Publicidad'>¿Cómo nos conoce?</label>
+                            <select
+                                value={adv}
+                                onBlur={e => { setAdv(e.target.value); }}
+                                onChange={e => { setAdv(e.target.value); }}
+                                className={styles.textInput}
+                            >
+                                <option value="a friend">Un amigo o conocido</option>
+                                <option value="an ad">Un anuncio</option>
+                                <option value="facebook">Facebook</option>
+                                <option value="none">Ninguno de los anteriores</option>
+                            </select>
+                        </div>
+                        <div className={styles.grupoTerminos}>
+                            <label className={styles.text}>
+                                <input
+                                    type="checkbox"
+                                    name="terminos"
+                                    id="terminos"
+                                    checked={terminos}
+                                    onChange={onChangeTerminos}
+                                    className={styles.checkBox}
+                                />
+                                Acepto los Términos y Condiciones
+                            </label>
+                        </div>
+                        <div className={styles.grupoBoton}>
+                            {validForm === false && <div className={styles.msgError}>
+                                <FontAwesomeIcon icon={faTriangleExclamation} />
+                                Porfavor rellene correctamente el formulario
+                            </div>}
+                            <button type="submit" className={styles.primaryBtn}>Crear cuenta</button>
+                            {validForm === true && <div className={styles.msgExito}>¡Formulario enviado exitósamente!</div>}
+                        </div>
+                    </form>
+                </div>
             </div>
         )
     }</>;

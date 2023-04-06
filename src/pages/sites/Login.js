@@ -35,7 +35,7 @@ function Login() {
         // } catch (error) {
         //     console.log(error.message);
         // }
-
+        
         setValidLog(true)
         setValidLog(false)
     }
@@ -56,7 +56,7 @@ function Login() {
                         </div>
                     </div>
                     <div className={styles.right}>
-                        <Image src={logoNaayari} width={200} height={200} className={styles.logo} alt=""/>
+                        <Image src={logoNaayari} width={200} height={200} className={styles.logo} priority={true} alt=""/>
                         <div className={styles.signin}>
                             <form className={styles.formulario} onSubmit={onSubmit}>
                                 <InputComponent

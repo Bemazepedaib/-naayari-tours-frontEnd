@@ -5,6 +5,7 @@ import styles from "../../styles/Login.module.css";
 import React from "react"
 import { useMutation } from '@apollo/client';
 import { LOGIN } from '../mutations/userMutations';
+import Router from "next/router";
 
 import InputComponent from '../elements/Input';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
@@ -20,24 +21,34 @@ function Login() {
     const privacidad = ""
     const forgotPass = ""
 
+    const [myError, setMyError] = React.useState("");
+
     const [mail, setMail] = React.useState({ value: "", valid: true })
     const [pass, setPass] = React.useState({ value: "", valid: true })
     const [validLog, setValidLog] = React.useState(null)
 
-    //const [login] = useMutation(LOGIN)
+    const [login] = useMutation(LOGIN)
 
     const onSubmit = async (e) => {
         e.preventDefault();
-        // try {
-        //     localStorage.removeItem('token');
-        //     const token = (await login({ variables: { email: mail.value, password: pass.value } })).data.login
-        //     localStorage.setItem('token', token);
-        // } catch (error) {
-        //     console.log(error.message);
-        // }
-        
-        setValidLog(true)
-        setValidLog(false)
+        try {
+            const token = (await login({ variables: { email: mail.value, password: pass.value } })).data.login.split("-")
+            if (token[0] === "admin") {
+                setValidLog(true);
+                Router.push({ pathname:'/sites/Dashboard' })
+            } else if (token[1] === "") {
+                Router.push({ pathname:'/sites/Preferences' })
+                setValidLog(true);
+            } else {
+                Router.push({ pathname:'/sites/Footer' })
+                setValidLog(true);
+            }
+            localStorage.setItem('token', token[2]);
+        } catch (error) {
+            setMyError(error.message);
+            setValidLog(false)
+            return;
+        }
     }
 
 
@@ -81,7 +92,7 @@ function Login() {
                                 <div className={styles.grupoBoton}>
                                     {validLog === false && <div className={styles.msgError}>
                                         <FontAwesomeIcon icon={faTriangleExclamation} />
-                                        &nbsp; Los datos de inicio de sesión son incorrectos
+                                        &nbsp; {myError}
                                     </div>}
                                     <button type="submit" className={styles.primaryBtn}><label>Iniciar sesión</label></button>
                                 </div>

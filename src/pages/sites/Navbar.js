@@ -32,7 +32,6 @@ function Navbar() {
                 <Link className={Styles.link} href="/sites/AboutUs">Acerca de Nosotros</Link>
                 <Link className={Styles.link} href="/sites/FAQ">Preguntas Frecuentes</Link>
                 <Link className={Styles.link} href="#Footer" scroll={false} >Contacto</Link>
-                <Link className={Styles.link} href="/sites/Dashboard">Dashboard</Link>
                 <Link href="/sites/Login"><button className={Styles.btnLogin}>Iniciar Sesión</button></Link>
                 <button
                     className={`${Styles.navBtn} ${Styles.navCBtn}`}

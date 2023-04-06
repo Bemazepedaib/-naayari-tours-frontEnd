@@ -2,7 +2,7 @@ import React from "react";
 import Styles from '../../styles/Details.module.css'
 import { useRouter } from "next/router";
 import Image from "next/image";
-
+import FormTripDate from "../elements/FormTripDate";
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faCalendarDays, faClock, faTags } from '@fortawesome/free-solid-svg-icons'
@@ -44,6 +44,7 @@ const Detalles = ({trip}) => {
                                 <span className={Styles.span}>Agua / Extremo / Naturaleza</span>
                             </div>
                         </div>
+                        <FormTripDate props={trip.trip.tripInformation.date}/>
                         <div className={Styles.tourDescription}>
                             {trip.trip.tripInformation.description}
                         </div>

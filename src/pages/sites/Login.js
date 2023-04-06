@@ -12,9 +12,6 @@ import { faTriangleExclamation } from '@fortawesome/free-solid-svg-icons';
 import Navbar from './Navbar';
 import Footer from './Footer';
 
-
-//const emailRegexp = /^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$/
-
 function Login() {
 
     const logoNaayari = "https://drive.google.com/uc?export=view&id=1N_BZ6IgIMASpQ3FCw2ZpS-jV3HKU2dNI"
@@ -27,23 +24,27 @@ function Login() {
     const [pass, setPass] = React.useState({ value: "", valid: true })
     const [validLog, setValidLog] = React.useState(null)
 
-    const [login] = useMutation(LOGIN)
+    //const [login] = useMutation(LOGIN)
 
     const onSubmit = async (e) => {
         e.preventDefault();
-        const token = (await login({ variables: { email: mail.value, password: pass.value } })).data.login
-        localStorage.setItem('token', token);
-        console.log(localStorage.getItem('token'))
-        //console.log( await data)
-        // setValidLog(true)
-        // setValidLog(false)
+        // try {
+        //     localStorage.removeItem('token');
+        //     const token = (await login({ variables: { email: mail.value, password: pass.value } })).data.login
+        //     localStorage.setItem('token', token);
+        // } catch (error) {
+        //     console.log(error.message);
+        // }
+
+        setValidLog(true)
+        setValidLog(false)
     }
 
 
     return (
         <div>
-            <Navbar></Navbar>
-            <div className={styles.body}>
+            <Navbar />
+            <div className={styles.container}>
                 <div className={styles.wrapper}>
                     <div className={styles.left}>
                         <div className={styles.showcase}>
@@ -55,7 +56,7 @@ function Login() {
                         </div>
                     </div>
                     <div className={styles.right}>
-                        <Image src={logoNaayari} width={200} height={200} className={styles.logo} alt="" priority={true} />
+                        <Image src={logoNaayari} width={200} height={200} className={styles.logo} alt=""/>
                         <div className={styles.signin}>
                             <form className={styles.formulario} onSubmit={onSubmit}>
                                 <InputComponent
@@ -104,7 +105,7 @@ function Login() {
                     </div>
                 </div>
             </div>
-            <Footer></Footer>
+            <Footer />
         </div>
     )
 }

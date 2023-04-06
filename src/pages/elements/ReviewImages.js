@@ -1,11 +1,11 @@
 import React from 'react'
 import Gallery from './Gallery'
+import HeaderTittle from './HeaderTittle'
 function ReviewImages() {
   return (
     <div>
-        <h2>Image Gallery</h2>
-        <h3>Please Suscribe</h3>
-        <Gallery/>
+      <HeaderTittle tittle={'IMAGENES COMPARTIDAS'}/>
+      <Gallery />
     </div>
   )
 }

@@ -79,9 +79,6 @@ const Detalles = ({ trip }) => {
                 </div>
             </div>
             <div>
-                <ReviewImages />
-            </div>
-            <div>
                 <ReviewSection />
             </div>
         </div>

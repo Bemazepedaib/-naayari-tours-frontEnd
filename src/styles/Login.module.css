@@ -1,12 +1,10 @@
 @import url('https://fonts.googleapis.com/css2?family=Oswald:wght@300&display=swap');
 
-.body {
-  box-sizing: border-box;
+.container {
   font-family: 'Oswald', sans-serif;
   font-weight: 300;
   background: #fff;
   color: #181818;
-  overflow-y: scroll !important;
 }
 
 .wrapper {
@@ -32,6 +30,7 @@
 
 .logo {
   padding-bottom: 2vh;
+  height: auto;
 }
 
 .signin {
@@ -137,7 +136,7 @@
   }
 
   50% {
-    font-size: 3rem;
+    font-size: 2.7rem;
   }
 
   100% {

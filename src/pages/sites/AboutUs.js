@@ -3,6 +3,7 @@ import CarouselNa from '../elements/CarouselNa'
 import Styles from '../../styles/AboutUs.module.css'
 import PersonalCard from '../elements/PersonalCard'
 import GreenCard from '../elements/GreenCard'
+import HeaderTittle from '../elements/HeaderTittle'
 import Footer from './Footer'
 import Navbar from './Navbar'
 
@@ -108,11 +109,7 @@ function AboutUs() {
             </div>
             <div className={Styles.firstSection}>
                 <Slide direction="up" triggerOnce={true}>
-                    <div className={Styles.headerSection}>
-                        <div className={Styles.headerContainer}>
-                            <h2 className={Styles.headerTittle}>PERSONAL DE NAAYARI TOURS</h2>
-                        </div>
-                    </div>
+                    <HeaderTittle tittle={'PERSONAL DE NAAYARI TOURS'} />
                 </Slide>
                 <div className={Styles.orgSection}>
                     <Slide direction="up" triggerOnce={true}>
@@ -150,11 +147,7 @@ function AboutUs() {
             </div>
             <div className={Styles.thirdSection}>
                 <Slide direction="up" triggerOnce={true}>
-                    <div className={Styles.headerSection}>
-                        <div className={Styles.headerContainer}>
-                            <h2 className={Styles.headerTittle}>VALORES DE NAAYARI TOURS</h2>
-                        </div>
-                    </div>
+                    <HeaderTittle tittle={'VALORES DE NAAYARI TOURS'} />
                 </Slide>
                 <div className={Styles.valuesSection}>
                     <div className={Styles.valuesContainer}>

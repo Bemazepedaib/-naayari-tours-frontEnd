@@ -27,7 +27,7 @@
     padding-left: 24px;
 }
 
-.info > div {
+.info>div {
     margin-top: 32px;
     margin-bottom: 32px;
     margin-right: 32px;
@@ -45,15 +45,15 @@
     margin-top: 10px;
 }
 
-.icons{
- margin: 0 10px;
+.icons {
+    margin: 0 10px;
 }
 
 
-.labelTitle{
+.labelTitle {
     font-size: 14px;
     color: #ededed;
-    display: block;  
+    display: block;
 }
 
 .tourDetail .span {

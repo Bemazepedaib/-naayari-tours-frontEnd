@@ -2,16 +2,16 @@ import Link from 'next/link';
 import Image from 'next/image';
 import styles from "../../styles/Login.module.css";
 
-import React from "react"
+import React, { useEffect } from "react"
 import { useMutation } from '@apollo/client';
 import { LOGIN } from '../mutations/userMutations';
-import Router from "next/router";
 
 import InputComponent from '../elements/Input';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faTriangleExclamation } from '@fortawesome/free-solid-svg-icons';
 import Navbar from './Navbar';
 import Footer from './Footer';
+import Router from 'next/router';
 
 function Login() {
 
@@ -23,34 +23,38 @@ function Login() {
 
     const [myError, setMyError] = React.useState("");
 
-    const [mail, setMail] = React.useState({ value: "", valid: true })
-    const [pass, setPass] = React.useState({ value: "", valid: true })
-    const [validLog, setValidLog] = React.useState(null)
+    const [mail, setMail] = React.useState({ value: "", valid: true });
+    const [pass, setPass] = React.useState({ value: "", valid: true });
+    const [validLog, setValidLog] = React.useState(null);
+    const [token, setToken] = React.useState({})
 
     const [login] = useMutation(LOGIN)
+
+    useEffect(() => {
+        if (token[0] === "admin") {
+            setValidLog(true);
+            Router.push({ pathname:'/sites/Dashboard' })
+        } else if (token[1] === "") {
+            setValidLog(true);
+            Router.push({ pathname:'/sites/Preferences' })
+        } else {
+            setValidLog(true);
+            Router.push({ pathname:'/sites/Me' })
+        }
+        localStorage.setItem('token', token[2]);
+    }, [token])
 
     const onSubmit = async (e) => {
         e.preventDefault();
         try {
-            const token = (await login({ variables: { email: mail.value, password: pass.value } })).data.login.split("-")
-            if (token[0] === "admin") {
-                setValidLog(true);
-                Router.push({ pathname:'/sites/Dashboard' })
-            } else if (token[1] === "") {
-                Router.push({ pathname:'/sites/Preferences' })
-                setValidLog(true);
-            } else {
-                Router.push({ pathname:'/sites/Footer' })
-                setValidLog(true);
-            }
-            localStorage.setItem('token', token[2]);
+            if (localStorage.getItem('token')) localStorage.removeItem('token')
+            setToken((await login({ variables: { email: mail.value, password: pass.value } })).data.login.split("%"))
         } catch (error) {
             setMyError(error.message);
             setValidLog(false)
             return;
         }
     }
-
 
     return (
         <div>
@@ -67,7 +71,7 @@ function Login() {
                         </div>
                     </div>
                     <div className={styles.right}>
-                        <Image src={logoNaayari} width={200} height={200} className={styles.logo} priority={true} alt=""/>
+                        <Image src={logoNaayari} width={200} height={200} className={styles.logo} priority={true} alt="" />
                         <div className={styles.signin}>
                             <form className={styles.formulario} onSubmit={onSubmit}>
                                 <InputComponent
@@ -77,7 +81,6 @@ function Login() {
                                     label="Correo electrónico"
                                     placeholder="Correo electrónico"
                                     name="correo"
-                                //errorMsg="El correo no existe en el sistema"
                                 />
                                 <InputComponent
                                     estado={pass}
@@ -86,7 +89,6 @@ function Login() {
                                     label="Contraseña"
                                     placeholder="Contraseña"
                                     name="pass"
-                                    //errorMsg="La contraseña no es correcta"
                                     auto="on"
                                 />
                                 <div className={styles.grupoBoton}>

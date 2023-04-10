@@ -1,16 +1,17 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import Image from 'next/image';
+import Router from 'next/router';
 import styles from '../../styles/Registro.module.css';
 import InputComponent from '../elements/Input';
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faTriangleExclamation } from '@fortawesome/free-solid-svg-icons';
 
-import { useMutation, useQuery } from '@apollo/client';
+import { useMutation } from '@apollo/client';
 import { ADD_USER } from '../mutations/userMutations';
-import { GET_USERS } from '../querys/userQuerys';
 
 import Navbar from './Navbar';
+import Footer from './Footer';
 
 function Registro() {
 
@@ -24,9 +25,14 @@ function Registro() {
     const [date, setDate] = useState({ value: "", valid: true });
     const [sex, setSex] = useState("male");
     const [adv, setAdv] = useState("a friend");
+
+    const [myError, setMyError] = useState("");
     const [terminos, setTerminos] = useState(false);
     const [validForm, setValidForm] = useState(null);
+    const [token, setToken] = useState()
+
     const [addUser] = useMutation(ADD_USER);
+
 
     const expresiones = {
         nombre: /^[a-zA-ZÀ-ÿ\s]{1,40}$/, // Letras y espacios, pueden llevar acentos.
@@ -61,45 +67,47 @@ function Registro() {
         setTerminos(e.target.checked);
     }
 
-    const onSubmit = (e) => {
+    useEffect(() => {
+        if (token) {
+            setValidForm(true);
+            Router.push({ pathname: '/sites/Preferences' });
+            localStorage.setItem('token', token.data.addUser);
+        }
+    }, [token])
+
+    const onSubmit = async (e) => {
         e.preventDefault();
-        if (name.valid && cell.valid && mail.valid && pass.valid && pass2.valid && date.valid &&
-            name.value && cell.value && mail.value && pass.value && pass2.value && date.value &&
-            terminos) {
-            setValidForm(true)
-            addUser({
-                variables: {
-                    name: name.value,
-                    cellphone: cell.value,
-                    birthDate: date.value,
-                    email: mail.value,
-                    password: pass.value,
-                    sex: sex,
-                    reference: adv,
-                    userType: "client",
-                    userLevel: "0",
-                    membership: false,
-                    verified: false
-                }
-            })
-            setName({ value: "", valid: true });
-            setCell({ value: "", valid: true });
-            setMail({ value: "", valid: true });
-            setPass({ value: "", valid: true });
-            setPass2({ value: "", valid: true });
-            setDate({ value: "", valid: true });
-            setSex("male");
-            setAdv("a friend");
-            setTerminos(false);
-        } else {
+        try {
+            if (name.valid && cell.valid && mail.valid && pass.valid && pass2.valid && date.valid && terminos) {
+                setValidForm(true)
+                setToken(await addUser({
+                    variables: {
+                        name: name.value,
+                        cellphone: cell.value,
+                        birthDate: date.value,
+                        email: mail.value,
+                        password: pass.value,
+                        sex: sex,
+                        reference: adv,
+                        userType: "client",
+                        userLevel: "0",
+                        membership: false,
+                        verified: false
+                    }
+                }))
+            } else {
+                throw new Error("Llene correctamente todos los campos")
+            }
+        } catch (error) {
+            setMyError(error.message);
             setValidForm(false);
+            return;
         }
     }
 
     return (
         <div>
             <Navbar />
-
             <div className={styles.contenedor}>
                 <Image src={logoNaayari} alt="" width={200} height={200} className={styles.logo} />
                 <form action="" onSubmit={onSubmit} className={styles.formulario} autoComplete="off" >
@@ -208,13 +216,13 @@ function Registro() {
                     <div className={styles.grupoBoton}>
                         {validForm === false && <div className={styles.msgError}>
                             <FontAwesomeIcon icon={faTriangleExclamation} />
-                            Porfavor rellene correctamente el formulario
+                            &nbsp; {myError}
                         </div>}
                         <button type="submit" className={styles.primaryBtn}>Crear cuenta</button>
-                        {validForm === true && <div className={styles.msgExito}>¡Formulario enviado exitósamente!</div>}
                     </div>
                 </form>
             </div>
+            <Footer />
         </div>
     )
 }

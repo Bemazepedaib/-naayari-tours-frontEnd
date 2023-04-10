@@ -2,7 +2,7 @@ import Link from 'next/link';
 import Image from 'next/image';
 import styles from "../../styles/Login.module.css";
 
-import React, { useEffect } from "react"
+import React, { useState, useEffect } from "react"
 import { useMutation } from '@apollo/client';
 import { LOGIN } from '../mutations/userMutations';
 
@@ -21,27 +21,29 @@ function Login() {
     const privacidad = ""
     const forgotPass = ""
 
-    const [myError, setMyError] = React.useState("");
+    const [myError, setMyError] = useState("");
 
-    const [mail, setMail] = React.useState({ value: "", valid: true });
-    const [pass, setPass] = React.useState({ value: "", valid: true });
-    const [validLog, setValidLog] = React.useState(null);
-    const [token, setToken] = React.useState({})
+    const [mail, setMail] = useState({ value: "", valid: true });
+    const [pass, setPass] = useState({ value: "", valid: true });
+    const [validLog, setValidLog] = useState(null);
+    const [token, setToken] = useState()
 
     const [login] = useMutation(LOGIN)
 
     useEffect(() => {
-        if (token[0] === "admin") {
-            setValidLog(true);
-            Router.push({ pathname:'/sites/Dashboard' })
-        } else if (token[1] === "") {
-            setValidLog(true);
-            Router.push({ pathname:'/sites/Preferences' })
-        } else {
-            setValidLog(true);
-            Router.push({ pathname:'/sites/Me' })
+        if (token) {
+            if (token[0] === "admin") {
+                setValidLog(true);
+                Router.push({ pathname: '/sites/Dashboard' })
+            } else if (token[1] === "") {
+                setValidLog(true);
+                Router.push({ pathname: '/sites/Preferences' })
+            } else {
+                setValidLog(true);
+                Router.push({ pathname: '/sites/Me' })
+            }
+            localStorage.setItem('token', token[2]);
         }
-        localStorage.setItem('token', token[2]);
     }, [token])
 
     const onSubmit = async (e) => {

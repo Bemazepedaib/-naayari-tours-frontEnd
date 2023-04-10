@@ -10,8 +10,6 @@ import Gallery from "../elements/Gallery";
 import DetailActivities from "../elements/DetailActivities";
 
 const Detalles = ({ trip }) => {
-
-    console.log(trip)
     const link = "https://drive.google.com/uc?export=view&id="
     const back = link + trip.trip.tripInformation.photo;
 
@@ -59,7 +57,7 @@ const Detalles = ({ trip }) => {
                 </div>
             </div>
             <div>
-                <Gallery/>
+                <Gallery tripReviews = {trip.trip.tripReviews}/>
             </div>
         </div>
     )

@@ -2,11 +2,11 @@ import React from "react";
 import Styles from '../../styles/Details.module.css'
 import { useRouter } from "next/router";
 import Image from "next/image";
-import ReviewSection from "../elements/ReviewSection"
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faCalendarDays, faClock, faTags } from '@fortawesome/free-solid-svg-icons'
 import FormTripDate from "../elements/FormTripDate";
+import Gallery from "../elements/Gallery";
 
 const Detalles = ({ trip }) => {
 
@@ -80,7 +80,7 @@ const Detalles = ({ trip }) => {
                 </div>
             </div>
             <div>
-                <ReviewSection />
+                <Gallery/>
             </div>
         </div>
     )

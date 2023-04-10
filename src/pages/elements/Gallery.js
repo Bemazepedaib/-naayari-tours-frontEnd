@@ -63,14 +63,17 @@ function Gallery() {
                     <h2>Rodrigo Castiello Gonzalez Gonzalez</h2>
                 </div>
             </div>
-            <div className={Styles.gallery}>
-                {data.map((item, index) => {
-                    return (
-                        <div className={Styles.pics} key={index} onClick={() => getImg(item.imgSrc)}>
-                            <img src={item.imgSrc} height={((Math.random() * 10) + 5) * 30} className={Styles.image} />
-                        </div>
-                    )
-                })}
+            <div className={Styles.reviewSection}>
+                <h2 className={Styles.title}><hr />Experiencias Anteriores<hr /></h2>
+                <div className={Styles.gallery}>
+                    {data.map((item, index) => {
+                        return (
+                            <div className={Styles.pics} key={index} onClick={() => getImg(item.imgSrc)}>
+                                <img src={item.imgSrc} height={((Math.random() * 10) + 5) * 30} className={Styles.image} />
+                            </div>
+                        )
+                    })}
+                </div>
             </div>
         </div>
     )

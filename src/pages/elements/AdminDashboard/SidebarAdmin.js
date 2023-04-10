@@ -1,7 +1,8 @@
 import React from 'react'
 import Styles from '../../../styles/elementStyles/SidebarAdmin.module.css'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faTimes, faHome, faUserSecret, faBuilding, faWrench, faQuestion, faSignOut, faCalendar, faFileShield, faMoneyBills, faBriefcase, faPowerOff } from '@fortawesome/free-solid-svg-icons'
+import { faSuitcase, faPlaneDeparture, faPlane, faPlaneArrival, faUserPlus,faUser, faUserMinus, faPersonArrowUpFromLine, 
+     faPersonArrowDownToLine, faTimes, faHome,faMoneyBills, faBriefcase, faPowerOff } from '@fortawesome/free-solid-svg-icons'
 
 
 function SidebarAdmin() {
@@ -24,38 +25,38 @@ function SidebarAdmin() {
                 </div>
                 <h2 className={Styles.sidebarAdminSubtitle}>Viajes</h2>
                 <div className={Styles.sidebarAdminLink}>
-                    <i><FontAwesomeIcon icon={faUserSecret} /></i>
+                    <i><FontAwesomeIcon icon={faPlaneDeparture} /></i>
                     <a href='#' className={Styles.sidebarAdmina}>Crear Viaje</a>
                 </div>
                 <div className={Styles.sidebarAdminLink}>
-                    <i><FontAwesomeIcon icon={faBuilding} /></i>
+                    <i><FontAwesomeIcon icon={faPlane} /></i>
                     <a href='#' className={Styles.sidebarAdmina}>Actualizar Viaje</a>
                 </div>
                 <div className={Styles.sidebarAdminLink}>
-                    <i><FontAwesomeIcon icon={faWrench} /></i>
+                    <i><FontAwesomeIcon icon={faPlaneArrival} /></i>
                     <a href='#' className={Styles.sidebarAdmina}>Eliminar Viaje</a>
                 </div>
 
                 <h2 className={Styles.sidebarAdminSubtitle}>Usuarios</h2>
                 <div className={Styles.sidebarAdminLink}>
-                    <i><FontAwesomeIcon icon={faQuestion} /></i>
+                    <i><FontAwesomeIcon icon={faUserPlus} /></i>
                     <a href='#' className={Styles.sidebarAdmina}>Crear Usuarios</a>
                 </div>
                 <div className={Styles.sidebarAdminLink}>
-                    <i><FontAwesomeIcon icon={faSignOut} /></i>
+                    <i><FontAwesomeIcon icon={faUser} /></i>
                     <a href='#' className={Styles.sidebarAdmina}>Actualizar Usuarios</a>
                 </div>
                 <div className={Styles.sidebarAdminLink}>
-                    <i><FontAwesomeIcon icon={faCalendar} /></i>
+                    <i><FontAwesomeIcon icon={faUserMinus} /></i>
                     <a href='#' className={Styles.sidebarAdmina}>Eliminar Usuarios</a>
                 </div>
                 <h2 className={Styles.sidebarAdminSubtitle}>Org.  de Viajes </h2>
                 <div className={Styles.sidebarAdminLink}>
-                    <i><FontAwesomeIcon icon={faMoneyBills} /></i>
+                    <i><FontAwesomeIcon icon={faPersonArrowUpFromLine} /></i>
                     <a href='#' className={Styles.sidebarAdmina}>Dar de Alta</a>
                 </div>
                 <div className={Styles.sidebarAdminLink}>
-                    <i><FontAwesomeIcon icon={faBriefcase} /></i>
+                    <i><FontAwesomeIcon icon={faPersonArrowDownToLine} /></i>
                     <a href='#' className={Styles.sidebarAdmina}>Dar de Baja</a>
                 </div>
                 <div className={`${Styles.sidebarAdminLogout} ${Styles.sidebarAdminLink}`}>

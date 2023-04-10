@@ -75,7 +75,7 @@ const Detalles = ({ trip }) => {
                 </div>
             </div>
             <div>
-                <Gallery tripReviews = {trip.trip.tripReviews}/>
+                <Gallery tripReviews = {trip.trip.tripReview}/>
             </div>
         </div>
     )

@@ -17,23 +17,15 @@ background-color: black;
     -webkit-column-width: 33%;
     -moz-column-width: 33%;
     column-width: 33%;
-    padding: 0 12px;
+    gap: 10px;
+    margin-left: 10px;
+    margin-right: 10px;
 }
 .gallery .pics{
     -webkit-transition: all 350ms ease;
     transition: all 350ms ease;
     cursor: pointer;
     margin-bottom: 12px;
-}
-.image{
-    width: 100%;
-    object-fit:cover;
-    min-height: 200px;
-    background-color: white;
-    border-radius: 10px;
-}
-.image:hover{
-    filter: opacity(.8);
 }
 .mainBackground{
     position: relative;

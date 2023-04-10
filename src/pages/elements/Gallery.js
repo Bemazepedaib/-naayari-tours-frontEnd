@@ -1,9 +1,9 @@
 import React, { useState } from "react";
-import Styles from '../../styles/Gallery.module.css'
+import Styles from '../../styles/elementStyles/Gallery.module.css'
+import PhotoGallery from "./PhotoGallery";
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faXmark } from '@fortawesome/free-solid-svg-icons'
-import photoGallery from "./photoGallery";
 
 function Gallery({ tripReviews }) {
     let i=0;
@@ -71,14 +71,7 @@ function Gallery({ tripReviews }) {
                 <h2 className={Styles.title}><hr />Experiencias Anteriores<hr /></h2>
                 <div className={Styles.gallery}>
                     {
-                        tripReviews.map(image => <photoGallery key={i++} photo={image.photo}></photoGallery>)
-                        /*    {data.map((item, index) => {
-                               return (
-                                   <div className={Styles.pics} key={index} onClick={() => getImg(item.imgSrc)}>
-                                       <img src={item.imgSrc} height={((Math.random() * 10) + 5) * 30} className={Styles.image} />
-                                   </div>
-                               )
-                           })} */
+                        tripReviews.map(image => <PhotoGallery key={i++} photo={image.photo}></PhotoGallery>)
                     }
                 </div>
             </div>

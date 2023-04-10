@@ -1,0 +1,12 @@
+.image{
+    width: 100%;
+    object-fit:cover;
+    min-height: 200px;
+    background-color: white;
+    border-radius: 1rem;
+    margin-bottom: 10px;
+}
+.image:hover{
+    filter: opacity(.8);
+    cursor: pointer;
+}

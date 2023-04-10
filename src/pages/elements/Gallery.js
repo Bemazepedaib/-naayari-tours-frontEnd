@@ -3,8 +3,12 @@ import Styles from '../../styles/Gallery.module.css'
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faXmark } from '@fortawesome/free-solid-svg-icons'
+import photoGallery from "./photoGallery";
 
-function Gallery() {
+function Gallery({ tripReviews }) {
+    let i=0;
+    console.log("Trip AQUI")
+    console.log(tripReviews);
     let data = [
         {
             id: 1,
@@ -66,13 +70,16 @@ function Gallery() {
             <div className={Styles.reviewSection}>
                 <h2 className={Styles.title}><hr />Experiencias Anteriores<hr /></h2>
                 <div className={Styles.gallery}>
-                    {data.map((item, index) => {
-                        return (
-                            <div className={Styles.pics} key={index} onClick={() => getImg(item.imgSrc)}>
-                                <img src={item.imgSrc} height={((Math.random() * 10) + 5) * 30} className={Styles.image} />
-                            </div>
-                        )
-                    })}
+                    {
+                        tripReviews.map(image => <photoGallery key={i++} photo={image.photo}></photoGallery>)
+                        /*    {data.map((item, index) => {
+                               return (
+                                   <div className={Styles.pics} key={index} onClick={() => getImg(item.imgSrc)}>
+                                       <img src={item.imgSrc} height={((Math.random() * 10) + 5) * 30} className={Styles.image} />
+                                   </div>
+                               )
+                           })} */
+                    }
                 </div>
             </div>
         </div>

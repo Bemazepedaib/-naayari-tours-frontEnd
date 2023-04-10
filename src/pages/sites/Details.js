@@ -9,17 +9,12 @@ import FormTripDate from "../elements/FormTripDate";
 import Gallery from "../elements/Gallery";
 
 const Detalles = ({ trip }) => {
-
-    console.log(trip)
     const link = "https://drive.google.com/uc?export=view&id="
     const back = link + trip.trip.tripInformation.photo;
     var tirolesa = "1EAP23WphKNrZnEZz2kLm1g51DHaZ4PUg";
     var tiro = "1xdUNPdRPW-99dalM7wgirY-Ea6pP103P";
     var guia = "17YdPzvN4BuYbSpjA5wJxDWq2TyYbO23E";
     var balneario = "1k_iWaV2734lgOYvmh9CEm-o5B43rtdRw";
-
-
-
     return (
         <div>
             <div className={Styles.principal} style={{ backgroundImage: "url(" + back + ")" }}>
@@ -80,7 +75,7 @@ const Detalles = ({ trip }) => {
                 </div>
             </div>
             <div>
-                <Gallery/>
+                <Gallery tripReviews = {trip.trip.tripReviews}/>
             </div>
         </div>
     )

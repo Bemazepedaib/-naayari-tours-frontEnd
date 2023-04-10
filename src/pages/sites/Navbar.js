@@ -6,10 +6,12 @@ import { useRef } from "react";
 
 import { faBars, faX } from '@fortawesome/free-solid-svg-icons'
 import Image from 'next/image'
+import Router from 'next/router';
 
 const image = 'https://drive.google.com/uc?export=view&id=1hKQxSheX5io9bPjn99_TedN8SCTNcsoK'
 
 function Navbar() {
+
 	const navRef = useRef();
 
 	const showNavbar = () => {
@@ -32,8 +34,14 @@ function Navbar() {
                 <Link className={Styles.link} href="/sites/AboutUs">Acerca de Nosotros</Link>
                 <Link className={Styles.link} href="/sites/FAQ">Preguntas Frecuentes</Link>
                 <Link className={Styles.link} href="#Footer" scroll={false} >Contacto</Link>
-                <Link className={Styles.link} href="/sites/Dashboard">Dashboard</Link>
+                <Link className={Styles.link} href="/sites/Me">Mi perfil</Link>
                 <Link href="/sites/Login"><button className={Styles.btnLogin}>Iniciar Sesión</button></Link>
+                <button className={Styles.btnLogin} onClick={
+                    async () => { 
+                        localStorage.removeItem('token');
+                        Router.push({ pathname:'/' })
+                        window.location.reload(true)
+                    }}>Logout</button>
                 <button
                     className={`${Styles.navBtn} ${Styles.navCBtn}`}
                     onClick={showNavbar}>

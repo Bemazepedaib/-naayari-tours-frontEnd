@@ -125,23 +125,6 @@
   width: 100%;
   color: #fff;
   text-shadow: #000 0 2px;
-  animation-name: textoAnimado;
-  animation-duration: 5s;
-  animation-iteration-count: infinite;
-}
-
-@keyframes textoAnimado {
-  0% {
-    font-size: 2.5rem;
-  }
-
-  50% {
-    font-size: 2.7rem;
-  }
-
-  100% {
-    font-size: 2.5rem;
-  }
 }
 
 .mainFooter {

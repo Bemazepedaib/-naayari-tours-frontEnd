@@ -2,8 +2,6 @@ import React, { useState } from "react";
 import Styles from '../../styles/elementStyles/Gallery.module.css'
 import PhotoGallery from "./PhotoGallery";
 
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faXmark } from '@fortawesome/free-solid-svg-icons'
 
 function Gallery({ tripReviews }) {
     let i=0;

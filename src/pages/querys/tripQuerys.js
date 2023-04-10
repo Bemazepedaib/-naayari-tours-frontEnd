@@ -18,23 +18,10 @@ const GET_TRIPS = gql
         amount
         available
       }
-      itinerary
-      securityAdvice
-      restrictions
-      recomendations
       photo
     }
-    tripKit
-    tripType
     tripRating
     tripStatus
-    tripReview{
-      user
-      rating
-      review
-      date
-      photo
-    }
   }
 }
     `;
@@ -56,6 +43,10 @@ const GET_TRIP = gql
       description
       place
       date
+      activities{
+        activityName
+        activityPhoto
+      }
       price{
         priceType
         priceAmount

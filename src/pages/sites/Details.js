@@ -10,11 +10,9 @@ import Gallery from "../elements/Gallery";
 import DetailActivities from "../elements/DetailActivities";
 
 const Detalles = ({ trip }) => {
+
     const link = "https://drive.google.com/uc?export=view&id="
     const back = link + trip.trip.tripInformation.photo;
-
-
-
 
     return (
         <div>
@@ -22,7 +20,6 @@ const Detalles = ({ trip }) => {
                 <div className={Styles.gradient}>
                     <title>Tour</title>
                     <div className={Styles.container}>
-
                         <div className={Styles.info}>
                             <div className={Styles.tourTitle}>{trip.trip.name}</div>
                             <div className={Styles.tourDetail}>
@@ -42,7 +39,7 @@ const Detalles = ({ trip }) => {
                                     <span className={Styles.span}>Agua / Extremo / Naturaleza</span>
                                 </div>
                             </div>
-                            <FormTripDate props={trip.trip.tripInformation.date}/>
+                            <FormTripDate dates={trip.trip.tripInformation.date} selTrip={trip.trip.tripName}/>
                             <div className={Styles.tourDescription}>
                                 {trip.trip.tripInformation.description}
                             </div>

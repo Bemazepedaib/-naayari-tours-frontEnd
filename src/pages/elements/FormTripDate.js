@@ -1,10 +1,11 @@
-import React, { Component, useState } from 'react'
+import React, { useState } from 'react'
 import Styles from '../../styles/elementStyles/FormTripDate.module.css';
 
-function FormTripDate({ props }) {
+import Router from 'next/router';
 
-    const [date, setDate] = useState(props[0])
-    var day = props[0]
+function FormTripDate({ dates, selTrip }) {
+
+    const [date, setDate] = useState(dates[0])
 
     return (
         <div>
@@ -18,13 +19,15 @@ function FormTripDate({ props }) {
                             value={date}
                             onChange={e => { setDate(e.target.value) }}
                             onBlur={e => { setDate(e.target.value) }}>
-                            {props.map(d => (
+                            {dates.map(d => (
                                 <option className={Styles.op} value={d} key={d}> {d} </option>
                             ))}
                         </select>
-                        <button className={Styles.btn} type='submit' onClick={() => { console.log(date) }}> Reservar lugares </button>
+                        <button className={Styles.btn} type='submit' onClick={() => { 
+                            Router.push({ pathname:'/sites/Reservations', query:{date, selTrip}}) }
+                        }> Reservar lugares </button>
                     </div>
-                        <button className={Styles.btnVIP} type='submit' onClick={() => { console.log('Es un vip') }}> ¡Crea tu grupo VIP! </button>
+                    <button className={Styles.btnVIP} type='submit' onClick={() => { console.log('Es un vip') }}> ¡Crea tu grupo VIP! </button>
                 </div>
 
             </div>
@@ -32,11 +35,5 @@ function FormTripDate({ props }) {
         </div>
     )
 }
-
-
-
-
-
-
 
 export default FormTripDate

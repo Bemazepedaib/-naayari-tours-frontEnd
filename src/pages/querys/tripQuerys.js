@@ -1,7 +1,7 @@
 import { gql } from "@apollo/client";
 
 const GET_TRIPS = gql
-`query getTrips {
+  `query getTrips {
     trips{
     id
     tripName
@@ -35,8 +35,27 @@ const GET_TRIPTYPES = gql`
     }
 `;
 
+const GET_TRIP_PRICES = gql
+`query getTripPrices($tripName: String){
+  trip(tripName:$tripName){
+    tripInformation {
+      price {
+        priceType
+        priceAmount
+      }
+      discount {
+        dateStart
+        dateEnd
+        amount
+        available
+      }
+    }
+  }
+}
+`
+
 const GET_TRIP = gql
-`query getTrip($tripName: String){
+  `query getTrip($tripName: String){
     trip(tripName:$tripName){
     tripName
     tripInformation{
@@ -79,4 +98,4 @@ const GET_TRIP = gql
     `;
 
 
-export { GET_TRIPTYPES, GET_TRIPS,GET_TRIP }
+export { GET_TRIPTYPES, GET_TRIPS, GET_TRIP, GET_TRIP_PRICES }

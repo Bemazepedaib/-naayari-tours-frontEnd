@@ -5,11 +5,14 @@
   font-weight: 300;
   background: #fff;
   color: #181818;
+  
 }
 
 .wrapper {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
+  
+  height: 100vh;
 }
 
 .right {
@@ -21,6 +24,7 @@
   background-image: url('https://drive.google.com/uc?export=view&id=14gE1m9trO_XCBbPC8jBy1vvQpVGnak3A');
   background-size: cover;
   box-shadow: 5px 10px 18px #000;
+  justify-content: center;
 }
 
 .left {
@@ -31,6 +35,7 @@
 .logo {
   padding-bottom: 2vh;
   height: auto;
+  display: none;
 }
 
 .signin {
@@ -44,7 +49,6 @@
   background-image: url('https://drive.google.com/uc?export=view&id=13KXgd3DJj2oeqYJS7EoqNaajsPUJKsDr');
   box-shadow: 0 5px 10px rgba(0, 0, 0, .3);
   border-radius: 10px;
-  position: relative;
 }
 
 .formulario {

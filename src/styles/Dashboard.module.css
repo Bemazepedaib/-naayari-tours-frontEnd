@@ -3,13 +3,7 @@
 
 .DashBoardContainer{
     display: grid;
-    gap: 5px;
-    grid-template-columns: repeat(3,1);
+    grid-template-columns: 20% 80%;
     grid-template-rows:  repeat(3,1);
 }
 
-@media (max-width: 745px){
-.side{
-    
-}
-}

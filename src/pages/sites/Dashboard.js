@@ -12,7 +12,6 @@ function Dashboard() {
 
   return (
     <div className={Styles.DashBoardContainer}>
-      <NavbarAdmin></NavbarAdmin>
       <SidebarAdmin ></SidebarAdmin>
       <Princ />
     </div>

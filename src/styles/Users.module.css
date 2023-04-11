@@ -1,0 +1,12 @@
+.UsersMain {
+    display: grid;
+    grid-template-columns: 20% 80%;
+    grid-template-rows: repeat(3, 1);
+}
+
+.User {
+    grid-row-start: 2;
+    grid-column-start: 2;
+    grid-column-end: 4;
+
+}

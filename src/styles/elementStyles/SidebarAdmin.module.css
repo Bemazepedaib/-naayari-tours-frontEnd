@@ -48,6 +48,7 @@
     padding: 10px;
     border-radius: 3px;
     margin-bottom: 5px;
+    text-align: center;
 }
 .sidebarAdmina{
     color: #e65061;
@@ -129,11 +130,9 @@
 
 @media (max-width: 745px){
     .sidebarAdminSubtitle {        
-        visibility: hidden;
-        position: absolute;
+        display: none;
     }
     .sidebarAdminTitle{
-        visibility: hidden;
-        position: absolute;
+        display: none;
     }
 }

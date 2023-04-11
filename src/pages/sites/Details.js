@@ -21,7 +21,7 @@ const Detalles = ({ trip }) => {
                     <title>Tour</title>
                     <div className={Styles.container}>
                         <div className={Styles.info}>
-                            <div className={Styles.tourTitle}>{trip.trip.name}</div>
+                            <div className={Styles.tourTitle}>{trip.trip.tripName}</div>
                             <div className={Styles.tourDetail}>
                                 <div className={Styles.tourInfo}>
                                     <label className={Styles.labelTitle}>Fecha

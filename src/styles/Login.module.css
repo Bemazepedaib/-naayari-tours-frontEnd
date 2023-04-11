@@ -17,6 +17,7 @@
   display: flex;
   flex-direction: column;
   align-items: center;
+  justify-content: center;
   height: 100vh;
   background-image: url('https://drive.google.com/uc?export=view&id=14gE1m9trO_XCBbPC8jBy1vvQpVGnak3A');
   background-size: cover;
@@ -28,19 +29,14 @@
   height: 100vh;
 }
 
-.logo {
-  padding-bottom: 2vh;
-  height: auto;
-}
-
 .signin {
   padding-top: 3vh;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  margin: auto;
   width: 90%;
-  background-color: #fff;
   background-image: url('https://drive.google.com/uc?export=view&id=13KXgd3DJj2oeqYJS7EoqNaajsPUJKsDr');
   box-shadow: 0 5px 10px rgba(0, 0, 0, .3);
   border-radius: 10px;

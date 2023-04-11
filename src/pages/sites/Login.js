@@ -98,7 +98,7 @@ function Login() {
                                         <FontAwesomeIcon icon={faTriangleExclamation} />
                                         &nbsp; {myError}
                                     </div>}
-                                    <button type="submit" className={styles.primaryBtn}><label>Iniciar sesión</label></button>
+                                    <button type="submit" className={styles.primaryBtn}>Iniciar sesión</button>
                                 </div>
                             </form>
                             <div className={styles.links}>
@@ -109,7 +109,7 @@ function Login() {
                                 <span>Ó</span>
                                 <hr className={styles.bar} />
                             </div>
-                            <Link href={{ pathname: '/sites/Registro' }} className={styles.secondaryBtn}>Crear una cuenta</Link>
+                            <Link href={{ pathname: '/sites/Signup' }} className={styles.secondaryBtn}>Crear una cuenta</Link>
                             <footer className={styles.mainFooter}>
                                 <div>
                                     <a href={terminos}>Terminos de uso</a> | <a href={privacidad}>Politica de Privacidad</a>

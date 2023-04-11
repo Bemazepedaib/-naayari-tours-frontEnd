@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import Image from 'next/image';
 import Router from 'next/router';
-import styles from '../../styles/Registro.module.css';
+import styles from '../../styles/Signup.module.css';
 import InputComponent from '../elements/Input';
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
@@ -13,7 +13,7 @@ import { ADD_USER } from '../mutations/userMutations';
 import Navbar from './Navbar';
 import Footer from './Footer';
 
-function Registro() {
+function Signup() {
 
     const logoNaayari = "https://drive.google.com/uc?export=view&id=1N_BZ6IgIMASpQ3FCw2ZpS-jV3HKU2dNI"
 
@@ -227,4 +227,4 @@ function Registro() {
     )
 }
 
-export default Registro;
+export default Signup;

@@ -8,7 +8,7 @@ import CataloguePrices from "../elements/CataloguePrices"
 
 
 function Catalogue({ trip }) {
-    
+
     const photo = trip.tripInformation.photo;
     var back = photo
     const disc = trip.tripInformation.discount.available;
@@ -18,21 +18,12 @@ function Catalogue({ trip }) {
 
     function clickViajes() {
         const name = trip.tripName;
-    Router.push({
-        pathname:'elements/DetailCard',
-        query:{name}
-    })
-    console.log(name)
-
+        Router.push({
+            pathname: 'elements/DetailCard',
+            query: { name }
+        })
     }
-
-
-    {
-        for (let index = 1; index <= trip.tripRating; index++) {
-            stars = stars + "⋆";
-        }
-
-    }
+    { for (let index = 1; index <= trip.tripRating; index++) stars = stars + "⋆"; }
     return (
         <div>
             <section className={Styles.popularSectionContainer} onClick={clickViajes}>
@@ -68,7 +59,7 @@ function Catalogue({ trip }) {
                                 </div>
                                 <hr className={Styles.hr}></hr>
                                 <div className={Styles.Prices}>
-                                <CataloguePrices trip={trip.tripInformation}/>
+                                    <CataloguePrices trip={trip.tripInformation} />
                                 </div>
                                 <hr className={Styles.hr}></hr>
                                 TAGS

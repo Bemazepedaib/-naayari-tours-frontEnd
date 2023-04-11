@@ -14,9 +14,9 @@ function NavbarAdmin() {
                 <div className={Styles.navIconAdmin} >
                 </div>
                 <div className={Styles.navbarAdminLeft}>
-                    <a href="#" className={Styles.a}>Suscribers</a>
-                    <a href="#" className={Styles.a}>Video Management</a>
-                    <a href="#" className={`${Styles.activeLink} ${Styles.a}`}>Admin</a>
+                    <a href="#" className={Styles.aa}>Suscribers</a>
+                    <a href="#" className={Styles.aa}>Video Management</a>
+                    <a href="#" className={`${Styles.activeLink} ${Styles.aa}`}>Admin</a>
                 </div>
                 <div className={Styles.navbarAdminRight}>
                     <a className={Styles.a}>

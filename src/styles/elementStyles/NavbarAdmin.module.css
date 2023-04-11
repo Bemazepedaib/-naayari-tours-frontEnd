@@ -31,7 +31,7 @@
     color: #a5aaad;
 }
 
-.navbarAdminLeft > .a{
+.aa{
     margin-right: 30px;
     text-decoration: none;
     color: #a5aaad;
@@ -65,14 +65,20 @@
     padding: 7px;
 }
 
-@media only screen and (max-width: 1025px){
+@media (max-width: 1025px){
     .navIconAdmin{
         display: inline;
     }
 }
 
-@media only screen and (max-width: 480px){
+@media (max-width: 590px){
     .navbarAdminLeft{
-        display: none;
+        margin-right: 0;
+        width: 100%;
+    }
+    .aa{
+        position: relative;
+        display: flex;
+        flex-wrap: wrap;
     }
 }

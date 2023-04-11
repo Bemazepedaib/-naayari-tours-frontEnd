@@ -34,6 +34,7 @@
     grid-column-start: 2;
     grid-column-end: 4;
     background: #d0d2d3;
+    display: block;
 }
 
 .mainContainerAdmin {
@@ -232,22 +233,37 @@
     font-size: 14px;
 }
 
-@media screen and(max-width: 920px) {
-    .mainAdmin {
-        display: block;
-        width: 0;
-    }
+@media (max-width: 750px) {
+
 
     .mainCardsAdmin {
-        grid-template-columns: 1fr;
-        gap: 10px;
-        margin-bottom: 0;
+        display: flex;
+        position: relative;
+        align-items: center;
+        justify-content: space-between;
     }
+
 
     .charts {
         display: flex;
         flex-wrap: wrap;
         margin-top: 30px;
     }
+}
+@media (max-width: 570px) {
 
+
+    .mainCardsAdmin {
+       display: flex;
+       position: relative;
+       align-items: center;
+       justify-content: center;
+    }
+
+
+    .charts {
+        display: flex;
+        flex-wrap: wrap;
+        margin-top: 30px;
+    }
 }

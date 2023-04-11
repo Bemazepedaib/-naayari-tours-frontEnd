@@ -2,7 +2,7 @@ import React from 'react'
 import Styles from '../../../styles/elementStyles/SidebarAdmin.module.css'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faSuitcase, faPlaneDeparture, faPlane, faPlaneArrival, faUserPlus,faUser, faUserMinus, faPersonArrowUpFromLine, 
-     faPersonArrowDownToLine, faTimes, faHome,faMoneyBills, faBriefcase, faPowerOff } from '@fortawesome/free-solid-svg-icons'
+     faPersonArrowDownToLine, faTimes, faHome, faPowerOff } from '@fortawesome/free-solid-svg-icons'
 
 
 function SidebarAdmin() {

@@ -109,7 +109,6 @@ function Signup() {
         <div>
             <Navbar />
             <div className={styles.contenedor}>
-                <Image src={logoNaayari} alt="" width={200} height={200} className={styles.logo} />
                 <form action="" onSubmit={onSubmit} className={styles.formulario} autoComplete="off" >
                     <InputComponent
                         estado={name}

@@ -21,11 +21,13 @@
 }
 
 .inputText{
-    width: 40%;
+    width: 60%;
 }
 
 .tableContainer{
+    max-height: 500px;
     padding: 20px;
+    overflow-y: scroll;
 }
 .table{
     height: 5px;

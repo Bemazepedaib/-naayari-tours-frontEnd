@@ -1,4 +1,5 @@
 import { React, useCallback, useEffect, useState } from 'react'
+import Router from 'next/router';
 import Styles from '../../styles/elementStyles/SearchBar.module.css'
 
 import Table from 'react-bootstrap/Table';
@@ -28,6 +29,14 @@ function SearchBar({dat}) {
         setUsers(searchResult);
     }
 
+
+    function rowClicked(params) {
+        Router.push({
+            pathname: '../elements/User',
+            query: { params }
+        })
+    } 
+
     return (
         <div>
                 <div className={Styles.mainContainer}>
@@ -36,7 +45,7 @@ function SearchBar({dat}) {
                         <input className={Styles.inputText} onChange={handleChange}></input>
                     </div>
                     <div className={Styles.tableContainer}>
-                        <Table striped bordered hover variant="dark" className={Styles.table}>
+                        <Table responsive size='sm' striped bordered hover variant="dark" className={Styles.table}>
                             <thead>
                                 <tr>
                                     <th>Nombre</th>
@@ -50,7 +59,7 @@ function SearchBar({dat}) {
                                     users
                                     .map(user => (
 
-                                        <tr key={user.email}>
+                                        <tr key={user.email} onClick={()=> rowClicked(user.email)}>
                                             <td>
                                                 {user.name}
                                             </td>

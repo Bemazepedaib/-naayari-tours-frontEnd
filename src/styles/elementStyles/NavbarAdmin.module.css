@@ -1,6 +1,6 @@
 .navbarAdminContent{
     grid-column-start: 2;
-    grid-column-end: 4;
+    grid-column-end: 3;
     grid-row-end: 2;
     justify-items: center;
     position: sticky;

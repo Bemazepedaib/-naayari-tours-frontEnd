@@ -1,4 +1,4 @@
-import { React, useEffect, useState } from 'react'
+import { React, useCallback, useEffect, useState } from 'react'
 import Styles from '../../styles/elementStyles/SearchBar.module.css'
 
 import Table from 'react-bootstrap/Table';
@@ -6,13 +6,11 @@ import Table from 'react-bootstrap/Table';
 
 function SearchBar({dat}) {
 
-
    
     const [users, setUsers] = useState(dat);
     const [usersTable, setUsersTable] = useState(dat);
     const [search, setSearch] = useState("");
-console.log("Eri gey ")
-    console.log(users)
+
 
     const handleChange=e=>{
         setSearch(e.target.value);
@@ -32,12 +30,13 @@ console.log("Eri gey ")
 
     return (
         <div>
-                <div>
-                    <div>
-                        <input onChange={handleChange}></input>
+                <div className={Styles.mainContainer}>
+                    <div className={Styles.inputContainer}>  
+                        <h5>Buscar Usuario</h5>
+                        <input className={Styles.inputText} onChange={handleChange}></input>
                     </div>
                     <div className={Styles.tableContainer}>
-                        <Table striped bordered hover variant="dark">
+                        <Table striped bordered hover variant="dark" className={Styles.table}>
                             <thead>
                                 <tr>
                                     <th>Nombre</th>
@@ -48,7 +47,8 @@ console.log("Eri gey ")
                             <tbody>
                                 {
 
-                                    users.map(user => (
+                                    users
+                                    .map(user => (
 
                                         <tr key={user.email}>
                                             <td>
@@ -63,7 +63,6 @@ console.log("Eri gey ")
                                         </tr>
                                     ))}
                             </tbody>
-
                         </Table>
                     </div>
                 </div>

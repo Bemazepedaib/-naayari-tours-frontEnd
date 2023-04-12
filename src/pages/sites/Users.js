@@ -2,7 +2,8 @@ import React from 'react'
 import SidebarAdmin from '../elements/AdminDashboard/SidebarAdmin'
 import Styles from '../../styles/Users.module.css'
 import AdminSignup from '../elements/AdminSignup'
-import SearchBar from '../elements/SearchBar'
+import SearchData from '../elements/SearchData'
+import NavbarAdmin from '../elements/AdminDashboard/NavbarAdmin'
 
 
 function Users() {
@@ -13,9 +14,10 @@ function Users() {
     <div className={Styles.UsersMain}>
       <SidebarAdmin />
       <div className={Styles.User}>
-        <SearchBar/>
         <AdminSignup />
+        <SearchData />
       </div>
+      <NavbarAdmin />
     </div>
   )
 }

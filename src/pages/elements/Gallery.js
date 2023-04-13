@@ -10,7 +10,8 @@ function Gallery({ tripReviews }) {
     const photos = tripReviews.slice(0, 30).map(review => <PhotoGallery key={i++} getImg={getImg} review={review}></PhotoGallery>);
     const photosGallery = useRef(photos);
     const [imgSelected, setImgSelected] = useState(false);
-    const reviewInfo = useRef({ photo: '', user: '',rating: '',review: '',date: '' });
+    const reviewInfo = useRef({ photo: '', user: '', rating: '', review: '', date: '' });
+    var stars = "";
 
     function getImg(reviews) {
         setImgSelected(true);
@@ -21,23 +22,26 @@ function Gallery({ tripReviews }) {
         reviewInfo.current.review = reviews.review + ''
         console.log(reviews)
     }
+    { for (let index = 1; index <= reviewInfo.current.rating; index++) stars = stars + "⋆"; }
     return (
         <div className={Styles.mainContainer}>
-            <div className={imgSelected ? Styles.imgOpen : Styles.imgClosed} onClick={() => setImgSelected(false)}>
+            <div className={imgSelected ? Styles.imgOpen : Styles.imgClosed}>
                 <div className={Styles.cardContainer}>
-                <Image className = {Styles.image}width={500} height={500} alt={'Image Selected'}
-                    src={'https://drive.google.com/uc?export=view&id=' + reviewInfo.current.photo}></Image>
-                 <div className={Styles.cardInformation}>
-                    <h2>{reviewInfo.current.user}</h2>
-                    <p>{reviewInfo.current.review}</p>
-                    <hr className={Styles.horizontalLine}/>
-                 </div>
-                <button className = {Styles.btnClosed}onClick={() => setImgSelected(false)}><FontAwesomeIcon icon={faXmark}></FontAwesomeIcon></button>
+                    <Image className={Styles.image} width={500} height={500} alt={'Image Selected'}
+                        src={'https://drive.google.com/uc?export=view&id=' + reviewInfo.current.photo}></Image>
+                    <div className={Styles.cardInformation}>
+                        <h2 className={Styles.user}>{reviewInfo.current.user}</h2>
+                        <hr className={Styles.horizontalLine} />
+                        <p className={Styles.date}>Fecha de publicación: {reviewInfo.current.date}</p>
+                        <p className={Styles.stars}>{stars}</p>
+                        <p className={Styles.review}>{reviewInfo.current.review}</p>
+                    </div>
+                    <button className={Styles.btnClosed} onClick={() => setImgSelected(false)}><FontAwesomeIcon icon={faXmark}></FontAwesomeIcon></button>
                 </div>
             </div>
             <div className={Styles.mainBackground}>
                 <div className={Styles.reviewSection}>
-                    <h2 className={Styles.title}><hr/>Experiencias Anteriores<hr/></h2>
+                    <h2 className={Styles.title}><hr />Experiencias Anteriores<hr /></h2>
                     <div className={Styles.gallery}>
                         {photosGallery.current}
                     </div>

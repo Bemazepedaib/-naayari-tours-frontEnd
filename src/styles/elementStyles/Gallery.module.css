@@ -10,6 +10,11 @@ background-color: black;
     padding-top: 20px;
     text-transform: uppercase;
 }
+.date{
+    display: flex;
+    text-align: center;
+    justify-content: center;
+}
 .gallery{
     -webkit-column-count: 3;
     -moz-column-count: 3;
@@ -22,10 +27,25 @@ background-color: black;
     margin-right: 10px;
 }
 
-
+.date{
+    right: 0;
+    font-size: 30px;
+    text-transform: uppercase;
+}
+.user{
+    font-size: 30px;
+    margin-top: 10px;
+    text-transform: uppercase;
+}
+.review{
+    font-size: 22px;
+    padding-left: 20px;
+    padding-right: 40px;
+}
 .cardInformation{
     justify-content: center;
     text-align: center;
+    font-family: 'Oswald', sans-serif;
 }
 .btnClosed{
     position: absolute;
@@ -39,7 +59,7 @@ background-color: black;
     transform: scale(1.02);
 }
 .horizontalLine{
-    width: 90%;
+    width: 95%;
 }
 .cardContainer{
     border-radius: 1rem;
@@ -58,6 +78,10 @@ background-color: black;
 .mainContainer{
     position: relative;
     z-index: 0;
+}
+.stars{
+    font-size: 40px;
+    color: yellow;
 }
 
 .imgOpen{

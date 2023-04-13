@@ -9,17 +9,11 @@ import { useRouter } from 'next/router';
 function DetailCard() {
     const router = useRouter()
 
-    const { 
-        query:{name}
-    } = router;
+    const { query:{name} } = router;
     
-    const props={
-       name
-    }
-    const tripName=props.name
 
     var key = 0;
-    const { loading, error, data } = useQuery(GET_TRIP,{variables:{tripName}});
+    const { loading, error, data } = useQuery(GET_TRIP,{variables:{tripName: name}});
 
     return (
         <div>

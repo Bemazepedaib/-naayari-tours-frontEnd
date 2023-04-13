@@ -11,6 +11,7 @@
   font-family: 'Oswald', sans-serif;
   font-size: 1.5rem;
   border-bottom: solid #fff;
+  box-shadow: 5px 10px 18px #000;
 }
 
 .link {

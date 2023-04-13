@@ -54,7 +54,7 @@ const GET_USERS = gql`
 
 const GET_USER = gql`
     query getUser($email: String){
-        user {
+        user(email: $email) {
             name
             cellphone
             birthDate

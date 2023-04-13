@@ -158,7 +158,7 @@ function AdminSignup() {
                     funcion={validarFecha}
                 />
                 <div className={Styles.grupoInput}>
-                    <label htmlFor='Sexo'>Sexo</label>
+                    <label htmlFor='Sexo'>SEXO</label>
                     <select
                         value={sex}
                         onBlur={e => { setSex(e.target.value); }}
@@ -171,7 +171,7 @@ function AdminSignup() {
                     </select>
                 </div>
                 <div className={Styles.grupoInput}>
-                    <label htmlFor='Publicidad'>¿Cómo nos conoce?</label>
+                    <label htmlFor='Publicidad'>¿CÓMO NOS CONOCE?</label>
                     <select
                         value={adv}
                         onBlur={e => { setAdv(e.target.value); }}

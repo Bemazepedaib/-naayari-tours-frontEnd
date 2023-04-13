@@ -4,14 +4,18 @@
   box-sizing: border-box;
   font-family: 'Oswald', sans-serif;
   font-weight: 300;
-  background: #fff;
   color: #181818;
-  background-image: url('https://drive.google.com/uc?export=view&id=14gE1m9trO_XCBbPC8jBy1vvQpVGnak3A');
   background-size: cover;
   display: flex;
   flex-direction: column;
   padding-top: 5vh;
   padding-bottom: 10vh;
+  margin: 10px;
+}
+
+.logo {
+  padding-bottom: 2vh;
+  align-self: center;
 }
 
 .formulario {
@@ -104,11 +108,15 @@
 
 
 @media (max-width: 1025px) {
+  .contenedor {
+    height: 200vh;
+  }
 
   .formulario {
     display: grid;
     grid-template-columns: 1fr;
     gap: 5px;
+    margin-bottom: 50px;
   }
 
   .grupoBoton {

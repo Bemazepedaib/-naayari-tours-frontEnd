@@ -1,0 +1,34 @@
+@import url('https://fonts.googleapis.com/css2?family=Oswald:wght@300&display=swap');
+
+.mainContainer{
+    font-family: 'Oswald', sans-serif;
+    padding: 20px;
+    
+}
+
+.title{
+    
+}
+
+.inputContainer{
+    text-align: center;
+    width: 90%;
+    text-align: center;
+    padding: 25px;
+    border-radius: 5px;
+    font-size: 14px;
+    margin: 0 5%;
+}
+
+.inputText{
+    width: 60%;
+}
+
+.tableContainer{
+    max-height: 500px;
+    padding: 20px;
+    overflow-y: scroll;
+}
+.table{
+    height: 5px;
+}

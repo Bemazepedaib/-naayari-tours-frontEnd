@@ -78,4 +78,14 @@ const GET_USER = gql`
     }
 `;
 
-export { ME, GET_USERS, GET_USER };
+const GET_PI_USERS = gql`
+    query getUsers {
+    users {
+        name
+        cellphone
+        email
+    }
+}
+`
+
+export { ME, GET_USERS, GET_USER,GET_PI_USERS };

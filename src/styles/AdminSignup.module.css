@@ -108,9 +108,6 @@
 
 
 @media (max-width: 1025px) {
-  .contenedor {
-    height: 200vh;
-  }
 
   .formulario {
     display: grid;

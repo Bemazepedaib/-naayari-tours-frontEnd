@@ -30,10 +30,10 @@ function SearchBar({dat}) {
     }
 
 
-    function rowClicked(params) {
+    function rowClicked(email) {
         Router.push({
             pathname: '../elements/User',
-            query: { params }
+            query: { email }
         })
     } 
 

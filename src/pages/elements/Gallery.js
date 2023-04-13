@@ -45,6 +45,7 @@ function Gallery({ tripReviews }) {
                     <div className={Styles.gallery}>
                         {photosGallery.current}
                     </div>
+                    <button>Ver mas...</button>
                 </div>
             </div>
         </div>

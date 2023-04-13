@@ -3,6 +3,7 @@ import Router from 'next/router';
 import Styles from '../../styles/elementStyles/SearchBar.module.css'
 
 import Table from 'react-bootstrap/Table';
+import HeaderTittle from './HeaderTittle';
 
 
 function SearchBar({dat}) {
@@ -41,7 +42,7 @@ function SearchBar({dat}) {
         <div>
                 <div className={Styles.mainContainer}>
                     <div className={Styles.inputContainer}>  
-                        <h5>Buscar Usuario</h5>
+                        <HeaderTittle tittle={"Buscar Usuario"}></HeaderTittle>
                         <input className={Styles.inputText} onChange={handleChange}></input>
                     </div>
                     <div className={Styles.tableContainer}>

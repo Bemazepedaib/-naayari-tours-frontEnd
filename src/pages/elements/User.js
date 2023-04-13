@@ -2,6 +2,7 @@ import React from 'react'
 import { GET_USER } from '../querys/userQuerys';
 import { useQuery } from '@apollo/client';
 import { useRouter } from 'next/router';
+import UpdateUser from '../sites/UpdateUser';
 
 function User() {
 
@@ -17,7 +18,7 @@ function User() {
         <div>
            
             {!loading && !error && (
-                console.log(data)
+                <UpdateUser user={data}></UpdateUser>
             )}
     </div>
   )

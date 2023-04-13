@@ -13,7 +13,7 @@ function DetailCard() {
     
 
     var key = 0;
-    const { loading, error, data } = useQuery(GET_TRIP,{variables:{name}});
+    const { loading, error, data } = useQuery(GET_TRIP,{variables:{tripName: name}});
 
     return (
         <div>

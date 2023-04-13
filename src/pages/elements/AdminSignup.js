@@ -5,6 +5,7 @@ import InputComponent from './Input';
 import Styles from '../../styles/AdminSignup.module.css'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faTriangleExclamation } from '@fortawesome/free-solid-svg-icons';
+import HeaderTittle from './HeaderTittle';
 
 function AdminSignup() {
 
@@ -93,7 +94,7 @@ function AdminSignup() {
 
     return (
         <div className={Styles.contenedor}>
-            <h2>Crear nuevo usuario</h2>
+            <HeaderTittle tittle={"Crear nuevo usuario"}></HeaderTittle>
             <form action="" onSubmit={onSubmit} className={Styles.formulario} autoComplete="off" >
                 <InputComponent
                     estado={name}

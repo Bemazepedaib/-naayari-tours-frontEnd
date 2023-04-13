@@ -22,8 +22,57 @@ background-color: black;
     margin-right: 10px;
 }
 
+
+.cardInformation{
+    justify-content: center;
+    text-align: center;
+}
+.btnClosed{
+    position: absolute;
+    right: 0;
+    border: none;
+    background-color: transparent;
+    font-size: 30px;
+}
+.btnClosed:hover{
+    cursor: pointer;
+    transform: scale(1.02);
+}
+.horizontalLine{
+    width: 90%;
+}
+.cardContainer{
+    border-radius: 1rem;
+    position: sticky;
+    top: 10%;
+    margin-top: 10%;
+    display: grid;
+    grid-template-columns: 50% 50%;
+    background-color: rgb(255, 255, 255);
+}
+.image{
+    object-fit: cover;
+    border-top-left-radius: 1rem;
+    border-bottom-left-radius: 1rem;
+}
+.mainContainer{
+    position: relative;
+    z-index: 0;
+}
+
+.imgOpen{
+    background-color: #0009;
+    position: absolute;
+    z-index: 1;
+    width: 100%;
+    height: 100%;
+    padding: 10%;
+}
 .mainBackground{
     position: relative;
+}
+.imgClosed{
+    display: none;
 }
 @media (max-width: 991px){
     .gallery{

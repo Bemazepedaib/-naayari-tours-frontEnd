@@ -1,5 +1,5 @@
 import React from 'react'
-import styles from '../../styles/elementStyles/Input.module.css'
+import Styles from '../../styles/elementStyles/Input.module.css'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCheckCircle, faTimesCircle } from '@fortawesome/free-solid-svg-icons';
 
@@ -21,9 +21,9 @@ const InputComponent = ({ estado, cambiarEstado, tipo, label, placeholder, name,
     }
 
     return (
-        <div className={styles.grupoInput}>
-            <label htmlFor={name} className={estado.valid ? styles.text : styles.textError}>{label}</label>
-            <div className={styles.inputIcono}>
+        <div className={Styles.grupoInput}>
+            <label htmlFor={name} className={estado.valid ? Styles.text : Styles.textError}>{label}</label>
+            <div className={Styles.inputIcono}>
                 <input
                     type={tipo}
                     placeholder={placeholder}
@@ -32,15 +32,15 @@ const InputComponent = ({ estado, cambiarEstado, tipo, label, placeholder, name,
                     onChange={onChange}
                     onKeyUp={validacion}
                     onBlur={validacion}
-                    className={estado.valid ? styles.textInput : styles.textInputError}
+                    className={estado.valid ? Styles.textInput : Styles.textInputError}
                     autoComplete={auto}
                 />
                 <FontAwesomeIcon
                     icon={estado.valid ? faCheckCircle : faTimesCircle}
-                    className={estado.valid ? styles.icono : styles.iconoError}>
+                    className={estado.valid ? Styles.icono : Styles.iconoError}>
                 </FontAwesomeIcon>
             </div>
-            <div className={estado.valid ? styles.error : styles.errorActivo}>{errorMsg}</div>
+            <div className={estado.valid ? Styles.error : Styles.errorActivo}>{errorMsg}</div>
         </div>
     );
 }

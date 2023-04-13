@@ -1,10 +1,65 @@
 @import url('https://fonts.googleapis.com/css2?family=Oswald:wght@300&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Genos:ital,wght@1,700&display=swap');
 
-.container {
+.mainContainer {
     font-family: 'Oswald', sans-serif;
     font-weight: 300;
-    font-size: xx-large;
-    color: #181818;
-    /* background-image: url('https://drive.google.com/uc?export=view&id=14gE1m9trO_XCBbPC8jBy1vvQpVGnak3A'); */
+    font-size: 20px;
+    color: #1D2128;
+    background-image: url('https://drive.google.com/uc?export=view&id=14gE1m9trO_XCBbPC8jBy1vvQpVGnak3A');
     background-size: cover;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+}
+
+.header {
+    grid-column: span 2;
+    margin-bottom: 60px;
+}
+
+.contenedorFormulario {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+}
+
+.contenedorDatos {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+}
+
+.titulo {
+    background-color: white;
+    width: 95%;
+    border-radius: 10px;
+    border: 2px solid #1D2128;
+    text-align: center;
+    margin: 10px 10px 30px 10px;
+    font-family: 'Genos', sans-serif;
+    font-weight: bold;
+}
+
+.dato {
+    background-color: #00a748;
+    color: white;
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+    font-weight: normal;
+}
+
+.textArea {
+    display: flex;
+    margin-bottom: 5px;
+    margin-top: 5px;
+    border-radius: 5px;
+    background-color: white;
+    border: 2px solid #1D2128;
+    color: #1D2128;
+    width: 90%;
+    resize: none;
 }

@@ -7,9 +7,8 @@ import { faXmark } from '@fortawesome/free-solid-svg-icons';
 function Gallery({ tripReviews }) {
     let i = 0;
     let stars = "";
-    console.log("reinicia");
     let photos = tripReviews.slice(0, tripReviews.length).map(review =>
-        <PhotoGallery key={i++} getImg={getImg} review={review}></PhotoGallery>);
+        <PhotoGallery key={i++} getImg={getImg} review={review}></PhotoGallery>).reverse();
     let photosGallery = useRef(photos);
     const [imgSelected, setImgSelected] = useState(false);
     const [visible, setVisible] = useState(10);
@@ -46,7 +45,7 @@ function Gallery({ tripReviews }) {
                 <div className={Styles.reviewSection}>
                     <h2 className={Styles.title} id='exp'><hr />Experiencias Anteriores<hr /></h2>
                     <div className={Styles.gallery}>
-                            {photosGallery.current.slice(tripReviews.length - visible, tripReviews.length)}
+                            {photosGallery.current.slice(0,visible)}
                     </div>
                     <div className={Styles.btnSection}>
                         <button className={Styles.btnSeeMore} onClick={() => getMoreImages()}>VER MAS...</button>

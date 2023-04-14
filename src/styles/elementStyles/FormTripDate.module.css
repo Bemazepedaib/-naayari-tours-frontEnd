@@ -15,7 +15,7 @@
 .btn {
     appearance: none;
     background-color: transparent;
-    border: 2px solid #ffffff;
+    border: 2px solid #83BB49;
     border-radius: 5px;
     box-sizing: border-box;
     color: #ffffff;
@@ -47,7 +47,7 @@
 .btnVIP {
     appearance: none;
     background-color: transparent;
-    border: 2px solid #ffffff;
+    border: 2px solid #83BB49;
     border-radius: 5px;
     box-sizing: border-box;
     color: #ffffff;
@@ -81,22 +81,25 @@
   }
   
   .btn:hover {
-    color: #fff;
-    background-color: #00a748;
+    color: #000;
+    background-color: #CBCC5D;
     box-shadow: rgba(0, 0, 0, 0.25) 0 8px 15px;
     transform: translateY(-2px);
+    border: NONE;
   }
   
   .btn:active {
     box-shadow: none;
     transform: translateY(0);
+    
   }
   
   .btnVIP:hover {
-    color: #fff;
-    background-color: #00a748;
+    color: #000;
+    background-color: #CBCC5D;
     box-shadow: rgba(0, 0, 0, 0.25) 0 8px 15px;
     transform: translateY(-2px);
+    border: NONE;
   }
   
   .btnVIP:active {
@@ -110,7 +113,7 @@
     margin-top: 5px;
     border-radius: 5px;
     background-color: transparent;
-    border: 2px solid #ffffff;
+    border: 2px solid #83BB49;
     color: #ffffff;
     padding: 0 30px 0 10px;
     transition: .3s ease all;

@@ -1,10 +1,14 @@
-import React from 'react';
+import React, { use, useState } from 'react';
 import Styles from '../../styles/elementStyles/Companion.module.css';
 
-const CompanionComponent = ({ dato, cambiarDato, tipo }) => {
+const CompanionComponent = ({ tipo, funcion }) => {
 
-    const onChangeName = (e) => { cambiarDato(e.target.value); console.log(dato) }
-    //const onChangeCell = (e) => { cambiarDato }
+    const [name, setName] = useState("")
+    const [cell, setCell] = useState("")
+
+    const onChangeName = (e) => { setName(e.target.value); }
+    const onChangeCell = (e) => { setCell(e.target.value); }
+    const onBlur = (e) => { funcion(e.target.value); }
 
     return (
         <div>
@@ -17,7 +21,8 @@ const CompanionComponent = ({ dato, cambiarDato, tipo }) => {
                         type='text'
                         placeholder='Nombre completo'
                         onChange={onChangeName}
-                        value={dato}
+                        onBlur={onBlur}
+                        value={name}
                     />
                 </div>
             </div>
@@ -29,12 +34,12 @@ const CompanionComponent = ({ dato, cambiarDato, tipo }) => {
                     <input
                         type='text'
                         placeholder='Número de celular'
-                        onChange={onChangeName}
-                        value={dato}
+                        onChange={onChangeCell}
+                        onBlur={onBlur}
+                        value={cell}
                     />
                 </div>
-            </div> : <div />
-            }
+            </div> : <div />}
         </div>
     )
 }

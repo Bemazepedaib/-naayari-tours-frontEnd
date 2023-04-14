@@ -20,7 +20,7 @@ function Reservations() {
     const adulto = [1, 2, 3, 4, 5, 6, 7, 8, 9];
     const niño = [0, 1, 2, 3, 4, 5, 6, 7, 8];
     const bebe = [0, 1, 2, 3, 4, 5, 6, 7, 8];
-    const [acompa, setAcompa] = useState("");
+    let company = [{}];
 
     const { loading: userLoading, error: userError, data: userData } = useQuery(ME);
     const { loading: tripLoading, error: tripError, data: tripData } = useQuery(GET_TRIP_PRICES, { variables: { tripName: selectedTrip } });
@@ -33,6 +33,11 @@ function Reservations() {
     let precioBebe = tripData.trip.tripInformation.price[2].priceAmount
     if (tripData.trip.tripInformation.discount.available) precioAdulto -= tripData.trip.tripInformation.discount.amount
 
+    const funcionPush = (dato) => {
+        company.push(dato)
+        console.log(company)
+    }
+
     return (
         <div className={Styles.mainContainer}>
             <div className={Styles.header}><HeaderTittle tittle={"RESERVACIÓN"}></HeaderTittle></div>
@@ -42,24 +47,35 @@ function Reservations() {
                     textoLabel={"Adultos " + precioAdulto + "$"} dato={adultNumber}
                     cambiarDato={setAdultNumber} opciones={adulto}
                 />
-                {console.log(adultNumber)}
-                {adultNumber !== 1 ? [...Array(adultNumber).keys()].map((key) => (
+                {adultNumber !== 1 ? [...Array(adultNumber-1).keys()].map((key) => (
                     <CompanionComponent
                         key={key}
-                        dato={acompa}
-                        cambiarDato={setAcompa}
                         tipo={"adult"}
+                        funcion={funcionPush}
                     />
                 )) : <div/> }
-                {console.log(new Array(adultNumber))}
                 <SelectComponent
                     textoLabel={"Niños " + precioNinio + "$"} dato={childNumber}
                     cambiarDato={setChildNumber} opciones={niño}
                 />
+                {childNumber !== 0 ? [...Array(childNumber).keys()].map((key) => (
+                    <CompanionComponent
+                        key={key}
+                        tipo={"child"}
+                        funcion={funcionPush}
+                    />
+                )) : <div/> }
                 <SelectComponent
                     textoLabel={"Bebés " + precioBebe + "$"} dato={babyNumber}
                     cambiarDato={setBabyNumber} opciones={bebe}
                 />
+                {babyNumber !== 0 ? [...Array(babyNumber).keys()].map((key) => (
+                    <CompanionComponent
+                        key={key}
+                        tipo={"baby"}
+                        funcion={funcionPush}
+                    />
+                )) : <div/> }
                 <div className={Styles.titulo}>Observaciones</div>
                 <textarea
                     className={Styles.textArea}

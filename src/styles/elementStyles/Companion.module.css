@@ -1,5 +1,27 @@
 @import url('https://fonts.googleapis.com/css2?family=Oswald:wght@300&display=swap');
 
+.companion {
+    display: flex;
+    width: 100%;
+    margin-bottom: 10px;
+    margin-top: 10px;
+    padding-left: 25px;
+}
+
 .grupoCompanion {
     display: flex;
+    margin-left: 10px;
+    gap: 5px;
+}
+
+.label {
+    border-radius: 5px;
+    background-color: #83BB49;
+    color: #ffffff;
+    padding: 5px;
+}
+
+.input {
+    border-radius: 5px;
+    border: 2px solid #1D2128;
 }

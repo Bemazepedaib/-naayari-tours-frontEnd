@@ -8,38 +8,32 @@ const CompanionComponent = ({ tipo, funcion }) => {
 
     const onChangeName = (e) => { setName(e.target.value); }
     const onChangeCell = (e) => { setCell(e.target.value); }
-    const onBlur = (e) => { funcion(e.target.value); }
+    const onBlur = (e) => { funcion(name, cell, tipo); }
 
     return (
-        <div>
+        <div className={Styles.companion}>
             <div className={Styles.grupoCompanion}>
-                <div>
-                    NOMBRE COMPLETO
-                </div>
-                <div>
-                    <input
-                        type='text'
-                        placeholder='Nombre completo'
-                        onChange={onChangeName}
-                        onBlur={onBlur}
-                        value={name}
-                    />
-                </div>
+                <div className={Styles.label}>Nombre completo</div>
+                <input
+                    className={Styles.input}
+                    type='text'
+                    placeholder='Nombre completo'
+                    onChange={onChangeName}
+                    onBlur={onBlur}
+                    value={name}
+                />
             </div>
             {tipo === "adult" ? <div className={Styles.grupoCompanion}>
-                <div>
-                    NÚMERO DE CELULAR
-                </div>
-                <div>
-                    <input
-                        type='text'
-                        placeholder='Número de celular'
-                        onChange={onChangeCell}
-                        onBlur={onBlur}
-                        value={cell}
-                    />
-                </div>
-            </div> : <div />}
+                <div className={Styles.label}>Número de celular</div>
+                <input
+                    className={Styles.input}
+                    type='text'
+                    placeholder='Número de celular'
+                    onChange={onChangeCell}
+                    onBlur={onBlur}
+                    value={cell}
+                />
+            </div> : <div/>}
         </div>
     )
 }

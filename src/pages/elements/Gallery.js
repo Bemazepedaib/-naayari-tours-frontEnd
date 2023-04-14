@@ -1,18 +1,21 @@
-import React, { useState, useRef } from 'react';
+import React, { useState, useRef, lazy } from 'react';
 import Styles from '../../styles/elementStyles/Gallery.module.css'
 import PhotoGallery from "./PhotoGallery";
 import Image from 'next/image';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faXmark } from '@fortawesome/free-solid-svg-icons';
-
 function Gallery({ tripReviews }) {
     let i = 0;
-    const photos = tripReviews.slice(0, 30).map(review => <PhotoGallery key={i++} getImg={getImg} review={review}></PhotoGallery>);
-    const photosGallery = useRef(photos);
+    let stars = "";
+    let photos = tripReviews.slice(0, tripReviews.length).map(review =>
+        <PhotoGallery key={i++} getImg={getImg} review={review}></PhotoGallery>).reverse();
+    let photosGallery = useRef(photos);
     const [imgSelected, setImgSelected] = useState(false);
+    const [visible, setVisible] = useState(10);
     const reviewInfo = useRef({ photo: '', user: '', rating: '', review: '', date: '' });
-    var stars = "";
-
+    const getMoreImages = () => {
+        setVisible((prevValue) => prevValue + 10);
+    }
     function getImg(reviews) {
         setImgSelected(true);
         reviewInfo.current.photo = reviews.photo + ''
@@ -20,7 +23,6 @@ function Gallery({ tripReviews }) {
         reviewInfo.current.rating = reviews.rating + ''
         reviewInfo.current.date = reviews.date + ''
         reviewInfo.current.review = reviews.review + ''
-        console.log(reviews)
     }
     { for (let index = 1; index <= reviewInfo.current.rating; index++) stars = stars + "⋆"; }
     return (
@@ -41,9 +43,12 @@ function Gallery({ tripReviews }) {
             </div>
             <div className={Styles.mainBackground}>
                 <div className={Styles.reviewSection}>
-                    <h2 className={Styles.title}><hr />Experiencias Anteriores<hr /></h2>
+                    <h2 className={Styles.title} id='exp'><hr />Experiencias Anteriores<hr /></h2>
                     <div className={Styles.gallery}>
-                        {photosGallery.current}
+                            {photosGallery.current.slice(0,visible)}
+                    </div>
+                    <div className={Styles.btnSection}>
+                        <button className={Styles.btnSeeMore} onClick={() => getMoreImages()}>VER MAS...</button>
                     </div>
                 </div>
             </div>

@@ -35,8 +35,7 @@ const Detalles = ({ trip }) => {
                                     <span className={Styles.span}>Agua / Extremo / Naturaleza</span>
                                 </div>
                             </div>
-                            
-                            <FormTripDate dates={trip.trip.tripInformation.date} selTrip={trip.trip.tripName}/>
+                            <FormTripDate dates={trip.trip.tripInformation.date} selectedTrip={trip.trip.tripName}/>
                             <div className={Styles.tourDescription}>
                                 {trip.trip.tripInformation.description}
                             </div>

@@ -2,6 +2,7 @@ import React from 'react'
 import { useQuery } from '@apollo/client';
 import { ME } from '../querys/userQuerys';
 import Navbar from './Navbar';
+import Styles from '../../styles/Me.module.css'
 
 function Me() {
 

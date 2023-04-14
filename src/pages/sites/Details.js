@@ -23,11 +23,7 @@ const Detalles = ({ trip }) => {
                         <div className={Styles.info}>
                             <div className={Styles.tourTitle}>{trip.trip.tripName}</div>
                             <div className={Styles.tourDetail}>
-                                <div className={Styles.tourInfo}>
-                                    <label className={Styles.labelTitle}>Fecha
-                                        <i className={Styles.icons}><FontAwesomeIcon icon={faCalendarDays} /></i></label>
-                                    <span className={Styles.span}>Marzo 18 Marzo</span>
-                                </div>
+
                                 <div className={Styles.tourInfo}>
                                     <label className={Styles.labelTitle}>Tiempo Aproximado
                                         <i className={Styles.icons}><FontAwesomeIcon icon={faClock} /></i></label>

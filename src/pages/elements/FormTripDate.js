@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import Styles from '../../styles/elementStyles/FormTripDate.module.css';
-
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faCalendarDays} from '@fortawesome/free-solid-svg-icons'
 import Router from 'next/router';
 
 function FormTripDate({ dates, selectedTrip }) {
@@ -11,7 +12,7 @@ function FormTripDate({ dates, selectedTrip }) {
         <div>
             <div>
                 <div>
-                    <label className={Styles.lbl}> Fechas del viaje </label>
+                    <label className={Styles.lbl}> Fechas del viaje  <i className={Styles.icons}><FontAwesomeIcon icon={faCalendarDays} /></i></label>
                     <div className={Styles.cont}>
                         <select
                             className={Styles.textInput}

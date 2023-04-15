@@ -1,0 +1,41 @@
+
+.mainContainer{
+    display: grid;
+    grid-template-columns: 60% 40%;
+    padding: 40px;
+
+}
+
+.info{
+    padding: 5px 15px;
+    background: #1d2128;
+    color: #fff;
+    border-radius: 1rem 1rem 0 0;
+    margin: 5px;
+    margin-bottom: 0;
+}
+
+.tags{
+    background: #cbcc5d;
+    border-radius: 1rem;
+    margin: 5px;
+}
+
+.tagsInfo{
+    color: #fff;
+    text-align: center;
+}
+
+.reviews{
+    grid-column: 1/3;
+    margin: 5px;
+    margin-top: 0;
+    background: #1d2128;
+    height: 250px;
+    border-radius:  0 1rem 1rem 1rem;
+}
+
+.reviewsInfo{
+    color: #fff;
+    text-align: center;
+}

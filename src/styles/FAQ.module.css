@@ -53,18 +53,18 @@
     color: white;
     font-family: 'Genos', sans-serif;
     font-weight: bold;
-    font-size: 25px;
+    font-size: 21px;
 }
 
 .header::after{
     content: "]";
-    padding-left: 5vh;
+    padding-left: 3vh;
     transition: 0.5s;
 }
 
 .header::before{
     content: "[";
-    padding-right: 5vh;
+    padding-right: 3vh;
     transition: 0.5s;
 }
 

@@ -8,6 +8,7 @@ import Styles from '../../styles/Reservations.module.css'
 import HeaderTittle from '../elements/HeaderTittle';
 import SelectComponent from '../elements/Select';
 import CompanionComponent from '../elements/Companion';
+import { Slide } from "react-awesome-reveal";
 
 function Reservations() {
 
@@ -20,7 +21,7 @@ function Reservations() {
     const adulto = [1, 2, 3, 4, 5, 6, 7, 8, 9];
     const niño = [0, 1, 2, 3, 4, 5, 6, 7, 8];
     const bebe = [0, 1, 2, 3, 4, 5, 6, 7, 8];
-    const [acompa, setAcompa] = useState("");
+    let company = [];
 
     const { loading: userLoading, error: userError, data: userData } = useQuery(ME);
     const { loading: tripLoading, error: tripError, data: tripData } = useQuery(GET_TRIP_PRICES, { variables: { tripName: selectedTrip } });
@@ -33,6 +34,12 @@ function Reservations() {
     let precioBebe = tripData.trip.tripInformation.price[2].priceAmount
     if (tripData.trip.tripInformation.discount.available) precioAdulto -= tripData.trip.tripInformation.discount.amount
 
+    const funcionPush = (nombre, telefono, tipo) => {
+        const objeto = { companionName: nombre, companionType: tipo, companionCell: telefono }
+        if (nombre && telefono) company.push(objeto)
+        console.log(company)
+    }
+
     return (
         <div className={Styles.mainContainer}>
             <div className={Styles.header}><HeaderTittle tittle={"RESERVACIÓN"}></HeaderTittle></div>
@@ -42,24 +49,41 @@ function Reservations() {
                     textoLabel={"Adultos " + precioAdulto + "$"} dato={adultNumber}
                     cambiarDato={setAdultNumber} opciones={adulto}
                 />
-                {console.log(adultNumber)}
-                {adultNumber !== 1 ? [...Array(adultNumber).keys()].map((key) => (
-                    <CompanionComponent
-                        key={key}
-                        dato={acompa}
-                        cambiarDato={setAcompa}
-                        tipo={"adult"}
-                    />
-                )) : <div/> }
-                {console.log(new Array(adultNumber))}
+                {adultNumber !== 1 ? [...Array(adultNumber - 1).keys()].map((key) => (
+                    <Slide >
+                        <CompanionComponent
+                            key={key}
+                            tipo={"adult"}
+                            funcion={funcionPush}
+                        />
+                    </Slide>
+                )) : <div />}
                 <SelectComponent
                     textoLabel={"Niños " + precioNinio + "$"} dato={childNumber}
                     cambiarDato={setChildNumber} opciones={niño}
                 />
+                {childNumber !== 0 ? [...Array(childNumber).keys()].map((key) => (
+                    <Slide >
+                        <CompanionComponent
+                            key={key}
+                            tipo={"child"}
+                            funcion={funcionPush}
+                        />
+                    </Slide>
+                )) : <div />}
                 <SelectComponent
                     textoLabel={"Bebés " + precioBebe + "$"} dato={babyNumber}
                     cambiarDato={setBabyNumber} opciones={bebe}
                 />
+                {babyNumber !== 0 ? [...Array(babyNumber).keys()].map((key) => (
+                    <Slide >
+                        <CompanionComponent
+                            key={key}
+                            tipo={"baby"}
+                            funcion={funcionPush}
+                        />
+                    </Slide>
+                )) : <div />}
                 <div className={Styles.titulo}>Observaciones</div>
                 <textarea
                     className={Styles.textArea}
@@ -67,11 +91,14 @@ function Reservations() {
                 ></textarea>
             </div>
             <div className={Styles.contenedorDatos}>
-                <div className={Styles.titulo}>
-                    Usuario que reserva: <div className={Styles.dato}>{userData.me.name}</div>
-                    Fecha que se reserva: <div className={Styles.dato}>{selectedDate}</div>
-                    Viaje que se reserva: <div className={Styles.dato}>{selectedTrip}</div>
-                    Total: <div className={Styles.dato}>${total}</div>
+                <div className={Styles.datos}>
+                    <div className={Styles.dato}>Usuario que reserva:</div> {userData.me.name}
+                    <div className={Styles.dato}>Fecha que se reserva:</div>{selectedDate}
+                    <div className={Styles.dato}>Viaje que se reserva:</div>{selectedTrip}
+                    <div className={Styles.dato}>Total adultos:</div>${adultNumber * precioAdulto}
+                    <div className={Styles.dato}>Total niños:</div> ${childNumber * precioNinio}
+                    <div className={Styles.dato}>Total bebés:</div> ${babyNumber * precioBebe}
+                    <div className={Styles.dato}>Total: </div>${adultNumber * precioAdulto + childNumber * precioNinio + babyNumber * precioBebe}
                 </div>
             </div>
         </div>

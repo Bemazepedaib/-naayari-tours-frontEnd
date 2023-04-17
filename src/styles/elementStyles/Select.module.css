@@ -2,7 +2,7 @@
 
 .grupoSelect {
     display: flex;
-    width: 90%;
+    width: 95%;
 }
 
 .select {
@@ -23,5 +23,5 @@
     background-color: #00a748;
     border-radius: 5px;
     margin: 5px;
-    border: 2px solid #1D2128;
+    
 }

@@ -4,23 +4,24 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  height: 120px;
-  padding: 0 2rem;
+  height: 60px;
+  padding: 0 0 0 2rem;
   background-color: #1D2128;
   color: #fff;
   font-family: 'Oswald', sans-serif;
-  font-size: 1.5rem;
+  font-size: 18px;
   border-bottom: solid #fff;
   box-shadow: 5px 10px 18px #000;
 }
 
 .link {
   margin: 0 1rem;
+
   color: #fff;
   text-decoration: none;
   padding: 20px;
-  text-transform: uppercase;
   margin: 0 10px; 
+  position: relative;
 }
 
 .link,
@@ -33,10 +34,13 @@
   color: #00a748;
 }
 
-.link{
-  position: relative;
-}
+.buttons{
+  position: absolute;
+  display: flex;
+  right: 0;
+  margin-top: 10px;
 
+}
 .link:after {
   position: absolute;
   bottom: 0;
@@ -70,8 +74,10 @@
 
 .navbarHeader,
 .navbar {
+  position: relative;
   display: flex;
   align-items: center;
+  width: 100%;
 }
 
 .btnLogin{
@@ -108,7 +114,7 @@
 
 .btnLogin:hover {
   color: #fff;
-  background-color: #00a748;;
+  background-color: #00a748;
   box-shadow: rgba(0, 0, 0, 0.25) 0 8px 15px;
   transform: translateY(-2px);
 }
@@ -150,6 +156,6 @@
   }
 
   .link {
-    font-size: 1.2rem;
+    font-size: 60px;
   }
 }

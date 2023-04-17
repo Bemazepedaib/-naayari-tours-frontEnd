@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import Styles from '../../styles/Navbar.module.css'
 import Link from 'next/link'
@@ -11,6 +11,8 @@ const image = 'https://drive.google.com/uc?export=view&id=1hKQxSheX5io9bPjn99_Te
 
 function Navbar() {
 
+    let login = useRef("");
+
     const navRef = useRef();
 
     const showNavbar = () => {
@@ -18,6 +20,16 @@ function Navbar() {
             Styles.responsiveNav
         );
     };
+
+    useEffect(() => {
+        if (localStorage.getItem("token") !== null) {
+            login.current = "token"
+            console.log(login)
+        } else {
+            login.current = "not token"
+            console.log(login)
+        }
+    }, [])
 
     return (
         <div className={Styles.navbarHeader}>
@@ -34,11 +46,12 @@ function Navbar() {
                 <Link className={Styles.link} href="/sites/FAQ">Preguntas Frecuentes</Link>
                 <Link className={Styles.link} href="#Footer" scroll={false} >Contacto</Link>
                 <Link className={Styles.link} href="/sites/Me">Mi perfil</Link>
-                <Link href="/sites/Login"><button className={Styles.btnLogin}>Iniciar Sesión</button></Link>
-                <Link href=""><button className={Styles.btnLogin} onClick={() => {
+                {login.current === "token" ? <Link href=""><button className={Styles.btnLogin} onClick={() => {
                     localStorage.removeItem('token');
                     window.location.reload(true)
-                }}>Cerrar Sesión</button></Link>
+                }}>Cerrar Sesión</button></Link> :
+                    <Link href="/sites/Login"><button className={Styles.btnLogin}>Iniciar Sesión</button></Link>
+                }
                 <button
                     className={`${Styles.navBtn} ${Styles.navCBtn}`}
                     onClick={showNavbar}>

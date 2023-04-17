@@ -46,16 +46,15 @@ function Navbar() {
                     <Link className={Styles.link} href="/sites/AboutUs">Acerca de Nosotros</Link>
                     <Link className={Styles.link} href="/sites/FAQ">Preguntas Frecuentes</Link>
                     <Link className={Styles.link} href="#Footer" scroll={false} >Contacto</Link>
-                    <Link className={Styles.link} href="/sites/Me">Mi perfil</Link>
+                    {login.current === "token" ? <Link className={Styles.link} href="/sites/Me">Mi perfil</Link> : <div />}
                 </div>
                 <div className={Styles.buttons}>
-
-
-                    <Link href="/sites/Login"><button className={Styles.btnLogin}>Iniciar Sesión</button></Link>
-                    <Link href=""><button className={Styles.btnLogin} onClick={() => {
+                    {login.current === "token" ? <Link href=""><button className={Styles.btnLogin} onClick={() => {
                         localStorage.removeItem('token');
                         window.location.reload(true)
-                    }}>Cerrar Sesión</button></Link>
+                    }}>Cerrar Sesión</button></Link> :
+                        <Link href="/sites/Login"><button className={Styles.btnLogin}>Iniciar Sesión</button></Link>
+                    }
                     <button
                         className={`${Styles.navBtn} ${Styles.navCBtn}`}
                         onClick={showNavbar}>

@@ -8,3 +8,15 @@
     background-image: url('https://drive.google.com/uc?export=view&id=14gE1m9trO_XCBbPC8jBy1vvQpVGnak3A');
     background-size: cover;
 }
+
+.errorMe {
+    margin: 0;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    -ms-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+    font-size: 50px;
+    font-family: 'Oswald', sans-serif;
+    color: #181818;
+}

@@ -34,7 +34,13 @@ background-color: black;
     gap: 10px;
     margin-left: 10px;
     margin-right: 10px;
-}
+}.btnSeeMore:hover {
+    color: #fff;
+    background-color: #00a748;
+    box-shadow: rgba(0, 0, 0, 0.25) 0 8px 15px;
+    transform: translateY(-2px);
+  }
+  
 .btnSeeMore{
         appearance: none;
         background-color: transparent;

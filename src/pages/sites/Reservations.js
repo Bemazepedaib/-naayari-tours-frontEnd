@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { useQuery } from '@apollo/client';
 import { ME } from '../querys/userQuerys';
 import { GET_TRIP_PRICES } from '../querys/tripQuerys';
@@ -18,21 +18,25 @@ function Reservations() {
     const [childNumber, setChildNumber] = useState(0);
     const [babyNumber, setBabyNumber] = useState(0);
     const [total, setTotal] = useState(0);
-    const adulto = [1, 2, 3, 4, 5, 6, 7, 8, 9];
-    const niño = [0, 1, 2, 3, 4, 5, 6, 7, 8];
-    const bebe = [0, 1, 2, 3, 4, 5, 6, 7, 8];
     let company = [];
 
     const { loading: userLoading, error: userError, data: userData } = useQuery(ME);
     const { loading: tripLoading, error: tripError, data: tripData } = useQuery(GET_TRIP_PRICES, { variables: { tripName: selectedTrip } });
-    if (userLoading) return (<div>Loading...</div>)
-    if (userError) return (<div>{userError.message}</div>)
+
     if (tripLoading) return (<div>Loading...</div>)
     if (tripError) return (<div>{tripError.message}</div>)
+
+    if (userLoading) return (<div>Loading...</div>)
+    if (userError) return (<div>{userError.message}</div>)
+
     let precioAdulto = tripData.trip.tripInformation.price[0].priceAmount
     let precioNinio = tripData.trip.tripInformation.price[1].priceAmount
     let precioBebe = tripData.trip.tripInformation.price[2].priceAmount
     if (tripData.trip.tripInformation.discount.available) precioAdulto -= tripData.trip.tripInformation.discount.amount
+
+    useEffect(() => {
+        setTotal(adultNumber * precioAdulto + childNumber * precioNinio + babyNumber * precioBebe)
+    }, [adultNumber, childNumber, babyNumber])
 
     const funcionPush = (nombre, telefono, tipo) => {
         const objeto = { companionName: nombre, companionType: tipo, companionCell: telefono }
@@ -47,12 +51,11 @@ function Reservations() {
                 <div className={Styles.titulo}>Participantes</div>
                 <SelectComponent
                     textoLabel={"Adultos " + precioAdulto + "$"} dato={adultNumber}
-                    cambiarDato={setAdultNumber} opciones={adulto}
+                    cambiarDato={setAdultNumber} opciones={Array.from({ length: 9 }, (_, i) => i + 1)}
                 />
                 {adultNumber !== 1 ? [...Array(adultNumber - 1).keys()].map((key) => (
-                    <Slide >
+                    <Slide key={key}>
                         <CompanionComponent
-                            key={key}
                             tipo={"adult"}
                             funcion={funcionPush}
                         />
@@ -60,12 +63,11 @@ function Reservations() {
                 )) : <div />}
                 <SelectComponent
                     textoLabel={"Niños " + precioNinio + "$"} dato={childNumber}
-                    cambiarDato={setChildNumber} opciones={niño}
+                    cambiarDato={setChildNumber} opciones={[...Array(10).keys()]}
                 />
                 {childNumber !== 0 ? [...Array(childNumber).keys()].map((key) => (
-                    <Slide >
+                    <Slide key={key}>
                         <CompanionComponent
-                            key={key}
                             tipo={"child"}
                             funcion={funcionPush}
                         />
@@ -73,12 +75,11 @@ function Reservations() {
                 )) : <div />}
                 <SelectComponent
                     textoLabel={"Bebés " + precioBebe + "$"} dato={babyNumber}
-                    cambiarDato={setBabyNumber} opciones={bebe}
+                    cambiarDato={setBabyNumber} opciones={[...Array(10).keys()]}
                 />
                 {babyNumber !== 0 ? [...Array(babyNumber).keys()].map((key) => (
-                    <Slide >
+                    <Slide key={key}>
                         <CompanionComponent
-                            key={key}
                             tipo={"baby"}
                             funcion={funcionPush}
                         />
@@ -98,7 +99,7 @@ function Reservations() {
                     <div className={Styles.dato}>Total adultos:</div>${adultNumber * precioAdulto}
                     <div className={Styles.dato}>Total niños:</div> ${childNumber * precioNinio}
                     <div className={Styles.dato}>Total bebés:</div> ${babyNumber * precioBebe}
-                    <div className={Styles.dato}>Total: </div>${adultNumber * precioAdulto + childNumber * precioNinio + babyNumber * precioBebe}
+                    <div className={Styles.dato}>Total: </div>${total}
                 </div>
             </div>
         </div>

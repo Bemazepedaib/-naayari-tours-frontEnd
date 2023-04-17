@@ -50,8 +50,8 @@ function Me() {
                             </p>
                             <button className={Styles.btnEdit}> <FontAwesomeIcon icon={faPenToSquare} onClick={change} /></button>
                         </div>
-                        <div className={Styles.btnChangePassContainer}>
-                            <button className={Styles.btnChangePass}>Cambiar las preferencias</button>
+                        <div className={Styles.btnContainer}>
+                            <button className={Styles.btnChange}>Cambiar las preferencias</button>
                         </div>
                     </div>
                     <div className={Styles.passContainer}>
@@ -60,8 +60,8 @@ function Me() {
                             <input className={Styles.input} type="password" placeholder='Introducir contraseña actual'></input>
                             <input className={Styles.input} type="password" placeholder='Introducir nueva contraseña'></input>
                             <input className={Styles.input} type="password" placeholder='Introducir nueva contraseña de nuevo'></input>
-                            <div className={Styles.btnChangePassContainer}>
-                                <button className={Styles.btnChangePass}>Cambiar La Contraseña</button>
+                            <div className={Styles.btnContainer}>
+                                <button className={Styles.btnChange}>Cambiar La Contraseña</button>
                             </div>
                         </form>
                     </div>

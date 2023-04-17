@@ -28,8 +28,7 @@
     border-color: rgb(185, 185, 185);
     border-width: 1px;
     border-style: solid;
-    border-bottom-left-radius: 40px;
-    border-bottom-right-radius: 40px;
+    border-radius: 1rem;
     margin-left: 20px;
     margin-right: 20px;
     margin-top: 30px;
@@ -91,22 +90,24 @@
 }
 
 .inputContainer {
-    display: grid;
+    display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
+    width: 100%;
 }
 
 .input {
     padding-top: 10px;
-    margin-bottom: 10px;
-    width: 700px;
+    margin-bottom: 20px;
+    width: 60%;
     font-size: 20px;
     border-radius: 5px;
     border-color: rgb(0, 0, 0);
-    height: 55px;
+    height: 60px;
 }
 
-.btnChangePass {
+.btnChange {
     background-color: #181818;
     margin-bottom: 40px;
     color: white;
@@ -115,11 +116,11 @@
     text-transform: uppercase;
 }
 
-.btnChangePass:hover {
+.btnChange:hover {
     opacity: 0.9;
 }
 
-.btnChangePassContainer {
+.btnContainer {
     display: flex;
     justify-content: center;
     align-items: center;

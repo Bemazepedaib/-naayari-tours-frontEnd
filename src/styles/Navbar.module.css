@@ -4,12 +4,12 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  height: 60px;
+  height: 70px;
   padding: 0 0 0 2rem;
   background-color: #1D2128;
   color: #fff;
   font-family: 'Oswald', sans-serif;
-  font-size: 18px;
+  font-size: 22px;
   border-bottom: solid #fff;
   box-shadow: 5px 10px 18px #000;
 }
@@ -38,7 +38,6 @@
   position: absolute;
   display: flex;
   right: 0;
-  margin-top: 10px;
 
 }
 .link:after {
@@ -138,6 +137,7 @@
     position: fixed;
     top: -120vh;
     left: 0;
+    text-align: center;
     height: 100%;
     width: 100%;
     display: grid;
@@ -159,6 +159,6 @@
   }
 
   .link {
-    font-size: 20px;
+    font-size: 22px;;
   }
 }

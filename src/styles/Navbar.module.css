@@ -127,6 +127,11 @@
   .navBtn {
     visibility: visible;
     opacity: 1;
+    size: 15px;
+  }
+  .buttons{
+    position: relative;
+    margin: auto;
   }
 
   .navbar {
@@ -135,10 +140,8 @@
     left: 0;
     height: 100%;
     width: 100%;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
+    display: grid;
+    grid-template-rows: repeat(auto-fill,minmax(100px,200px));
     gap: 1.5rem;
     background-color: #1D2128;
     transition: 1s;
@@ -151,11 +154,11 @@
 
   .navCBtn {
     position: absolute;
-    top: 2rem;
+    top: 0;
     right: 2rem;
   }
 
   .link {
-    font-size: 60px;
+    font-size: 20px;
   }
 }

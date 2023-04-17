@@ -45,7 +45,7 @@ function Navbar() {
                 <Link className={Styles.link} href="/sites/AboutUs">Acerca de Nosotros</Link>
                 <Link className={Styles.link} href="/sites/FAQ">Preguntas Frecuentes</Link>
                 <Link className={Styles.link} href="#Footer" scroll={false} >Contacto</Link>
-                <Link className={Styles.link} href="/sites/Me">Mi perfil</Link>
+                {login.current === "token" ? <Link className={Styles.link} href="/sites/Me">Mi perfil</Link> : <div />}
                 {login.current === "token" ? <Link href=""><button className={Styles.btnLogin} onClick={() => {
                     localStorage.removeItem('token');
                     window.location.reload(true)

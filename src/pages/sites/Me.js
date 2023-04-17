@@ -8,7 +8,7 @@ function Me() {
 
     const { loading, error, data } = useQuery(ME);
 
-    if (error) return (<div><Navbar/>{error.message}</div>)
+    if (error) return (<div><Navbar/><div className={Styles.errorMe}>{error.message}</div></div>)
     if (loading) return (<div><Navbar/>Loading...</div>)
 
     return <>{!loading && !error &&

@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import Styles from '../../styles/Navbar.module.css'
 import Link from 'next/link'
@@ -11,6 +11,8 @@ const image = 'https://drive.google.com/uc?export=view&id=1hKQxSheX5io9bPjn99_Te
 
 function Navbar() {
 
+    let login = useRef("");
+
     const navRef = useRef();
 
     const showNavbar = () => {
@@ -18,6 +20,16 @@ function Navbar() {
             Styles.responsiveNav
         );
     };
+
+    useEffect(() => {
+        if (localStorage.getItem("token") !== null) {
+            login.current = "token"
+            console.log(login)
+        } else {
+            login.current = "not token"
+            console.log(login)
+        }
+    }, [])
 
     return (
         <div className={Styles.navbarHeader}>

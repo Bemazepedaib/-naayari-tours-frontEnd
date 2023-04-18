@@ -1,41 +1,88 @@
 
 .mainContainer{
     display: grid;
-    grid-template-columns: 60% 40%;
+    grid-template-columns: minmax(300px,60%) 40%;
     padding: 40px;
 
 }
 
 .info{
     padding: 5px 15px;
-    background: #1d2128;
+    border: solid 1px#1d2128;
     color: #fff;
-    border-radius: 1rem 1rem 0 0;
-    margin: 5px;
+    border-radius: 1rem 1rem;
+    margin: auto;
     margin-bottom: 0;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
 }
 
+.infoP{
+    border-bottom:  solid #fff;
+    text-align: center;
+    width: 75%;
+    border-left: none;
+    border: solid 1px #1d2128;
+    border-radius:  5px 0 0 5px ;
+}
+
+.infoSubtitle{
+
+    color: #1d2128;
+    height: 30px;
+    width: 25%;
+    min-width: 150px;
+}
+.update{
+    position: relative;
+    
+    background: #1d2128;
+    border: solid 1px #1d2128;
+    border-radius: 0 5px 5px 0;
+    border-left: none;
+    }
+
 .tags{
-    background: #cbcc5d;
+    background: #1d2128;
     border-radius: 1rem;
-    margin: 5px;
 }
 
 .tagsInfo{
-    color: #fff;
+    color: #1d2128;
     text-align: center;
+    margin: 10px auto;
+    background: #fff;
 }
 
-.reviews{
-    grid-column: 1/3;
-    margin: 5px;
-    margin-top: 0;
-    background: #1d2128;
-    height: 250px;
-    border-radius:  0 1rem 1rem 1rem;
+
+.update:hover {
+    color: #fff;
+    cursor: pointer;
+}
+.update:hover .icon{
+    display: flex;
+
 }
 
-.reviewsInfo{
-    color: #fff;
-    text-align: center;
+.icon{
+    display: none;
+    color: #1d2128;
+    position: absolute;
+    right: 0;
+}
+
+.update:active {
+    background: #83bb49;
+}
+
+
+@media screen and (max-width:650px) {
+    .mainContainer{
+        display: flex;
+        flex-wrap: wrap;
+    }
+    .tags{
+        width: 100%;
+    }
 }

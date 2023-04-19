@@ -25,7 +25,8 @@ function Me() {
                 const value1 = {
                     title: 'Cambia tu nombre',
                     value: data.me.name,
-                    type: 'text'
+                    type: 'text',
+                    message: 'Introduce tu nuevo nombre'
                 }
                 setInfo(value1)
                 break;
@@ -33,7 +34,8 @@ function Me() {
                 const value2 = {
                     title: 'Cambia tu télefono',
                     value: data.me.cellphone,
-                    type: 'text'
+                    type: 'text',
+                    message: 'Introduce tu nuevo télefono'
                 }
                 setInfo(value2)
                 break;
@@ -41,7 +43,8 @@ function Me() {
                 const value3 = {
                     title: 'Cambia tu fecha de nacimiento',
                     value: data.me.birthDate,
-                    type: 'date'
+                    type: 'date',
+                    message: ''
                 }
                 setInfo(value3)
                 break;
@@ -113,8 +116,10 @@ function Me() {
                         </Modal.Title>
                     </Modal.Header>
                     <Modal.Body className={Styles.modalBody}>
-                        <input className={Styles.input} type={info.type} defaultValue={info.value}></input>
-                        <input className={Styles.input} type="password" placeholder='Introduce tu contraseña'></input>
+                        <input className={Styles.input} type={info.type} placeholder={info.message}
+                        defaultValue={info.value} required></input>
+                        <input className={Styles.input} type="password" 
+                        placeholder='Introduce tu contraseña' required></input>
                     </Modal.Body>
                     <Modal.Footer className={Styles.modalFooter}>
                         <Button className={Styles.btnSave} variant="btn btn-dark" onClick={handleClose}>

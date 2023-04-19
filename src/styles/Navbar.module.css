@@ -16,7 +16,6 @@
 
 .link {
   margin: 0 1rem;
-
   color: #fff;
   text-decoration: none;
   padding: 20px;
@@ -34,6 +33,9 @@
   color: #00a748;
 }
 
+.link:focus-within{
+  color: #fff;
+}
 .buttons{
   position: absolute;
   display: flex;
@@ -42,16 +44,14 @@
 }
 .link:after {
   position: absolute;
-  bottom: 0;
-  left: 0;
+  bottom: 10px;
   right: 0;
   margin: auto;
   width: 0%;
   content: '.';
   color: transparent;
   background: #00a748;
-  ;
-  height: 1px;
+  height: 2px;
 }
 
 .link:hover:after {
@@ -66,9 +66,9 @@
   border: none;
   outline: none;
   color: #fff;
-  visibility: hidden;
   opacity: 0;
   font-size: 1.8rem;
+  transition: 1s;
 }
 
 .navbarHeader,
@@ -140,12 +140,18 @@
     text-align: center;
     height: 100%;
     width: 100%;
-    display: grid;
-    grid-template-rows: repeat(auto-fill,minmax(100px,200px));
-    gap: 1.5rem;
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+    justify-content: space-between;
+    gap: 20px;
     background-color: #1D2128;
     transition: 1s;
     z-index: 10000000;
+    margin: 0;
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
   }
 
   .responsiveNav {
@@ -155,10 +161,17 @@
   .navCBtn {
     position: absolute;
     top: 0;
-    right: 2rem;
+    right: 0;
+  }
+  
+  .Links{
+    padding-top: 100px;
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
   }
 
   .link {
-    font-size: 22px;;
+    font-size: 22px;
   }
 }

@@ -16,6 +16,7 @@ function Catalogue({ trip }) {
     var stars = "";
     var tok = 0;
 
+console.log(trip)
     function clickViajes() {
         const name = trip.tripName;
         Router.push({
@@ -43,7 +44,7 @@ function Catalogue({ trip }) {
                                 <div className={Styles.overlayInfo}>
                                     <h3 className={Styles.title}>{trip.tripName}</h3>
                                     <p className={Styles.catpd}>
-                                        {trip.tripInformation.description}
+                                        {trip.tripInformation.description.slice(0,200)}...
                                     </p>
 
                                 </div>
@@ -51,7 +52,6 @@ function Catalogue({ trip }) {
                             <div id={Styles.destFooter}>
                                 <div className={Styles.destFooterContenedor}>
                                     <p className={Styles.lugar}>{trip.tripInformation.place}</p>
-                                    <p className={Styles.tiempo}>Aproximadamente 8 hrs.</p>
                                     <div className={Styles.StarsContainer}>
                                         <p className={Styles.starsNumber}>{trip.tripRating + ".0 "}</p>
                                         <p className={Styles.stars}>{stars}</p>

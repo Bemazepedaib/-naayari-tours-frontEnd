@@ -55,13 +55,13 @@ function Navbar() {
                     }}>Cerrar Sesión</button></Link> :
                         <Link href="/sites/Login"><button className={Styles.btnLogin}>Iniciar Sesión</button></Link>
                     }
-                    
+
                 </div>
-                    <button
-                        className={`${Styles.navBtn} ${Styles.navCBtn}`}
-                        onClick={showNavbar}>
-                        <FontAwesomeIcon icon={faX} />
-                    </button>
+                <button
+                    className={`${Styles.navBtn} ${Styles.navCBtn}`}
+                    onClick={showNavbar}>
+                    <FontAwesomeIcon icon={faX} />
+                </button>
             </nav>
             <button
                 className={Styles.navBtn}

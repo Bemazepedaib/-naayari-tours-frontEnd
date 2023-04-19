@@ -86,7 +86,8 @@
 
 .catpd {
     position: absolute;
-    bottom: 0;
+    margin: auto 10px;
+    justify-content: center;
     color: white;
     font-size: 13px;
     font-weight: bold;

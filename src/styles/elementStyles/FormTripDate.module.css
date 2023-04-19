@@ -13,11 +13,11 @@
 
 .btn {
     appearance: none;
-    background-color: #83BB49;
-    border: NONE;
+    background-color: transparent;
+    border: solid  3px#fff;
     border-radius: 5px;
     box-sizing: border-box;
-    color: #000;
+    color: #fff;
     cursor: pointer;
     display: inline-block;
     font-family: Roobert,-apple-system,BlinkMacSystemFont,"Segoe UI",Helvetica,Arial,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
@@ -45,11 +45,11 @@
   
 .btnVIP {
     appearance: none;
-    background-color: #83BB49;
-    border: NONE;
+    background-color: transparent;
+    border: solid  3px#fff;
     border-radius: 5px;
     box-sizing: border-box;
-    color: #000;
+    color: #fff;
     cursor: pointer;
     display: inline-block;
     font-family: Roobert,-apple-system,BlinkMacSystemFont,"Segoe UI",Helvetica,Arial,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
@@ -78,28 +78,14 @@
 .btn:disabled {
     pointer-events: none;
   }
-  
-  .btn:hover {
-    color: #000;
-    background-color: #83BB49;
-    box-shadow: rgba(0, 0, 0, 0.25) 0 8px 15px;
-    transform: translateY(-2px);
-    border: NONE;
-  }
-  
+
   .btn:active {
     box-shadow: none;
     transform: translateY(0);
     
   }
   
-  .btnVIP:hover {
-    color: #000;
-    background-color: #83BB49;
-    box-shadow: rgba(0, 0, 0, 0.25) 0 8px 15px;
-    transform: translateY(-2px);
-    border: NONE;
-  }
+
   
   .btnVIP:active {
     box-shadow: none;
@@ -111,9 +97,9 @@
     margin-bottom: 5px;
     margin-top: 5px;
     border-radius: 5px;
-    background-color: #83BB49;
-    border: none;
-    color: #000;
+    background-color: transparent;
+    border: solid  3px#fff;
+    color: #fff;
     padding: 0 30px 0 10px;
     transition: .3s ease all;
     height: 40px;
@@ -131,9 +117,9 @@
 }
 
 .btn:hover {
-  color: #fff;
-  background-color: #000;
-  border: solid #fff;
+  color: #000;
+  background-color: #83BB49;
+  border: none;
   box-shadow: rgba(0, 0, 0, 0.25) 0 8px 15px;
   transform: translateY(-2px);
 }
@@ -144,9 +130,9 @@
 }
 
 .btnVIP:hover {
-  color: #fff;
-  background-color: #000;
-  border: solid #fff;
+  color: #000;
+  background-color: #83BB49;
+  border: none;
   box-shadow: rgba(0, 0, 0, 0.25) 0 8px 15px;
   transform: translateY(-2px);
 }

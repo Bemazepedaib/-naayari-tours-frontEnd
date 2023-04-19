@@ -15,6 +15,7 @@ function Catalogue({ trip }) {
     const link = "https://drive.google.com/uc?export=view&id=";
     var stars = "";
     var tok = 0;
+
 console.log(trip)
     function clickViajes() {
         const name = trip.tripName;
@@ -43,7 +44,7 @@ console.log(trip)
                                 <div className={Styles.overlayInfo}>
                                     <h3 className={Styles.title}>{trip.tripName}</h3>
                                     <p className={Styles.catpd}>
-                                        {trip.tripInformation.description}
+                                        {trip.tripInformation.description.slice(0,200)}...
                                     </p>
 
                                 </div>

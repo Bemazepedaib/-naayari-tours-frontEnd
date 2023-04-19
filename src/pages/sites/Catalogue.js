@@ -15,7 +15,7 @@ function Catalogue({ trip }) {
     const link = "https://drive.google.com/uc?export=view&id=";
     var stars = "";
     var tok = 0;
-
+console.log(trip)
     function clickViajes() {
         const name = trip.tripName;
         Router.push({
@@ -51,7 +51,6 @@ function Catalogue({ trip }) {
                             <div id={Styles.destFooter}>
                                 <div className={Styles.destFooterContenedor}>
                                     <p className={Styles.lugar}>{trip.tripInformation.place}</p>
-                                    <p className={Styles.tiempo}>Aproximadamente 8 hrs.</p>
                                     <div className={Styles.StarsContainer}>
                                         <p className={Styles.starsNumber}>{trip.tripRating + ".0 "}</p>
                                         <p className={Styles.stars}>{stars}</p>

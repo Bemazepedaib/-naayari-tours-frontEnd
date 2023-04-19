@@ -26,7 +26,7 @@ function ModalWindow({titleText,text,send}) {
       </div>
       <Modal show={show} onHide={handleClose}>
         <Modal.Header closeButton>
-          <Modal.Title className={Styles.modalTitle}>
+          <Modal.Title>
           <Image className={Styles.image} src={image} width={70} height={70} alt="Naayari tours" />
             {titleText}
             </Modal.Title>

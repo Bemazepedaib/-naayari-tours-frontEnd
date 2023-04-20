@@ -8,7 +8,7 @@ import ModalAdmin from "../elements/ModalAdmin"
 
 function UpdateUser({ user }) {
 
-
+  let k = 0
   const [pass, setPass] = useState({ value: "", valid: true });
 
   const expresiones = {
@@ -33,27 +33,35 @@ function UpdateUser({ user }) {
           <ModalAdmin type="email" val={user.user.email} /></p>
         <p className={`${Styles.infoP} ${Styles.infoSubtitle}`}> Tipo de usuario:     </p>
         <p className={`${Styles.infoP} ${Styles.update}`}>{user.user.userType}</p>
-          <p className={`${Styles.infoP} ${Styles.infoSubtitle}`}> Fecha de nacimiento: </p>
-          <p className={`${Styles.infoP} ${Styles.update}`}>{user.user.birthDate}
-            <ModalAdmin type="birthDate" val={user.user.birthDate} /></p>
-          <p className={`${Styles.infoP} ${Styles.infoSubtitle}`}> Nivel de usuario:    </p>
-          <p className={`${Styles.infoP} ${Styles.update}`}>{user.user.userLevel}
-            <ModalAdmin type="userLevel" val={user.user.userLevel} /></p>
-          <div className={Styles.password}>
-            <InputComponent
-              estado={pass}
-              cambiarEstado={setPass}
-              label="Contraseña"
-              placeholder="Contraseña"
-              name="pass"
-              errorMsg="La contraseña debe ser segura"
-              regExp={expresiones.password}
-              auto="on"
-            />
-          </div>
+        <p className={`${Styles.infoP} ${Styles.infoSubtitle}`}> Fecha de nacimiento: </p>
+        <p className={`${Styles.infoP} ${Styles.update}`}>{user.user.birthDate}
+          <ModalAdmin type="birthDate" val={user.user.birthDate} /></p>
+        <p className={`${Styles.infoP} ${Styles.infoSubtitle}`}> Nivel de usuario:    </p>
+        <p className={`${Styles.infoP} ${Styles.update}`}>{user.user.userLevel}
+          <ModalAdmin type="userLevel" val={user.user.userLevel} /></p>
+        <div className={Styles.password}>
+          <InputComponent
+            estado={pass}
+            cambiarEstado={setPass}
+            label="Contraseña"
+            placeholder="Contraseña"
+            name="pass"
+            errorMsg="La contraseña debe ser segura"
+            regExp={expresiones.password}
+            auto="on"
+          />
+        </div>
       </div>
       <div className={Styles.tags}>
         <p className={`${Styles.tagsInfo} ${Styles.infoSubtitle}`}> Preferencias </p>
+        <div className={Styles.pref}>
+        {user.user.preferences.map(pr => (
+          <p key={k++}>{pr.preferenceType}</p>
+          ))}
+        </div>
+      </div>
+      <div className={Styles.trips}>
+        <label>Viajes realizados</label>
 
       </div>
     </div>

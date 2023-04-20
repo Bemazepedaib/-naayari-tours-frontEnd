@@ -10,9 +10,9 @@ function ModalWindow({titleText,text,send}) {
 
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
-  function activateBothMethods(){
+  async function activateBothMethods(){
     handleShow();
-    if(send()){
+     if(await send()){
       handleClose();
     }else{
       handleShow();

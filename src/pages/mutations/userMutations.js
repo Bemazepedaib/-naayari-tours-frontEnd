@@ -4,7 +4,7 @@ const LOGIN = gql`
     mutation login($email: String!, $password: String!){
         login(email: $email, password: $password)
     }
-`
+`;
 
 const ADD_USER = gql`
     mutation addUser($name: String!, $cellphone: String!, $birthDate: String!, $email: String!, $password: String!, $sex: String!, 
@@ -12,33 +12,18 @@ const ADD_USER = gql`
         addUser(name: $name, cellphone: $cellphone, birthDate: $birthDate, email: $email, password: $password, sex: $sex,
                     reference: $reference, userType: $userType, userLevel: $userLevel, membership: $membership, verified: $verified)
     }
-`
+`;
 
-const DELETE_USER = gql`
-    mutation deleteUser($email: String!) {
-        deleteUser(email: $email){
-            name
-            cellphone
-            birthDate
-            email
-            password
-            sex
-            reference
-            userType
-            userLevel
-            membership
-            coupons {
-                couponType
-                couponDescription
-                couponAmount
-                couponDate
-                couponApplied
-            }
-            preferences {
-                preferenceType
-            }
-        }
+const UPDATE_USER_PREFERENCES = gql`
+    mutation updateUserPreferences($newPref: [InputUserPreference!]!, $email: String){
+        updateUserPreferences(newPref: $newPref, email: $email)
     }
 `;
 
-export { LOGIN, ADD_USER, DELETE_USER }
+const DELETE_USER = gql`
+    mutation deleteUser($email: String!) {
+        deleteUser(email: $email)
+    }
+`;
+
+export { LOGIN, ADD_USER, DELETE_USER, UPDATE_USER_PREFERENCES }

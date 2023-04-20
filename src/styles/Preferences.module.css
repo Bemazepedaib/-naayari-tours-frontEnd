@@ -19,10 +19,9 @@
     justify-content: center;
 }
 .imgCards {
-    display: inline-flex;
+    display: flex;
     flex-wrap: wrap;
     justify-content: center;
-    padding: 50px;
 }
 .send{
     display: flex;

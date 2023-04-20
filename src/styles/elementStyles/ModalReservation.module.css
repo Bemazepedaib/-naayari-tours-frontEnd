@@ -1,3 +1,6 @@
+@import url('https://fonts.googleapis.com/css2?family=Oswald:wght@300&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Genos:ital,wght@1,700&display=swap');
+
 .centerButton {
     display: flex;
     justify-content: center;
@@ -9,10 +12,13 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    margin-top: 10px;
+    text-align: center;
+    margin: 20px;
+    font-size: 20px;
 }
 
 .modalHeader {
+    font-family: 'Genos', sans-serif;
     display: flex;
     justify-content: space-between;
     align-items: center;

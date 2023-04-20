@@ -124,7 +124,7 @@ function Reservations() {
                 <textarea className={Styles.textArea} rows={5}></textarea>
             </div>
             <div className={Styles.centerButton}>
-                <ModalReservation datos={adult.current}/>
+                <ModalReservation datos={new Array(adult, child, baby)}/>
             </div>
         </div>
     )

@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import Modal from 'react-bootstrap/Modal';
 import Styles from '../../styles/elementStyles/ModalWindow.module.css'
+import Router from 'next/router';
 
 import Image from 'next/image'
 const image = 'https://drive.google.com/uc?export=view&id=1Gx08yGg-rGq0tUe5yVHWxbkaMfmrUOk0'
@@ -11,9 +12,9 @@ function ModalWindow({titleText,text,send}) {
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
   async function activateBothMethods(){
-    handleShow();
      if(await send()){
       handleClose();
+      Router.push({ pathname: '/sites/Me' })
     }else{
       handleShow();
     }

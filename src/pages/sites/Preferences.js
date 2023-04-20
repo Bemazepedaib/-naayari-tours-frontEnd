@@ -25,9 +25,13 @@ function Preferences() {
         if (preferenceOK.length === 0) {
             return false;
         } else {
-            await updatePreferences({variables:{newPref: preferenceOK}})
-            preferenceOK = []
-            return true;
+            try{
+                await updatePreferences({variables:{newPref: preferenceOK}})
+                preferenceOK = []
+                return true;
+              }catch(error){
+                console.log(error.message)
+              }
         }
     }
     if (loading) return <p>Loading...</p>;

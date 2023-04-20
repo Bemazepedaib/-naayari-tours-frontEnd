@@ -4,11 +4,11 @@ import Styles from '../../styles/elementStyles/PreferenceCard.module.css'
 function PreferenceF({cart,isOk,isNotOk}) {
     const [isSelected, changeSelected] = useState(false);
     function isTrue() {
-        isNotOk(cart.preferenceType)
+        isNotOk({preferenceType: cart.preferenceType})
         changeSelected(false);
     }
     function isFalse() {
-        isOk(cart.preferenceType)
+        isOk({preferenceType: cart.preferenceType})
         changeSelected(true);
     }
     return (

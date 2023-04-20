@@ -4,23 +4,28 @@ import Styles from '../../styles/Preferences.module.css'
 import PreferenceCard from '../elements/PreferenceCard'
 import ModalWindow from '../elements/ModalWindow'
 
+import { useMutation } from '@apollo/client';
+import { UPDATE_USER_PREFERENCES } from '../mutations/userMutations';
+
 function Preferences() {
 
     const { loading, error, data } = useQuery(GET_PREFERENCES)
     let id = 0
     let preferenceOK = []
+    const [updatePreferences] = useMutation(UPDATE_USER_PREFERENCES)
 
-    function isOk(name) {
-        preferenceOK.push(name)
+    function isOk(object) {
+        preferenceOK.push(object)
     }
-    function isNotOk(name) {
-        let pos = preferenceOK.indexOf(name)
+    function isNotOk(object) {
+        let pos = preferenceOK.map(e => e.preferenceType).indexOf(object.preferenceType);
         preferenceOK.splice(pos, 1)
     }
-    function send() {
+    async function send() {
         if (preferenceOK.length === 0) {
             return false;
         } else {
+            await updatePreferences({variables:{newPref: preferenceOK}})
             preferenceOK = []
             return true;
         }
@@ -33,7 +38,7 @@ function Preferences() {
                 <div className={Styles.tittleContainer}>
                     <h1 className={Styles.tittle}>
                         ¿QUE ES LO QUE BUSCAS?
-                        <hr />
+                        <hr/>
                         ELIGE DE ACUERDO A TUS GUSTOS
                     </h1>
                 </div>

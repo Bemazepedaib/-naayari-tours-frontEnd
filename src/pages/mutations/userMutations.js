@@ -13,6 +13,11 @@ const ADD_USER = gql`
                     reference: $reference, userType: $userType, userLevel: $userLevel, membership: $membership, verified: $verified)
     }
 `
+const UPDATE_USER_PREFERENCES = gql`
+mutation updateUserPreferences($newPref: [InputUserPreferenceType!]!,$email: String){
+    updateUserPreferences(newPref: $newPref, email: $email)
+}`;
+
 
 const DELETE_USER = gql`
     mutation deleteUser($email: String!) {
@@ -41,4 +46,4 @@ const DELETE_USER = gql`
     }
 `;
 
-export { LOGIN, ADD_USER, DELETE_USER }
+export { LOGIN, ADD_USER, DELETE_USER,UPDATE_USER_PREFERENCES }

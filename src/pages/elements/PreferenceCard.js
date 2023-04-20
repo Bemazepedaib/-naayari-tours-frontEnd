@@ -1,6 +1,5 @@
 import React, { useState } from 'react'
 import Styles from '../../styles/elementStyles/PreferenceCard.module.css'
-import Image from 'next/image'
 
 function PreferenceF({cart,isOk,isNotOk}) {
     const [isSelected, changeSelected] = useState(false);
@@ -17,7 +16,7 @@ function PreferenceF({cart,isOk,isNotOk}) {
             <div className={Styles.cardContainer}>
                 <div className={Styles.card}>
                     <div className={Styles.front}>
-                        <Image className = {Styles.images}src={"https://drive.google.com/uc?export=view&id=" + cart.preferenceIcon}
+                        <img className = {Styles.images}src={"https://drive.google.com/uc?export=view&id=" + cart.preferenceIcon}
                          width={500} 
                          height={500}
                           alt="Cart Image" />

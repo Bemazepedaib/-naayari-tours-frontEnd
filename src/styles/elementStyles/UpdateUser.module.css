@@ -67,13 +67,21 @@
 
 .icon{
     display: none;
-    color: #1d2128;
+    color: #fff;
     position: absolute;
     right: 0;
+    top: 4px;
 }
 
 .update:active {
     background: #83bb49;
+}
+
+.password{
+    text-align: center;
+    display: flex;
+    color: #000;
+    align-items: center;
 }
 
 

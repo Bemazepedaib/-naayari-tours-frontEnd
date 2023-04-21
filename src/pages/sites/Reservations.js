@@ -70,16 +70,12 @@ function Reservations() {
         console.log(tipo === "adult" ? adult.current : tipo === "child" ? child.current : baby.current)
     }
 
-    const reservations = () => {
-
-    }
-
     return (
         <div className={Styles.mainContainer}>
             <div className={Styles.header}><HeaderTittle tittle={"RESERVACIÓN"}></HeaderTittle></div>
             <div className={Styles.contenedorDatos}>
                 <div className={Styles.datos}>
-                    <div className={Styles.dato}>Usuario que reserva:</div> {userData.me.name}
+                    <div className={Styles.dato}>Usuario que reserva:</div> {userData.me.name} | {userData.me.cellphone}
                     <div className={Styles.dato}>Fecha que se reserva:</div>{selectedDate}
                     <div className={Styles.dato}>Viaje que se reserva:</div>{selectedTrip}
                     <div className={Styles.dato}>Total adultos:</div>${adultNumber * precioPasajero}
@@ -124,7 +120,15 @@ function Reservations() {
                 <textarea className={Styles.textArea} rows={5}></textarea>
             </div>
             <div className={Styles.centerButton}>
-                <ModalReservation datos={new Array(adult, child, baby)}/>
+                <ModalReservation 
+                    datosCompanion={new Array(adult, child, baby)}
+                    datosUsuario={new Array(userData, selectedDate, selectedTrip)}
+                    datosPrecio={new Array(
+                        {type: "Adulto", number: adultNumber, price: precioPasajero}, 
+                        {type: "Niño", number: childNumber, price: precioPasajero}, 
+                        {type: "Bebé", number: babyNumber, price: precioBebe}
+                    )}
+                />
             </div>
         </div>
     )

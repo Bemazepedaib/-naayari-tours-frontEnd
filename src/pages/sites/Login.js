@@ -37,7 +37,7 @@ function Login() {
                 Router.push({ pathname: '/sites/Dashboard' })
             } else if (token[1] === "") {
                 setValidLog(true);
-                Router.push({ pathname: '/sites/Preferences' })
+                Router.push({ pathname: '/sites/Preferences', query: { preferences: []}})
             } else {
                 setValidLog(true);
                 Router.push({ pathname: '/sites/Me' })

@@ -70,7 +70,7 @@ function Signup() {
     useEffect(() => {
         if (token) {
             setValidForm(true);
-            Router.push({ pathname: '/sites/Preferences' });
+            Router.push({ pathname: '/sites/Preferences',query: {preferences: []}})
             localStorage.setItem('token', token.data.addUser);
         }
     }, [token])

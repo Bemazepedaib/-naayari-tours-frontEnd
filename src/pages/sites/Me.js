@@ -8,6 +8,9 @@ import { faPenToSquare } from '@fortawesome/free-solid-svg-icons';
 import Modal from 'react-bootstrap/Modal';
 import Button from 'react-bootstrap/Button';
 import Image from 'next/image'
+
+import Router from 'next/router';
+
 function Me() {
     const [show, setShow] = useState(false);
     const initialValue = {
@@ -18,6 +21,13 @@ function Me() {
     const image = 'https://drive.google.com/uc?export=view&id=1Gx08yGg-rGq0tUe5yVHWxbkaMfmrUOk0'
     const [info, setInfo] = useState(initialValue);
     const handleClose = () => setShow(false);
+    const goPreferences = () => {
+        let array = []
+        data.me.preferences.map(preference => (
+            array.push(preference.preferenceType)
+        ))
+        Router.push({ pathname: '/sites/Preferences',query: {preferences: array}})
+    }
     const handleShow = (pressedButton) => {
         setInfo(initialValue)
         switch (pressedButton) {
@@ -92,13 +102,13 @@ function Me() {
                             <button onClick={() => handleShow('birthDate')} className={Styles.btnEdit}> <FontAwesomeIcon icon={faPenToSquare} /></button>
                         </div>
                         <div className={Styles.btnContainer}>
-                            <button className={Styles.btnChange}>CAMBIAR LAS PREFERENCIAS</button>
+                            <button className={Styles.btnChange} onClick={() => goPreferences()}>CAMBIAR LAS PREFERENCIAS</button>
                         </div>
                     </div>
                     <div className={Styles.passContainer}>
                         <form className={Styles.inputContainer}>
                             <label className={Styles.titlePass} name='password'>CONTRASEÑA</label>
-                            <hr className={Styles.hr}></hr>
+                            <hr className={Styles.hr} />
                             <input className={Styles.input} for='password' type="password" placeholder='Introducir contraseña actual'></input>
                             <input className={Styles.input} for='password' type="password" placeholder='Introducir nueva contraseña'></input>
                             <input className={Styles.input} for='password' type="password" placeholder='Introducir nueva contraseña de nuevo'></input>
@@ -117,9 +127,9 @@ function Me() {
                     </Modal.Header>
                     <Modal.Body className={Styles.modalBody}>
                         <input className={Styles.input} type={info.type} placeholder={info.message}
-                        defaultValue={info.value} required></input>
-                        <input className={Styles.input} type="password" 
-                        placeholder='Introduce tu contraseña' required></input>
+                            defaultValue={info.value} required></input>
+                        <input className={Styles.input} type="password"
+                            placeholder='Introduce tu contraseña' required></input>
                     </Modal.Body>
                     <Modal.Footer className={Styles.modalFooter}>
                         <Button className={Styles.btnSave} variant="btn btn-dark" onClick={handleClose}>

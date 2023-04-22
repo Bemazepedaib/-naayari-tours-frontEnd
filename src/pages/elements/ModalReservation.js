@@ -81,6 +81,11 @@ function ModalReservation({ datosCompanion, datosUsuario, datosPrecio }) {
                             </tbody>
                         </Table>
                     </div> : <div></div>}
+                    {datosUsuario[3] !== "" ? 
+                        <div>
+                            <div className={Styles.modalTitle}>Observaciones</div>
+                            <div className={Styles.observacionesBody}>{datosUsuario[3]}</div>
+                        </div> : <div></div>}
                     <div className={Styles.modalTitle}>Total a pagar</div>
                     <Table>
                         <thead className={Styles.tableHeader}>

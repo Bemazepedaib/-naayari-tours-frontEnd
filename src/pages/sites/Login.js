@@ -34,7 +34,7 @@ function Login() {
             if (place) {
                 if (place === "reservations") {
                     setValidLog(true);
-                    Router.push({ pathname: '/sites/Reservations', query: { selectedDate, selectedTrip } })
+                    Router.push({ pathname: '/sites/Reservations', query: { selectedDate, selectedTrip } }, '/sites/Reservations')
                 }
             }
             if (token[0] === "admin") {

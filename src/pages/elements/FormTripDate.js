@@ -25,9 +25,9 @@ function FormTripDate({ dates, selectedTrip }) {
                         </select>
                         <button className={Styles.btn} type='submit' onClick={() => {
                             if (localStorage.getItem("token") !== null){
-                                Router.push({ pathname: '/sites/Reservations', query: { selectedDate, selectedTrip } })
+                                Router.push({ pathname: '/sites/Reservations', query: { selectedDate, selectedTrip } }, '/sites/Reservations')
                             } else {
-                                Router.push({ pathname: '/sites/Login', query: { place: "reservations", selectedDate, selectedTrip } })
+                                Router.push({ pathname: '/sites/Login', query: { place: "reservations", selectedDate, selectedTrip } }, '/sites/Login')
                             }
                         }}> Reservar lugares </button>
                     </div>

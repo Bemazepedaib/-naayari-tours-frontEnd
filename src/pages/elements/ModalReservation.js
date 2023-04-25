@@ -5,6 +5,8 @@ import Styles from '../../styles/elementStyles/ModalReservation.module.css'
 
 import React, { useState } from 'react'
 import { Table } from 'react-bootstrap';
+import { useMutation } from '@apollo/client';
+import { DO_RESERVATIONS } from '../mutations/eventMutations';
 
 function ModalReservation({ datosCompanion, datosUsuario, datosPrecio }) {
 
@@ -16,6 +18,34 @@ function ModalReservation({ datosCompanion, datosUsuario, datosPrecio }) {
     const [showConfirm, setShowConfirm] = useState(false);
     const handleCloseConfirm = () => setShowConfirm(false);
     const handleShowConfirm = () => setShowConfirm(true);
+
+    const [doReservation] = useMutation(DO_RESERVATIONS)
+
+    const makeReservation = async () => {
+        let a = [];
+        datosCompanion.map(type => {
+            type.current.map(companion => {
+                a.push(companion)
+            })
+        })
+        const objetoUsuarios = {
+            userEmail: datosUsuario[0].me.email,
+            companion: a,
+            advancePayment: 0,
+            fullyPaid: false,
+            observations: datosUsuario[3]
+        }
+        try {
+            const res = await doReservation({ variables: { 
+                                    eventDate: datosUsuario[1],
+                                    eventTrip: datosUsuario[2],
+                                    users: objetoUsuarios } 
+                                })
+            console.log(res.data.updateEventUsers)
+        } catch (error) {
+            console.log(error.message)
+        }
+    }
 
     let id = 1;
 
@@ -114,6 +144,14 @@ function ModalReservation({ datosCompanion, datosUsuario, datosPrecio }) {
                                     datosPrecio[2].price * datosPrecio[2].number}
                                 </td>
                             </tr>
+                            <tr>
+                                <td className={Styles.bold}>ANTICIPO &#40;50%&#41;</td>
+                                <td>NA</td>
+                                <td>${(datosPrecio[0].price * datosPrecio[0].number +
+                                    datosPrecio[1].price * datosPrecio[1].number +
+                                    datosPrecio[2].price * datosPrecio[2].number)/2}
+                                </td>
+                            </tr>
                         </tbody>
                     </Table>
                 </Modal.Body>
@@ -131,7 +169,7 @@ function ModalReservation({ datosCompanion, datosUsuario, datosPrecio }) {
                             <Button variant="danger" onClick={handleCloseConfirm}>
                                 Cancelar
                             </Button>
-                            <Button bsPrefix={Styles.confirmButton} onClick={() => {handleClose; handleCloseConfirm}}>
+                            <Button bsPrefix={Styles.confirmButton} onClick={makeReservation}>
                                 Confirmar
                             </Button>
                         </Modal.Footer>

@@ -34,10 +34,8 @@ function Navbar() {
     useEffect(() => {
         if (localStorage.getItem("token") !== null) {
             setLogin("token")
-            //console.log(login)
         } else {
             setLogin("not token")
-            //console.log(login)
         }
     }, [])
 

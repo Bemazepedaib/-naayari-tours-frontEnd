@@ -13,26 +13,20 @@
 
 .header {
     grid-column: span 5;
-    margin-bottom: 60px;
+    margin-bottom: 20px;
+    font-family: 'Genos', sans-serif;
 }
 
 .contenedorFormulario {
     font-family: 'Oswald', sans-serif;
-    grid-column: span 3;
+    grid-column: 2/5;
     display: flex;
     flex-direction: column;
     flex-wrap: wrap;
     justify-content: center;
     align-items: center;
-}
-
-.contenedorDatos {
-    font-family: 'Oswald', sans-serif;
-    grid-column: span 2;
-    padding-right: 10px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    background-color: white;
+    border-radius: 5px;
 }
 
 .titulo {
@@ -41,7 +35,8 @@
     border-radius: 10px;
     border: 2px solid #1D2128;
     text-align: center;
-    margin: 10px 10px 30px 10px;
+    margin: 10px;
+    margin-top: 20px;
     font-family: 'Genos', sans-serif;
     font-weight: bold;
     font-size: 30px;
@@ -80,6 +75,8 @@
     justify-content: center;
     align-items: center;
     grid-column: span 5;
+    margin-top: 20px;
+    margin-bottom: 40px;
 }
 
 .modalBody {

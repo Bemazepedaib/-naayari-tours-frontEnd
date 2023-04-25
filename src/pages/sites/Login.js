@@ -1,5 +1,4 @@
 import Link from 'next/link';
-import Image from 'next/image';
 import styles from "../../styles/Login.module.css";
 
 import React, { useState, useEffect } from "react"
@@ -11,11 +10,9 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faTriangleExclamation } from '@fortawesome/free-solid-svg-icons';
 import Navbar from './Navbar';
 import Footer from './Footer';
-import Router from 'next/router';
+import Router, { useRouter } from 'next/router';
 
 function Login() {
-
-    const logoNaayari = "https://drive.google.com/uc?export=view&id=1N_BZ6IgIMASpQ3FCw2ZpS-jV3HKU2dNI"
 
     const terminos = ""
     const privacidad = ""
@@ -30,8 +27,16 @@ function Login() {
 
     const [login] = useMutation(LOGIN)
 
+    const { query: { place, selectedDate, selectedTrip } } = useRouter();
+
     useEffect(() => {
         if (token) {
+            if (place) {
+                if (place === "reservations") {
+                    setValidLog(true);
+                    Router.push({ pathname: '/sites/Reservations', query: { selectedDate, selectedTrip } }, '/sites/Reservations')
+                }
+            }
             if (token[0] === "admin") {
                 setValidLog(true);
                 Router.push({ pathname: '/sites/Dashboard' })

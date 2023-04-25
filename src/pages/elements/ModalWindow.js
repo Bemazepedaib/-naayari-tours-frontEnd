@@ -14,7 +14,7 @@ function ModalWindow({titleText,text,send}) {
   async function activateBothMethods(){
      if(await send()){
       handleClose();
-      Router.push({ pathname: '/sites/Me' })
+      Router.push({ pathname: '/' })
     }else{
       handleShow();
     }

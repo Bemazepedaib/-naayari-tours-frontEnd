@@ -8,10 +8,7 @@ import { useMutation } from '@apollo/client';
 import { UPDATE_USER_PREFERENCES } from '../mutations/userMutations';
 import { useRouter } from 'next/router'
 
-function Preferences() {
-
-    const router = useRouter();
-    const { query: { preferences } } = router;
+function Preferences({preferences}) {
 
     const { loading, error, data } = useQuery(GET_PREFERENCES)
     let id = 0
@@ -20,6 +17,7 @@ function Preferences() {
         let object = { preferenceType: index } 
         preferenceOK.push(object)  
     })
+    console.log("ok ")
 console.log(preferenceOK)
 
 const [updatePreferences] = useMutation(UPDATE_USER_PREFERENCES)

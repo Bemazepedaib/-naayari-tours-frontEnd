@@ -8,6 +8,10 @@ const GET_TRIPS = gql
     tripInformation{
       description
       place
+      activities{
+        activityName
+        activityPhoto
+      }
       price{
         priceType
         priceAmount

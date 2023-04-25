@@ -8,7 +8,7 @@ import CataloguePrices from "../elements/CataloguePrices"
 
 
 function Catalogue({ trip }) {
-
+    console.log(trip)
     const photo = trip.tripInformation.photo;
     var back = photo
     const disc = trip.tripInformation.discount.available;
@@ -49,7 +49,7 @@ function Catalogue({ trip }) {
 
                                 </div>
                             </div>
-                            <div id={Styles.destFooter}>
+                            <div className={Styles.destFooter}>
                                 <div className={Styles.destFooterContenedor}>
                                     <p className={Styles.lugar}>{trip.tripInformation.place}</p>
                                     <div className={Styles.StarsContainer}>
@@ -62,7 +62,7 @@ function Catalogue({ trip }) {
                                     <CataloguePrices trip={trip.tripInformation} />
                                 </div>
                                 <hr className={Styles.hr}></hr>
-                                TAGS
+                                <div className={Styles.contActivities}>{trip.tripInformation.activities.map(t => (<p key={t.activityName} className={Styles.activity}>{t.activityName}</p>))}</div>
                             </div>
                         </div>
                     </div>

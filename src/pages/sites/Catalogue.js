@@ -8,15 +8,13 @@ import CataloguePrices from "../elements/CataloguePrices"
 
 
 function Catalogue({ trip }) {
-
+    console.log(trip)
     const photo = trip.tripInformation.photo;
     var back = photo
     const disc = trip.tripInformation.discount.available;
     const link = "https://drive.google.com/uc?export=view&id=";
     var stars = "";
     var tok = 0;
-
-console.log(trip)
     function clickViajes() {
         const name = trip.tripName;
         Router.push({
@@ -44,12 +42,12 @@ console.log(trip)
                                 <div className={Styles.overlayInfo}>
                                     <h3 className={Styles.title}>{trip.tripName}</h3>
                                     <p className={Styles.catpd}>
-                                        {trip.tripInformation.description.slice(0,200)}...
+                                        {trip.tripInformation.description.slice(0, 200)}...
                                     </p>
 
                                 </div>
                             </div>
-                            <div id={Styles.destFooter}>
+                            <div className={Styles.destFooter}>
                                 <div className={Styles.destFooterContenedor}>
                                     <p className={Styles.lugar}>{trip.tripInformation.place}</p>
                                     <div className={Styles.StarsContainer}>
@@ -62,7 +60,7 @@ console.log(trip)
                                     <CataloguePrices trip={trip.tripInformation} />
                                 </div>
                                 <hr className={Styles.hr}></hr>
-                                TAGS
+                                <div className={Styles.contActivities}>{trip.tripInformation.activities.map(t => (<p key={t.activityName} className={Styles.activity}>{t.activityName}</p>))}</div>
                             </div>
                         </div>
                     </div>

@@ -8,6 +8,7 @@ import { faPenToSquare } from '@fortawesome/free-solid-svg-icons';
 import Modal from 'react-bootstrap/Modal';
 import Button from 'react-bootstrap/Button';
 import Image from 'next/image'
+import Router from 'next/router';
 function Me() {
     const [show, setShow] = useState(false);
     const initialValue = {
@@ -53,9 +54,7 @@ function Me() {
     }
     const { loading, error, data } = useQuery(ME);
 
-    if (error) return (<div><Navbar />{error.message}</div>)
-    if (loading) return (<div><Navbar />Loading...</div>)
-    if (error) return (<div><Navbar /><div className={Styles.errorMe}>{error.message}</div></div>)
+    if (error) { Router.push({ pathname: '/sites/Login' }) }
     if (loading) return (<div><Navbar />Loading...</div>)
 
     return <>{!loading && !error &&

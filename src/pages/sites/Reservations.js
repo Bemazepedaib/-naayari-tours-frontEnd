@@ -1,6 +1,6 @@
-import React, { useEffect, useState, useRef } from 'react'
+import React, { useState, useRef } from 'react'
 import { useQuery } from '@apollo/client';
-import { useRouter } from 'next/router';
+import Router, { useRouter } from 'next/router';
 
 import { ME } from '../querys/userQuerys';
 import { GET_TRIP_PRICES } from '../querys/tripQuerys';
@@ -45,8 +45,6 @@ function Reservations() {
     const funcionType = (tipo, objeto) => {
         if (tipo.current === []) { tipo.current = objeto }
         else { tipo.current.push(objeto) }
-        console.log("Push")
-        console.log(tipo)
     }
 
     const funcionPush = (nombre, telefono, tipo) => {
@@ -64,8 +62,6 @@ function Reservations() {
             case "child": child.current = child.current.slice(0, numero); break;
             case "baby": baby.current = baby.current.slice(0, numero); break;
         }
-        console.log("Slice")
-        console.log(tipo === "adult" ? adult.current : tipo === "child" ? child.current : baby.current)
     }
 
     return (

@@ -18,16 +18,15 @@ function ModalReservation({ datosCompanion, datosUsuario, datosPrecio }) {
     const [showConfirm, setShowConfirm] = useState(false);
     const handleCloseConfirm = () => setShowConfirm(false);
     const handleShowConfirm = () => setShowConfirm(true);
+    const [confirmMessage, setConfirmMessage] = useState("¿Está seguro que sus datos son correctos?");
 
     const [doReservation] = useMutation(DO_RESERVATIONS)
 
+    let id = 1;
+
     const makeReservation = async () => {
         let a = [];
-        datosCompanion.map(type => {
-            type.current.map(companion => {
-                a.push(companion)
-            })
-        })
+        datosCompanion.map(type => { type.current.map(companion => { a.push(companion) }) })
         const objetoUsuarios = {
             userEmail: datosUsuario[0].me.email,
             companion: a,
@@ -41,13 +40,11 @@ function ModalReservation({ datosCompanion, datosUsuario, datosPrecio }) {
                                     eventTrip: datosUsuario[2],
                                     users: objetoUsuarios } 
                                 })
-            console.log(res.data.updateEventUsers)
+            setConfirmMessage(res.data.updateEventUsers)
         } catch (error) {
-            console.log(error.message)
+            setConfirmMessage(error.message)
         }
     }
-
-    let id = 1;
 
     const verifyCompanion = () => {
         if (datosCompanion[0].current.length === 0 &&
@@ -164,7 +161,7 @@ function ModalReservation({ datosCompanion, datosUsuario, datosPrecio }) {
                             <Image src={image} width={70} height={70} alt="Naayari tours" />
                             <Modal.Title></Modal.Title>
                         </Modal.Header>
-                        <Modal.Body bsPrefix={Styles.confirmModalBody}>¿Está seguro que sus datos son correctos?</Modal.Body>
+                        <Modal.Body bsPrefix={Styles.confirmModalBody}>{confirmMessage}</Modal.Body>
                         <Modal.Footer bsPrefix={Styles.confirmModalFooter}>
                             <Button variant="danger" onClick={handleCloseConfirm}>
                                 Cancelar

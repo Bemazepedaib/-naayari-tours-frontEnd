@@ -1,8 +1,13 @@
 import React, { useState } from 'react'
 import Styles from '../../styles/elementStyles/PreferenceCard.module.css'
 
-function PreferenceF({cart,isOk,isNotOk}) {
-    const [isSelected, changeSelected] = useState(false);
+function PreferenceF({cart,isOk,isNotOk,selected}) {
+    const [isSelected, changeSelected] = useState(compare);
+    function compare(){
+        if(){
+            
+        }
+    }
     function isTrue() {
         isNotOk({preferenceType: cart.preferenceType})
         changeSelected(false);

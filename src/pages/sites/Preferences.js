@@ -6,8 +6,12 @@ import ModalWindow from '../elements/ModalWindow'
 
 import { useMutation } from '@apollo/client';
 import { UPDATE_USER_PREFERENCES } from '../mutations/userMutations';
+import { useRouter } from 'next/router'
 
 function Preferences() {
+
+    const router = useRouter();
+    const { query: { preferences }} = router;
 
     const { loading, error, data } = useQuery(GET_PREFERENCES)
     let id = 0
@@ -48,7 +52,7 @@ function Preferences() {
                 </div>
                 <div className={Styles.imgCards}>
                     {data.preferences.map(preference => (
-                        <PreferenceCard key={id++} cart={preference} isOk={isOk} isNotOk={isNotOk} />
+                        <PreferenceCard key={id++} cart={preference} isOk={isOk} isNotOk={isNotOk} selected={preferences} />
                     ))}
                 </div>
                 <div className={Styles.send}>

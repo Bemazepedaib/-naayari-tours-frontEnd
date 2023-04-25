@@ -22,11 +22,7 @@ function Me() {
     const [info, setInfo] = useState(initialValue);
     const handleClose = () => setShow(false);
     const goPreferences = () => {
-        let array = []
-        data.me.preferences.map(preference => (
-            array.push(preference.preferenceType)
-        ))
-        Router.push({ pathname: '/sites/Preferences',query: {preferences: array}})
+        Router.push({ pathname: '../elements/MePreferences'})
     }
     const handleShow = (pressedButton) => {
         setInfo(initialValue)

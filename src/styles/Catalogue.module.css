@@ -15,6 +15,8 @@
 }
 
 .singleDestination {
+    
+    border: solid 1px #1D212877;    
     overflow: hidden;
     border-radius: 1rem;
     box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
@@ -67,6 +69,7 @@
 }
 
 .title {
+    
     position: absolute;
     right: 0;
     color: white;
@@ -78,6 +81,7 @@
 }
 
 .catp {
+    
     color: white;
     opacity: 1;
     font-size: 13px;
@@ -95,7 +99,7 @@
     transition: .8s;
 }
 
-#destFooter {
+.destFooter {
     position: relative;
     display: inline;
     height: 50px;
@@ -286,4 +290,23 @@
 .destImage:hover .card {
     transition: .5s;
     opacity: 0;
+}
+
+.contActivities{
+    display: flex;
+    margin: 0 10px;
+    position: relative;
+    justify-content: space-evenly;
+}
+
+.activity{
+    font-size: small;
+    position: relative;
+    padding: 2px;
+    color: #1D2128;;
+    border-radius: 1rem;
+    margin: 8px;
+    margin-top: 0;
+    background: transparent;
+    border: solid 1px #1D2128;
 }

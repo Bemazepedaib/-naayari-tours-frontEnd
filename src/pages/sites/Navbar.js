@@ -34,10 +34,10 @@ function Navbar() {
     useEffect(() => {
         if (localStorage.getItem("token") !== null) {
             setLogin("token")
-            console.log(login)
+            //console.log(login)
         } else {
             setLogin("not token")
-            console.log(login)
+            //console.log(login)
         }
     }, [])
 
@@ -55,11 +55,10 @@ function Navbar() {
                     <Link className={Styles.link} href="/">Inicio</Link>
                     <Link className={Styles.link} href="/sites/AboutUs">Acerca de Nosotros</Link>
                     <Link className={Styles.link} href="/sites/FAQ">Preguntas Frecuentes</Link>
-                    <Link className={Styles.link} href="#Footer" scroll={false} >Contacto</Link>
+                    <Link className={Styles.link} href="#Footer" scroll={false} onClick={showNavbar}>Contacto</Link>
                     {login === "token" ? <Link className={Styles.link} href="/sites/Me">Mi perfil</Link> : <div />}
                 </div>
                 <div className={Styles.buttons}>
-                    {console.log(login)}
                     {login === "token" ? <Link href=""><button className={Styles.btnLogin} onClick={() => {
                         localStorage.removeItem('token');
                         window.location.reload(true)

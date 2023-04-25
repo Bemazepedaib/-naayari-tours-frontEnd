@@ -1,9 +1,50 @@
 @import url('https://fonts.googleapis.com/css2?family=Oswald:wght@300&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Genos:ital,wght@1,700&display=swap');
 
-.centerButton {
+.confirmButton {
+    font-family: 'Oswald', sans-serif;
+    background-color: #00a748;
+    border: NONE;
+    color: #ffffff;
+    padding: 7px 10px;
+    border-radius: 5px;
+    transition: 0.3s ease all;
+}
+
+.confirmButton:hover {
+    background-color: #00883b;
+}
+
+.confirmModalBody {
+    font-family: 'Oswald', sans-serif;
     display: flex;
     justify-content: center;
+    align-items: center;
+    text-align: center;
+    margin: 5px 10px;
+    font-size: 20px;
+}
+
+.confirmModalHeader {
+    font-family: 'Genos', sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 10px;
+    margin: 10px 30px;
+}
+
+.confirmModalFooter {
+    font-family: 'Oswald', sans-serif;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    margin: 20px 30px;
+}
+
+.centerButton {
+    display: flex;
+    justify-content: space-evenly;
     align-items: center;
     grid-column: span 5;
 }
@@ -64,7 +105,7 @@
     font-size: 20px;
 }
 
-.observacionesBody{
+.observacionesBody {
     font-family: 'Oswald', sans-serif;
     font-size: 20px;
     margin-bottom: 15px;

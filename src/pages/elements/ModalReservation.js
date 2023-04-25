@@ -13,15 +13,18 @@ function ModalReservation({ datosCompanion, datosUsuario, datosPrecio }) {
     const [show, setShow] = useState(false);
     const handleClose = () => setShow(false);
     const handleShow = () => setShow(true);
+    const [showConfirm, setShowConfirm] = useState(false);
+    const handleCloseConfirm = () => setShowConfirm(false);
+    const handleShowConfirm = () => setShowConfirm(true);
 
     let id = 1;
 
     const verifyCompanion = () => {
-        if (datosCompanion[0].current.length === 0 && 
-            datosCompanion[1].current.length === 0 && 
+        if (datosCompanion[0].current.length === 0 &&
+            datosCompanion[1].current.length === 0 &&
             datosCompanion[2].current.length === 0) {
-                return false;
-            }
+            return false;
+        }
         return true
     }
 
@@ -31,7 +34,7 @@ function ModalReservation({ datosCompanion, datosUsuario, datosPrecio }) {
                 Haz tu reservación
             </Button>
 
-            <Modal id={datosCompanion} show={show} onHide={handleClose} centered size="lg" backdrop="static" keyboard={false}>
+            <Modal id={datosCompanion} show={show} onHide={handleClose} size="lg" centered backdrop="static" keyboard={false}>
                 <Modal.Header bsPrefix={Styles.modalHeader} closeButton>
                     <Image src={image} width={70} height={70} alt="Naayari tours" />
                     <Modal.Title bsPrefix={Styles.modalTitle}>Confirma tus datos</Modal.Title>
@@ -81,7 +84,7 @@ function ModalReservation({ datosCompanion, datosUsuario, datosPrecio }) {
                             </tbody>
                         </Table>
                     </div> : <div></div>}
-                    {datosUsuario[3] !== "" ? 
+                    {datosUsuario[3] !== "" ?
                         <div>
                             <div className={Styles.modalTitle}>Observaciones</div>
                             <div className={Styles.observacionesBody}>{datosUsuario[3]}</div>
@@ -115,9 +118,24 @@ function ModalReservation({ datosCompanion, datosUsuario, datosPrecio }) {
                     </Table>
                 </Modal.Body>
                 <Modal.Footer bsPrefix={Styles.centerButton}>
-                    <Button bsPrefix={Styles.modalButton} onClick={handleClose}>
+                    <Button bsPrefix={Styles.modalButton} onClick={handleShowConfirm}>
                         Confirmar datos
                     </Button>
+                    <Modal id={datosUsuario} show={showConfirm} onHide={handleCloseConfirm} centered backdrop="static" keyboard={false}>
+                        <Modal.Header bsPrefix={Styles.confirmModalHeader}>
+                            <Image src={image} width={70} height={70} alt="Naayari tours" />
+                            <Modal.Title></Modal.Title>
+                        </Modal.Header>
+                        <Modal.Body bsPrefix={Styles.confirmModalBody}>¿Está seguro que sus datos son correctos?</Modal.Body>
+                        <Modal.Footer bsPrefix={Styles.confirmModalFooter}>
+                            <Button variant="danger" onClick={handleCloseConfirm}>
+                                Cancelar
+                            </Button>
+                            <Button bsPrefix={Styles.confirmButton} onClick={() => {handleClose; handleCloseConfirm}}>
+                                Confirmar
+                            </Button>
+                        </Modal.Footer>
+                    </Modal>
                 </Modal.Footer>
             </Modal>
         </>

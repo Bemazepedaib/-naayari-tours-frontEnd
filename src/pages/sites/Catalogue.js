@@ -15,6 +15,8 @@ function Catalogue({ trip }) {
     const link = "https://drive.google.com/uc?export=view&id=";
     var stars = "";
     var tok = 0;
+
+    //console.log(trip)
     function clickViajes() {
         const name = trip.tripName;
         Router.push({

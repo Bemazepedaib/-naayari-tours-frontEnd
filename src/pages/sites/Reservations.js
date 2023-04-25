@@ -1,6 +1,6 @@
 import React, { useState, useRef } from 'react'
 import { useQuery } from '@apollo/client';
-import Router, { useRouter } from 'next/router';
+import { useRouter } from 'next/router';
 
 import { ME } from '../querys/userQuerys';
 import { GET_TRIP_PRICES } from '../querys/tripQuerys';

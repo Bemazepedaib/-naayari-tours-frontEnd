@@ -9,9 +9,19 @@ import Image from 'next/image'
 
 const image = 'https://drive.google.com/uc?export=view&id=1hKQxSheX5io9bPjn99_TedN8SCTNcsoK'
 
+function checkForToken() {
+
+    const [login, setLogin] = useState()
+    useEffect(() => {
+        setLogin(localStorage.getItem("token"))
+    }, [])
+
+    return [login, setLogin]
+}
+
 function Navbar() {
 
-    let login = useRef("");
+    const [login, setLogin] = checkForToken()
 
     const navRef = useRef();
 
@@ -23,10 +33,10 @@ function Navbar() {
 
     useEffect(() => {
         if (localStorage.getItem("token") !== null) {
-            login.current = "token"
+            setLogin("token")
             console.log(login)
         } else {
-            login.current = "not token"
+            setLogin("not token")
             console.log(login)
         }
     }, [])
@@ -46,16 +56,16 @@ function Navbar() {
                     <Link className={Styles.link} href="/sites/AboutUs">Acerca de Nosotros</Link>
                     <Link className={Styles.link} href="/sites/FAQ">Preguntas Frecuentes</Link>
                     <Link className={Styles.link} href="#Footer" scroll={false} >Contacto</Link>
-                    {login.current === "token" ? <Link className={Styles.link} href="/sites/Me">Mi perfil</Link> : <div />}
+                    {login === "token" ? <Link className={Styles.link} href="/sites/Me">Mi perfil</Link> : <div />}
                 </div>
                 <div className={Styles.buttons}>
-                    {login.current === "token" ? <Link href=""><button className={Styles.btnLogin} onClick={() => {
+                    {console.log(login)}
+                    {login === "token" ? <Link href=""><button className={Styles.btnLogin} onClick={() => {
                         localStorage.removeItem('token');
                         window.location.reload(true)
                     }}>Cerrar Sesión</button></Link> :
                         <Link href="/sites/Login"><button className={Styles.btnLogin}>Iniciar Sesión</button></Link>
                     }
-
                 </div>
                 <button
                     className={`${Styles.navBtn} ${Styles.navCBtn}`}

@@ -5,7 +5,7 @@ function CataloguePrices({ trip }) {
     const disc = trip.discount.available;
     const discAmount = trip.discount.amount;
     var keyp = 0;
-    console.log(disc)
+    //console.log(disc)
     return (
         <div>
             <div className={Styles.precios}>

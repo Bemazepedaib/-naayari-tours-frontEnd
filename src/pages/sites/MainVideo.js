@@ -6,7 +6,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 const video = 'https://drive.google.com/uc?export=view&id=1wohdi1Xvr0ktmePLGrm1ELVgl8bEX--O'
 function MainVideo() {
   return (
-    <div className={Styles.MyVideoContainer}>
+    <>
       <div className={Styles.seeMore}>
         <div className={Styles.arrows}>
           <span className={Styles.icons}>↓</span>
@@ -19,7 +19,7 @@ function MainVideo() {
 
       <video className={Styles.video} src={video} autoPlay loop muted>
       </video>
-    </div>
+    </>
   )
 }
 

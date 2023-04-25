@@ -36,16 +36,17 @@ function Login() {
                     setValidLog(true);
                     Router.push({ pathname: '/sites/Reservations', query: { selectedDate, selectedTrip } }, '/sites/Reservations')
                 }
-            }
-            if (token[0] === "admin") {
-                setValidLog(true);
-                Router.push({ pathname: '/sites/Dashboard' })
-            } else if (token[1] === "") {
-                setValidLog(true);
-                Router.push({ pathname: '/sites/Preferences', query: { preferences: []}})
             } else {
-                setValidLog(true);
-                Router.push({ pathname: '/sites/Me' })
+                if (token[0] === "admin") {
+                    setValidLog(true);
+                    Router.push({ pathname: '/sites/Dashboard' })
+                } else if (token[1] === "") {
+                    setValidLog(true);
+                    Router.push({ pathname: '/sites/Preferences', query: { preferences: [] } })
+                } else {
+                    setValidLog(true);
+                    Router.push({ pathname: '/sites/Me' })
+                }
             }
             localStorage.setItem('token', token[2]);
         }

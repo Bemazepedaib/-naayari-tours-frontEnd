@@ -77,12 +77,13 @@ background-color: black;
 }
 .review{
     font-size: 22px;
-    padding-left: 20px;
-    padding-right: 40px;
+    margin: auto 40px;
 }
 .cardInformation{
+    display: flex;
+    flex-direction: column;
     justify-content: center;
-    text-align: center;
+    align-items: center;
     font-family: 'Oswald', sans-serif;
 }
 .btnClosed{
@@ -189,4 +190,18 @@ background-color: black;
         -moz-column-width: 100%;
         column-width: 100%;
     }  
+}
+@media (max-width: 600px){
+    .user{
+        font-size: 1rem;     
+    } 
+    .title {
+        font-size: 1.5rem;
+    }
+    .review{
+        font-size: 0.7rem;
+    }
+    .date{
+        font-size: 0.8rem;
+    }
 }

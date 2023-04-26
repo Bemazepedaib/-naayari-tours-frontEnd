@@ -34,8 +34,8 @@ function Gallery({ tripReviews }) {
                     <div className={Styles.cardInformation}>
                         <h2 className={Styles.user}>{reviewInfo.current.user}</h2>
                         <hr className={Styles.horizontalLine} />
-                        <p className={Styles.date}>Fecha de publicación: {reviewInfo.current.date}</p>
-                        <p className={Styles.stars}>{stars}</p>
+                        <span className={Styles.date}>Fecha de publicación: {reviewInfo.current.date}</span>
+                        <span className={Styles.stars}>{stars}</span>
                         <p className={Styles.review}>{reviewInfo.current.review}</p>
                     </div>
                     <button className={Styles.btnClosed} onClick={() => setImgSelected(false)}><FontAwesomeIcon icon={faXmark}></FontAwesomeIcon></button>

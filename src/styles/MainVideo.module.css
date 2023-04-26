@@ -32,13 +32,9 @@
     justify-content: center;
 }
 
-
-/* Down*/
 .seeMore {
-    /*overflow: hidden;*/
     position: absolute;
     display: flex;
-
     justify-content: center;
     background: linear-gradient(to top, #1d2128 80%, transparent 90%);
     opacity: .8;
@@ -85,16 +81,25 @@
 
 @media (max-width: 600px) {
 
-.ecoText {
-    font-size: 20px;
-}
+    .ecoText {
+        font-size: 20px;
+    }
 
-.tripText {
-    font-size: 15px;
-}
+    .tripText {
+        font-size: 15px;
+    }
 
-.seeMore {
-    opacity: 0;
-}
+    .video {
+        height: 100vh;
+    }
+
+    .texts {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        height: 80vh;
+        padding: 10px;
+    }
 
 }

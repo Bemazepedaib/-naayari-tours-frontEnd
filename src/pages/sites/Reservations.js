@@ -122,7 +122,6 @@ function Reservations() {
                     />
                 </div>
             </div>
-            <Footer/>
         </div>
     )
 }

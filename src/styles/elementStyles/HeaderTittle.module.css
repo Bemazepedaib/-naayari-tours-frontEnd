@@ -20,3 +20,13 @@
     font-size: 4rem;
     padding-top: 10px;
 }
+
+@media (max-width: 600px) {
+    .headerTittle {
+        font-size: 30px;
+    }
+
+    .headerContainer {
+        height: fit-content;
+    }
+}

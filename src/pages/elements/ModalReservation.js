@@ -63,7 +63,7 @@ function ModalReservation({ datosCompanion, datosUsuario, datosPrecio }) {
 
             <Modal id={datosCompanion} show={show} onHide={handleClose} size="lg" centered backdrop="static" keyboard={false}>
                 <Modal.Header bsPrefix={Styles.modalHeader} closeButton>
-                    <Image src={image} width={70} height={70} alt="Naayari tours" />
+                    <Image src={image} className={Styles.image} width={70} height={70} alt="Naayari tours" />
                     <Modal.Title bsPrefix={Styles.modalTitle}>Confirma tus datos</Modal.Title>
                 </Modal.Header>
                 <Modal.Body bsPrefix={Styles.modalBody}>
@@ -158,12 +158,12 @@ function ModalReservation({ datosCompanion, datosUsuario, datosPrecio }) {
                     </Button>
                     <Modal id={datosUsuario} show={showConfirm} onHide={handleCloseConfirm} centered backdrop="static" keyboard={false}>
                         <Modal.Header bsPrefix={Styles.confirmModalHeader}>
-                            <Image src={image} width={70} height={70} alt="Naayari tours" />
+                            <Image src={image} className={Styles.image} width={70} height={70} alt="Naayari tours" />
                             <Modal.Title></Modal.Title>
                         </Modal.Header>
                         <Modal.Body bsPrefix={Styles.confirmModalBody}>{confirmMessage}</Modal.Body>
                         <Modal.Footer bsPrefix={Styles.confirmModalFooter}>
-                            <Button variant="danger" onClick={handleCloseConfirm}>
+                            <Button bsPrefix={Styles.cancelButton} onClick={handleCloseConfirm}>
                                 Cancelar
                             </Button>
                             <Button bsPrefix={Styles.confirmButton} onClick={makeReservation}>

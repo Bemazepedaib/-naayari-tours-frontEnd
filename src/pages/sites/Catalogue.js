@@ -8,7 +8,7 @@ import CataloguePrices from "../elements/CataloguePrices"
 
 
 function Catalogue({ trip }) {
-    console.log(trip)
+    
     const photo = trip.tripInformation.photo;
     var back = photo
     const disc = trip.tripInformation.discount.available;
@@ -16,7 +16,6 @@ function Catalogue({ trip }) {
     var stars = "";
     var tok = 0;
 
-    //console.log(trip)
     function clickViajes() {
         const name = trip.tripName;
         Router.push({

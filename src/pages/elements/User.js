@@ -9,9 +9,6 @@ function User() {
     const router = useRouter()
 
     const { query:{email} } = router;
-    
-
-    console.log(email)
 
     const { loading, error, data } = useQuery(GET_USER,{variables: {email}});
     return (

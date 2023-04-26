@@ -2,121 +2,129 @@
 
 .mainContainer {
     font-family: 'Oswald', sans-serif;
-    color: #000000;
-    margin-top: 30px;
     border-color: rgb(185, 185, 185);
-    border-width: 1px;
-    border-style: solid;
+    color: #000000;
     margin: 40px;
+    border: 1px solid rgb(185, 185, 185);
     border-radius: 1rem;
 
 }
-.image {
-    margin-right: 50px;
-  }
-.modalTitle{
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-family: 'Oswald', sans-serif;
-    font-size: 30px;
+
+/*THIS DIV IS FOR THE TITLE, ACCOUNT*/
+.accountCointainer {
+    border: 1px solid rgb(185, 185, 185);
+    border-radius: 1rem;
+    margin: 30px 40px;
 }
-.modalBody{
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    font-family: 'Oswald', sans-serif;
-}
-.modalFooter{
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-family: 'Oswald', sans-serif;
-}
-.btnSave{
-    font-size: 20px;
-    width: 200px;
-}
-.titleCount {
+
+.titleAccount {
     text-align: center;
     padding-top: 10px;
+    font-weight: bold;
 }
 
 .titleChanges {
     text-align: center;
-    font-size: 20px;
-}
-
-.titlesContainer {
-    border-color: rgb(185, 185, 185);
-    border-width: 1px;
-    border-style: solid;
-    border-radius: 1rem;
-    margin-left: 20px;
-    margin-right: 20px;
-    margin-top: 30px;
-}
-
-.dataMainContainer,
-.passContainer {
-    border-color: rgb(185, 185, 185);
-    border-width: 1px;
-    border-style: solid;
-    margin: 40px;
-    border-radius: 1rem;
-}
-.hr{
-    width: 100%;
-}
-.titleData {
-    text-align: center;
-    padding-top: 10px;
-}
-.titlePass{
-    margin-top: 15px;
-    font-size: 30px;
-}
-.hr{
-    color: #000;
-    height: 1px;
-    background: #000;
-}
-.subtitleData {
-    text-align: center;
     font-size: 25px;
 }
 
-.dataContainer {
-    padding-top: 10px;
+/*PERSONAL DATA HERE.*/
+.dataMainContainer {
+    border: 1px solid rgb(185, 185, 185);
+    margin: 40px;
+    border-radius: 1rem;
+}
+
+.titleData {
+    font-weight: bold;
+    text-align: center;
+    font-size: 30px;
+    margin-top: 15px;
+}
+
+.everyDataSubContainer {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    gap: 30px;
+    height: 300px;
+
+}
+/*NAME DATA HERE.*/ /*PHONE DATA HERE.*/
+.dataParentContainer{
     display: flex;
     flex-direction: column;
+}
+.subtitleData {
+    text-align: center;
+    font-style: italic;
+    font-size: 25px;
+}
+.dataSubContainer{
+    display: flex;
+    gap: 5px;
+}
+
+.dataContainer {
+    display: flex;
     align-items: center;
     justify-content: center;
-    font-size: 20px;
-    border-radius: 1rem;
-    margin-bottom: 10px;
+    font-weight: bold;
+    border: 1px solid rgb(185, 185, 185);
+    border-radius: 0.4rem;
+    width: 210px;
+    height: 50px;
 }
-
-.data {
-    border-width: 1px;
-    border-style: solid;
-    border-radius: 10px;
-    padding: 10px;
-    border-color: rgb(0, 0, 0);
-    width: 300px;
-    text-align: center;
-    font-weight: 600;
+.data{
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
 }
-
 .btnEdit {
     background-color: transparent;
-    border-color: rgb(0, 0, 0);
-    border-width: 1px;
-    height: 52px;
-    border-radius: 10px;
+    border: 1px solid rgb(185, 185, 185);
+    height: 50px;
+    border-radius: 0.4rem;
     padding: 10px;
-    width: 100px;
+    width: 50px;
+}
+.btnEdit:hover{
+    background:  rgba(185, 185, 185,0.1);
+}
+
+/*PREFERENCE DATA HERE.*/
+.dataPreferenceContainer {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 20px;
+    margin-left: 40px;
+}
+
+.btnChange {
+    background: #181818;
+    color: white;
+    width: 220PX;
+    height: 50px;
+    border-radius: 0.4rem;
+    margin-bottom: 15px;
+}
+
+.btnChange:hover {
+    opacity: 0.9;
+}
+/*CHANGE PASSWORD DATA HERE.*/
+.passContainer {
+    border: 1px solid rgb(185, 185, 185);
+    margin: 40px;
+    border-radius: 1rem;
+}
+.input {
+    margin: 10px auto;
+    width: 50%;
+    height:50px;
+    font-size: 20px;
+    border-radius: 0.4rem;
+    border: 1px solid rgb(185, 185, 185);
 }
 
 .inputContainer {
@@ -126,34 +134,47 @@
     align-items: center;
     width: 100%;
 }
-
-.input {
-    padding-top: 10px;
-    margin-bottom: 20px;
-    width: 77%;
-    font-size: 20px;
-    border-radius: 5px;
-    border-color: rgb(0, 0, 0);
-    height: 60px;
+.titlePass {
+    font-weight: bold;
+    text-align: center;
+    font-size: 30px;
+    margin-top: 15px;
 }
 
-.btnChange {
-    background: #181818;
-    margin-bottom: 40px;
-    color: white;
-    width: 240px;
-    height: 50px;
+/*CHANGE MODAL DATA HERE.*/
+.image {
+    margin-right: 50px;
 }
-
-.btnChange:hover {
-    opacity: 0.9;
-}
-
-.btnContainer {
+.modalTitle {
     display: flex;
-    justify-content: center;
     align-items: center;
+    justify-content: center;
+    font-family: 'Oswald', sans-serif;
+    font-size: 30px;
 }
+.modalBody {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Oswald', sans-serif;
+}
+.modalFooter {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Oswald', sans-serif;
+}
+.btnSave {
+    font-size: 20px;
+    width: 200px;
+}
+
+
+
+
+
+
 
 @media only screen and (max-width: 1024px) {}
 

@@ -7,6 +7,9 @@ body {
     padding:0;
 }
 
+video {
+    object-fit: cover;
+}
 
 ::-webkit-scrollbar {
     display: none;

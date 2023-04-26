@@ -32,13 +32,9 @@
     justify-content: center;
 }
 
-
-/* Down*/
 .seeMore {
-    /*overflow: hidden;*/
     position: absolute;
     display: flex;
-
     justify-content: center;
     background: linear-gradient(to top, #1d2128 80%, transparent 90%);
     opacity: .8;
@@ -95,7 +91,6 @@
 
     .video {
         height: 100vh;
-        width: fit-content;
     }
 
     .texts {
@@ -104,6 +99,7 @@
         justify-content: center;
         align-items: center;
         height: 80vh;
+        padding: 10px;
     }
 
 }

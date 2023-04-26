@@ -16,7 +16,6 @@ export default function Home() {
       <div className={Styles.NavbarC}>
         <Navbar />
       </div>
-
       <div>
         <CatalogueCards/>
       </div>

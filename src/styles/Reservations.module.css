@@ -9,6 +9,7 @@
     background-size: cover;
     display: grid;
     grid-template-columns: repeat(5, 1fr);
+    height: 100vh;
 }
 
 .header {
@@ -114,38 +115,19 @@
     height: 50px;
 }
 
-.btn {
-    font-family: 'Oswald', sans-serif;
-    background-color: #00a748;
-    border: NONE;
-    border-radius: 5px;
-    box-sizing: border-box;
-    color: #ffffff;
-    cursor: pointer;
-    display: inline-block;
-    font-size: 25px;
-    line-height: normal;
-    padding: 4px 10px;
-    text-align: center;
-    transition: all 300ms cubic-bezier(.23, 1, 0.32, 1);
-    will-change: transform;
-    margin-bottom: 5px;
-    margin-top: 10px;
-    width: 60%;
-    height: 50px;
-}
+@media (max-width: 600px) {
+    .titulo {
+        font-size: 20px;
+    }
 
-.btn:hover {
-    color: #ffffff;
-    background-color: #00a748;
-    box-shadow: rgba(0, 0, 0, 0.25) 0 8px 15px;
-    transform: translateY(-2px);
-    border: NONE;
-}
+    .textArea {
+        font-size: 15px;
+    }
 
-.btn:active {
-    box-shadow: none;
-    transform: translateY(0);
+    .centerButton {
+        margin-top: 10px;
+        margin-bottom: 10px;
+    }
 }
 
 

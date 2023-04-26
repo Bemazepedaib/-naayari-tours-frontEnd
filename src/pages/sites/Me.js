@@ -12,7 +12,6 @@ import Image from 'next/image'
 import Router from 'next/router';
 
 function Me() {
-    const [show, setShow] = useState(false);
     const initialValue = {
         title: '',
         value: '',
@@ -21,8 +20,28 @@ function Me() {
     const image = 'https://drive.google.com/uc?export=view&id=1Gx08yGg-rGq0tUe5yVHWxbkaMfmrUOk0'
     const [info, setInfo] = useState(initialValue);
     const handleClose = () => setShow(false);
+    const [show, setShow] = useState(false);
     const goPreferences = () => {
-        Router.push({ pathname: '../elements/MePreferences'})
+        Router.push({ pathname: '../elements/MePreferences' })
+    }
+    const changeData = () => {
+        handleClose()
+        switch (info.data) {
+            case "name":
+
+                break;
+            case "telefono":
+
+                break;
+            case "birthDate":
+
+                break;
+
+        }
+    }
+    const changePassword = (e) => {
+        e.preventDefault();
+        console.log("CACA")
     }
     const handleShow = (pressedButton) => {
         setInfo(initialValue)
@@ -32,16 +51,18 @@ function Me() {
                     title: 'Cambia tu nombre',
                     value: data.me.name,
                     type: 'text',
-                    message: 'Introduce tu nuevo nombre'
+                    message: 'Introduce tu nuevo nombre',
+                    data: 'name'
                 }
                 setInfo(value1)
                 break;
-            case "cellphone":
+            case "telefono":
                 const value2 = {
                     title: 'Cambia tu télefono',
                     value: data.me.cellphone,
                     type: 'text',
-                    message: 'Introduce tu nuevo télefono'
+                    message: 'Introduce tu nuevo télefono',
+                    data: 'telefono'
                 }
                 setInfo(value2)
                 break;
@@ -50,7 +71,8 @@ function Me() {
                     title: 'Cambia tu fecha de nacimiento',
                     value: data.me.birthDate,
                     type: 'date',
-                    message: ''
+                    message: '',
+                    data: 'birthDate'
                 }
                 setInfo(value3)
                 break;
@@ -68,9 +90,9 @@ function Me() {
                 <Navbar></Navbar>
                 <div className={Styles.mainContainer}>
                     <div className={Styles.titlesContainer}>
-                        <h1 className={Styles.titleCount}>CUENTA</h1><hr />
-                        <h2 className={Styles.titleChanges}>EDITA LOS DATOS PERSONALES DE TU CUENTA Y
-                            CAMBIA LA CONTRASEÑA AQUÍ</h2>
+                        <h2 className={Styles.titleCount}>CUENTA</h2><hr />
+                        <h3 className={Styles.titleChanges}>EDITA LOS DATOS PERSONALES DE TU CUENTA Y
+                            CAMBIA LA CONTRASEÑA AQUÍ</h3>
                     </div>
                     <div className={Styles.dataMainContainer}>
                         <h2 className={Styles.titleData}>DATOS PERSONALES</h2><hr />
@@ -86,7 +108,7 @@ function Me() {
                             <p className={Styles.data}>
                                 {data.me.cellphone}
                             </p>
-                            <button onClick={() => handleShow('cellphone')} className={Styles.btnEdit}> <FontAwesomeIcon icon={faPenToSquare} /></button>
+                            <button onClick={() => handleShow('telefono')} className={Styles.btnEdit}> <FontAwesomeIcon icon={faPenToSquare} /></button>
                         </div>
                         <h3 className={Styles.subtitleData}>FECHA DE NACIMIENTO</h3>
                         <div className={Styles.dataContainer}>
@@ -100,14 +122,14 @@ function Me() {
                         </div>
                     </div>
                     <div className={Styles.passContainer}>
-                        <form className={Styles.inputContainer}>
-                            <label className={Styles.titlePass} name='password'>CONTRASEÑA</label>
+                        <form className={Styles.inputContainer} onSubmit={changePassword}>
+                            <h2 className={Styles.titlePass} name='password'>CONTRASEÑA</h2>
                             <hr className={Styles.hr} />
                             <input className={Styles.input} type="password" placeholder='Introducir contraseña actual'></input>
-                            <input className={Styles.input}  type="password" placeholder='Introducir nueva contraseña'></input>
-                            <input className={Styles.input}  type="password" placeholder='Introducir nueva contraseña de nuevo'></input>
+                            <input className={Styles.input} type="password" placeholder='Introducir nueva contraseña'></input>
+                            <input className={Styles.input} type="password" placeholder='Introducir nueva contraseña de nuevo'></input>
                             <div className={Styles.btnContainer}>
-                                <button className={Styles.btnChange}>CAMBIAR LA CONTRASEÑA</button>
+                                <button type="submit" className={Styles.btnChange}>CAMBIAR LA CONTRASEÑA</button>
                             </div>
                         </form>
                     </div>
@@ -120,13 +142,17 @@ function Me() {
                         </Modal.Title>
                     </Modal.Header>
                     <Modal.Body className={Styles.modalBody}>
-                        <input className={Styles.input} type={info.type} placeholder={info.message}
-                            defaultValue={info.value} required></input>
-                        <input className={Styles.input} type="password"
-                            placeholder='Introduce tu contraseña' required></input>
+                        <form>
+                            <input className={Styles.input} type={info.type} placeholder={info.message}
+                                defaultValue={info.value} required>
+                            </input>
+                            <input className={Styles.input} type="password"
+                                placeholder='Introduce tu contraseña' required>
+                            </input>
+                        </form>
                     </Modal.Body>
                     <Modal.Footer className={Styles.modalFooter}>
-                        <Button className={Styles.btnSave} variant="btn btn-dark" onClick={handleClose}>
+                        <Button className={Styles.btnSave} variant="btn btn-dark" onClick={() => changeData()}>
                             Guardar
                         </Button>
                     </Modal.Footer>

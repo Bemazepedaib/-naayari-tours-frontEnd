@@ -6,18 +6,16 @@ import ModalWindow from '../elements/ModalWindow'
 
 import { useMutation } from '@apollo/client';
 import { UPDATE_USER_PREFERENCES } from '../mutations/userMutations';
-import { useRouter } from 'next/router'
 
 function Preferences({preferences}) {
 
     const { loading, error, data } = useQuery(GET_PREFERENCES)
     let id = 0
     let preferenceOK = []
-    preferences.map(index => {
-        let object = { preferenceType: index } 
-        preferenceOK.push(object)  
-    })
-    console.log("ok ")
+        preferences?.map(index => {
+            let object = { preferenceType: index } 
+            preferenceOK.push(object)  
+        })
 console.log(preferenceOK)
 
 const [updatePreferences] = useMutation(UPDATE_USER_PREFERENCES)

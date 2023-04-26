@@ -5,17 +5,12 @@ function PreferenceF({ cart, isOk, isNotOk, selected }) {
     const [isSelected, changeSelected] = useState(compare);
     function compare() {
         let value = false;
-        selected.map(index => {
+        selected?.map(index => {
             if (index === cart.preferenceType) {
                 value = true;
             }
         })
         return value
-    }
-    function fillPreferences(){
-        selected.map(index => {
-            isOk({ preferenceType: index })
-        })
     }
     function isTrue() {
         isNotOk({ preferenceType: cart.preferenceType })

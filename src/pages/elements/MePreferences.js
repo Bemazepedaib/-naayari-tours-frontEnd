@@ -5,8 +5,7 @@ import Preferences from '../sites/Preferences';
 
 const MePreferences = () => {
     const { loading, error, data } = useQuery(ME)
-    console.log("ENTRA")
-    
+
     let array = []
     data.me.preferences.map(preference => (
         array.push(preference.preferenceType)
@@ -15,9 +14,7 @@ const MePreferences = () => {
         <>
             {!loading && !error && (
                 <Preferences preferences={array}>
-                    {console.log(array)}
                     </Preferences>
-                
             )}
         </>
     )

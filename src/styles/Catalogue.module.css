@@ -310,3 +310,10 @@
     background: transparent;
     border: solid 1px #1D2128;
 }
+
+@media screen and (max-width:920px) {
+    .popularSectionContainer {
+        width: 250px;
+    }
+
+}

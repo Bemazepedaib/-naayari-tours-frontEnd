@@ -18,7 +18,6 @@ function DetailActivities(props) {
                         <label className={Styles.label}>{activity.activityName}</label>
                     </div>
                 ))}
-
             </div>
         </div>
 

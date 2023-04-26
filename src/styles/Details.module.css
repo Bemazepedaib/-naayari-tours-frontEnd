@@ -77,6 +77,7 @@
 }
 
 .header {
+font-size: 24px;
     margin-top: 50px;
     margin-bottom: 30px;
 }
@@ -99,6 +100,10 @@
     transition: 1s
 }
 
+.label{
+    text-align: center;
+}
+
 .tourActivities .activities:hover .label {
     margin-top: 24px;
     font-weight: medium;
@@ -116,10 +121,40 @@
 
 }
 
-@media screen and (max-width:325px) {
-    .principal {
+@media screen and (max-width:600px) {
+    .container {
+        display: flex;
+        justify-content: center;
+        position: relative;
 
-        background-size: auto;
     }
+    .tourTitle {
+        position: relative;
+        justify-content: center;
+        align-items: center;
+        display: flex;
+        width: 100%;
+        font-size: 30px;
+        font-weight: bold;
+    }
+
+    .header{
+        display: flex;
+        position: relative;
+        align-items: center;
+        justify-content: center;
+    }
+    .activities{
+        width: 50px;
+        margin-bottom: 50px;
+    }
+
+     .list{
+        position: relative;
+        justify-content: center;
+        align-items: center;
+    }
+    
+
 
 }

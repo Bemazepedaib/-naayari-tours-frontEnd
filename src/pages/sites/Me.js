@@ -103,9 +103,9 @@ function Me() {
                         <form className={Styles.inputContainer}>
                             <label className={Styles.titlePass} name='password'>CONTRASEÑA</label>
                             <hr className={Styles.hr} />
-                            <input className={Styles.input} for='password' type="password" placeholder='Introducir contraseña actual'></input>
-                            <input className={Styles.input} for='password' type="password" placeholder='Introducir nueva contraseña'></input>
-                            <input className={Styles.input} for='password' type="password" placeholder='Introducir nueva contraseña de nuevo'></input>
+                            <input className={Styles.input} type="password" placeholder='Introducir contraseña actual'></input>
+                            <input className={Styles.input}  type="password" placeholder='Introducir nueva contraseña'></input>
+                            <input className={Styles.input}  type="password" placeholder='Introducir nueva contraseña de nuevo'></input>
                             <div className={Styles.btnContainer}>
                                 <button className={Styles.btnChange}>CAMBIAR LA CONTRASEÑA</button>
                             </div>

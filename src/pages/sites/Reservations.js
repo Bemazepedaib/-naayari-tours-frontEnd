@@ -13,7 +13,6 @@ import HeaderTittle from '../elements/HeaderTittle';
 import SelectComponent from '../elements/Select';
 import CompanionComponent from '../elements/Companion';
 import ModalReservation from '../elements/ModalReservation';
-import Footer from './Footer';
 
 function Reservations() {
 

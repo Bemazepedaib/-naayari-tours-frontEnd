@@ -35,11 +35,13 @@ function ModalReservation({ datosCompanion, datosUsuario, datosPrecio }) {
             observations: datosUsuario[3]
         }
         try {
-            const res = await doReservation({ variables: { 
-                                    eventDate: datosUsuario[1],
-                                    eventTrip: datosUsuario[2],
-                                    users: objetoUsuarios } 
-                                })
+            const res = await doReservation({
+                variables: {
+                    eventDate: datosUsuario[1],
+                    eventTrip: datosUsuario[2],
+                    users: objetoUsuarios
+                }
+            })
             setConfirmMessage(res.data.updateEventUsers)
         } catch (error) {
             setConfirmMessage(error.message)
@@ -146,7 +148,7 @@ function ModalReservation({ datosCompanion, datosUsuario, datosPrecio }) {
                                 <td>NA</td>
                                 <td>${(datosPrecio[0].price * datosPrecio[0].number +
                                     datosPrecio[1].price * datosPrecio[1].number +
-                                    datosPrecio[2].price * datosPrecio[2].number)/2}
+                                    datosPrecio[2].price * datosPrecio[2].number) / 2}
                                 </td>
                             </tr>
                         </tbody>

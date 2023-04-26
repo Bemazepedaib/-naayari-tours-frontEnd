@@ -74,6 +74,7 @@
     padding-top: 10px;
 }
 .titlePass{
+    margin-top: 15px;
     font-size: 30px;
 }
 .hr{
@@ -137,7 +138,7 @@
 }
 
 .btnChange {
-    background-color: #181818;
+    background: #181818;
     margin-bottom: 40px;
     color: white;
     width: 240px;

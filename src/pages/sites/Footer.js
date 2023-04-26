@@ -13,7 +13,9 @@ function Footer() {
         <div>
             <div className={Styles.footerDistributed} id="Footer" name="Footer">
                 <div className={Styles.titleImg}>
-                    <div className={Styles.title}><Image src={image} width={75} height={75} alt="Naayari tours" />Naayari Tours © 2023</div>
+                    <div className={Styles.title}>
+                        <Image src={image} className={Styles.img} width={70} height={70} alt="Naayari tours" />Naayari Tours © 2023
+                    </div>
                     <div className={Styles.titleRight}>#ViajarEsCultura</div>
                 </div>
                 <div className={Styles.footerLeft}>

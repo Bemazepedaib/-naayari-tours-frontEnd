@@ -4,9 +4,13 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faCalendarDays} from '@fortawesome/free-solid-svg-icons'
 import Router from 'next/router';
 
+import { useQuery } from '@apollo/client';
+import { ME } from '../querys/userQuerys';
+
 function FormTripDate({ dates, selectedTrip }) {
 
     const [selectedDate, setselectedDate] = useState(dates[0])
+    const { loading: userLoading, error: userError, data: userData } = useQuery(ME);
 
     return (
         <div>
@@ -24,7 +28,7 @@ function FormTripDate({ dates, selectedTrip }) {
                             ))}
                         </select>
                         <button className={Styles.btn} type='submit' onClick={() => {
-                            if (localStorage.getItem("token") !== null){
+                            if (!userError){
                                 Router.push({ pathname: '/sites/Reservations', query: { selectedDate, selectedTrip } }, '/sites/Reservations')
                             } else {
                                 Router.push({ pathname: '/sites/Login', query: { place: "reservations", selectedDate, selectedTrip } }, '/sites/Login')

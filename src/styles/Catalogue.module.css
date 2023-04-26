@@ -316,4 +316,26 @@
         width: 250px;
     }
 
+    .card{
+    top: -155px;
+    left: 20px;
+    }
+
+   .destImage{
+    height:220px;
+   }
+    .img {
+        height: 100%;
+        width: 100%;
+        object-fit: cover;
+    }
+    .overlayInfo{
+        justify-content: end;
+        align-items:start;
+        left: 0;
+    }
+    .destFooterContenedor{
+    height: 50px;
+    }
+
 }

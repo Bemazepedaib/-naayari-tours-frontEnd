@@ -5,11 +5,11 @@ const video = 'https://drive.google.com/uc?export=view&id=1wohdi1Xvr0ktmePLGrm1E
 function MainVideo() {
   return (
     <>
-      <div className={Styles.seeMore}>
+      {/* <div className={Styles.seeMore}>
         <div className={Styles.arrows}>
           <span className={Styles.icons}>↓</span>
         </div>
-      </div>
+      </div> */}
       <div className={Styles.texts}>
         <div className={Styles.ecoText}>ECOTURISMO RURAL, SUSTENTABLE Y DE AVENTURA</div>
         <div className={Styles.tripText}>¡VIAJAR ES CULTURA!</div>

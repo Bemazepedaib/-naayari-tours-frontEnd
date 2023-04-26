@@ -16,7 +16,7 @@ function CataloguePrices({ trip }) {
             </div>
             <div className={Styles.descuentosPrecios}>
                 {disc  ? trip.price.map(p => (
-                    p[0] ? <p className={Styles.catp} key={keyp++}>{p.priceType} ${Math.round(p.priceAmount - discAmount)}</p>
+                    p.priceType=="Adulto" ? <p className={Styles.catp} key={keyp++}>{p.priceType} ${Math.round(p.priceAmount - discAmount)}</p>
                     : <p className={Styles.catp} key={keyp++}>{p.priceType} ${p.priceAmount}</p>
                     
                 )) : trip.price.map(p => (

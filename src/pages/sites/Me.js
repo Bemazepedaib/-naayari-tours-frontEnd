@@ -27,21 +27,22 @@ function Me() {
     console.log(data)
     //UTIL STUFF
     const image = 'https://drive.google.com/uc?export=view&id=1788oTZ-Mfs-oYI8SyymPibHNa7HtQvJ3'
-    const initialValue = {
-        title: '',
-        value: '',
-        type: '',
-    }
+
 
     //STATE HOOKS
-    const [updateValue, setUpdateValue] = useState('');
     const [password, setPassWord] = useState("");
+    const [updateValue, setUpdateValue] = useState('');
     const [confirmValue, setConfirmValue] = useState("");
-    const [info, setInfo] = useState(initialValue);
+    const [info, setInfo] = useState();
     const handleClose = () => setShow(false);
     const [show, setShow] = useState(false);
 
     //FUNCTIONS
+    //ROUTE FOR GO TO PREFERENCES
+    const goPreferences = () => {
+        Router.push({ pathname: '../elements/MePreferences' })
+    }
+    //ONCHANGE FOR INPUT METHODS
     const onChange = (e) => {
         if (e.target.name === "value") {
             setUpdateValue(e.target.value)
@@ -51,9 +52,7 @@ function Me() {
             setPassWord(e.target.value)
         }
     }
-    const goPreferences = () => {
-        Router.push({ pathname: '../elements/MePreferences' })
-    }
+    //UPDATE THE NAME AND PHONE
     const changeData = async () => {
         handleClose()
         switch (info.data) {
@@ -65,6 +64,28 @@ function Me() {
                 break;
         }
     }
+    //METHOD WHEN MODAL OPENED
+    const handleShow = (pressedButton) => {
+        switch (pressedButton) {
+            case "name":
+                const value1 = {
+                    title: 'Cambia tu nombre',
+                    message: 'Introduce tu nuevo nombre',
+                    data: 'name'
+                }
+                setInfo(value1)
+                break;
+            case "telefono":
+                const value2 = {
+                    title: 'Cambia tu télefono',
+                    message: 'Introduce tu nuevo télefono',
+                    data: 'telefono'
+                }
+                setInfo(value2)
+                break;
+        }
+        setShow(true);
+    }
     const changePassword = async (e) => {
         e.preventDefault();
         console.log(updateValue)
@@ -72,34 +93,6 @@ function Me() {
         if (updateValue === confirmValue) {
             await userPass({ variables: { newPassword: updateValue, password: password } });
         }
-    }
-    const handleShow = (pressedButton) => {
-        setInfo(initialValue)
-        switch (pressedButton) {
-            case "name":
-                const value1 = {
-                    title: 'Cambia tu nombre',
-                    value: data.me.name,
-                    type: 'text',
-                    message: 'Introduce tu nuevo nombre',
-                    data: 'name'
-                }
-                setInfo(value1)
-                setUpdateValue(data.me.name + "")
-                break;
-            case "telefono":
-                const value2 = {
-                    title: 'Cambia tu télefono',
-                    value: data.me.cellphone,
-                    type: 'text',
-                    message: 'Introduce tu nuevo télefono',
-                    data: 'telefono'
-                }
-                setInfo(value2)
-                setUpdateValue(data.me.cellphone)
-                break;
-        }
-        setShow(true);
     }
     if (error) { Router.push({ pathname: '/sites/Login' }) }
     if (loading) return (<div><Navbar />Loading...</div>)
@@ -128,7 +121,7 @@ function Me() {
                         <hr />
                         {/*TOP IMAGE HERE.*/}
                         <div className={Styles.topImage}>
-                            <Image src={image} width={200} height={220} alt="Naayari tours" />
+                            <Image src={image} width={220} height={220} alt="Naayari tours" />
                         </div>
                         {/*INFO THAT NOT CHANGE HERE.*/}
                         <div className={Styles.persoInfo}>
@@ -228,7 +221,7 @@ function Me() {
                         <hr />
                         <div className={Styles.couponSubContainer}>
                             {data.me.coupons.map(coupons => (
-                                coupons.couponApplied ? <div></div>
+                                coupons.couponApplied ? null
                                     : <div className={Styles.couponsCard}>
                                         <span>Nombre: {coupons.couponType}</span>
                                         <span>Descripción: {coupons.couponDescription}</span>
@@ -265,15 +258,15 @@ function Me() {
                     <Modal.Header closeButton>
                         <Modal.Title className={Styles.modalTitle}>
                             <Image className={Styles.image} src={image} width={100} height={100} alt="Naayari tours" />
-                            {info.title}
+                            {"caca"}
                         </Modal.Title>
                     </Modal.Header>
                     <Modal.Body className={Styles.modalBody}>
-                        <input className={Styles.input} type={info.type} placeholder={info.message}
+                        <input className={Styles.input} type={'text'} placeholder={"caca"}
                             value={updateValue} name='value'
                             onChange={onChange} required>
                         </input>
-                        <input className={Styles.input} type="password"
+                        <input className={Styles.input} type={'text'}
                             placeholder='Introduce tu contraseña' value={password}
                             onChange={onChange} required>
                         </input>

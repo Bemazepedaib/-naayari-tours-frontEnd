@@ -19,6 +19,7 @@
     gap: 0px;
     border-top: solid #fff;
     box-shadow: 5px 10px 50px #000;
+    z-index: 10000000000;
 }
 
 .icon {

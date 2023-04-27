@@ -1,45 +1,47 @@
-.mainContainer {
-    display: grid;
-    grid-template-columns: minmax(300px, 60%) 40%;
-    grid-template-rows: 1fr 1fr;
-    padding: 40px;
+@import url('https://fonts.googleapis.com/css2?family=Oswald:wght@300&display=swap');
 
+
+.mainContainer {
+    padding: 40px;
+    font-family: 'Oswald', sans-serif;
 }
 
+.section {
+    margin: 10px 20px;  
+}
+.sectionUser{
+    margin: 10px 20px;
+}
+
+.section:hover .infoSubtitle{
+    border-top: 1px solid #1d2128aa ;
+}
 .info {
-    padding: 5px 15px;
-    border: solid 1px#1d2128;
-    color: #fff;
-    border-radius: 1rem 1rem;
-    margin: auto;
-    margin-bottom: 0;
+    border: 1px solid #1d2128;
+    border-radius: 1rem;
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
 }
 
-.infoP {
-    border-bottom: solid #fff;
+.infoSubtitle {
+
     text-align: center;
-    width: 75%;
-    border-left: none;
-    border: solid 1px #1d2128;
-    border-radius: 5px 0 0 5px;
+    padding: 10px 40px;
+    position: relative;
 }
 
-.infoSubtitle {
-    color: #1d2128;
-    height: 30px;
-    width: 25%;
-    min-width: 150px;
+.infoP {
+    border-top: 1px solid transparent ;
+    transition: border-top .5s linear;
 }
 
 .update {
+    text-align: center;
+    padding: 10px 40px;
     position: relative;
-    background: #1d2128;
-    border: solid 1px #1d2128;
-    border-radius: 0 5px 5px 0;
-    border-left: none;
+    border: 1px solid #1d2128;
+    border-radius: 1rem;
 }
 
 .tags {
@@ -48,15 +50,14 @@
 }
 
 .tagsInfo {
-    color: #1d2128;
     text-align: center;
     margin: 10px auto;
     background: #fff;
+    border-radius: 1rem;
+    font-size: larger;
 }
 
 .update:hover {
-    color: #fff;
-    cursor: pointer;
 }
 
 .update:hover .icon {
@@ -67,14 +68,11 @@
 .icon {
     display: none;
     color: #fff;
-    position: absolute;
+    position: relative;
     right: 0;
     top: 4px;
 }
 
-.update:active {
-    background: #83bb49;
-}
 
 .password {
     text-align: center;
@@ -97,6 +95,15 @@
 
 .pref{
     color: #fff;
+    display: flex;
+    flex-wrap: wrap;
+}
+.preference{
+    border: 1px solid #fff;
+    border-radius: 1rem;
+    padding: 2px 10px;
+    font-size:medium;
+    margin: 8px;
 }
 
 @media screen and (max-width:650px) {

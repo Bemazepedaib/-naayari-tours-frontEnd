@@ -43,11 +43,11 @@ function SearchBar({dat}) {
                 <div className={Styles.mainContainer}>
                     <div className={Styles.inputContainer}>  
                         <HeaderTittle tittle={"Buscar Usuario"}></HeaderTittle>
-                        <input className={Styles.inputText} onChange={handleChange}></input>
+                        <input className={Styles.inputText} onChange={handleChange} placeholder='Ingrese datos del usuario a buscar'></input>
                     </div>
                     <div className={Styles.tableContainer}>
-                        <Table responsive size='sm' striped bordered hover variant="dark" className={Styles.table}>
-                            <thead>
+                        <Table responsive size='sm' striped bordered hover  className={Styles.table}>
+                            <thead className={Styles.tHead}>
                                 <tr>
                                     <th>Nombre</th>
                                     <th>Telefono</th>

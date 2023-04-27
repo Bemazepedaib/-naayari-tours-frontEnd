@@ -2,12 +2,69 @@
 
 .mainContainer {
     font-family: 'Oswald', sans-serif;
-    border-color: rgb(185, 185, 185);
     color: #000000;
     margin: 40px;
     border: 1px solid rgb(185, 185, 185);
     border-radius: 1rem;
 
+}
+
+/*USER LEVEL.*/
+.circleLvl {
+    position: absolute;
+    background: #181818;
+    ;
+    border-radius: 200px;
+    width: 100px;
+    height: 100px;
+    top: 110px;
+    right: 50px;
+    box-shadow: -5px 0px 10px #d3d4d4;
+    color: white;
+    font-weight: bold;
+}
+
+.numberLvl {
+    position: absolute;
+    top: -5px;
+    left: 37px;
+    font-size: 50px;
+}
+
+.numberLvlDesc {
+    position: absolute;
+    top: 60px;
+    left: 35px;
+}
+
+/*INFO THAT NOT CHANGE HERE.*/
+.persoInfo {
+    display: flex;
+    gap: 30px;
+    justify-content: center;
+}
+
+.persoInfoContainer {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.persoInfoSub {
+    font-style: italic;
+    font-size: 25px;
+    text-align: center;
+}
+
+.persoInfoData {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    border: 1px solid rgb(185, 185, 185);
+    border-radius: 0.4rem;
+    width: 210px;
+    height: 50px;
 }
 
 /*THIS DIV IS FOR THE TITLE, ACCOUNT*/
@@ -44,23 +101,33 @@
 
 .everyDataSubContainer {
     display: flex;
-    justify-content: space-around;
+    justify-content: center;
     align-items: center;
-    gap: 30px;
+    gap: 180px;
     height: 300px;
-
 }
-/*NAME DATA HERE.*/ /*PHONE DATA HERE.*/
-.dataParentContainer{
+
+/*TOP IMAGE HERE.*/
+.topImage {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 40px;
+}
+
+/*NAME DATA HERE.*/
+/*PHONE DATA HERE.*/
+.dataParentContainer {
     display: flex;
     flex-direction: column;
 }
+
 .subtitleData {
     text-align: center;
     font-style: italic;
     font-size: 25px;
 }
-.dataSubContainer{
+
+.dataSubContainer {
     display: flex;
     gap: 5px;
 }
@@ -75,11 +142,13 @@
     width: 210px;
     height: 50px;
 }
-.data{
+
+.data {
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;
 }
+
 .btnEdit {
     background-color: transparent;
     border: 1px solid rgb(185, 185, 185);
@@ -88,16 +157,34 @@
     padding: 10px;
     width: 50px;
 }
-.btnEdit:hover{
-    background:  rgba(185, 185, 185,0.1);
+
+.btnEdit:hover {
+    background: rgba(185, 185, 185, 0.1);
 }
 
 /*PREFERENCE DATA HERE.*/
 .dataPreferenceContainer {
     display: flex;
+    align-items: center;
+    justify-content: center;
     flex-direction: column;
     margin-bottom: 20px;
-    margin-left: 40px;
+    gap: 10px;
+}
+
+.dataPreferenceSubContainer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    width: minmax(min-content,80%);
+    padding: 10px 20px;
+    margin: 0 10%;
+    gap: 20px;
+    font-size: 20px;
+    border: 1px solid rgb(185, 185, 185);
+    height: min-content;
+    border-radius: 0.4rem;
 }
 
 .btnChange {
@@ -112,16 +199,51 @@
 .btnChange:hover {
     opacity: 0.9;
 }
+
+/*CUOPONS.*/
+.couponsContainer {
+    border: 1px solid rgb(185, 185, 185);
+    margin: 40px;
+    border-radius: 1rem;
+    height: max-content;
+}
+
+.titleCoupons {
+    font-weight: bold;
+    text-align: center;
+    font-size: 30px;
+    margin-top: 15px;
+}
+
+.couponSubContainer {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-bottom: 40px;
+}
+
+.couponsCard {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+    border: 1px solid rgb(185, 185, 185);
+    width: 250px;
+    height: 100px;
+    border-radius: 0.4rem;
+}
 /*CHANGE PASSWORD DATA HERE.*/
 .passContainer {
     border: 1px solid rgb(185, 185, 185);
     margin: 40px;
     border-radius: 1rem;
 }
+
 .input {
     margin: 10px auto;
-    width: 50%;
-    height:50px;
+    width: 70%;
+    height: 50px;
     font-size: 20px;
     border-radius: 0.4rem;
     border: 1px solid rgb(185, 185, 185);
@@ -134,6 +256,7 @@
     align-items: center;
     width: 100%;
 }
+
 .titlePass {
     font-weight: bold;
     text-align: center;
@@ -144,7 +267,9 @@
 /*CHANGE MODAL DATA HERE.*/
 .image {
     margin-right: 50px;
+    align-self: center;
 }
+
 .modalTitle {
     display: flex;
     align-items: center;
@@ -152,6 +277,7 @@
     font-family: 'Oswald', sans-serif;
     font-size: 30px;
 }
+
 .modalBody {
     display: flex;
     flex-direction: column;
@@ -159,21 +285,18 @@
     justify-content: center;
     font-family: 'Oswald', sans-serif;
 }
+
 .modalFooter {
     display: flex;
     align-items: center;
     justify-content: center;
     font-family: 'Oswald', sans-serif;
 }
+
 .btnSave {
     font-size: 20px;
     width: 200px;
 }
-
-
-
-
-
 
 
 @media only screen and (max-width: 1024px) {}

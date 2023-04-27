@@ -13,7 +13,7 @@ export default function Home() {
       <div className={Styles.VideoC}>
         <MainVideo />
       </div>
-      <div className={Styles.NavbarC}>
+      <div className={Styles.NavbarC} id="Navbar" name="Navbar">
         <Navbar />
       </div>
       <div>

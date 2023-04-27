@@ -51,17 +51,9 @@ function UpdateUser({ user }) {
         <p className={`${Styles.infoP} ${Styles.update}`}>{user.user.userLevel}
           <ModalAdmin type="userLevel" val={user.user.userLevel} /></p>
         </section>
-        <div className={Styles.password}>
-          <InputComponent
-            estado={pass}
-            cambiarEstado={setPass}
-            label="Contraseña"
-            placeholder="Contraseña"
-            name="pass"
-            errorMsg="La contraseña debe ser segura"
-            regExp={expresiones.password}
-            auto="on"
-          />
+        <div className={`  ${Styles.password}`}>
+        <p className={` ${Styles.infoSubtitle}`}> Contraseña:  
+        <ModalAdmin type="userLevel" val={user.user.userLevel} />  </p>
         </div>
       </div>
       <div className={Styles.tags}>

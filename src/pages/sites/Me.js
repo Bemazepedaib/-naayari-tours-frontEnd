@@ -26,7 +26,7 @@ function Me() {
     const { loading, error, data } = useQuery(ME);
     console.log(data)
     //UTIL STUFF
-    const image = 'https://drive.google.com/uc?export=view&id=1Gx08yGg-rGq0tUe5yVHWxbkaMfmrUOk0'
+    const image = 'https://drive.google.com/uc?export=view&id=1788oTZ-Mfs-oYI8SyymPibHNa7HtQvJ3'
     const initialValue = {
         title: '',
         value: '',
@@ -101,15 +101,20 @@ function Me() {
         }
         setShow(true);
     }
-
     if (error) { Router.push({ pathname: '/sites/Login' }) }
     if (loading) return (<div><Navbar />Loading...</div>)
 
     return <>{!loading && !error &&
         (
             <div>
+                {console.log(data.me)}
                 <Navbar></Navbar>
                 <div className={Styles.mainContainer}>
+                    {/*USER LEVEL.*/}
+                    <div className={Styles.circleLvl}>
+                        <span className={Styles.numberLvl}>{data.me.userLevel}</span>
+                        <span className={Styles.numberLvlDesc}>NIVEL</span>
+                    </div>
                     {/*THIS DIV IS FOR THE TITLE, ACCOUNT*/}
                     <div className={Styles.accountCointainer}>
                         <h1 className={Styles.titleAccount}>DETALLES DE CUENTA</h1>
@@ -121,6 +126,53 @@ function Me() {
                     <div className={Styles.dataMainContainer}>
                         <h2 className={Styles.titleData}>DATOS PERSONALES</h2>
                         <hr />
+                        {/*TOP IMAGE HERE.*/}
+                        <div className={Styles.topImage}>
+                            <Image src={image} width={200} height={220} alt="Naayari tours" />
+                        </div>
+                        {/*INFO THAT NOT CHANGE HERE.*/}
+                        <div className={Styles.persoInfo}>
+                            <div className={Styles.persoInfoContainer}>
+                                <div>
+                                    <h3 className={Styles.persoInfoSub}>SEXO</h3>
+                                </div>
+                                <div>
+                                    <div className={Styles.persoInfoData}>
+                                        <span>{(data.me.sex === "male" ? "Hombre" : data.me.sex === "female" ? "Mujer" : "Otro")}</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div className={Styles.persoInfoContainer}>
+                                <div>
+                                    <h3 className={Styles.persoInfoSub}>EMAIL</h3>
+                                </div>
+                                <div>
+                                    <div className={Styles.persoInfoData}>
+                                        <span className={Styles.data}>{data.me.email}</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div className={Styles.persoInfoContainer}>
+                                <div>
+                                    <h3 className={Styles.persoInfoSub}>FECHA DE NACIMIENTO</h3>
+                                </div>
+                                <div>
+                                    <div className={Styles.persoInfoData}>
+                                        <span className={Styles.data}>{data.me.birthDate}</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div className={Styles.persoInfoContainer}>
+                                <div>
+                                    <h3 className={Styles.persoInfoSub}>¿MEMBRESIA ACTIVA?</h3>
+                                </div>
+                                <div>
+                                    <div className={Styles.persoInfoData}>
+                                        <span>{data.me.membership ? 'Activa' : 'Inactiva'}</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                         <div className={Styles.everyDataSubContainer}>
                             {/*NAME DATA HERE.*/}
                             <div className={Styles.dataParentContainer}>
@@ -139,11 +191,6 @@ function Me() {
                                         </button>
                                     </div>
                                 </div>
-                            </div>
-                            {/*PREFERENCE DATA HERE.*/}
-                            <div className={Styles.dataPreferenceContainer}>
-                                <Image className={Styles.image} src={image} width={220} height={240} alt="Naayari tours" />
-                                <button className={Styles.btnChange} onClick={() => goPreferences()}>CAMBIAR LAS PREFERENCIAS</button>
                             </div>
                             {/*PHONE DATA HERE.*/}
                             <div className={Styles.dataParentContainer}>
@@ -164,6 +211,33 @@ function Me() {
                                 </div>
                             </div>
                         </div>
+                        {/*PREFERENCES DATA HERE.*/}
+                        <div className={Styles.dataPreferenceContainer}>
+                            <h3 className={Styles.subtitleData}>PREFERENCIAS</h3>
+                            <div className={Styles.dataPreferenceSubContainer}>
+                                {data.me.preferences.map(preferences => (
+                                    <span>&bull; {preferences.preferenceType}</span>
+                                ))}
+                            </div>
+                            <button className={Styles.btnChange} onClick={() => goPreferences()}>CAMBIAR LAS PREFERENCIAS</button>
+                        </div>
+                    </div>
+                    {/*CUOPONS.*/}
+                    <div className={Styles.couponsContainer}>
+                        <h2 className={Styles.titleCoupons}>CUPONES</h2>
+                        <hr />
+                        <div className={Styles.couponSubContainer}>
+                            {data.me.coupons.map(coupons => (
+                                coupons.couponApplied ? <div></div>
+                                    : <div className={Styles.couponsCard}>
+                                        <span>Nombre: {coupons.couponType}</span>
+                                        <span>Descripción: {coupons.couponDescription}</span>
+                                        <span>Fecha: {coupons.couponDate}</span>
+                                        <span>Descuento: ${coupons.couponAmount}</span>
+                                        <span>{coupons.couponApplied}</span>
+                                    </div>
+                            ))}
+                        </div>
                     </div>
                     {/*CHANGE PASSWORD DATA HERE.*/}
                     <div className={Styles.passContainer}>
@@ -182,7 +256,7 @@ function Me() {
                                 type="password" placeholder='Introducir nueva contraseña de nuevo' name='confirmValue'>
 
                             </input>
-                                <button type="submit" className={Styles.btnChange}>CAMBIAR LA CONTRASEÑA</button>
+                            <button type="submit" className={Styles.btnChange}>CAMBIAR LA CONTRASEÑA</button>
                         </form>
                     </div>
                 </div>
@@ -210,7 +284,7 @@ function Me() {
                         </Button>
                     </Modal.Footer>
                 </Modal>
-            </div>
+            </div >
         )
     }</>;
 }

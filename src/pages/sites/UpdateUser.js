@@ -22,23 +22,35 @@ function UpdateUser({ user }) {
   return (
     <div className={Styles.mainContainer}>
       <div className={Styles.info}>
-        <p className={`${Styles.infoP} ${Styles.infoSubtitle}`}> Nombre de usuario:   </p>
+        <section  className={Styles.section}>
+        <p className={` ${Styles.infoSubtitle}`}> Nombre de usuario:   </p>
         <p className={`${Styles.infoP} ${Styles.update}`} >{user.user.name}
           <ModalAdmin type="name" val={user.user.name} /></p>
-        <p className={`${Styles.infoP} ${Styles.infoSubtitle}`}> Telefono:            </p>
+        </section>
+        <section className={Styles.section}>
+        <p className={` ${Styles.infoSubtitle}`}> Telefono:            </p>
         <p className={`${Styles.infoP} ${Styles.update}`}>{user.user.cellphone}
           <ModalAdmin type="cellphone" val={user.user.cellphone} /></p>
-        <p className={`${Styles.infoP} ${Styles.infoSubtitle}`}> Correo:              </p>
+        </section>
+        <section className={Styles.section}>
+        <p className={` ${Styles.infoSubtitle}`}> Correo:              </p>
         <p className={`${Styles.infoP} ${Styles.update}`}>{user.user.email}
           <ModalAdmin type="email" val={user.user.email} /></p>
-        <p className={`${Styles.infoP} ${Styles.infoSubtitle}`}> Tipo de usuario:     </p>
-        <p className={`${Styles.infoP} ${Styles.update}`}>{user.user.userType}</p>
-        <p className={`${Styles.infoP} ${Styles.infoSubtitle}`}> Fecha de nacimiento: </p>
+        </section>
+        <section className={Styles.sectionUser}>
+        <p className={`${Styles.infoSubtitle}`}> Tipo de usuario:     </p>
+        <p className={`${Styles.update}`}>{user.user.userType}</p>
+        </section>
+        <section className={Styles.section}>
+        <p className={` ${Styles.infoSubtitle}`}> Fecha de nacimiento: </p>
         <p className={`${Styles.infoP} ${Styles.update}`}>{user.user.birthDate}
           <ModalAdmin type="birthDate" val={user.user.birthDate} /></p>
-        <p className={`${Styles.infoP} ${Styles.infoSubtitle}`}> Nivel de usuario:    </p>
+        </section>
+        <section className={Styles.section}>
+        <p className={` ${Styles.infoSubtitle}`}> Nivel de usuario:    </p>
         <p className={`${Styles.infoP} ${Styles.update}`}>{user.user.userLevel}
           <ModalAdmin type="userLevel" val={user.user.userLevel} /></p>
+        </section>
         <div className={Styles.password}>
           <InputComponent
             estado={pass}
@@ -56,7 +68,7 @@ function UpdateUser({ user }) {
         <p className={`${Styles.tagsInfo} ${Styles.infoSubtitle}`}> Preferencias </p>
         <div className={Styles.pref}>
         {user.user.preferences.map(pr => (
-          <p key={k++}>{pr.preferenceType}</p>
+          <p key={k++} className={Styles.preference}>{pr.preferenceType}</p>
           ))}
         </div>
       </div>

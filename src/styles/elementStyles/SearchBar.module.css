@@ -33,4 +33,11 @@
 }
 .table{
     height: 5px;
+    border:1px solid #1D2128;
+    
+}
+.tHead{
+    background-color: #1D2128;
+    color: #fff;
+    border: #fff;
 }

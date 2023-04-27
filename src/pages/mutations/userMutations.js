@@ -20,10 +20,28 @@ const UPDATE_USER_PREFERENCES = gql`
     }
 `;
 
+const UPDATE_USER_NAME = gql`
+    mutation updateUserName($newName: String!, $password: String){
+        updateUserName(newName: $newName, password: $password)
+    }
+`;
+
+const UPDATE_USER_CELL = gql`
+    mutation updateUserCell($newCell: String!, $password: String){
+        updateUserCell(newCell: $newCell, password: $password)
+    }
+`;
+
+const UPDATE_USER_PASSWORD = gql`
+    mutation updateUserPassword($newPassword: String!, $password: String){
+        updateUserPassword(newPassword: $newPassword, password: $password)
+    }
+`;
+
 const DELETE_USER = gql`
     mutation deleteUser($email: String!) {
         deleteUser(email: $email)
     }
 `;
 
-export { LOGIN, ADD_USER, DELETE_USER, UPDATE_USER_PREFERENCES }
+export { LOGIN, ADD_USER, DELETE_USER, UPDATE_USER_PREFERENCES, UPDATE_USER_NAME, UPDATE_USER_CELL, UPDATE_USER_PASSWORD}

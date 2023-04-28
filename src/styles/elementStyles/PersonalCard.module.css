@@ -62,3 +62,24 @@
     -webkit-transform: scale(1.1);
     transform: scale(1.1);
 }
+@media (max-width: 600px) {
+    .orgRoleTittle {
+        font-size: 20px;
+    }
+    .orgRoleInfo {
+        font-size: 15px;
+
+    }
+    .orgImage {
+        width: 200px;
+        height: 300px;
+    }
+    .personalImage {
+        width: 200px;
+        height: 300px;
+    }
+    .orgInfo {
+        width: 200px;
+        height: min-content;
+    }
+}

@@ -1,6 +1,5 @@
 //IMPORTS
 import React, { useState } from 'react';
-import Image from 'next/image'
 import Router from 'next/router';
 
 //QUERYS AND MUTATIONS
@@ -19,14 +18,14 @@ function Me() {
     //MUTATIONS
     const [userPass] = useMutation(UPDATE_USER_PASSWORD);
     const { loading, error, data } = useQuery(ME);
-    //UTIL STUFF
-    const image = 'https://drive.google.com/uc?export=view&id=1788oTZ-Mfs-oYI8SyymPibHNa7HtQvJ3'
 
 
     //STATE HOOKS
     const [password, setPassWord] = useState("");
     const [updateValue, setUpdateValue] = useState("");
     const [confirmValue, setConfirmValue] = useState("");
+    const [myMessage, setmyMessage] = useState('');
+    const [myErrorStyle, setmyErrorStyle] = useState();
 
     const [newName, setNewName] = useState("");
     const [newCell, setNewCell] = useState("")
@@ -37,14 +36,46 @@ function Me() {
         Router.push({ pathname: '../elements/MePreferences' })
     }
     //FOR UPDATE PASSWORD
-    const onChange = () => {
-
+    const onChange = (e) => {
+        if (e.target.name === "password") {
+            setPassWord(e.target.value);
+        } else if (e.target.name === "updateValue") {
+            setUpdateValue(e.target.value);
+        } else {
+            setConfirmValue(e.target.value);
+        }
     }
     //UPDATE PASSWORD
     const changePassword = async (e) => {
         e.preventDefault();
-        if (updateValue === confirmValue) {
-            await userPass({ variables: { newPassword: updateValue, password: password } });
+
+        if (updateValue === "" || confirmValue === "" || password === "") {
+            setmyMessage("Porfavor llene todos los campos");
+            setmyErrorStyle(Styles.errorMessage);
+        } else if (updateValue === confirmValue) {
+            if (updateValue < 6) {
+                setmyMessage("Porfavor Elija una contraseña de almenos 6 digitos");
+                setmyErrorStyle(Styles.errorMessage);
+                setUpdateValue("");
+                setConfirmValue("");
+            } else {
+                try {
+                    setmyMessage(await userPass({ variables: { newPassword: updateValue, password: password } }));
+                    setPassWord("")
+                    setUpdateValue("");
+                    setConfirmValue("");
+                    setmyMessage("Contraseña Actualizada");
+                    setmyErrorStyle(Styles.sucessMessage);
+                } catch (error) {
+                    setmyMessage(error.message)
+                    setmyErrorStyle(Styles.errorMessage);
+                }
+            }
+        } else {
+            setmyMessage("Porfavor confirma la contraseña de manera correcta");
+            setUpdateValue("");
+            setConfirmValue("")
+            setmyErrorStyle(Styles.errorMessage);
         }
     }
     if (error) { Router.push({ pathname: '/sites/Login' }) }
@@ -71,10 +102,7 @@ function Me() {
                     <div className={Styles.dataMainContainer}>
                         <h2 className={Styles.titleData}>DATOS PERSONALES</h2>
                         <hr />
-                        {/*TOP IMAGE HERE.*/}
-                        <div className={Styles.topImage}>
-                            <Image src={image} width={220} height={220} alt="Naayari tours" />
-                        </div>
+
                         {/*INFO THAT NOT CHANGE HERE.*/}
                         <div className={Styles.persoInfo}>
                             <div className={Styles.persoInfoContainer}>
@@ -184,19 +212,20 @@ function Me() {
                         <hr />
                         <form className={Styles.inputContainer} onSubmit={changePassword}>
                             <input className={Styles.input} value={password} onChange={onChange}
-                                type="password" placeholder='Introducir contraseña actual'>
+                                type="password" placeholder='Introducir contraseña actual' name='password'>
 
                             </input>
                             <input className={Styles.input} value={updateValue} onChange={onChange}
-                                type="password" placeholder='Introducir nueva contraseña' name='value'>
+                                type="password" placeholder='Introducir nueva contraseña' name='updateValue'>
 
                             </input>
                             <input className={Styles.input} value={confirmValue} onChange={onChange}
-                                type="password" placeholder='Introducir nueva contraseña de nuevo' name='confirmValue'>
-
+                                type="password" placeholder='Introducir nueva contraseña de nuevo'
+                                name='confirmValue'>
                             </input>
                             <button type="submit" className={Styles.btnChange}>CAMBIAR LA CONTRASEÑA</button>
                         </form>
+                        <div className={myErrorStyle}>{myMessage}</div>
                     </div>
                 </div>
                 <Footer />

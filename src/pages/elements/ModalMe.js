@@ -75,7 +75,7 @@ function ModalMe({ title, message, setState }) {
                     </input>
                 </Modal.Body>
                 <Modal.Footer className={Styles.modalFooter}>
-                    <div className={Styles.errorMessage}>{myError}</div>
+                    <div className={myError==="Contraseña incorrecta" ? Styles.errorMessage : Styles.sucessMessage }>{myError}</div>
                     <Button className={Styles.btnSave} variant="btn btn-dark" onClick={changeData}>
                         Guardar
                     </Button>

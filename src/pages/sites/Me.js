@@ -1,27 +1,22 @@
 //IMPORTS
 import React, { useState } from 'react';
-import Modal from 'react-bootstrap/Modal';
-import Button from 'react-bootstrap/Button';
 import Image from 'next/image'
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faPenToSquare } from '@fortawesome/free-solid-svg-icons';
 import Router from 'next/router';
 
 //QUERYS AND MUTATIONS
 import { useQuery, useMutation } from '@apollo/client';
 import { ME } from '../querys/userQuerys';
-import { UPDATE_USER_NAME, UPDATE_USER_CELL, UPDATE_USER_PASSWORD } from '../mutations/userMutations';
+import { UPDATE_USER_PASSWORD } from '../mutations/userMutations';
 
 //COMPONENTS
 import Navbar from './Navbar';
 import Footer from './Footer';
+import ModalMe from '../elements/ModalMe';
 //CSS
 import Styles from '../../styles/Me.module.css'
 
 function Me() {
     //MUTATIONS
-    const [userName] = useMutation(UPDATE_USER_NAME);
-    const [userCell] = useMutation(UPDATE_USER_CELL);
     const [userPass] = useMutation(UPDATE_USER_PASSWORD);
     const { loading, error, data } = useQuery(ME);
     console.log(data)
@@ -35,57 +30,17 @@ function Me() {
     const [confirmValue, setConfirmValue] = useState("");
     const [info, setInfo] = useState();
     const handleClose = () => setShow(false);
-    const [show, setShow] = useState(false);
 
     //FUNCTIONS
     //ROUTE FOR GO TO PREFERENCES
     const goPreferences = () => {
         Router.push({ pathname: '../elements/MePreferences' })
     }
-    //ONCHANGE FOR INPUT METHODS
-    const onChange = (e) => {
-        if (e.target.name === "value") {
-            setUpdateValue(e.target.value)
-        } else if (e.target.name === "confirmValue") {
-            setConfirmValue(e.target.value)
-        } else {
-            setPassWord(e.target.value)
-        }
+    //FOR UPDATE PASSWORD
+    const onChange = () => {
+
     }
-    //UPDATE THE NAME AND PHONE
-    const changeData = async () => {
-        handleClose()
-        switch (info.data) {
-            case "name":
-                await userName({ variables: { newName: updateValue, password: password } })
-                break;
-            case "telefono":
-                await userCell({ variables: { newCell: updateValue, password: password } })
-                break;
-        }
-    }
-    //METHOD WHEN MODAL OPENED
-    const handleShow = (pressedButton) => {
-        switch (pressedButton) {
-            case "name":
-                const value1 = {
-                    title: 'Cambia tu nombre',
-                    message: 'Introduce tu nuevo nombre',
-                    data: 'name'
-                }
-                setInfo(value1)
-                break;
-            case "telefono":
-                const value2 = {
-                    title: 'Cambia tu télefono',
-                    message: 'Introduce tu nuevo télefono',
-                    data: 'telefono'
-                }
-                setInfo(value2)
-                break;
-        }
-        setShow(true);
-    }
+    //UPDATE PASSWORD
     const changePassword = async (e) => {
         e.preventDefault();
         console.log(updateValue)
@@ -178,11 +133,8 @@ function Me() {
                                             <span className={Styles.data}>{data.me.name}</span>
                                         </div>
                                     </div>
-                                    <div>
-                                        <button onClick={() => handleShow('name')} className={Styles.btnEdit}>
-                                            <FontAwesomeIcon icon={faPenToSquare} />
-                                        </button>
-                                    </div>
+                                    <ModalMe className={Styles.btnEdit} title={'Cambia tu nombre'} 
+                                    message={'Introduce tu nuevo nombre'}></ModalMe>
                                 </div>
                             </div>
                             {/*PHONE DATA HERE.*/}
@@ -196,11 +148,10 @@ function Me() {
                                             <span className={Styles.data}>{data.me.cellphone}</span>
                                         </div>
                                     </div>
-                                    <div>
-                                        <button onClick={() => handleShow('telefono')} className={Styles.btnEdit}>
-                                            <FontAwesomeIcon icon={faPenToSquare} />
-                                        </button>
-                                    </div>
+                                    <ModalMe className={Styles.btnEdit} title={'Cambia tu Teléfono'} 
+                                    message={'Introduce tu nuevo número de teléfono'}>
+  
+                                    </ModalMe>
                                 </div>
                             </div>
                         </div>
@@ -209,7 +160,7 @@ function Me() {
                             <h3 className={Styles.subtitleData}>PREFERENCIAS</h3>
                             <div className={Styles.dataPreferenceSubContainer}>
                                 {data.me.preferences.map(preferences => (
-                                    <span>&bull; {preferences.preferenceType}</span>
+                                    <span key={preferences.preferenceType}>&bull; {preferences.preferenceType}</span>
                                 ))}
                             </div>
                             <button className={Styles.btnChange} onClick={() => goPreferences()}>CAMBIAR LAS PREFERENCIAS</button>
@@ -222,7 +173,7 @@ function Me() {
                         <div className={Styles.couponSubContainer}>
                             {data.me.coupons.map(coupons => (
                                 coupons.couponApplied ? null
-                                    : <div className={Styles.couponsCard}>
+                                    : <div key={coupons.couponType+coupons.couponDate} className={Styles.couponsCard}>
                                         <span>Nombre: {coupons.couponType}</span>
                                         <span>Descripción: {coupons.couponDescription}</span>
                                         <span>Fecha: {coupons.couponDate}</span>
@@ -254,29 +205,6 @@ function Me() {
                     </div>
                 </div>
                 <Footer />
-                <Modal show={show} onHide={handleClose}>
-                    <Modal.Header closeButton>
-                        <Modal.Title className={Styles.modalTitle}>
-                            <Image className={Styles.image} src={image} width={100} height={100} alt="Naayari tours" />
-                            {"caca"}
-                        </Modal.Title>
-                    </Modal.Header>
-                    <Modal.Body className={Styles.modalBody}>
-                        <input className={Styles.input} type={'text'} placeholder={"caca"}
-                            value={updateValue} name='value'
-                            onChange={onChange} required>
-                        </input>
-                        <input className={Styles.input} type={'text'}
-                            placeholder='Introduce tu contraseña' value={password}
-                            onChange={onChange} required>
-                        </input>
-                    </Modal.Body>
-                    <Modal.Footer className={Styles.modalFooter}>
-                        <Button className={Styles.btnSave} variant="btn btn-dark" onClick={() => changeData()}>
-                            Guardar
-                        </Button>
-                    </Modal.Footer>
-                </Modal>
             </div >
         )
     }</>;

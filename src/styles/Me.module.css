@@ -155,19 +155,6 @@
     white-space: nowrap;
 }
 
-.btnEdit {
-    background-color: transparent;
-    border: 1px solid rgb(185, 185, 185);
-    height: 50px;
-    border-radius: 0.4rem;
-    padding: 10px;
-    width: 50px;
-}
-
-.btnEdit:hover {
-    background: rgba(185, 185, 185, 0.1);
-}
-
 /*PREFERENCE DATA HERE.*/
 .dataPreferenceContainer {
     display: flex;
@@ -268,53 +255,4 @@
     text-align: center;
     font-size: 30px;
     margin-top: 15px;
-}
-
-/*CHANGE MODAL DATA HERE.*/
-.image {
-    margin-right: 50px;
-    align-self: center;
-}
-
-.modalTitle {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-family: 'Oswald', sans-serif;
-    font-size: 30px;
-}
-
-.modalBody {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    font-family: 'Oswald', sans-serif;
-}
-
-.modalFooter {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-family: 'Oswald', sans-serif;
-}
-
-.btnSave {
-    font-size: 20px;
-    width: 200px;
-}
-
-
-@media only screen and (max-width: 1024px) {}
-
-.errorMe {
-    margin: 0;
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    -ms-transform: translate(-50%, -50%);
-    transform: translate(-50%, -50%);
-    font-size: 50px;
-    font-family: 'Oswald', sans-serif;
-    color: #181818;
 }

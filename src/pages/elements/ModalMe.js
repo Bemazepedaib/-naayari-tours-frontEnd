@@ -1,4 +1,4 @@
-import { React, useState,useRef } from 'react'
+import { React, useState, useRef } from 'react'
 import { faPenToSquare } from '@fortawesome/free-solid-svg-icons'
 import Styles from '../../styles/elementStyles/ModalMe.module.css'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
@@ -9,20 +9,20 @@ import Image from 'next/image'
 import { UPDATE_USER_NAME, UPDATE_USER_CELL } from '../mutations/userMutations';
 import { useMutation } from '@apollo/client';
 
-function ModalMe({ title, message }) {
+function ModalMe({ title, message, setState }) {
 
     const [show, setShow] = useState(false);
     const [info, setInfo] = useState('');
-    const myError = useRef(false);
+    const [myError, setMyError] = useState('');
     const [password, setPassWord] = useState('');
     const [userName] = useMutation(UPDATE_USER_NAME);
     const [userCell] = useMutation(UPDATE_USER_CELL);
     const image = 'https://drive.google.com/uc?export=view&id=1Gx08yGg-rGq0tUe5yVHWxbkaMfmrUOk0'
 
-    const handleShow = () => {
-        setShow(true);
-    }
-    
+    const handleShow = () => { setShow(true); }
+
+    const handleClose = () => { setShow(false); setInfo(''); setPassWord(''); }
+
     //ONCHANGE FOR INPUT METHODS
     const onChange = (e) => {
         if (e.target.name === "value") {
@@ -33,30 +33,29 @@ function ModalMe({ title, message }) {
     }
     //UPDATE THE NAME AND PHONE
     const changeData = async () => {
-        myError.current = false;
         switch (title) {
             case "Cambia tu nombre":
                 try {
-                    await userName({ variables: { newName: info, password: password } })
+                    setMyError((await userName({ variables: { newName: info, password: password } })).data.updateUserName.split("%")[0]);
+                    setState((await userName({ variables: { newName: info, password: password } })).data.updateUserName.split("%")[1]);
+                    handleClose();
+                    setMyError("")
                 } catch (error) {
-                    myError.current = true;
-                } finally{
-                    if(myError === false){
-                        console.log("caca")
-                        handleClose()
-                    }
+                    setMyError(error.message)
                 }
                 break;
             case "Cambia tu Teléfono":
                 try {
-                    await userCell({ variables: { newCell: info, password: password } })
+                    setMyError((await userCell({ variables: { newCell: info, password: password } })).data.updateUserCell.split("%")[0]);
+                    setState((await userCell({ variables: { newCell: info, password: password } })).data.updateUserCell.split("%")[1]);
+                    handleClose();
+                    setMyError("")
                 } catch (error) {
-                    myError.current = true;
+                    setMyError(error.message)
                 }
                 break;
         }
     }
-    const handleClose = async () => {setShow(false); setInfo(''); setPassWord(''); }
 
     return (
         <>
@@ -76,7 +75,7 @@ function ModalMe({ title, message }) {
                     </input>
                 </Modal.Body>
                 <Modal.Footer className={Styles.modalFooter}>
-                    <div className={Styles.errorMessage}>{myError ?"Contraseña Incorrecta" : ""}</div>
+                    <div className={Styles.errorMessage}>{myError}</div>
                     <Button className={Styles.btnSave} variant="btn btn-dark" onClick={changeData}>
                         Guardar
                     </Button>

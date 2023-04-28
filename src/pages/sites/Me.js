@@ -19,17 +19,17 @@ function Me() {
     //MUTATIONS
     const [userPass] = useMutation(UPDATE_USER_PASSWORD);
     const { loading, error, data } = useQuery(ME);
-    console.log(data)
     //UTIL STUFF
     const image = 'https://drive.google.com/uc?export=view&id=1788oTZ-Mfs-oYI8SyymPibHNa7HtQvJ3'
 
 
     //STATE HOOKS
     const [password, setPassWord] = useState("");
-    const [updateValue, setUpdateValue] = useState('');
+    const [updateValue, setUpdateValue] = useState("");
     const [confirmValue, setConfirmValue] = useState("");
-    const [info, setInfo] = useState();
-    const handleClose = () => setShow(false);
+
+    const [newName, setNewName] = useState("");
+    const [newCell, setNewCell] = useState("")
 
     //FUNCTIONS
     //ROUTE FOR GO TO PREFERENCES
@@ -43,8 +43,6 @@ function Me() {
     //UPDATE PASSWORD
     const changePassword = async (e) => {
         e.preventDefault();
-        console.log(updateValue)
-        console.log(confirmValue)
         if (updateValue === confirmValue) {
             await userPass({ variables: { newPassword: updateValue, password: password } });
         }
@@ -55,8 +53,7 @@ function Me() {
     return <>{!loading && !error &&
         (
             <div>
-                {console.log(data.me)}
-                <Navbar></Navbar>
+                <Navbar />
                 <div className={Styles.mainContainer}>
                     {/*USER LEVEL.*/}
                     <div className={Styles.circleLvl}>
@@ -130,11 +127,11 @@ function Me() {
                                 <div className={Styles.dataSubContainer}>
                                     <div>
                                         <div className={Styles.dataContainer}>
-                                            <span className={Styles.data}>{data.me.name}</span>
+                                            <span className={Styles.data}>{newName === "" ? data.me.name : newName}</span>
                                         </div>
                                     </div>
-                                    <ModalMe className={Styles.btnEdit} title={'Cambia tu nombre'} 
-                                    message={'Introduce tu nuevo nombre'}></ModalMe>
+                                    <ModalMe className={Styles.btnEdit} title={'Cambia tu nombre'}
+                                        message={'Introduce tu nuevo nombre'} setState={setNewName} />
                                 </div>
                             </div>
                             {/*PHONE DATA HERE.*/}
@@ -145,13 +142,11 @@ function Me() {
                                 <div className={Styles.dataSubContainer}>
                                     <div>
                                         <div className={Styles.dataContainer}>
-                                            <span className={Styles.data}>{data.me.cellphone}</span>
+                                            <span className={Styles.data}>{newCell === "" ? data.me.cellphone : newCell}</span>
                                         </div>
                                     </div>
-                                    <ModalMe className={Styles.btnEdit} title={'Cambia tu Teléfono'} 
-                                    message={'Introduce tu nuevo número de teléfono'}>
-  
-                                    </ModalMe>
+                                    <ModalMe className={Styles.btnEdit} title={'Cambia tu Teléfono'}
+                                        message={'Introduce tu nuevo número de teléfono'} setState={setNewCell} />
                                 </div>
                             </div>
                         </div>
@@ -173,7 +168,7 @@ function Me() {
                         <div className={Styles.couponSubContainer}>
                             {data.me.coupons.map(coupons => (
                                 coupons.couponApplied ? null
-                                    : <div key={coupons.couponType+coupons.couponDate} className={Styles.couponsCard}>
+                                    : <div key={coupons.couponType + coupons.couponDate} className={Styles.couponsCard}>
                                         <span>Nombre: {coupons.couponType}</span>
                                         <span>Descripción: {coupons.couponDescription}</span>
                                         <span>Fecha: {coupons.couponDate}</span>

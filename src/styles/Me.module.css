@@ -117,11 +117,12 @@
 
 /*NAME DATA HERE.*/
 /*PHONE DATA HERE.*/
-.everyDataSubContainer{
+.everyDataSubContainer {
     display: flex;
     flex-wrap: wrap;
     gap: 10px;
 }
+
 .dataParentContainer {
     display: flex;
     flex-direction: column;
@@ -170,7 +171,7 @@
     justify-content: center;
     align-items: center;
     flex-wrap: wrap;
-    width: minmax(min-content,80%);
+    width: minmax(min-content, 80%);
     padding: 10px 20px;
     margin: 0 10%;
     gap: 20px;
@@ -226,6 +227,7 @@
     height: 100px;
     border-radius: 0.4rem;
 }
+
 /*CHANGE PASSWORD DATA HERE.*/
 .passContainer {
     border: 1px solid rgb(185, 185, 185);

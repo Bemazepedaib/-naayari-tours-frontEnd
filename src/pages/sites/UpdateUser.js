@@ -51,10 +51,13 @@ function UpdateUser({ user }) {
         <p className={`${Styles.infoP} ${Styles.update}`}>{user.user.userLevel}
           <ModalAdmin type="userLevel" val={user.user.userLevel} /></p>
         </section>
+        <section className={Styles.section}>
         <div className={`  ${Styles.password}`}>
-        <p className={` ${Styles.infoSubtitle}`}> Contraseña:  
-        <ModalAdmin type="userLevel" val={user.user.userLevel} />  </p>
+        <p className={` ${Styles.infoSubtitle}`}> Contraseña: </p>
+        <p  className={`${Styles.infoP} ${Styles.update}`}> •••••••••• 
+        <ModalAdmin type="password" val="••••••••••" />  </p>
         </div>
+        </section>
       </div>
       <div className={Styles.tags}>
         <p className={`${Styles.tagsInfo} ${Styles.infoSubtitle}`}> Preferencias </p>

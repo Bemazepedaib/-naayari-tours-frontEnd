@@ -19,11 +19,11 @@
     "eslint": "8.36.0",
     "eslint-config-next": "13.2.4",
     "graphql": "^16.6.0",
+    "html2canvas": "^1.4.1",
     "next": "13.2.4",
     "react": "18.2.0",
     "react-awesome-reveal": "^4.2.3",
     "react-bootstrap": "^2.7.2",
-    "react-dom": "18.2.0",
-    "react-vis": "^1.11.12"
+    "react-dom": "18.2.0"
   }
 }

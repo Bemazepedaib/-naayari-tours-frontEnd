@@ -1,0 +1,36 @@
+
+.mainContainer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.pdf {
+    display: flex;
+    flex-direction: column;
+    width: 620px;
+    box-shadow: 1px 1px 19px 12px rgba(0,0,0,0.75);
+}
+
+.header {
+    text-align: end;
+    font-weight: bold;
+    font-size: 10px;
+    margin-right: 50px;
+}
+
+.fecha {
+    font-size: 10px;
+    text-align: end;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    margin-right: 50px;
+}
+
+.textoGeneral {
+    font-size: 11px;
+    margin-right: 50px;
+    margin-left: 60px;
+    text-align: justify;
+}

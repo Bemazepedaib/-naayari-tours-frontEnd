@@ -7,20 +7,23 @@
     color: #1D2128;
     background-image: url('https://drive.google.com/uc?export=view&id=1XPHv76qI1Y303811H7gbUPpmv9KQSa5u');
     background-size: cover;
-    display: grid;
-    grid-template-columns: repeat(5, 1fr);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100vw;
+    flex-direction: column;
     height: 100vh;
 }
 
 .header {
-    grid-column: span 5;
+    width: 90vw;
     margin-bottom: 20px;
     font-family: 'Genos', sans-serif;
 }
 
 .contenedorFormulario {
     font-family: 'Oswald', sans-serif;
-    grid-column: 2/5;
+    width: 70%;
     display: flex;
     flex-direction: column;
     flex-wrap: wrap;
@@ -75,7 +78,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    grid-column: span 5;
+    width: 100vw;
     margin-top: 20px;
     margin-bottom: 40px;
 }

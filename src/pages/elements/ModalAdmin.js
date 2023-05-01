@@ -5,71 +5,55 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { Button } from 'react-bootstrap'
 import { Modal } from 'react-bootstrap'
 import Image from 'next/image'
+import { useMutation } from '@apollo/client';
+import { UPDATE_USER_NAME_ADMIN, UPDATE_USER_CELL_ADMIN } from '../mutations/userMutations';
 
+function ModalAdmin({ema,message, value, setState }) {
 
-function ModalAdmin({ type, val }) {
-
-    const initialValue = {
-        title: '',
-        value: '',
-        type: '',
-    }
+    const [newValue,setNewValue]= useState();
     const [show, setShow] = useState(false);
-    const [info, setInfo] = useState(initialValue);
-
+    const [userName] = useMutation(UPDATE_USER_NAME_ADMIN);
+    const [userCell] = useMutation(UPDATE_USER_CELL_ADMIN);
 
     const image = 'https://drive.google.com/uc?export=view&id=1Gx08yGg-rGq0tUe5yVHWxbkaMfmrUOk0'
 
-    const handleShow = () => {
-        setInfo(initialValue)
-        switch (type) {
-            case "name":
-                const value1 = {
-                    title: 'Cambia el nombre',
-                    value: val,
-                    type: 'text',
-                    message: 'Introduce el nuevo nombre'
+    const handleShow = () => {setShow(true);}
+
+        //ONCHANGE FOR INPUT METHODS
+        const onChange = (e) => {
+            setNewValue(e.target.value)
+        }
+    //UPDATE THE NAME AND PHONE
+    const changeData = async  () => {
+        switch (message) {
+            case "Cambia el nombre":
+                try {
+                    await userName({ variables: { newName: newValue, email:ema} });
+                    handleClose();
+                } catch (error) {
+                    console.log(error)
                 }
-                setInfo(value1)
                 break;
-            case "cellphone":
-                const value2 = {
-                    title: 'Cambia el télefono',
-                    value: val,
-                    type: 'text',
-                    message: 'Introduce el nuevo télefono'
+            case "Cambia el telefono":
+                try {
+                    await userCell({ variables: { newCell: newValue, email: ema } });
+                    handleClose();
+                    console.log("entra")
+                } catch (error) {
+                    console.log(error.message)
                 }
-                setInfo(value2)
                 break;
-            case "birthDate":
-                const value3 = {
-                    title: 'Cambia la fecha de nacimiento',
-                    value: val,
-                    type: 'date',
-                    message: 'Introduce la fecha de nacimiento'
+            case "Cambia el email":
+                try {
+                    setMyError((await userCell({ variables: { newCell: info, password: password } })).data.updateUserCell.split("%")[0]);
+                    setState((await userCell({ variables: { newCell: info, password: password } })).data.updateUserCell.split("%")[1]);
+                    handleClose();
+                    setMyError("")
+                } catch (error) {
+                    setMyError(error.message)
                 }
-                setInfo(value3)
-                break;
-            case "email":
-                const value4 = {
-                    title: 'Cambia el email',
-                    value: val,
-                    type: 'text',
-                    message: 'Introduce el email'
-                }
-                setInfo(value4)
-                break;
-            case "userLevel":
-                const value5 = {
-                    title: 'Cambia el Nivel',
-                    value: val,
-                    type: 'text',
-                    message: 'Introduce el nivel'
-                }
-                setInfo(value5)
                 break;
         }
-        setShow(true);
     }
     const handleClose = () => setShow(false);
 
@@ -80,16 +64,16 @@ function ModalAdmin({ type, val }) {
                 <Modal.Header closeButton>
                     <Modal.Title className={Styles.modalTitle}>
                         <Image className={Styles.image} src={image} width={100} height={100} alt="Naayari tours" />
-                        {info.title}
+                        {message}
                     </Modal.Title>
                 </Modal.Header>
                 <Modal.Body className={Styles.modalBody}>
-                    <input className={Styles.input} readOnly type={info.type} placeholder={info.message}
-                        defaultValue={info.value} required></input>
-                    <input className={Styles.input} placeholder={info.message} required></input>
+                    <input className={Styles.input} readOnly  
+                        defaultValue={value} required></input>
+                    <input className={Styles.input} placeholder={message} required value={newValue} onChange={onChange}></input>
                 </Modal.Body>
                 <Modal.Footer className={Styles.modalFooter}>
-                    <Button className={Styles.btnSave} variant="btn btn-dark" onClick={handleClose}>
+                    <Button className={Styles.btnSave} variant="btn btn-dark" onClick={changeData}>
                         Guardar
                     </Button>
                 </Modal.Footer>

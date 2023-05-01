@@ -9,7 +9,9 @@ import ModalAdmin from "../elements/ModalAdmin"
 function UpdateUser({ user }) {
 
   let k = 0
-  const [pass, setPass] = useState({ value: "", valid: true });
+  const [pass, setPass] = useState({ valueue: "", valueid: true });
+
+  const [newName, setNewName] = useState("");
 
   const expresiones = {
     nombre: /^[a-zA-ZÀ-ÿ\s]{1,40}$/, // Letras y espacios, pueden llevar acentos.
@@ -25,17 +27,17 @@ function UpdateUser({ user }) {
         <section  className={Styles.section}>
         <p className={` ${Styles.infoSubtitle}`}> Nombre de usuario:   </p>
         <p className={`${Styles.infoP} ${Styles.update}`} >{user.user.name}
-          <ModalAdmin type="name" val={user.user.name} /></p>
+          <ModalAdmin  ema={user.user.email} message="Cambia el nombre"  value={user.user.name} /></p>
         </section>
         <section className={Styles.section}>
         <p className={` ${Styles.infoSubtitle}`}> Telefono:            </p>
         <p className={`${Styles.infoP} ${Styles.update}`}>{user.user.cellphone}
-          <ModalAdmin type="cellphone" val={user.user.cellphone} /></p>
+          <ModalAdmin message="Cambia el telefono"  value={user.user.cellphone} /></p>
         </section>
         <section className={Styles.section}>
         <p className={` ${Styles.infoSubtitle}`}> Correo:              </p>
         <p className={`${Styles.infoP} ${Styles.update}`}>{user.user.email}
-          <ModalAdmin type="email" val={user.user.email} /></p>
+          <ModalAdmin message="Cambia el email" value={user.user.email} /></p>
         </section>
         <section className={Styles.sectionUser}>
         <p className={`${Styles.infoSubtitle}`}> Tipo de usuario:     </p>
@@ -44,17 +46,20 @@ function UpdateUser({ user }) {
         <section className={Styles.section}>
         <p className={` ${Styles.infoSubtitle}`}> Fecha de nacimiento: </p>
         <p className={`${Styles.infoP} ${Styles.update}`}>{user.user.birthDate}
-          <ModalAdmin type="birthDate" val={user.user.birthDate} /></p>
+          <ModalAdmin message="Cambia la fecha de nacimiento"  value={user.user.birthDate} /></p>
         </section>
         <section className={Styles.section}>
         <p className={` ${Styles.infoSubtitle}`}> Nivel de usuario:    </p>
         <p className={`${Styles.infoP} ${Styles.update}`}>{user.user.userLevel}
-          <ModalAdmin type="userLevel" val={user.user.userLevel} /></p>
+          <ModalAdmin message="Cambia el nivel de usuario" value={user.user.userLevel} /></p>
         </section>
+        <section className={Styles.section}>
         <div className={`  ${Styles.password}`}>
-        <p className={` ${Styles.infoSubtitle}`}> Contraseña:  
-        <ModalAdmin type="userLevel" val={user.user.userLevel} />  </p>
+        <p className={` ${Styles.infoSubtitle}`}> Contraseña: </p>
+        <p  className={`${Styles.infoP} ${Styles.update}`}> •••••••••• 
+        <ModalAdmin message="Cambia la contraseña" value="••••••••••" />  </p>
         </div>
+        </section>
       </div>
       <div className={Styles.tags}>
         <p className={`${Styles.tagsInfo} ${Styles.infoSubtitle}`}> Preferencias </p>

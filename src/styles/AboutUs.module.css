@@ -114,3 +114,16 @@
         width: 450px;
     }
 }
+@media (max-width: 600px) {
+    .infoImage{
+        width: 200px;
+        height: 200px;
+    }
+    .infoMainTittle{
+        font-size: 20px;
+    }
+    .valueImg {
+        width: 250px;
+        height: 200px;
+    }
+}

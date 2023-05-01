@@ -2,7 +2,7 @@
 
 
 .mainContainer {
-    padding: 40px;
+    padding: 50px 150px;
     font-family: 'Oswald', sans-serif;
 }
 
@@ -19,7 +19,7 @@
 .info {
     gap: 50px;  
     border: 1px solid #1d2128;
-    border-radius: 1rem;
+    border-radius: .4rem;
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
@@ -43,7 +43,7 @@
     padding: 10px 40px;
     position: relative;
     border: 1px solid #1d2128;
-    border-radius: 1rem;
+    border-radius: .4rem;
 }
 
 .tags {

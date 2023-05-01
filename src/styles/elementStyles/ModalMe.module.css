@@ -64,6 +64,10 @@
 }
 
 .errorMessage {
-    color: red;
+    color: rgb(255, 0, 0);
+    font-size: 18px;
+}
+.sucessMessage{
+    color: green;
     font-size: 18px;
 }

@@ -5,6 +5,7 @@ import Styles from '../../styles/elementStyles/ContratoPdf.module.css'
 import Image from 'next/image';
 import { Button } from 'react-bootstrap';
 import html2canvas from 'html2canvas';
+import jsPDF from 'jspdf';
 
 function ContratoPdf() {
 
@@ -25,49 +26,34 @@ function ContratoPdf() {
 
     const pdfRef = useRef()
 
-    const generarImagen = async () => {
+    const generarContrato = async () => {
         const element = pdfRef.current;
         const canvas = await html2canvas(element);
-
-        const data = canvas.toDataURL('image/jpg');
-        const link = document.createElement('a');
-
-        if (typeof link.download === 'string') {
-            link.href = data;
-            link.download = `contrato.jpg`;
-
-            document.body.appendChild(link);
-            link.click();
-            document.body.removeChild(link);
-        } else {
-            window.open(data);
-        }
+        const data = canvas.toDataURL('image/png');
+        const pdf = new jsPDF();
+        pdf.addImage(data, 'PNG', 0, 0);
+        pdf.save('contrato.pdf')
     }
 
     return (
         <div className={Styles.mainContainer}>
-            <Button onClick={generarImagen}>Generar PDF</Button>
+            <Button onClick={generarContrato}>Generar contrato</Button>
             <div className={Styles.pdf} ref={pdfRef}>
-                <Image src={Header} width={620} height={88}></Image>
+                <Image src={Header} width={650} height={92}></Image>
                 <div className={Styles.header}>CONTRATO DE RESERVA NAAYARI TOURS</div>
                 <div className={Styles.fecha}>Tepic, Nay. A <u>{dia}</u> de <u>{mes}</u> del <u>{año}</u></div>
                 <div className={Styles.textoGeneral}>
-                    La tour-operadora <b>Naayari tours</b> con domicilio en <b>Av. Che Guevara #84, Col. 2 de Agosto en Tepic</b>
-                    <br></br>
-                    acredita que el C. <u>{cliente}</u> con número de celular: <u>{celular}</u>
-                    <p></p>
-                    Reserva <u>{lugares}</u> lugares al tour con nombre <u>{tour}</u> programado para la fecha del&nbsp;
-                    <u>{fechaViaje}</u> con hora de salida las <u>{horaSalida}</u>
-                    <p></p>
-                    Reserva con un anticipo de $<u>{anticipo}</u>, restando la cantidad de $<u>{resto}</u> misma que deberá
-                    liquidarse el día del tour antes de partir en efectivo siendo el caso de un tour ida y vuelta el mismo día.
-                    <p></p>
-                    Si el tour es con abonos, se estipula que sus fechas serán cada ___ días de los próximos ___ por la cantidad
-                    de $___, quedando en acuerdo que los abonos deberán cubrirse en tiempo y forma para terminar de liquidarse a
-                    más tardar 7 días antes de la fecha de su viaje.
-                    <p></p>
-                    <p></p>
+                    <p>La tour-operadora <b>Naayari tours</b> con domicilio en <b>Av. Che Guevara #84, Col. 2 de Agosto en Tepic</b>
+                        &nbsp; acredita que el C. <u>{cliente}</u> con número de celular: <u>{celular}</u></p>
+                    <p>Reserva <u>{lugares}</u> lugares al tour con nombre <u>{tour}</u> programado para la fecha del&nbsp;
+                        <u>{fechaViaje}</u> con hora de salida las <u>{horaSalida}</u></p>
+                    <p>Reserva con un anticipo de $<u>{anticipo}</u>, restando la cantidad de $<u>{resto}</u> misma que deberá
+                        liquidarse el día del tour antes de partir en efectivo siendo el caso de un tour ida y vuelta el mismo día.</p>
+                    <p>Si el tour es con abonos, se estipula que sus fechas serán cada ___ días de los próximos ___ por la cantidad
+                        de $___, quedando en acuerdo que los abonos deberán cubrirse en tiempo y forma para terminar de liquidarse a
+                        más tardar 7 días antes de la fecha de su viaje.</p>
                     <b>ACUERDOS:</b>
+                    <p></p>
                     <ol>
                         <li>
                             La empresa Naayari Tours <b>no maneja reembolso</b> en caso de cancelación por parte del cliente ni se maneja ninún tipo de ajuste a cuenta, en caso de reservar cierto número de boletos y después reducirlo, se deberá cubrir el total mencionado en este presente contrato desde un inicio.
@@ -91,7 +77,7 @@ function ContratoPdf() {
                         <b>FAVOR DE CONSERVAR ESTE COMPROBANTE PARA FUTURAS ACLARACIONES.</b>
                     </ol>
                 </div>
-                <Image src={Footer} width={620} height={88}></Image>
+                <Image src={Footer} width={650} height={92}></Image>
             </div>
         </div>
     )

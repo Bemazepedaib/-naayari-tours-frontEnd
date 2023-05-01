@@ -61,25 +61,6 @@ function ModalReservation({ datosCompanion, datosUsuario, datosPrecio }) {
         return true
     }
 
-    const makeAdvancePaymentTicket = async () => {
-        const element = printTicket.current;
-        const canvas = await html2canvas(element);
-
-        const data = canvas.toDataURL('image/jpg');
-        const link = document.createElement('a');
-
-        if (typeof link.download === 'string') {
-            link.href = data;
-            link.download = `Reserva de: ${datosUsuario[0].me.name}.jpg`;
-
-            document.body.appendChild(link);
-            link.click();
-            document.body.removeChild(link);
-        } else {
-            window.open(data);
-        }
-    }
-
     return (
         <>
             <Button bsPrefix={Styles.btn} onClick={handleShow} >

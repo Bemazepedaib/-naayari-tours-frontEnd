@@ -1,14 +1,14 @@
-import React, { useRef, useState } from 'react'
+import React, { useState } from 'react'
 import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
 import Image from 'next/image'
-import html2canvas from 'html2canvas';
 
 import Styles from '../../styles/elementStyles/ModalReservation.module.css'
 
 import { Table } from 'react-bootstrap';
 import { useMutation } from '@apollo/client';
 import { DO_RESERVATIONS } from '../mutations/eventMutations';
+import Router from 'next/router';
 
 function ModalReservation({ datosCompanion, datosUsuario, datosPrecio }) {
 
@@ -24,7 +24,11 @@ function ModalReservation({ datosCompanion, datosUsuario, datosPrecio }) {
 
     const [doReservation] = useMutation(DO_RESERVATIONS)
 
-    const printTicket = useRef();
+    const total = datosPrecio[0].price * datosPrecio[0].number +
+        datosPrecio[1].price * datosPrecio[1].number +
+        datosPrecio[2].price * datosPrecio[2].number
+
+    const anticipo = total/2;
 
     let id = 1;
 
@@ -34,7 +38,8 @@ function ModalReservation({ datosCompanion, datosUsuario, datosPrecio }) {
         const objetoUsuarios = {
             userEmail: datosUsuario[0].me.email,
             companion: a,
-            advancePayment: 0,
+            advancePayment: anticipo,
+            fullPayment: total,
             fullyPaid: false,
             observations: datosUsuario[3]
         }
@@ -47,6 +52,7 @@ function ModalReservation({ datosCompanion, datosUsuario, datosPrecio }) {
                 }
             })
             setConfirmMessage(res.data.updateEventUsers)
+            Router.push({ pathname: '/elements/ReservationPayment', query: { anticipo: anticipo } }, '/elements/ReservationPayment')
         } catch (error) {
             setConfirmMessage(error.message)
         }
@@ -142,17 +148,13 @@ function ModalReservation({ datosCompanion, datosUsuario, datosPrecio }) {
                             <tr>
                                 <td>TOTAL A PAGAR</td>
                                 <td>{datosPrecio[0].number + datosPrecio[1].number + datosPrecio[2].number}</td>
-                                <td>${datosPrecio[0].price * datosPrecio[0].number +
-                                    datosPrecio[1].price * datosPrecio[1].number +
-                                    datosPrecio[2].price * datosPrecio[2].number}
+                                <td>${total}
                                 </td>
                             </tr>
                             <tr>
                                 <td className={Styles.bold}>ANTICIPO &#40;50%&#41;</td>
                                 <td>NA</td>
-                                <td>${(datosPrecio[0].price * datosPrecio[0].number +
-                                    datosPrecio[1].price * datosPrecio[1].number +
-                                    datosPrecio[2].price * datosPrecio[2].number) / 2}
+                                <td>${anticipo}
                                 </td>
                             </tr>
                         </tbody>

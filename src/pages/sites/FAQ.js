@@ -25,7 +25,7 @@ function Preguntas(link) {
             eventKey: "2", header: "¿Cómo puedo pagar mi reservación?",
             body:
                 (<div>
-                    <b>Opción 1:</b> Depositar al número de cuenta que se proporcionará al hacer tu reserva en línea.
+                    <b>Opción 1:</b> Depositar al número de cuenta: 4169 1608 6438 5654 y manda tu recibo al whatsapp +52 311 910 4138 para confirmar tu pago.
                     <p />
                     <b>Opción 2:</b> Ir personalmente a las oficinas para pagar.
                 </div>)

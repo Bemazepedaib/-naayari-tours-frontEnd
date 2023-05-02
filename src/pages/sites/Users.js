@@ -5,10 +5,7 @@ import AdminSignup from '../elements/AdminSignup'
 import SearchData from '../elements/SearchData'
 import NavbarAdmin from '../elements/AdminDashboard/NavbarAdmin'
 
-
 function Users() {
-
-
 
   return (
     <div className={Styles.UsersMain}>
@@ -17,7 +14,6 @@ function Users() {
         <AdminSignup />
         <SearchData />
       </div>
-      <NavbarAdmin />
     </div>
   )
 }

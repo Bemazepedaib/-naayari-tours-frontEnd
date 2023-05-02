@@ -6,7 +6,7 @@ import { Button } from 'react-bootstrap'
 import { Modal } from 'react-bootstrap'
 import Image from 'next/image'
 import { useMutation } from '@apollo/client';
-import { UPDATE_USER_NAME_ADMIN, UPDATE_USER_CELL_ADMIN,UPDATE_USER_BIRTH_ADMIN } from '../mutations/userMutations';
+import { UPDATE_USER_NAME_ADMIN, UPDATE_USER_CELL_ADMIN,UPDATE_USER_BIRTH_ADMIN,UPDATE_USER_PASSWORD_ADMIN } from '../mutations/userMutations';
 
 function ModalAdmin({ema,message, value, setState }) {
 
@@ -15,6 +15,7 @@ function ModalAdmin({ema,message, value, setState }) {
     const [userName] = useMutation(UPDATE_USER_NAME_ADMIN);
     const [userCellAdmin] = useMutation(UPDATE_USER_CELL_ADMIN);
     const [userBirthAdmin] = useMutation(UPDATE_USER_BIRTH_ADMIN);
+    const [userPassAdmin] = useMutation(UPDATE_USER_PASSWORD_ADMIN);
 
     const image = 'https://drive.google.com/uc?export=view&id=1Gx08yGg-rGq0tUe5yVHWxbkaMfmrUOk0'
 
@@ -52,14 +53,20 @@ function ModalAdmin({ema,message, value, setState }) {
                     console.log(error.message)
                 }
                 break;
+            case "Cambia la contraseña":
+                try {
+                    await userPassAdmin({ variables: { newPassword: newValue, email: ema } });
+                    handleClose();
+                } catch (error) {
+                    console.log(error.message)
+                }
+                break;
         }
     }
     const handleClose = () => setShow(false);
 
     return (
         <>
-        {                    
-                    console.log(ema)}
             <i className={Styles.icon} onClick={handleShow}><FontAwesomeIcon icon={faPenToSquare} ></FontAwesomeIcon></i>
             <Modal show={show} onHide={handleClose}>
                 <Modal.Header closeButton>

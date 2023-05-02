@@ -49,6 +49,12 @@ const UPDATE_USER_PASSWORD = gql`
     }
 `;
 
+const UPDATE_USER_PASSWORD_ADMIN = gql`
+    mutation updateUserPassword($newPassword: String!, $email: String){
+        updateUserPassword(newPassword: $newPassword, email: $email)
+    }
+`;
+
 const UPDATE_USER_BIRTH_ADMIN = gql`
     mutation updateUserBirth($newDate: String!, $email: String){
         updateUserBirth(newDate: $newDate, email: $email)
@@ -62,4 +68,4 @@ const DELETE_USER = gql`
 `;
 
 export { LOGIN, ADD_USER, DELETE_USER, UPDATE_USER_PREFERENCES, UPDATE_USER_NAME, UPDATE_USER_CELL, UPDATE_USER_PASSWORD,
-    UPDATE_USER_NAME_ADMIN,UPDATE_USER_CELL_ADMIN,UPDATE_USER_BIRTH_ADMIN}
+    UPDATE_USER_NAME_ADMIN,UPDATE_USER_CELL_ADMIN,UPDATE_USER_BIRTH_ADMIN,UPDATE_USER_PASSWORD_ADMIN}

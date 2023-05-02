@@ -32,12 +32,11 @@ function UpdateUser({ user }) {
         <section className={Styles.section}>
         <p className={` ${Styles.infoSubtitle}`}> Telefono:            </p>
         <p className={`${Styles.infoP} ${Styles.update}`}>{user.user.cellphone}
-          <ModalAdmin message="Cambia el telefono"  value={user.user.cellphone} /></p>
+          <ModalAdmin ema={user.user.email} message="Cambia el telefono"  value={user.user.cellphone} /></p>
         </section>
-        <section className={Styles.section}>
+        <section className={Styles.sectionUser}>
         <p className={` ${Styles.infoSubtitle}`}> Correo:              </p>
-        <p className={`${Styles.infoP} ${Styles.update}`}>{user.user.email}
-          <ModalAdmin message="Cambia el email" value={user.user.email} /></p>
+        <p className={`${Styles.infoP} ${Styles.update}`}>{user.user.email} </p>
         </section>
         <section className={Styles.sectionUser}>
         <p className={`${Styles.infoSubtitle}`}> Tipo de usuario:     </p>
@@ -46,18 +45,17 @@ function UpdateUser({ user }) {
         <section className={Styles.section}>
         <p className={` ${Styles.infoSubtitle}`}> Fecha de nacimiento: </p>
         <p className={`${Styles.infoP} ${Styles.update}`}>{user.user.birthDate}
-          <ModalAdmin message="Cambia la fecha de nacimiento"  value={user.user.birthDate} /></p>
+          <ModalAdmin  ema={user.user.email} message="Cambia la fecha de nacimiento"  value={user.user.birthDate} /></p>
         </section>
-        <section className={Styles.section}>
+        <section className={Styles.sectionUser}>
         <p className={` ${Styles.infoSubtitle}`}> Nivel de usuario:    </p>
-        <p className={`${Styles.infoP} ${Styles.update}`}>{user.user.userLevel}
-          <ModalAdmin message="Cambia el nivel de usuario" value={user.user.userLevel} /></p>
+        <p className={`${Styles.infoP} ${Styles.update}`}>{user.user.userLevel}</p>
         </section>
         <section className={Styles.section}>
         <div className={`  ${Styles.password}`}>
         <p className={` ${Styles.infoSubtitle}`}> Contraseña: </p>
         <p  className={`${Styles.infoP} ${Styles.update}`}> •••••••••• 
-        <ModalAdmin message="Cambia la contraseña" value="••••••••••" />  </p>
+        <ModalAdmin ema={user.user.email} message="Cambia la contraseña" value="••••••••••" />  </p>
         </div>
         </section>
       </div>

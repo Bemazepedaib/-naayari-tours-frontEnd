@@ -6,14 +6,16 @@ import { Button } from 'react-bootstrap'
 import { Modal } from 'react-bootstrap'
 import Image from 'next/image'
 import { useMutation } from '@apollo/client';
-import { UPDATE_USER_NAME_ADMIN, UPDATE_USER_CELL_ADMIN } from '../mutations/userMutations';
+import { UPDATE_USER_NAME_ADMIN, UPDATE_USER_CELL_ADMIN,UPDATE_USER_BIRTH_ADMIN,UPDATE_USER_PASSWORD_ADMIN } from '../mutations/userMutations';
 
 function ModalAdmin({ema,message, value, setState }) {
 
     const [newValue,setNewValue]= useState();
     const [show, setShow] = useState(false);
     const [userName] = useMutation(UPDATE_USER_NAME_ADMIN);
-    const [userCell] = useMutation(UPDATE_USER_CELL_ADMIN);
+    const [userCellAdmin] = useMutation(UPDATE_USER_CELL_ADMIN);
+    const [userBirthAdmin] = useMutation(UPDATE_USER_BIRTH_ADMIN);
+    const [userPassAdmin] = useMutation(UPDATE_USER_PASSWORD_ADMIN);
 
     const image = 'https://drive.google.com/uc?export=view&id=1Gx08yGg-rGq0tUe5yVHWxbkaMfmrUOk0'
 
@@ -36,21 +38,27 @@ function ModalAdmin({ema,message, value, setState }) {
                 break;
             case "Cambia el telefono":
                 try {
-                    await userCell({ variables: { newCell: newValue, email: ema } });
+                    await userCellAdmin({ variables: { newCell: newValue, email: ema } });
                     handleClose();
-                    console.log("entra")
+                } catch (error) {
+
+                    console.log(error.message)
+                }
+                break;
+            case "Cambia la fecha de nacimiento":
+                try {
+                    await userBirthAdmin({ variables: { newDate: newValue, email: ema } });
+                    handleClose();
                 } catch (error) {
                     console.log(error.message)
                 }
                 break;
-            case "Cambia el email":
+            case "Cambia la contraseña":
                 try {
-                    setMyError((await userCell({ variables: { newCell: info, password: password } })).data.updateUserCell.split("%")[0]);
-                    setState((await userCell({ variables: { newCell: info, password: password } })).data.updateUserCell.split("%")[1]);
+                    await userPassAdmin({ variables: { newPassword: newValue, email: ema } });
                     handleClose();
-                    setMyError("")
                 } catch (error) {
-                    setMyError(error.message)
+                    console.log(error.message)
                 }
                 break;
         }

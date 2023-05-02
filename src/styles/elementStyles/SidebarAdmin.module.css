@@ -1,11 +1,9 @@
 #sidebarAdmin{
-
     background: #121820;
     overflow-y: auto;
     padding: 20px;
     -webkit-transition: all .5s;
-    transition: all .5s;
-    
+    transition: all .5s;   
 }
 
 

@@ -1,9 +1,11 @@
+import React, { useRef, useState } from 'react'
 import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
 import Image from 'next/image'
+import html2canvas from 'html2canvas';
+
 import Styles from '../../styles/elementStyles/ModalReservation.module.css'
 
-import React, { useState } from 'react'
 import { Table } from 'react-bootstrap';
 import { useMutation } from '@apollo/client';
 import { DO_RESERVATIONS } from '../mutations/eventMutations';
@@ -21,6 +23,8 @@ function ModalReservation({ datosCompanion, datosUsuario, datosPrecio }) {
     const [confirmMessage, setConfirmMessage] = useState("¿Está seguro que sus datos son correctos?");
 
     const [doReservation] = useMutation(DO_RESERVATIONS)
+
+    const printTicket = useRef();
 
     let id = 1;
 

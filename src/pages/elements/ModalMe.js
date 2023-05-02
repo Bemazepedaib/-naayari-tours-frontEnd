@@ -45,6 +45,10 @@ function ModalMe({ title, message, setState }) {
                 }
                 break;
             case "Cambia tu Teléfono":
+                if(isNaN(info) || info.length<9){
+                    setMyError('Introduce un número de teléfono valido');
+                    return
+                }
                 try {
                     setMyError((await userCell({ variables: { newCell: info, password: password } })).data.updateUserCell.split("%")[0]);
                     setState((await userCell({ variables: { newCell: info, password: password } })).data.updateUserCell.split("%")[1]);
@@ -75,7 +79,7 @@ function ModalMe({ title, message, setState }) {
                     </input>
                 </Modal.Body>
                 <Modal.Footer className={Styles.modalFooter}>
-                    <div className={myError==="Contraseña incorrecta" ? Styles.errorMessage : Styles.sucessMessage }>{myError}</div>
+                    <div className={myError==="Contraseña incorrecta" || myError==="Introduce un número de teléfono valido" ? Styles.errorMessage : Styles.sucessMessage }>{myError}</div>
                     <Button className={Styles.btnSave} variant="btn btn-dark" onClick={changeData}>
                         Guardar
                     </Button>

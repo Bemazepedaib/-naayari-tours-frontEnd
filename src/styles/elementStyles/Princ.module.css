@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Oswald:wght@300&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Genos:ital,wght@1,700&display=swap');
 
 .textPrimaryP {
     color: #a5aaad;
@@ -9,24 +11,25 @@
     font-weight: 700;
 }
 
-.textTitle{
+.textTitle {
     color: #2e4a66;
 }
 
-.textLightblue{
-    color:#469cac;
+.textLightblue {
+    color: #469cac;
 }
 
-.textRed{
-    color:#cc3d38;
+.textRed {
+    color: #cc3d38;
 }
 
-.textYellow{
-    color:#a98921;
+.textYellow {
+    color: #a98921;
 }
 
-.textGreen{
-    color: #3b9668;;
+.textGreen {
+    color: #3b9668;
+    ;
 }
 
 .mainAdmin {
@@ -71,11 +74,11 @@
     margin: 20px;
 }
 
-.cardAdmin{
+.cardAdmin {
     margin: 20px 10px;
     display: flex;
     align-items: center;
-    width:200px;
+    width: 200px;
     height: 100px;
     padding: 20px;
     border-radius: 5px;
@@ -91,7 +94,7 @@
     justify-content: center;
 }
 
-.spanNumbers{
+.spanNumbers {
     font-size: 25px;
 }
 
@@ -112,7 +115,7 @@
     box-shadow: 5px 5px 13px #ededed, -5px -5px 13ox #ffffff;
 }
 
-.chartPrins{
+.chartPrins {
     display: flex;
     justify-content: center;
 }
@@ -160,9 +163,10 @@
     margin-bottom: 5px;
 }
 
-.crh1{
+.crh1 {
     font-size: 30px;
 }
+
 .CRp {
     font-size: 14px;
     font-weight: 700;
@@ -186,7 +190,7 @@
 }
 
 .PrinsCard1 {
-    
+
     margin: 20px;
     width: 150px;
     background: #d1ecf1;
@@ -198,7 +202,7 @@
 }
 
 .PrinsCard2 {
-    
+
     margin: 20px;
     width: 150px;
     background: #d2f9ee;
@@ -210,7 +214,7 @@
 }
 
 .PrinsCard3 {
-    
+
     margin: 20px;
     width: 150px;
     background: #d6d8d9;
@@ -222,7 +226,7 @@
 }
 
 .PrinsCard4 {
-    
+
     margin: 20px;
     width: 150px;
     background: #fddcdf;
@@ -231,6 +235,26 @@
     padding: 25px;
     border-radius: 5px;
     font-size: 14px;
+}
+
+.error {
+    font-family: 'Genos', sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    font-size: 40px;    
+    text-align: center;
+    background-image: url('https://drive.google.com/uc?export=view&id=1XPHv76qI1Y303811H7gbUPpmv9KQSa5u');
+    background-size: cover;
+}
+
+@media (max-width: 600px) {
+
+    .error {
+        font-size: 20px;
+        text-align: center;
+    }
 }
 
 @media (max-width: 750px) {
@@ -250,14 +274,15 @@
         margin-top: 30px;
     }
 }
+
 @media (max-width: 570px) {
 
 
     .mainCardsAdmin {
-       display: flex;
-       position: relative;
-       align-items: center;
-       justify-content: center;
+        display: flex;
+        position: relative;
+        align-items: center;
+        justify-content: center;
     }
 
 

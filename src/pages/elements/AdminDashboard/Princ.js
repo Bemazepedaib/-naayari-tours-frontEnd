@@ -4,10 +4,17 @@ import Chart from './Chart';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faUser, faCalendar, faVideoCamera, faThumbsUp, faUsd } from '@fortawesome/free-solid-svg-icons'
 
+import { useQuery } from '@apollo/client';
+import { ME } from '../../querys/userQuerys';
+import { Spinner } from 'react-bootstrap';
+
 function Princ() {
 
-    const lonk = "https://drive.google.com/uc?export=view&id=";
-    const avatar = "1c0JUYO3Kta4vIAd3oTJfNwd4bXBKkzFJ";
+    const { loading: meLoading, error: meError, data: meData } = useQuery(ME);
+
+    if (meLoading) return (<div className={Styles.error}><Spinner /></div>)
+    if (meError) return (<div className={Styles.error}>Inicie sesión para continuar</div>)
+    if (meData.me.userType !== "admin") return (<div className={Styles.error}>Necesitas permisos de administrador para acceder a este módulo</div>)
 
     return (
         <main className={Styles.mainAdmin}>

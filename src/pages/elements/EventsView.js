@@ -14,7 +14,8 @@ function EventsView() {
     const { loading: eventLoading, error: eventError, data: eventData } = useQuery(GET_EVENTS)
 
     if (meLoading) return (<div className={Styles.error}><Spinner /></div>)
-    if (meData.me.userType !== "admin") return (<div className={Styles.error}>Debes tener permisos de admin para acceder a este módulo</div>)
+    if (meError) return (<div className={Styles.error}>Inicie sesión para continuar</div>)
+    if (meData.me.userType !== "admin") return (<div className={Styles.error}>Necesitas permisos de administrador para acceder a este módulo</div>)
 
     return (!eventLoading && !eventError &&
         <div className={Styles.main}>

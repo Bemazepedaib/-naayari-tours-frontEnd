@@ -1,0 +1,51 @@
+@import url('https://fonts.googleapis.com/css2?family=Oswald:wght@300&display=swap%27');
+@import url('https://fonts.googleapis.com/css2?family=Genos:ital,wght@1,700&display=swap%27');
+.main{
+    font-family: 'Oswald', sans-serif;
+    padding: 20px 35px;
+}
+/*FORM*/
+.infoContainer{
+    margin-top: 20px;
+    background-image: url('https://drive.google.com/uc?export=view&id=13KXgd3DJj2oeqYJS7EoqNaajsPUJKsDr');
+}
+/*DESCRIPTION AREA*/
+.descContainer{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.descTitle{
+    font-size: 16px;
+    text-transform: uppercase;
+}
+.desc{
+    width: 650px;
+    height: 200px;
+    font-size: 16px;
+    border: 2px solid black;
+    resize: none;
+}
+/*ACTIVITIES*/
+.activities{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    margin: 15px auto;
+}
+.activitiesTitle{
+    font-size: 18px;
+    text-align: center;
+}
+.subActivities{
+    display: flex;
+    flex-direction: column;
+}
+
+/*PRICE / DURATION / PLACE*/
+.pdp{
+    display: flex;
+    justify-content: center;
+}

@@ -3,7 +3,6 @@ import SidebarAdmin from '../elements/AdminDashboard/SidebarAdmin'
 import Styles from '../../styles/Users.module.css'
 import AdminSignup from '../elements/AdminSignup'
 import SearchData from '../elements/SearchData'
-import NavbarAdmin from '../elements/AdminDashboard/NavbarAdmin'
 
 function Users() {
 

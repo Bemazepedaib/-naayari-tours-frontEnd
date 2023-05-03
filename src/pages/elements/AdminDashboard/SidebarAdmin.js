@@ -1,15 +1,10 @@
 import React from 'react'
 import Styles from '../../../styles/elementStyles/SidebarAdmin.module.css'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faSuitcase, faPlaneDeparture, faPlane, faPlaneArrival, faUserPlus,faUser, faUserMinus, faPersonArrowUpFromLine, 
-     faPersonArrowDownToLine, faTimes, faHome, faPowerOff } from '@fortawesome/free-solid-svg-icons'
+import { faPlane,faUser,faPersonArrowDownToLine, faTimes, faHome, faPowerOff } from '@fortawesome/free-solid-svg-icons'
 import Link from 'next/link'
 
 function SidebarAdmin() {
-
-    const lonk = "https://drive.google.com/uc?export=view&id=";
-    const avatar = "1c0JUYO3Kta4vIAd3oTJfNwd4bXBKkzFJ";
-
     return (
         <div className={Styles.sidebar}  id={Styles.sidebarAdmin}>
             <div className={Styles.sidebarAdminTitle}>
@@ -25,7 +20,7 @@ function SidebarAdmin() {
                 </div>
                 <div className={`${Styles.sidebarAdminLink} ${Styles.menu}`}>
                 <i> <FontAwesomeIcon icon={faPlane} /></i>
-                <h2 className={Styles.sidebarAdminSubtitle}>Viajes</h2>
+                <Link className={Styles.link} href="/sites/TripView"><h2 className={Styles.sidebarAdminSubtitle}>Viajes</h2></Link>
                 </div>
                 <div className={`${Styles.sidebarAdminLink} ${Styles.menu}`}>
                   <i><FontAwesomeIcon icon={faUser} /></i>

@@ -1,6 +1,8 @@
 import React from 'react'
 import Styles from '../../../styles/elementStyles/Princ.module.css';
-import Chart from './Chart';
+import Lines from './LineChart';
+import Bars from './BarChart';
+import Pies from './PieChart';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faUser, faCalendar, faVideoCamera, faThumbsUp, faUsd } from '@fortawesome/free-solid-svg-icons'
 
@@ -70,7 +72,9 @@ function Princ() {
                             <i><FontAwesomeIcon icon={faUsd} /></i>
                         </div>
                         <div className={Styles.chartPrins}>
-                            <Chart />
+                            <Lines/>
+                            <Bars/>
+                            <Pies/>
                         </div>
                     </div>
 

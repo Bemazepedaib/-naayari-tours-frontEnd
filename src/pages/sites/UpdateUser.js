@@ -1,9 +1,5 @@
 
 import { useState, React } from 'react'
-import Styles from '../../styles/elementStyles/UpdateUser.module.css'
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faPenToSquare } from '@fortawesome/free-solid-svg-icons'
-import InputComponent from '../elements/Input'
 import ModalAdmin from "../elements/ModalAdmin"
 
 function UpdateUser({ user }) {

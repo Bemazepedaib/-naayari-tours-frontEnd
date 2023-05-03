@@ -10,6 +10,8 @@ import {Chart as Chartjs,
         Filler
     } from "chart.js";
 
+function BarChart({title,mydata,mylabels}) {
+
 Chartjs.register(
     CategoryScale,
     LinearScale,
@@ -21,17 +23,13 @@ Chartjs.register(
     Filler
 );
 
-let beneficios =[0,56,20,36,80,40,30,-20,25,30,12,60];
-let meses =['Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio',
-'Julio', 'Agosto', 'Septiembre', 'Octubre', 'Noviembre', 'Diciembre']
 
-
-let midata={
-    labels: meses,
+let data={
+    labels: mylabels,
     datasets:[
         {
-            label:"Beneficios",
-            data: beneficios,
+            label:title,
+            data: mydata,
             backgroundColor:"rgba(0,210,195,0.5)",
         },
     ],
@@ -56,6 +54,7 @@ let myOptions ={
     }
 };
 
-export default function BarChart(){
-    return <Bar data={midata} options={myOptions}/>
+    return <Bar data={data} options={myOptions}/>
 }
+export default BarChart;
+

@@ -24,7 +24,7 @@ function AdminSignup() {
                         password: pass.value,
                         sex: sex,
                         reference: adv,
-                        userType: "client",
+                        userType: type,
                         userLevel: "0",
                         membership: false,
                         verified: false
@@ -38,6 +38,8 @@ function AdminSignup() {
             setValidForm(false);
             return;
         }
+        finally{
+        }
     }
 
     const [name, setName] = useState({ value: "", valid: true });
@@ -48,6 +50,7 @@ function AdminSignup() {
     const [date, setDate] = useState({ value: "", valid: true });
     const [sex, setSex] = useState("male");
     const [adv, setAdv] = useState("a friend");
+    const [type, setType] = useState("client");
 
     const [myError, setMyError] = useState("");
     const [terminos, setTerminos] = useState(false);
@@ -93,6 +96,7 @@ function AdminSignup() {
 
 
     return (
+        
         <div className={Styles.contenedor}>
             <HeaderTittle tittle={"Crear nuevo usuario"}></HeaderTittle>
             <form action="" onSubmit={onSubmit} className={Styles.formulario} autoComplete="off" >
@@ -183,6 +187,18 @@ function AdminSignup() {
                         <option value="an ad">Un anuncio</option>
                         <option value="facebook">Facebook</option>
                         <option value="none">Ninguno de los anteriores</option>
+                    </select>
+                </div>
+                <div className={Styles.grupoInput}>
+                    <label htmlFor='UserType'>TIPO DE USUARIO</label>
+                    <select
+                        value={type}
+                        onBlur={e => { setType(e.target.value); }}
+                        onChange={e => { setType(e.target.value); }}
+                        className={Styles.textInput}
+                    >
+                        <option value="client">Cliente</option>
+                        <option value="guide">Guía</option>
                     </select>
                 </div>
                 <div className={Styles.grupoTerminos}>

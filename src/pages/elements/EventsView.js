@@ -30,7 +30,9 @@ function EventsView() {
             <div className={Styles.contenedorEvents}>
             {eventData.events.map(event => (
                 <div className={Styles.contenedorEvent} key={i++} onClick={() => { clickEvent(event.eventTrip, event.eventDate) }}>
-                    {event.eventTrip} | {event.eventDate}
+                    {event.eventTrip}
+                    <br></br>
+                    {event.eventDate}
                     <br></br>
                     {event.eventType === "Public" ? "Público" : "Privado"}
                     <br></br>

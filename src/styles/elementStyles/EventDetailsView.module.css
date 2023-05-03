@@ -1,0 +1,11 @@
+@import url('https://fonts.googleapis.com/css2?family=Oswald:wght@300&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Genos:ital,wght@1,700&display=swap');
+
+.main {
+    font-family: 'Oswald', sans-serif;
+    font-size: 30px;
+    padding: 20px 35px;
+    height: 100vh;
+    background-image: url('https://drive.google.com/uc?export=view&id=1XPHv76qI1Y303811H7gbUPpmv9KQSa5u');
+    background-size: cover;
+}

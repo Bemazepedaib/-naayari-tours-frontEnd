@@ -1,43 +1,50 @@
 import React from 'react'
 import Styles from '../../../styles/elementStyles/SidebarAdmin.module.css'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faPlane, faUser, faPersonArrowDownToLine, faTimes, faHome, faPowerOff } from '@fortawesome/free-solid-svg-icons'
+import { faPlane, faUser, faArrowsDownToPeople, faHome, faPowerOff } from '@fortawesome/free-solid-svg-icons'
+
 import Link from 'next/link'
+import Image from 'next/image'
 
 function SidebarAdmin() {
+
+    const image = 'https://drive.google.com/uc?export=view&id=1hKQxSheX5io9bPjn99_TedN8SCTNcsoK'
+
     return (
         <div className={Styles.sidebar} id={Styles.sidebarAdmin}>
             <div className={Styles.sidebarAdminTitle}>
-                <div>
-                    <h1 className={Styles.fTitle}>Naayari tours</h1>
-                </div>
-                <i className={Styles.fIcons}><FontAwesomeIcon icon={faTimes} /></i>
+                <Image src={image}
+                    width={55}
+                    height={55}
+                    alt="Naayari Tours"
+                    priority={true}
+                />
+                <div className={Styles.fTitle}>Naayari tours</div>
             </div>
             <div className={Styles.sidebarAdminMenu}>
-                <div className={`${Styles.sidebarAdminLink} ${Styles.menu}`}>
-                    <i><FontAwesomeIcon icon={faHome} /></i>
-                    <Link className={Styles.link} href="/sites/Dashboard"><h2 href='#' className={Styles.sidebarAdminSubtitle}>Dashboard</h2></Link>
-                </div>
-                <div className={`${Styles.sidebarAdminLink} ${Styles.menu}`}>
-                    <i> <FontAwesomeIcon icon={faPlane} /></i>
-                    <Link className={Styles.link} href="/sites/TripView"><h2 className={Styles.sidebarAdminSubtitle}>Viajes</h2></Link>
-                </div>
-                <div className={`${Styles.sidebarAdminLink} ${Styles.menu}`}>
-                    <i><FontAwesomeIcon icon={faUser} /></i>
-                    <Link className={Styles.link} href="/sites/Users"><h2 className={Styles.sidebarAdminSubtitle}>Usuarios</h2></Link>
-                </div>
-                <div className={`${Styles.sidebarAdminLink} ${Styles.menu}`}>
-                    <i><FontAwesomeIcon icon={faPersonArrowDownToLine} /></i>
-                    <Link className={Styles.link} href="/sites/Events"><h2 className={Styles.sidebarAdminSubtitle}>Org. de Viajes</h2></Link>
-                </div>
-
-                <div className={`${Styles.sidebarAdminLogout} ${Styles.sidebarAdminLink}`}>
-                    <i><FontAwesomeIcon icon={faPowerOff} /></i>
-                    <Link className={Styles.sidebarAdmina} href="/" > <h6 onClick={() => {
-                        localStorage.removeItem('token');
-                        window.location.reload(true)
-                    }}>Cerrar Sesión</h6></Link>
-                </div>
+                <Link href="/sites/Dashboard" className={Styles.sidebarAdminLink}>
+                    <FontAwesomeIcon icon={faHome} /> 
+                    <div className={Styles.text}>Dashboard</div>
+                </Link>
+                <Link href="/sites/TripView" className={Styles.sidebarAdminLink}>
+                    <FontAwesomeIcon icon={faPlane} /> 
+                    <div className={Styles.text}>Viajes</div>
+                </Link>
+                <Link href="/sites/Users" className={Styles.sidebarAdminLink}>
+                    <FontAwesomeIcon icon={faUser} /> 
+                    <div className={Styles.text}>Usuarios</div>
+                </Link>
+                <Link href="/sites/Events" className={Styles.sidebarAdminLink}>
+                    <FontAwesomeIcon icon={faArrowsDownToPeople} /> 
+                    <div className={Styles.text}>Org. de Viajes</div>
+                </Link>
+                <Link href="/" className={Styles.sidebarAdminLogout} onClick={() => {
+                    localStorage.removeItem('token');
+                    window.location.reload(true)
+                }}>
+                    <FontAwesomeIcon icon={faPowerOff} />
+                    <div className={Styles.text}>Cerrar Sesión</div>
+                </Link>
             </div>
         </div>
     )

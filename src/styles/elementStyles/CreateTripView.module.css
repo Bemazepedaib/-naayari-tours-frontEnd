@@ -8,32 +8,18 @@
 .infoContainer{
     margin-top: 20px;
     background-image: url('https://drive.google.com/uc?export=view&id=13KXgd3DJj2oeqYJS7EoqNaajsPUJKsDr');
-}
-/*DESCRIPTION AREA*/
-.descContainer{
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-}
-.descTitle{
-    font-size: 16px;
-    text-transform: uppercase;
-}
-.desc{
-    width: 650px;
-    height: 200px;
-    font-size: 16px;
-    border: 2px solid black;
-    resize: none;
+    border-radius: 5px;
+    box-shadow: 0 5px 10px rgba(0, 0, 0, .3);
 }
 /*ACTIVITIES*/
 .activities{
     display: flex;
     justify-content: center;
     align-items: center;
-    gap: 10px;
+    gap: 20px;
     margin: 15px auto;
+    width: 90%;
+    flex-wrap: wrap;
 }
 .activitiesTitle{
     font-size: 18px;
@@ -48,4 +34,79 @@
 .pdp{
     display: flex;
     justify-content: center;
+}
+/*DISCOUNT*/
+.discountContainer{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 5px;
+}
+/*DATES*/
+.dateContainer{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 25px;
+    margin-bottom: 15px;
+}
+.dateContainerL{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    gap: 10px;
+    margin-bottom: 10px;
+}
+.dateContainerR{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+.areaDate{
+    width: 180px;
+    height: 160px;
+    font-size: 16px;
+    border: 2px solid black;
+    resize: none;
+    text-align: center;
+}
+.btnDate{
+    background-color: #00a748;
+    color: white;
+    width: 120px;
+    height: 30px;
+    border-radius: 10px;
+    font-size: 1rem;
+    box-shadow: 0 0px 10px rgba(0, 0, 0, .3);
+    border: none;
+    cursor: pointer;
+}
+.btnDate:hover{
+    opacity: 0.8;
+}
+/*DESCRIPTION, RESTRICTIONS, KIT AND ITINERARY*/
+.areaContainer{
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    margin-bottom: 10px;
+}
+.areaSubContainer{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.areaTitle{
+    font-size: 16px;
+    text-transform: uppercase;
+}
+.area{
+    width: 350px;
+    height: 200px;
+    font-size: 16px;
+    border: 2px solid black;
+    resize: none;
 }

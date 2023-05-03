@@ -95,6 +95,7 @@
     margin-top: 20px;
     padding: 10px;
     color: #e65061;
+    display: flex;
 }
 
 .sidebarAdminLogout > a{

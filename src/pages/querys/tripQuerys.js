@@ -101,5 +101,4 @@ const GET_TRIP = gql
 }
 `;
 
-
 export { GET_TRIPTYPES, GET_TRIPS, GET_TRIP, GET_TRIP_PRICES }

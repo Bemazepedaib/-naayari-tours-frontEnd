@@ -10,6 +10,7 @@ import {Chart as Chartjs,
         Filler
     } from "chart.js";
 
+function LinearChart({title,mydata,mylabels}) {
 Chartjs.register(
     CategoryScale,
     LinearScale,
@@ -21,16 +22,13 @@ Chartjs.register(
     Filler
 );
 
-let beneficios =[0,56,20,36,80,40,30,-20,25,30,12,60];
-let meses =['Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio',
-'Julio', 'Agosto', 'Septiembre', 'Octubre', 'Noviembre', 'Diciembre']
 
-let midata={
-    labels: meses,
+let data={
+    labels: mylabels,
     datasets:[ //Cada una de las lineas del grafico
         {
-            label:"Prueba",
-            data: beneficios,
+            label:title,
+            data: mydata,
             tension:0.5,
             fill:true,
             borderColor:"rgb(255,99,132)",
@@ -46,6 +44,6 @@ let myOptions ={
 
 };
 
-export default function LinearChart(){
-    return <Line data={midata} options={myOptions}/>
+    return <Line data={data} options={myOptions}/>
 }
+export default LinearChart;

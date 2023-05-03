@@ -72,9 +72,21 @@ function Princ() {
                             <i><FontAwesomeIcon icon={faUsd} /></i>
                         </div>
                         <div className={Styles.chartPrins}>
-                            <Lines/>
-                            <Bars/>
-                            <Pies/>
+                            <Lines 
+                                title="Meses" 
+                                mylabels ={['Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio','Julio', 'Agosto', 'Septiembre', 'Octubre', 'Noviembre', 'Diciembre']}
+                                mydata ={[0,56,20,36,80,40,30,-20,25,30,12,60]}
+                            />
+                            <Bars
+                                title="Meses" 
+                                mylabels ={['Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio','Julio', 'Agosto', 'Septiembre', 'Octubre', 'Noviembre', 'Diciembre']}
+                                mydata ={[0,56,20,36,80,40,30,-20,25,30,12,60]}
+                            />
+                            <Pies
+                                title="Popularidad en Navidad"
+                                mylabels ={["Carne","Jamón","Dulces","Turrón","Vino"]}
+                                mydata ={[35,20,20,15,10]}
+                            />
                         </div>
                     </div>
 

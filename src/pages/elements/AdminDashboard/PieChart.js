@@ -1,20 +1,21 @@
 import { Chart as Chartjs, ArcElement,Tooltip,Legend } from "chart.js";
-import { DefaultRouteMatcherManager } from "next/dist/server/future/route-matcher-managers/default-route-matcher-manager";
 import { Pie } from "react-chartjs-2";
 
+
+function PieChart({title,mydata,mylabels}) {
 Chartjs.register(ArcElement,Tooltip,Legend);
 
-let options={
+let myOptions={
     responsive: true,
     miantanAspectRatio:false,
 };
 
 let data={
-    labels:["Carne","Jamón","Dulces","Turrón","Vino"],
+    labels:mylabels,
     datasets:[
         {
-            label: "Popularidad en Navidad",
-            data:[35,20,20,15,10],
+            label: title,
+            data:mydata,
             backgroundColor:[
                 "rgba(255,99,132,0.2)",
                 "rgba(255,206,86,0.2)",
@@ -34,6 +35,6 @@ let data={
     ],
 };
 
-export default function PieChart(){
-    return <Pie data={data} options={options}/>
+    return <Pie data={data} options={myOptions}/>
 }
+export default PieChart;

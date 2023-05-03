@@ -24,4 +24,26 @@ const GET_EVENTS = gql `
 }
 `;
 
-export { GET_EVENTS }
+const GET_EVENT = gql `
+    query getEvent($eventDate: String, $eventTrip: String) {
+        event(eventDate: $eventDate, eventTrip: $eventTrip) {
+            eventType
+            eventGuide
+            eventStatus
+            users {
+                userEmail
+                advancePayment
+                fullPayment
+                fullyPaid
+                observations
+                companion {
+                    companionType
+                    companionName
+                    companionCell
+                }
+            }
+        }
+    }
+`;
+
+export { GET_EVENTS, GET_EVENT }

@@ -1,9 +1,7 @@
 import React from "react";
 import Styles from '../../styles/Catalogue.module.css'
 import Image from "next/image";
-import Link from 'next/link';
 import Router from "next/router";
-import DetailCard from "../elements/DetailCard";
 import CataloguePrices from "../elements/CataloguePrices"
 
 

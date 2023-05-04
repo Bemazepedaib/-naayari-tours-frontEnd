@@ -5,18 +5,23 @@ import Router from 'next/router';
 import Image from 'next/image';
 import { useMutation,useQuery } from '@apollo/client';
 import { ADD_REQUEST} from '../mutations/requestMutations';
-import { ME } from '../querys/tripQuerys';
+import { ME } from '../querys/userQuerys';
 
 const image = 'https://drive.google.com/uc?export=view&id=1Gx08yGg-rGq0tUe5yVHWxbkaMfmrUOk0'
 
-function ModalVIP({titleText,text,send,trip}) {
+
+   
+
+function ModalVIP({titleText,text,send,date,trip}) {
+
+
+  const { loading, error, data } = useQuery(ME);
+  const [addRequest] = useMutation(ADD_REQUEST);
+  const [myMessage, setmyMessage] = useState('');
   const [show, setShow] = useState(false);
 
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
-
-  const [addRequest] = useMutation(ADD_REQUEST);
-  const { loading: userLoading, error: userError, data: userData } = useQuery(ME);
 
 
   async function activateBothMethods(){
@@ -35,6 +40,23 @@ function ModalVIP({titleText,text,send,trip}) {
     }
   }
 
+
+  const HandleClick = async () => {
+    try{
+    await addRequest({
+        variables: {
+            requesUser:data.me.email,
+            requesCell:data.me.cellphone,
+            requestDate:date,
+            requesTrip:trip,
+            requesStatus:"pending"
+        }})
+    }catch(e){
+        console.log(e.message)
+    } 
+  }
+
+
   return (
     <>
       <div  className={Styles.btnVIP} onClick={activateBothMethods}>
@@ -50,8 +72,9 @@ function ModalVIP({titleText,text,send,trip}) {
         <Modal.Body>{text}</Modal.Body>
         <Modal.Footer className={Styles.centerModalFooter}>
           <div className={Styles.buttonWbords} onClick={handleClose}>
-            <p className={Styles.paragraph}>Aceptar</p>
+            <button className={Styles.btnModal} onClick={HandleClick}>Aceptar</button>
           </div>
+          <div className={Styles.myErrorStyle}>{myMessage}</div>
         </Modal.Footer>
       </Modal>
     </>

@@ -28,27 +28,26 @@ function ModalReservation({ datosCompanion, datosUsuario, datosPrecio }) {
         datosPrecio[1].price * datosPrecio[1].number +
         datosPrecio[2].price * datosPrecio[2].number
 
-    const anticipo = total/2;
+    const anticipo = total / 2;
 
     let id = 1;
 
     const makeReservation = async () => {
         let a = [];
         datosCompanion.map(type => { type.current.map(companion => { a.push(companion) }) })
-        const objetoUsuarios = {
-            userEmail: datosUsuario[0].me.email,
-            companion: a,
-            advancePayment: anticipo,
-            fullPayment: total,
-            fullyPaid: false,
-            observations: datosUsuario[3]
-        }
         try {
             const res = await doReservation({
                 variables: {
                     eventDate: datosUsuario[1],
                     eventTrip: datosUsuario[2],
-                    users: objetoUsuarios
+                    users: {
+                        userEmail: datosUsuario[0].me.email,
+                        companion: a,
+                        advancePayment: anticipo,
+                        fullPayment: total,
+                        fullyPaid: false,
+                        observations: datosUsuario[3]
+                    }
                 }
             })
             setConfirmMessage(res.data.updateEventUsers)

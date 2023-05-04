@@ -2,7 +2,6 @@
 import { React, useState } from 'react'
 import { useQuery, useMutation } from '@apollo/client'
 
-
 //APOLLO REQUEST
 import { ADD_TRIP } from '../mutations/tripMutations';
 
@@ -44,7 +43,6 @@ const CreateTripView = () => {
         link: /^https?:\/\/(www\.)?[-a-zA-Z0-9@:%._\+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b([-a-zA-Z0-9()@:%_\+.~#?&//=]*)/,
         number: /^[0-9]+$/,
         letters: /^[a-zA-ZÀ-ÿ\s]{1,40}$/, // Letras y espacios, pueden llevar acentos.
-
     }
 
     //QUERY
@@ -55,36 +53,35 @@ const CreateTripView = () => {
     const onSubmit = async (e) => {
         e.preventDefault();
         activities.splice(0, 1)
-        try{
+        try {
             await addTrip({
                 variables: {
                     tripName: "caca",
                     tripInformation: {
                         description: "caca",
-                        date: ["05/06/2023"],
+                        date: ["05/06/2023","13/06/2023"],
                         place: "place",
                         price: [{
                             priceType: "Adulto",
-                            priceAmount: price
+                            priceAmount: 650
                         }, {
                             priceType: "Bebé",
                             priceAmount: 100
                         }],
                         duration: "24 hours",
-                        activities: [{activityName:"Canones",activityPhoto:"1dYRXhCmCgrNjNvpFlQrlMaJhDKoa1YJ7"}],
-                        discount: {dateStart:"05/05/2023",dateEnd:"06/05/2023",amount: 20,available: true},
+                        activities: [{ activityName: "Canones", activityPhoto: "1dYRXhCmCgrNjNvpFlQrlMaJhDKoa1YJ7" }],
+                        discount: { dateStart: "05/05/2023", dateEnd: "06/05/2023", amount: 20, available: true },
                         itinerary: "itinerario",
                         recomendations: "recomendations",
-                        photo: "https://drive.google.com/file/d/1dYRXhCmCgrNjNvpFlQrlMaJhDKoa1YJ7/view?usp=share_link"
+                        photo: "1dYRXhCmCgrNjNvpFlQrlMaJhDKoa1YJ7"
                     },
                     tripKit: "kit",
                     tripRating: 0,
                     tripStatus: true,
-                    tripReview: [{user:"",rating:0,review:"",date:"",photo:""}]
+                    tripReview: []
                 }
-            }
-            )
-        }catch(err){
+            })
+        } catch (err) {
             console.log(err.message)
         }
     }
@@ -133,7 +130,7 @@ const CreateTripView = () => {
                 <HeaderTittle tittle={"Crear nuevo viaje"}></HeaderTittle>
                 <div className={Styles.infoContainer}>
                     {/*FORM*/}
-                    <form action="" onSubmit={onSubmit} className={Styles.formulario} autoComplete="off" >
+                    <form onSubmit={onSubmit} className={Styles.formulario} autoComplete="off" >
                         <div className={Styles.tp}>
                             {/*TRIP NAME*/}
                             <InputComponent

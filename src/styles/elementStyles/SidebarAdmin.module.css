@@ -84,7 +84,6 @@
     grid-row-start: 1;
     grid-row-end: 3;
     display: inline !important;
-    z-index: 9999 !important;
     left: 0 !important;
 }
 

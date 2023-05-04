@@ -47,7 +47,7 @@ const CreateTripView = () => {
     const addADate = (e) => {
         e.preventDefault();
         var separarCadena = dateAdd.value.split('-');
-        setDates((dates+separarCadena[2]+'/'+separarCadena[1]+'/'+separarCadena[0]+"\n"));
+        setDates((dates + separarCadena[2] + '/' + separarCadena[1] + '/' + separarCadena[0] + "\n"));
     }
     //DELETE A DATE
     const deleteADate = (e) => {
@@ -67,28 +67,30 @@ const CreateTripView = () => {
                 <div className={Styles.infoContainer}>
                     {/*FORM*/}
                     <form action="" className={Styles.formulario} autoComplete="off" >
-                        {/*TRIP NAME*/}
-                        <InputComponent
-                            estado={name}
-                            cambiarEstado={setName}
-                            tipo="text"
-                            label="Nombre del viaje"
-                            placeholder="Ej. Real de acuitapilco"
-                            name="nombre"
-                            errorMsg="El nombre solo debe incluir letras"
-                            regExp={expresiones.letters}
-                        />
-                        {/*PHOTO*/}
-                        <InputComponent
-                            estado={photo}
-                            cambiarEstado={setPhoto}
-                            tipo="text"
-                            label="Dirección Url de foto"
-                            placeholder="https://drive.google.com/file/d/14gE1m9trO_XCBbPC8jBy1vvQpVGnak3A/view?usp=share_link"
-                            name="photo"
-                            errorMsg="Incluya una dirección de url valida"
-                            regExp={expresiones.link}
-                        />
+                        <div className={Styles.tp}>
+                            {/*TRIP NAME*/}
+                            <InputComponent
+                                estado={name}
+                                cambiarEstado={setName}
+                                tipo="text"
+                                label="Nombre del viaje"
+                                placeholder="Ej. Real de acuitapilco"
+                                name="nombre"
+                                errorMsg="El nombre solo debe incluir letras"
+                                regExp={expresiones.letters}
+                            />
+                            {/*PHOTO*/}
+                            <InputComponent
+                                estado={photo}
+                                cambiarEstado={setPhoto}
+                                tipo="text"
+                                label="Dirección Url de foto"
+                                placeholder="https://drive.google.com/file/d/14gE1m9trO_XCBbPC8jBy1vvQpVGnak3A/view?usp=share_link"
+                                name="photo"
+                                errorMsg="Incluya una dirección de url valida"
+                                regExp={expresiones.link}
+                            />
+                        </div>
                         {/*ACTIVITIES*/}
                         <fieldset>
                             <legend className={Styles.activitiesTitle}>ACTIVIDADES</legend>

@@ -63,6 +63,7 @@ const GET_TRIP = gql
     trip(tripName:$tripName){
     tripName
     tripInformation{
+      duration
       description
       place
       date
@@ -81,13 +82,10 @@ const GET_TRIP = gql
         available
       }
       itinerary
-      securityAdvice
-      restrictions
       recomendations
       photo
     }
     tripKit
-    tripType
     tripRating
     tripStatus
     tripReview{

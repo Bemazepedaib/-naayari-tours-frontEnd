@@ -10,7 +10,6 @@
     padding: 0;
     box-sizing: border-box;
     background-size: cover;
-
 }
 
 .container {
@@ -18,7 +17,6 @@
     display: grid;
     grid-template-columns: 500px 1fr;
     grid-gap: 32px;
-
 }
 
 .info {
@@ -51,7 +49,7 @@
 
 
 .labelTitle {
-    font-size: 14px;
+    size: 100%;
     color: #ededed;
     display: block;
 }
@@ -88,6 +86,10 @@ font-size: 24px;
     object-fit: cover;
     border-radius: 1rem;
     transition: 1s;
+}
+
+.tourActivities{
+    margin: 40px 0;
 }
 
 .tourActivities .activities:hover .img {

@@ -27,6 +27,8 @@ const GET_EVENTS = gql `
 const GET_EVENT = gql `
     query getEvent($eventDate: String, $eventTrip: String) {
         event(eventDate: $eventDate, eventTrip: $eventTrip) {
+            eventDate
+            eventTrip
             eventType
             eventGuide
             eventStatus

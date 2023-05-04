@@ -5,6 +5,7 @@
     display: grid;
     grid-template-columns: 20% 80%;
     grid-template-rows: repeat(3, 1);
+    height: 100vh;
 }
 
 .error {

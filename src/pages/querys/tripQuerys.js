@@ -63,6 +63,7 @@ const GET_TRIP = gql
     trip(tripName:$tripName){
     tripName
     tripInformation{
+      duration
       description
       place
       date

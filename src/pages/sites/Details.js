@@ -27,23 +27,22 @@ const Detalles = ({ trip }) => {
                                 <div className={Styles.tourInfo}>
                                     <label className={Styles.labelTitle}>Tiempo Aproximado
                                         <i className={Styles.icons}><FontAwesomeIcon icon={faClock} /></i></label>
-                                    <span className={Styles.span}>10 horas</span>
+                                    <span className={Styles.span}>{trip.trip.tripInformation.duration}</span>
                                 </div>
                                 <div className={Styles.tourInfo}>
                                     <label className={Styles.labelTitle}>Categorias
                                         <i className={Styles.icons}><FontAwesomeIcon icon={faTags} /></i></label>
-                                    <span className={Styles.span}>Agua / Extremo / Naturaleza</span>
+                                        <div className={Styles.tourActivities}>
+                                            <DetailActivities act={trip.trip.tripInformation.activities}></DetailActivities>
+                                        </div>
                                 </div>
                             </div>
-                            <FormTripDate dates={trip.trip.tripInformation.date} selectedTrip={trip.trip.tripName}/>
+                            <FormTripDate 
+                                dates={trip.trip.tripInformation.date} 
+                                selectedTrip={trip.trip.tripName}
+                                />
                             <div className={Styles.tourDescription}>
                                 {trip.trip.tripInformation.description}
-                            </div>
-                            <div className={Styles.tourActivities}>
-                                <div className={Styles.header}>Actividades</div>
-                                <div >
-                                    <DetailActivities act={trip.trip.tripInformation.activities}></DetailActivities>
-                                </div>
                             </div>
                         </div>
                     </div>

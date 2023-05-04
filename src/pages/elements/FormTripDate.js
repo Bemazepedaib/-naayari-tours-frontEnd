@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 import Styles from '../../styles/elementStyles/FormTripDate.module.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faCalendarDays} from '@fortawesome/free-solid-svg-icons'
+import ModalVIP from './ModalVIP';
 import Router from 'next/router';
 
 import { useQuery } from '@apollo/client';
@@ -10,7 +11,14 @@ import { ME } from '../querys/userQuerys';
 function FormTripDate({ dates, selectedTrip }) {
 
     const [selectedDate, setselectedDate] = useState(dates[0])
+    const [selectedDateVIP, setselectedDateVIP] = useState(dates[0])
     const { loading: userLoading, error: userError, data: userData } = useQuery(ME);
+
+    async function send() {
+
+            return false;
+
+    }
 
     return (
         <div>
@@ -33,9 +41,26 @@ function FormTripDate({ dates, selectedTrip }) {
                             } else {
                                 Router.push({ pathname: '/sites/Login', query: { place: "reservations", selectedDate, selectedTrip } }, '/sites/Login')
                             }
-                        }}> Reservar lugares </button>
+                        }}> Reservar lugares
+                         </button>
                     </div>
-                    <button className={Styles.btnVIP} type='submit' onClick={() => { console.log('Es un vip') }}> ¡Crea tu grupo VIP! </button>
+                    <div >
+                    <select
+                            className={Styles.textInput}
+                            value={selectedDateVIP}
+                            onChange={e => { setselectedDateVIP(e.target.value) }}
+                            onBlur={e => { setselectedDateVIP(e.target.value) }}>
+                            {dates.map(d => (
+                                <option className={Styles.op} value={d} key={d}> {d} </option>
+                            ))}
+                        </select>
+                        <ModalVIP 
+                        titleText='Solicitud VIP enviada '
+                        text={ selectedTrip +" con fecha: "+ selectedDateVIP}
+                        send={send}
+                        date={selectedDateVIP}>
+                        </ModalVIP>
+            </div>
                 </div>
 
             </div>

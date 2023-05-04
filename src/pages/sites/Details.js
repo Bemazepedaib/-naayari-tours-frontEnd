@@ -37,7 +37,10 @@ const Detalles = ({ trip }) => {
                                         </div>
                                 </div>
                             </div>
-                            <FormTripDate dates={trip.trip.tripInformation.date} selectedTrip={trip.trip.tripName}/>
+                            <FormTripDate 
+                                dates={trip.trip.tripInformation.date} 
+                                selectedTrip={trip.trip.tripName}
+                                />
                             <div className={Styles.tourDescription}>
                                 {trip.trip.tripInformation.description}
                             </div>

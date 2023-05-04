@@ -81,8 +81,6 @@ const GET_TRIP = gql
         available
       }
       itinerary
-      securityAdvice
-      restrictions
       recomendations
       photo
     }

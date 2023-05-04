@@ -86,7 +86,6 @@ const GET_TRIP = gql
       photo
     }
     tripKit
-    tripType
     tripRating
     tripStatus
     tripReview{

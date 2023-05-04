@@ -26,7 +26,7 @@ function EventsView() {
 
     return (!eventLoading && !eventError &&
         <div className={Styles.main}>
-            <HeaderTittle tittle={"Organización de eventos activos"} />
+            <div className={Styles.titulo1}>Organización de eventos</div>
             <div className={Styles.contenedorEvents}>
             {eventData.events.map(event => (
                 <div className={Styles.contenedorEvent} key={i++} onClick={() => { clickEvent(event.eventTrip, event.eventDate) }}>

@@ -79,12 +79,14 @@ function Signup() {
         e.preventDefault();
         try {
             if (name.valid && cell.valid && mail.valid && pass.valid && pass2.valid && date.valid && terminos) {
+                const fecha = date.value.split("-")
+                const newFecha = fecha[2]+"/"+fecha[1]+"/"+fecha[0]
                 setValidForm(true)
                 setToken(await addUser({
                     variables: {
                         name: name.value,
                         cellphone: cell.value,
-                        birthDate: date.value,
+                        birthDate: newFecha,
                         email: mail.value,
                         password: pass.value,
                         sex: sex,

@@ -37,7 +37,7 @@ const CreateTripView = () => {
     const [itinerary, setItinerary] = useState("");
     const [recomendations, setRecomendations] = useState("");
     const [kit, setKit] = useState("");
-    const [activities, setActivities] = useState([{}]);
+    const [activities, setActivities] = useState([]);
 
     const expresiones = {
         link: /^https?:\/\/(www\.)?[-a-zA-Z0-9@:%._\+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b([-a-zA-Z0-9()@:%_\+.~#?&//=]*)/,
@@ -52,8 +52,7 @@ const CreateTripView = () => {
     //ON SUBMIT
     const onSubmit = async (e) => {
         e.preventDefault();
-        activities.splice(0, 1)
-        console.log(price.value)
+        console.log(activities)
         try {
             await addTrip({
                 variables: {
@@ -105,7 +104,7 @@ const CreateTripView = () => {
                 break;
         }
         if (e.target.checked) {
-            setActivities(activities.concat({ activityName: e.target.name, activityPhoto: e.target.id }))
+            setActivities(activities.concat({ activityName: e.target.name+"", activityPhoto: e.target.id+"" }))
         } else if (!e.target.checked) {
             let pos = activities.map(mocoMap => mocoMap.activityName).indexOf(e.target.name);
             activities.splice(pos, 1)

@@ -6,4 +6,10 @@ const DO_RESERVATIONS = gql`
     }
 `;
 
-export { DO_RESERVATIONS };
+const UPDATE_STATUS = gql`
+    mutation updateEventStatus($eventDate: String!, $eventTrip: String!, $eventStatus: String!){
+        updateEventStatus(eventDate: $eventDate, eventTrip: $eventTrip, eventStatus: $eventStatus)
+    }
+`;
+
+export { DO_RESERVATIONS, UPDATE_STATUS };

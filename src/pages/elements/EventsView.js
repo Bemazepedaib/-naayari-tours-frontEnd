@@ -1,8 +1,7 @@
-import React from 'react'
+import React, { useState } from 'react'
 import Router from "next/router";
 
 import Styles from '../../styles/elementStyles/EventsView.module.css'
-import HeaderTittle from './HeaderTittle';
 
 import { useQuery } from '@apollo/client';
 import { ME } from '../querys/userQuerys';
@@ -18,28 +17,43 @@ function EventsView() {
     if (meError) return (<div className={Styles.error}>Inicie sesión para continuar</div>)
     if (meData.me.userType !== "admin") return (<div className={Styles.error}>Necesitas permisos de administrador para acceder a este módulo</div>)
 
-    let i=0;
+    let i = 0;
 
     const clickEvent = (eventTrip, eventDate) => {
         Router.push({ pathname: '/elements/EventDetails', query: { eventTrip, eventDate } })
     }
 
+    const pushDate = () => {
+
+    }
+
     return (!eventLoading && !eventError &&
         <div className={Styles.main}>
-            <div className={Styles.titulo1}>Organización de eventos</div>
+            <div className={Styles.titulo1}>Viajes activos</div>
             <div className={Styles.contenedorEvents}>
-            {eventData.events.map(event => (
-                <div className={Styles.contenedorEvent} key={i++} onClick={() => { clickEvent(event.eventTrip, event.eventDate) }}>
-                    {event.eventTrip}
-                    <br></br>
-                    {event.eventDate}
-                    <br></br>
-                    {event.eventType === "Public" ? "Público" : "Privado"}
-                    <br></br>
-                    {event.eventStatus ? "Activo" : "Inactivo"}
-                </div>
-            ))}
+                {eventData.events.map(event => (
+                    event.eventStatus ?
+                        <div className={Styles.contenedorEvent} key={i++}>
+                            <div className={Styles.miniFlex}><div className={Styles.textHid}>Viaje:&nbsp;</div> {event.eventTrip}</div>
+                            <div className={Styles.miniFlex}><div className={Styles.textHid}>Fecha:&nbsp;</div> {event.eventDate}</div>
+                            <div className={Styles.miniFlex}><div className={Styles.textHid}>Tipo de viaje:&nbsp;</div> {event.eventType === "Public" ? "Público" : "VIP"}</div>
+                            <button className={Styles.btn} onClick={() => { clickEvent(event.eventTrip, event.eventDate) }} >Ver más</button>
+                        </div>
+                        : null
+                ))}
             </div>
+            {/* <div className={Styles.titulo1}>Viajes pasados</div>
+            <div className={Styles.contenedorEvents}>
+                {eventData.events.map(event => (
+                    event.eventStatus ? null :
+                        <div className={Styles.contenedorEvent} key={i++}>
+                            <div>Viaje: {event.eventTrip}</div>
+                            <div>Fecha: {event.eventDate}</div>
+                            <div>{event.eventType === "Public" ? "Público" : "Privado"}</div>
+                            <button className={Styles.btn} onClick={() => { clickEvent(event.eventTrip, event.eventDate) }} >Ver más</button>
+                        </div>
+                ))}
+            </div> */}
         </div>
     )
 }

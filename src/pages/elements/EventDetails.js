@@ -32,14 +32,10 @@ function EventDetails() {
         </div>
     )
 
-    return (
-        <div>
-            {!eventLoading && !eventError && (
-                <div className={Styles.main}>
-                    <SidebarAdmin />
-                    <EventDetailsView event={eventData} />
-                </div>
-            )}
+    return (!eventLoading && !eventError &&
+        <div className={Styles.main}>
+            <SidebarAdmin />
+            <EventDetailsView event={eventData} />
         </div>
     )
 }

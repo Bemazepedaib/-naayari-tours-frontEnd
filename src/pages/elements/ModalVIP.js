@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState,useEffect } from 'react';
 import Modal from 'react-bootstrap/Modal';
 import Styles from '../../styles/elementStyles/FormTripDate.module.css'
 import Router from 'next/router';
@@ -17,12 +17,20 @@ function ModalVIP({titleText,text,send,date,trip}) {
 
   const { loading, error, data } = useQuery(ME);
   const [addRequest] = useMutation(ADD_REQUEST);
+  const [myMessageErr, setmyMessageErr] = useState('');
   const [myMessage, setmyMessage] = useState('');
   const [show, setShow] = useState(false);
+  const [counter, setCounter] = useState();
 
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
 
+  useEffect(() => {
+    counter==0 ? setShow(false) : ""
+      const timer =
+      counter > 0 && setInterval(() => setCounter(counter - 1), 1000);
+    return () => clearInterval(timer);
+  }, [counter]);
 
   async function activateBothMethods(){
      if(await send()){
@@ -42,6 +50,9 @@ function ModalVIP({titleText,text,send,date,trip}) {
 
 
   const HandleClick = async () => {
+    setmyMessage("");
+    setmyMessageErr("");
+    setCounter(3)
     try{
     await addRequest({
         variables: {
@@ -51,10 +62,18 @@ function ModalVIP({titleText,text,send,date,trip}) {
             requestTrip:trip,
             requestStatus:"pending"
         }})
+        
     }catch(e){
-        console.log(e.message)
-    } 
+        setmyMessageErr(e.message);
+    }
+    if (!myMessageErr) {
+      setmyMessage("Solicitud enviada exitosamente!!");
+
+
+    }
   }
+
+
 
 
   return (
@@ -64,17 +83,18 @@ function ModalVIP({titleText,text,send,date,trip}) {
       </div>
       <Modal show={show} onHide={handleClose}>
         <Modal.Header closeButton>
-          <Modal.Title>
-          <Image className={Styles.image} src={image} width={70} height={70} alt="Naayari tours" />
+          <Modal.Title className={Styles.h3}>
+          <Image className={Styles.imageVIP} src={image} width={70} height={70} alt="Naayari tours" />
             {titleText}
             </Modal.Title>
         </Modal.Header>
         <Modal.Body>{text}</Modal.Body>
         <Modal.Footer className={Styles.centerModalFooter}>
-          <div className={Styles.buttonWbords} onClick={handleClose}>
-            <button className={Styles.btnModal} onClick={HandleClick}>Aceptar</button>
+          <div className={Styles.buttonWbords} >
+            <button className={Styles.btnModal} onClick={HandleClick}>Mandar Solicitud</button>
           </div>
-          <div className={Styles.myErrorStyle}>{myMessage}</div>
+          <div className={Styles.myErrorStyle}>{myMessageErr}</div>
+          <div className={Styles.myMessagetyle}>{myMessage}</div>
         </Modal.Footer>
       </Modal>
     </>

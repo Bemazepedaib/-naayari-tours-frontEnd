@@ -1,9 +1,43 @@
 @import url('https://fonts.googleapis.com/css2?family=Oswald:wght@300&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Genos:ital,wght@1,700&display=swap');
 
+.btn {
+    font-family: 'Oswald', sans-serif;
+    background-color: #00a748;
+    border: NONE;
+    border-radius: 10px;
+    box-sizing: border-box;
+    color: #ffffff;
+    cursor: pointer;
+    display: inline-block;
+    font-size: 15px;
+    line-height: normal;
+    text-align: center;
+    transition: all 300ms cubic-bezier(.23, 1, 0.32, 1);
+    will-change: transform;
+    margin-bottom: 5px;
+    margin-top: 10px;
+    height: 30px;
+    width: 50%;
+}
+
+.btn:hover {
+    color: #ffffff;
+    background-color: #00a748;
+    box-shadow: rgba(0, 0, 0, 0.25) 0 8px 15px;
+    transform: translateY(-2px);
+    border: NONE;
+}
+
+.btn:active {
+    box-shadow: none;
+    transform: translateY(0);
+    background-color: #00a748;
+}
+
 .main {
     font-family: 'Oswald', sans-serif;
-    font-size: 30px;
+    font-size: 20px;
     padding: 20px 35px;
     background-image: url('https://drive.google.com/uc?export=view&id=1XPHv76qI1Y303811H7gbUPpmv9KQSa5u');
     background-size: cover;
@@ -40,6 +74,7 @@
     justify-content: center;
     align-items: center;
     height: 100px;
+
 }
 
 .contenedorEvents {
@@ -48,19 +83,18 @@
     justify-content: center;
     align-items: center;
     flex-wrap: wrap;
-    gap: 20px;
 }
 
 .contenedorEvent {
     display: flex;
     flex-direction: column;
+    align-items: center;
     text-align: center;
     background-color: #fff;
-    border: 1px solid #000000;
+    border: 2px solid #000000;
     border-radius: 5px;
     padding: 10px;
     margin: 10px;
-    cursor: pointer;
     transition: all 1s;
     width: 20vw;
 }
@@ -70,11 +104,24 @@
     box-shadow: 0px 0px 5px 1px rgba(0, 0, 0, 0.75);
 }
 
+.miniFlex {
+    display: flex;
+}
+
+.textHid {
+    font-weight: bold;
+}
 
 @media (max-width: 600px) {
 
+    .btn {
+        font-size: 7.5px;
+        height: 15px;
+        margin: 5px;
+    }
+
     .main {
-        font-size: 15px;
+        font-size: 10px;
         padding: 15px;
         background-size: contain;
     }
@@ -92,11 +139,17 @@
     }
 
     .contenedorEvent {
-        width: 50vw;
+        width: 31vw;
+        margin: 5px;
+        padding: 5px;
     }
 
     .error {
         font-size: 20px;
         text-align: center;
+    }
+
+    .textHid {
+        display: none;
     }
 }

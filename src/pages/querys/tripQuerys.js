@@ -29,6 +29,23 @@ const GET_TRIPS = gql
   }
 }
     `;
+const GET_PI_TRIPS  = gql
+  `query getTrips {
+    trips{
+    tripName
+    tripInformation{
+      place
+      price{
+        priceType
+        priceAmount
+      }
+      discount{
+        available
+      }
+    }
+  }
+}
+    `;
 
 const GET_TRIPTYPES = gql`
     query getTripTypes {
@@ -99,4 +116,4 @@ const GET_TRIP = gql
 }
 `;
 
-export { GET_TRIPTYPES, GET_TRIPS, GET_TRIP, GET_TRIP_PRICES }
+export { GET_TRIPTYPES, GET_TRIPS, GET_TRIP, GET_TRIP_PRICES,GET_PI_TRIPS};

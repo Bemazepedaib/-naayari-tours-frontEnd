@@ -33,7 +33,7 @@
 
 .titulo2 {
     background-color: white;
-    width: 95%;
+    width: 85%;
     border-radius: 10px;
     border: 2px solid #1D2128;
     text-align: center;
@@ -47,11 +47,37 @@
 .contenedorUsuarios {
     display: flex;
     flex-wrap: wrap;
-    gap: 10px;
+    gap: 30px;
     justify-content: center;
+    width: 80%;
 }
 
-@media (max-width: 600px) { 
+.contenedorDatos {
+    background-color: #fff;
+    width: 80%;
+    text-align: center;
+    font-size: 25px;
+}
+
+.noReservation {
+    border-radius: 10px;
+    border: 2px solid #1D2128;
+    font-family: 'Genos', sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 40px;
+    text-align: center;
+    background-color: #fff;
+    padding: 30px;
+    margin-top: 100px;
+}   
+
+@media (max-width: 600px) {
+
+    .noReservation {
+        font-size: 15px;
+    }
     .main {
         padding: 15px;
         background-size: contain;
@@ -67,7 +93,7 @@
     .titulo2 {
         font-size: 17px;
     }
-    
+
     .contenedorUsuarios {
         gap: 0;
     }

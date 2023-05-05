@@ -22,12 +22,12 @@ const CreateTripView = () => {
     const [addTrip] = useMutation(ADD_TRIP);
     const [name, setName] = useState({ value: "", valid: true });
     const [photo, setPhoto] = useState({ value: "", valid: true });
-    const [price, setPrice] = useState({ value: 0, valid: true });
+    const [price, setPrice] = useState({ value: "", valid: true });
     const [duration, setDuration] = useState({ value: "", valid: true });
     const [place, setPlace] = useState({ value: "", valid: true });
     const [dateStart, setDateStart] = useState({ value: "", valid: true });
     const [dateEnd, setDateEnd] = useState({ value: "", valid: true });
-    const [amount, setAmount] = useState({ value: 0, valid: true });
+    const [amount, setAmount] = useState({ value: "", valid: true });
     const [dateAdd, setDateAdd] = useState({ value: "", valid: true });
 
     const [discount, setDiscount] = useState(false);
@@ -37,7 +37,7 @@ const CreateTripView = () => {
     const [itinerary, setItinerary] = useState("");
     const [recomendations, setRecomendations] = useState("");
     const [kit, setKit] = useState("");
-    const [activities, setActivities] = useState([{}]);
+    const [activities, setActivities] = useState([]);
 
     const expresiones = {
         link: /^https?:\/\/(www\.)?[-a-zA-Z0-9@:%._\+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b([-a-zA-Z0-9()@:%_\+.~#?&//=]*)/,
@@ -52,35 +52,41 @@ const CreateTripView = () => {
     //ON SUBMIT
     const onSubmit = async (e) => {
         e.preventDefault();
-        activities.splice(0, 1)
+        console.log(activities)
         try {
             await addTrip({
                 variables: {
-                    tripName: "caca",
+                    tripName: name.value,
                     tripInformation: {
-                        description: "caca",
-                        date: ["05/06/2023","13/06/2023"],
-                        place: "place",
+                        description: description,
+                        date: dates,
+                        place: place.value,
                         price: [{
                             priceType: "Adulto",
-                            priceAmount: 650
+                            priceAmount: parseInt(price.value,10)
                         }, {
                             priceType: "Bebé",
                             priceAmount: 100
                         }],
-                        duration: "24 hours",
-                        activities: [{ activityName: "Canones", activityPhoto: "1dYRXhCmCgrNjNvpFlQrlMaJhDKoa1YJ7" }],
-                        discount: { dateStart: "05/05/2023", dateEnd: "06/05/2023", amount: 20, available: true },
-                        itinerary: "itinerario",
-                        recomendations: "recomendations",
-                        photo: "1dYRXhCmCgrNjNvpFlQrlMaJhDKoa1YJ7"
+                        duration: duration.value,
+                        activities: activities,
+                        discount: discount ? {
+                            dateStart: dateStart.value,
+                            dateEnd: dateEnd.value,
+                            amount: parseInt(amount.value,10),
+                            available: true
+                        } : {},
+                        itinerary: itinerary,
+                        recomendations: recomendations,
+                        photo: photo.value.split("/")[5]
                     },
-                    tripKit: "kit",
+                    tripKit: kit,
                     tripRating: 0,
                     tripStatus: true,
-                    tripReview: []
+                    tripReview: [{}]
                 }
-            })
+            }
+            )
         } catch (err) {
             console.log(err.message)
         }
@@ -98,7 +104,7 @@ const CreateTripView = () => {
                 break;
         }
         if (e.target.checked) {
-            setActivities(activities.concat({ activityName: e.target.name, activityPhoto: e.target.id }))
+            setActivities(activities.concat({ activityName: e.target.name+"", activityPhoto: e.target.id+"" }))
         } else if (!e.target.checked) {
             let pos = activities.map(mocoMap => mocoMap.activityName).indexOf(e.target.name);
             activities.splice(pos, 1)

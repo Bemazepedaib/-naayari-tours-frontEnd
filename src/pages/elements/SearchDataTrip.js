@@ -12,6 +12,7 @@ const SearchDataTrip = ({ data }) => {
     const [tripsTable, setTripsTable] = useState(data);
     const [search, setSearch] = useState("");
 
+
     //OnChange Method
     const handleChange = (e) => {
         setSearch(e.target.value);
@@ -20,9 +21,11 @@ const SearchDataTrip = ({ data }) => {
     //TABLE FILTER
     const filter = (term) => {
         let searchResult = tripsTable.filter((element) => {
-            if (element.name.toString().toLowerCase().includes(term.toLowerCase())
-                || element.cellphone.toString().includes(term.toLowerCase())
-                || element.email.toString().toLowerCase().includes(term.toLowerCase())) {
+            if (element.tripName.toString().toLowerCase().includes(term.toLowerCase())
+                || element.tripInformation.place.toString().toLowerCase().includes(term.toLowerCase())
+                || element.tripInformation.price[0].priceAmount.toString().toLowerCase().includes(term.toLowerCase())
+                || element.tripInformation.discount.available ? "con descuento".toLowerCase().includes(term.toLowerCase()):
+                 "sin descuento".toLowerCase().includes(term.toLowerCase())) {
                 return element;
             }
         })
@@ -37,7 +40,7 @@ const SearchDataTrip = ({ data }) => {
             <div className={Styles.mainContainer}>
                 <div className={Styles.inputContainer}>
                     <HeaderTittle tittle={"Buscar Viaje"}></HeaderTittle>
-                    <input className={Styles.inputText} onChange={handleChange} placeholder='Ingrese datos del usuario a buscar'></input>
+                    <input className={Styles.inputText} onChange={handleChange} placeholder='Ingrese datos del viaje a buscar'></input>
                 </div>
                 <div className={Styles.tableContainer}>
                     <Table responsive size='sm' striped bordered hover className={Styles.table}>

@@ -45,11 +45,11 @@ function ModalVIP({titleText,text,send,date,trip}) {
     try{
     await addRequest({
         variables: {
-            requesUser:data.me.email,
-            requesCell:data.me.cellphone,
+            requestUser:data.me.email,
+            requestCell:data.me.cellphone,
             requestDate:date,
-            requesTrip:trip,
-            requesStatus:"pending"
+            requestTrip:trip,
+            requestStatus:"pending"
         }})
     }catch(e){
         console.log(e.message)

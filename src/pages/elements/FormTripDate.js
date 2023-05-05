@@ -55,7 +55,7 @@ function FormTripDate({ dates, selectedTrip }) {
                             ))}
                         </select>
                         <ModalVIP 
-                        titleText='Solicitud VIP enviada '
+                        titleText='Solicitud VIP '
                         text={ selectedTrip +" con fecha: "+ selectedDateVIP}
                         send={ send }
                         date={ selectedDateVIP }

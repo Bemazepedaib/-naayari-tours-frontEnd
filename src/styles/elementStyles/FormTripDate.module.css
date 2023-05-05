@@ -156,9 +156,6 @@
   background: greenyellow;
 }
 
-.image {
-  margin-right: 50px;
-}
 
 .centerModalFooter {
   display: flex;
@@ -207,4 +204,21 @@
 
 .myErrorStyle{
   color: red;
+}
+
+.myMessagetyle{
+  color: rgb(23, 143, 7);
+}
+
+.h3{
+  position: relative;
+  display: 	flex;
+  width: 100%;
+  align-items: center;
+  justify-content:center;
+}
+
+.imageVIP{
+  position: absolute;
+  left: 0;
 }

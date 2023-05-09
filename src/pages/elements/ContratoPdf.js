@@ -1,6 +1,8 @@
-import React, { useRef } from 'react';
+import React, { useRef, useState } from 'react';
 
 import Styles from '../../styles/elementStyles/ContratoPdf.module.css'
+
+import { useRouter } from 'next/router';
 
 import Image from 'next/image';
 import { Button } from 'react-bootstrap';
@@ -12,17 +14,23 @@ function ContratoPdf() {
     const Header = 'https://drive.google.com/uc?export=view&id=1BKC3ZvHOvZZ3S8DYHa_Ux7WHuDCfo5hE'
     const Footer = 'https://drive.google.com/uc?export=view&id=1Audw8DRFk6sEm3WwHAo45owPgDGfQzxP'
 
-    const dia = "28"
-    const mes = "Abril"
-    const año = "2023"
-    const cliente = "Benjamín Maximiliano Zepeda Ibarra"
-    const celular = "3112430989"
-    const lugares = "2"
-    const tour = "El Manto"
-    const fechaViaje = "30 de Abril"
+    const { query: { cliente, celular, lugares, tour, fechaViaje, anticipo, resto } } = useRouter();
+
+    const fechaHoy = new Date(Date.now()).toISOString().split("T")[0].split("-")
+
+    const [salida, setSalida] = useState("")
+
+    const dia = fechaHoy[2]
+    const mes = fechaHoy[1]
+    const año = fechaHoy[0]
+    //const cliente = "Benjamín Maximiliano Zepeda Ibarra"
+    //const celular = "3112430989"
+    //const lugares = "2"
+    //const tour = "El Manto"
+    //const fechaViaje = "30 de Abril"
     const horaSalida = "7:00AM"
-    const anticipo = 500
-    const resto = 800
+    //const anticipo = 500
+    //const resto = 800
 
     const pdfRef = useRef()
 
@@ -33,13 +41,14 @@ function ContratoPdf() {
         const pdf = new jsPDF();
         pdf.addImage(data, 'PNG', 0, 0);
         pdf.save('contrato.pdf')
+        window.history.back()
     }
 
     return (
         <div className={Styles.mainContainer}>
             <Button onClick={generarContrato}>Generar contrato</Button>
             <div className={Styles.pdf} ref={pdfRef}>
-                <Image src={Header} width={650} height={92}></Image>
+                <Image src={Header} width={650} height={92} alt='Header'></Image>
                 <div className={Styles.header}>CONTRATO DE RESERVA NAAYARI TOURS</div>
                 <div className={Styles.fecha}>Tepic, Nay. A <u>{dia}</u> de <u>{mes}</u> del <u>{año}</u></div>
                 <div className={Styles.textoGeneral}>
@@ -77,7 +86,7 @@ function ContratoPdf() {
                         <b>FAVOR DE CONSERVAR ESTE COMPROBANTE PARA FUTURAS ACLARACIONES.</b>
                     </ol>
                 </div>
-                <Image src={Footer} width={650} height={92}></Image>
+                <Image src={Footer} width={650} height={92} alt='Futer'></Image>
             </div>
         </div>
     )

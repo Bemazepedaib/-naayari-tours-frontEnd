@@ -61,7 +61,7 @@ function EventDetailsView({ event }) {
             <div className={Styles.contenedorUsuarios}>
                 {event.event.users.length > 0 ? event.event.users.map(user => (
                     <div key={key++}>
-                        <ModalEvent user={user} />
+                        <ModalEvent user={user} trip={event.event.eventTrip} date={event.event.eventDate} />
                     </div>
                 )) : <div className={Styles.noReservation}>Aún no hay reservaciones</div>}
             </div>

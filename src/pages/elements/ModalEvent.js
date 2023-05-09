@@ -6,24 +6,36 @@ import { Table } from 'react-bootstrap';
 import { Spinner } from 'react-bootstrap';
 
 import Image from 'next/image'
+import Router from "next/router";
 
 import Styles from '../../styles/elementStyles/ModalEvent.module.css'
 
 import { useQuery } from '@apollo/client';
 import { GET_USER } from '../querys/userQuerys';
 
-export default function ModalEvent({ user }) {
+export default function ModalEvent({ user, trip, date }) {
 
     const image = 'https://drive.google.com/uc?export=view&id=1hKQxSheX5io9bPjn99_TedN8SCTNcsoK'
 
     const { loading: userLoading, error: userError, data: userData } = useQuery(GET_USER, { variables: { email: user.userEmail } });
 
     const [show, setShow] = useState(false);
-
     const handleClose = () => setShow(false);
     const handleShow = () => setShow(true);
 
     let id = 0;
+
+    const makeContract = () => {
+        Router.push({ pathname: '/elements/ContratoPdf', query: { 
+            cliente: userData.user.name, 
+            celular: userData.user.cellphone,
+            lugares: user.companion.length+1,
+            tour: trip,
+            fechaViaje: date,
+            anticipo: user.advancePayment,
+            resto: (user.fullPayment-user.advancePayment)
+        } })
+    }
 
     if (userLoading) return (<Spinner />)
 
@@ -55,33 +67,45 @@ export default function ModalEvent({ user }) {
                             </tr>
                         </tbody>
                     </Table>
+                    {user.companion.length > 0 ? <div className={Styles.modalTitle}>Acompañantes</div> : null}
                     {user.companion.length > 0 ?
-                        <div>
-                            <div className={Styles.modalTitle}>Acompañantes</div>
-                            <Table>
-                                <thead className={Styles.tableHeader}>
-                                    <tr>
-                                        <th> Tipo de acompañante </th>
-                                        <th> Nombre de acompañante </th>
-                                        <th> Teléfono de acompañante </th>
+                        <Table>
+                            <thead className={Styles.tableHeader}>
+                                <tr>
+                                    <th> Tipo de acompañante </th>
+                                    <th> Nombre de acompañante </th>
+                                    <th> Teléfono de acompañante </th>
+                                </tr>
+                            </thead>
+                            <tbody className={Styles.tableBody}>
+                                {user.companion?.map(comp => (
+                                    <tr key={id++}>
+                                        <td>{comp.companionType === "adult" ? "Adulto" : comp.companionType === "child" ? "Niño" : "Bebé"}</td>
+                                        <td>{comp.companionName}</td>
+                                        <td>{comp.companionCell}</td>
                                     </tr>
-                                </thead>
-                                <tbody className={Styles.tableBody}>
-                                    {user.companion?.map(comp => (
-                                        <tr key={id++}>
-                                            <td>{comp.companionType === "adult" ? "Adulto" : comp.companionType === "child" ? "Niño" : "Bebé"}</td>
-                                            <td>{comp.companionName}</td>
-                                            <td>{comp.companionCell}</td>
-                                        </tr>
-                                    ))}
-                                </tbody>
-                            </Table></div> : null}
+                                ))}
+                            </tbody>
+                        </Table> : null}
+                    <div className={Styles.modalTitle}>Total a pagar</div>
+                    <Table>
+                        <tbody className={Styles.tableBody}>
+                            <tr>
+                                <td> <b>Total a pagar</b> </td>
+                                <td> {user.fullPayment} </td>
+                            </tr>
+                            <tr>
+                                <td> <b>Anticipo &#40;50%&#41;</b> </td>
+                                <td> {user.advancePayment} </td>
+                            </tr>
+                        </tbody>
+                    </Table>
                 </Modal.Body>
                 <Modal.Footer bsPrefix={Styles.modalFooter}>
                     <Button bsPrefix={Styles.cancelButton} onClick={handleClose}>
                         Cerrar
                     </Button>
-                    <Button bsPrefix={Styles.confirmButton} onClick={handleClose}>
+                    <Button bsPrefix={Styles.confirmButton} onClick={makeContract}>
                         Imprimir contrato
                     </Button>
                 </Modal.Footer>

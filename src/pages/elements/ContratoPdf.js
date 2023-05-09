@@ -5,7 +5,6 @@ import Styles from '../../styles/elementStyles/ContratoPdf.module.css'
 import { useRouter } from 'next/router';
 
 import Image from 'next/image';
-import { Button } from 'react-bootstrap';
 import html2canvas from 'html2canvas';
 import jsPDF from 'jspdf';
 

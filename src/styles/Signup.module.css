@@ -18,7 +18,8 @@
 
 .formulario {
   align-self: center;
-  background-image: url('https://drive.google.com/uc?export=view&id=13KXgd3DJj2oeqYJS7EoqNaajsPUJKsDr');
+  /* background-image: url('https://drive.google.com/uc?export=view&id=13KXgd3DJj2oeqYJS7EoqNaajsPUJKsDr'); */
+  background-color: #f0f0f0;
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   padding-bottom: 15px;
@@ -82,13 +83,10 @@
 .grupoTerminos {
   padding-left: 30px;
   padding-right: 30px;
-  padding-top: 10px;
-  grid-column: span 3;
-}
-
-.text {
-  font-weight: 500;
-  margin-right: 10px;
+  padding-top: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .textInput {
@@ -104,6 +102,11 @@
   width: 100%;
 }
 
+.checkBox {
+  width: 20px;
+  height: 20px;
+  margin-right: 10px;
+}
 
 @media (max-width: 1025px) {
 

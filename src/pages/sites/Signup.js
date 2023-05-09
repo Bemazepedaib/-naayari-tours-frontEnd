@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react';
-import Image from 'next/image';
 import Router from 'next/router';
-import styles from '../../styles/Signup.module.css';
+import Styles from '../../styles/Signup.module.css';
 import InputComponent from '../elements/Input';
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
@@ -14,8 +13,6 @@ import Navbar from './Navbar';
 import Footer from './Footer';
 
 function Signup() {
-
-    const logoNaayari = "https://drive.google.com/uc?export=view&id=1N_BZ6IgIMASpQ3FCw2ZpS-jV3HKU2dNI"
 
     const [name, setName] = useState({ value: "", valid: true });
     const [cell, setCell] = useState({ value: "", valid: true });
@@ -110,8 +107,8 @@ function Signup() {
     return (
         <div>
             <Navbar />
-            <div className={styles.contenedor}>
-                <form action="" onSubmit={onSubmit} className={styles.formulario} autoComplete="off" >
+            <div className={Styles.contenedor}>
+                <form action="" onSubmit={onSubmit} className={Styles.formulario} autoComplete="off" >
                     <InputComponent
                         estado={name}
                         cambiarEstado={setName}
@@ -174,26 +171,26 @@ function Signup() {
                         errorMsg="Elija una fecha válida"
                         funcion={validarFecha}
                     />
-                    <div className={styles.grupoInput}>
+                    <div className={Styles.grupoInput}>
                         <label htmlFor='Sexo'>SEXO</label>
                         <select
                             value={sex}
                             onBlur={e => { setSex(e.target.value); }}
                             onChange={e => { setSex(e.target.value); }}
-                            className={styles.textInput}
+                            className={Styles.textInput}
                         >
                             <option value="male">Hombre</option>
                             <option value="female">Mujer</option>
                             <option value="other">Otro</option>
                         </select>
                     </div>
-                    <div className={styles.grupoInput}>
+                    <div className={Styles.grupoInput}>
                         <label htmlFor='Publicidad'>¿CÓMO NOS CONOCE?</label>
                         <select
                             value={adv}
                             onBlur={e => { setAdv(e.target.value); }}
                             onChange={e => { setAdv(e.target.value); }}
-                            className={styles.textInput}
+                            className={Styles.textInput}
                         >
                             <option value="a friend">Un amigo o conocido</option>
                             <option value="an ad">Un anuncio</option>
@@ -201,25 +198,25 @@ function Signup() {
                             <option value="none">Ninguno de los anteriores</option>
                         </select>
                     </div>
-                    <div className={styles.grupoTerminos}>
-                        <label className={styles.text}>
+                    <div className={Styles.grupoTerminos}>
+                        <label className={Styles.text}>
                             <input
                                 type="checkbox"
                                 name="terminos"
                                 id="terminos"
                                 checked={terminos}
                                 onChange={onChangeTerminos}
-                                className={styles.checkBox}
+                                className={Styles.checkBox}
                             />
                             Acepto los Términos y Condiciones
                         </label>
                     </div>
-                    <div className={styles.grupoBoton}>
-                        {validForm === false && <div className={styles.msgError}>
+                    <div className={Styles.grupoBoton}>
+                        {validForm === false && <div className={Styles.msgError}>
                             <FontAwesomeIcon icon={faTriangleExclamation} />
                             &nbsp; {myError.toUpperCase()}
                         </div>}
-                        <button type="submit" className={styles.primaryBtn}>CREAR CUENTA</button>
+                        <button type="submit" className={Styles.primaryBtn}>CREAR CUENTA</button>
                     </div>
                 </form>
             </div>

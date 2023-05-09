@@ -67,28 +67,26 @@ function Preguntas(link) {
             eventKey: "7", header: "¿Cómo puedo hacer una reservación?",
             body:
                 (<div>
-                    <b>Paso 1:</b> Debes de crear una cuenta desde el apartado de "Iniciar Sesión".
+                    <b>Paso 1:</b> Inicia sesión en tu cuenta o crea una desde el apartado de "Iniciar Sesión".
                     <p />
                     <b>Paso 2:</b> Ve al inicio y selecciona el viaje que más te interese.
                     <p />
-                    <b>Paso 3:</b> Aquí, selecciona la fecha desde el menú desplegable o solicita crear un grupo VIP.
+                    <b>Paso 3:</b> Aquí, selecciona la fecha desde el menú desplegable.
                     <p />
-                    <b>Paso 4:</b> Si te lo solicita, inicia sesión con la cuenta que creaste o que ya tengas creada previamente.
+                    <b>Paso 4:</b> Selecciona cuantos lugares necesitas y llena los datos de cada pasajero. &#40; Menos el tuyo. &#41;
                     <p />
-                    <b>Paso 5:</b> Selecciona cuantos lugares necesitas y llena los datos de cada pasajero. &#40; Menos el tuyo. &#41;
+                    <b>Paso 5:</b> Comentanos si necesitas alguna consideración extra en tu viaje.
                     <p />
-                    <b>Paso 6:</b> Comentanos si necesitas alguna consideración extra en tu viaje.
+                    <b>Paso 6:</b> Al hacer tu reservación te dará un resumen de lo que estás por reservar y el precio total. Si estas de acuerdo, confirma.
                     <p />
-                    <b>Paso 7:</b> Al hacer tu reservación te dará un resumen de lo que estás por reservar y el precio total. Si estas de acuerdo, confirma.
+                    <b>Paso 7:</b> Una vez hecha la reservación, debes de hacer el pago que te solicite de la mejor manera.
                     <p />
-                    <b>Paso 8:</b> Una vez hecha la reservación, debes de hacer el pago que te solicite de la mejor manera.
-                    <p />
-                    <b>Paso 9:</b> Si hiciste el pago por depósito, manda tu voucher al whatsapp +52 311 910 4138 para confirmar tu pago.
+                    <b>Paso 8:</b> Si hiciste el pago por depósito, manda tu voucher al whatsapp +52 311 910 4138 para confirmar tu pago.
                 </div>)
         },
         {
             eventKey: "8", header: "Me equivoqué al crear mi cuenta. ¿Puedo cambiar mis datos?",
-            body: 
+            body:
                 (<div>
                     <b>Opción 1:</b> Para cambiar los datos de tu cuenta, debes iniciar sesión y en el apartado de 'Mi perfil' puedes hacer el cambio.
                     <p />
@@ -105,7 +103,28 @@ function Preguntas(link) {
                 </div>)
         },
         {
-            eventKey: "10", header: "¿Qué viajes hay este mes?",
+            eventKey: "10", header: "¿Qué son los viajes VIP?",
+            body: "Los viajes VIP son viajes que se hacen mediante una solicitud, y que te permiten hacer cambios en el itinerario y que el viaje sea en la fecha que tu desees"
+        },
+        {
+            eventKey: "11", header: "¿Cómo puedo solicitar un viaje VIP?",
+            body:
+                (<div>
+                    <b>Paso 1:</b> Inicia sesión en tu cuenta o crea una desde el apartado de "Iniciar Sesión".
+                    <p />
+                    <b>Paso 2:</b> Ve al inicio y selecciona el viaje que más te interese.
+                    <p />
+                    <b>Paso 3:</b> Aquí, haz clic en el botón de "¡Crea tu grupo VIP!".
+                    <p />
+                    <b>Paso 4:</b> Selecciona la fecha que desees reservar y manda tu solicitud con el botón.
+                    <p />
+                    <b>Paso 5:</b> Espera a que un administrador se comunique contigo vía whatsapp para continuar con el proceso.
+                    <p />
+                    <b>Paso 6:</b> Continúa el proceso mediante whatsapp con el administrador.
+                </div>)
+        },
+        {
+            eventKey: "12", header: "¿Qué viajes hay este mes?",
             body: (<div>Da clic para ver el calendario del mes → <a href={linkCalendario}>Calendario</a> </div>)
         },
     ]
@@ -116,7 +135,7 @@ function Preguntas(link) {
             <div className={Styles.contenedor}>
                 <div className={Styles.title}>Preguntas frecuentes</div>
                 <Accordion bsPrefix={Styles.accordion} alwaysOpen>
-                    {preguntas.map(pregunta => (<AccordionItem eventKey={pregunta.eventKey} header={pregunta.header} body={pregunta.body} />))}
+                    {preguntas.map(pregunta => (<AccordionItem eventKey={pregunta.eventKey} header={pregunta.header} body={pregunta.body} key={pregunta.eventKey} />))}
                 </Accordion>
             </div>
             <Footer />

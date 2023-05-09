@@ -18,17 +18,20 @@ function ContratoPdf() {
 
     const fechaHoy = new Date(Date.now()).toISOString().split("T")[0].split("-")
 
-    const [salida, setSalida] = useState("")
+    const [salida, setSalida] = useState()
+    const [error, setError] = useState("")
 
     const pdfRef = useRef()
 
     const generarContrato = async () => {
+        setError("")
+        if (!salida){ setError("¡Seleccione una hora válida!"); return; }
         const element = pdfRef.current;
         const canvas = await html2canvas(element);
         const data = canvas.toDataURL('image/png');
         const pdf = new jsPDF();
         pdf.addImage(data, 'PNG', 0, 0);
-        pdf.save('contrato.pdf')
+        pdf.save(`Contrato de ${cliente}.pdf`)
         window.history.back()
     }
 
@@ -78,6 +81,7 @@ function ContratoPdf() {
                     onBlur={(e) => setSalida(e.target.value)}
                     className={Styles.inputTime}
                 ></input>
+                <div className={Styles.error}> {error} </div>
                 <button onClick={generarContrato} className={Styles.confirmButton} >Generar contrato</button>
             </div>
             <div className={Styles.pdf} ref={pdfRef}>

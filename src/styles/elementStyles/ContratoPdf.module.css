@@ -91,3 +91,12 @@
     width: 15vw;
     text-align: center;
 }
+
+.error {
+    font-family: 'Oswald', sans-serif;
+    font-weight: bold;
+    font-size: 20px;
+    color: red;
+    text-transform: uppercase;
+    background-color: #fff;
+}

@@ -1,24 +1,22 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 
 import Styles from '../../styles/elementStyles/EventDetailsView.module.css'
 
 import ModalEvent from './ModalEvent';
 import { useMutation } from '@apollo/client';
-import { UPDATE_STATUS, UPDATE_USERS } from '../mutations/eventMutations';
-import { faCircleRight } from '@fortawesome/free-solid-svg-icons';
+import { UPDATE_STATUS, DELETE_USER } from '../mutations/eventMutations';
 
 function EventDetailsView({ event }) {
 
     let key = 0;
     const [updateStatus] = useMutation(UPDATE_STATUS)
-    const [deleteReserv] = useMutation(UPDATE_USERS)
+    const [deleteReserv] = useMutation(DELETE_USER)
 
     const opciones = [{ value: "null", text: "Seleccione una opcion" }, { value: "active", text: "Activo" }, { value: "closed", text: "Cerrado" }, { value: "inactive", text: "Inactivo" }]
     const eventDate = event.event.eventDate
     const eventTrip = event.event.eventTrip
 
     const [eventUsers, updateEventUsers] = useState(event.event.users)
-
     const [eventStatus, setEventStatus] = useState(opciones[0].value)
     const [currentStatus, setCurrentStatus] = useState(event.event.eventStatus)
 
@@ -38,9 +36,21 @@ function EventDetailsView({ event }) {
     }
 
     const deleteReservation = async (correo) => {
-        console.log(correo)
         updateEventUsers(eventUsers.filter(item => item.userEmail !== correo))
-        console.log(eventUsers)
+        try {
+            const res = await deleteReserv({
+                variables: {
+                    eventDate: eventDate,
+                    eventTrip: eventTrip,
+                    users: eventUsers
+                }
+            })
+            console.log(eventUsers)
+            return res.data.deleteEventUsers
+        } catch (error) {
+            console.log(eventUsers)
+            return error.message
+        }
     }
 
     const updateReservation = async () => {
@@ -77,7 +87,8 @@ function EventDetailsView({ event }) {
                     <div key={key++}>
                         <ModalEvent user={user} trip={event.event.eventTrip} date={event.event.eventDate}
                             updateReservation={updateReservation}
-                            deleteReservation={deleteReservation} />
+                            deleteReservation={deleteReservation}
+                            id={ user } />
                     </div>
                 )) : <div className={Styles.noReservation}>Aún no hay reservaciones</div>}
             </div>

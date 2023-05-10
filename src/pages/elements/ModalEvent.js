@@ -22,6 +22,10 @@ export default function ModalEvent({ user, trip, date, deleteReservation, update
     const [show, setShow] = useState(false);
     const handleClose = () => setShow(false);
     const handleShow = () => setShow(true);
+    const [showConfirm, setShowConfirm] = useState(false)
+    const handleConfirmClose = () => setShowConfirm(false);
+    const handleConfirmShow = () => setShowConfirm(true);
+    const [confirmMessage, setConfirmMessage] = useState("¿Está seguro que desea hacer el cambio?");
 
     let id = 0;
 
@@ -107,9 +111,24 @@ export default function ModalEvent({ user, trip, date, deleteReservation, update
                     <Button bsPrefix={Styles.updateButton} onClick={() => updateReservation()}>
                         Cambio de viaje
                     </Button>
-                    <Button bsPrefix={Styles.cancelButton} onClick={() => {deleteReservation(user.userEmail); handleClose() }}>
+                    <Button bsPrefix={Styles.cancelButton} onClick={handleConfirmShow}>
                         Eliminar reservacion
                     </Button>
+                    <Modal show={showConfirm} centered backdrop="static" keyboard={false}>
+                        <Modal.Header bsPrefix={Styles.confirmModalHeader}>
+                            <Image src={image} className={Styles.image} width={70} height={70} alt="Naayari tours" />
+                            <Modal.Title></Modal.Title>
+                        </Modal.Header>
+                        <Modal.Body bsPrefix={Styles.confirmModalBody}>{confirmMessage}</Modal.Body>
+                        <Modal.Footer bsPrefix={Styles.confirmModalFooter}>
+                            <Button bsPrefix={Styles.cancelButton} onClick={handleConfirmClose}>
+                                Cancelar
+                            </Button>
+                            <Button bsPrefix={Styles.confirmButton} onClick={() => { setConfirmMessage(deleteReservation(user.userEmail)); }}>
+                                Confirmar
+                            </Button>
+                        </Modal.Footer>
+                    </Modal>
                     <Button bsPrefix={Styles.confirmButton} onClick={makeContract}>
                         Imprimir contrato
                     </Button>

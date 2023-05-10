@@ -13,7 +13,7 @@ import Styles from '../../styles/elementStyles/ModalEvent.module.css'
 import { useQuery } from '@apollo/client';
 import { GET_USER } from '../querys/userQuerys';
 
-export default function ModalEvent({ user, trip, date }) {
+export default function ModalEvent({ user, trip, date, deleteReservation, updateReservation }) {
 
     const image = 'https://drive.google.com/uc?export=view&id=1hKQxSheX5io9bPjn99_TedN8SCTNcsoK'
 
@@ -26,15 +26,17 @@ export default function ModalEvent({ user, trip, date }) {
     let id = 0;
 
     const makeContract = () => {
-        Router.push({ pathname: '/elements/ContratoPdf', query: { 
-            cliente: userData.user.name, 
-            celular: userData.user.cellphone,
-            lugares: user.companion.length+1,
-            tour: trip,
-            fechaViaje: date,
-            anticipo: user.advancePayment,
-            resto: (user.fullPayment-user.advancePayment)
-        } })
+        Router.push({
+            pathname: '/elements/ContratoPdf', query: {
+                cliente: userData.user.name,
+                celular: userData.user.cellphone,
+                lugares: user.companion.length + 1,
+                tour: trip,
+                fechaViaje: date,
+                anticipo: user.advancePayment,
+                resto: (user.fullPayment - user.advancePayment)
+            }
+        })
     }
 
     if (userLoading) return (<Spinner />)
@@ -102,8 +104,11 @@ export default function ModalEvent({ user, trip, date }) {
                     </Table>
                 </Modal.Body>
                 <Modal.Footer bsPrefix={Styles.modalFooter}>
-                    <Button bsPrefix={Styles.cancelButton} onClick={handleClose}>
-                        Cerrar
+                    <Button bsPrefix={Styles.updateButton} onClick={() => updateReservation()}>
+                        Cambio de viaje
+                    </Button>
+                    <Button bsPrefix={Styles.cancelButton} onClick={() => {deleteReservation(user.userEmail); handleClose() }}>
+                        Eliminar reservacion
                     </Button>
                     <Button bsPrefix={Styles.confirmButton} onClick={makeContract}>
                         Imprimir contrato

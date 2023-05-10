@@ -1,6 +1,6 @@
 import { gql } from "@apollo/client";
 
-const DO_RESERVATIONS = gql`
+const UPDATE_USERS = gql`
     mutation updateEventUsers($eventDate: String!, $eventTrip: String!, $users: InputEventUser!){
         updateEventUsers(eventDate: $eventDate, eventTrip: $eventTrip, users: $users)
     }
@@ -12,4 +12,4 @@ const UPDATE_STATUS = gql`
     }
 `;
 
-export { DO_RESERVATIONS, UPDATE_STATUS };
+export { UPDATE_USERS, UPDATE_STATUS };

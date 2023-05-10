@@ -124,7 +124,7 @@ export default function ModalEvent({ user, trip, date, deleteReservation, update
                             <Button bsPrefix={Styles.cancelButton} onClick={handleConfirmClose}>
                                 Cancelar
                             </Button>
-                            <Button bsPrefix={Styles.confirmButton} onClick={() => { setConfirmMessage(deleteReservation(user.userEmail)); }}>
+                            <Button bsPrefix={Styles.confirmButton} onClick={() => { deleteReservation(user.userEmail) }}>
                                 Confirmar
                             </Button>
                         </Modal.Footer>

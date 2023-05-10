@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React, { use, useEffect, useState } from 'react'
 
 import Styles from '../../styles/elementStyles/EventDetailsView.module.css'
 
@@ -10,13 +10,19 @@ function EventDetailsView({ event }) {
 
     let key = 0;
     const [updateStatus] = useMutation(UPDATE_STATUS)
-    const [deleteReserv] = useMutation(DELETE_USER)
+    const [delReservation] = useMutation(DELETE_USER)
 
-    const opciones = [{ value: "null", text: "Seleccione una opcion" }, { value: "active", text: "Activo" }, { value: "closed", text: "Cerrado" }, { value: "inactive", text: "Inactivo" }]
+    const opciones = [
+        { value: "null", text: "Seleccione una opcion" },
+        { value: "active", text: "Activo" },
+        { value: "closed", text: "Cerrado" },
+        { value: "inactive", text: "Inactivo" }
+    ]
+
     const eventDate = event.event.eventDate
     const eventTrip = event.event.eventTrip
 
-    const [eventUsers, updateEventUsers] = useState(event.event.users)
+    const [eventUsers, updateEventUsers] = useState(event.event.users.map(({ __typename, ...rest }) => { return rest }))
     const [eventStatus, setEventStatus] = useState(opciones[0].value)
     const [currentStatus, setCurrentStatus] = useState(event.event.eventStatus)
 
@@ -38,23 +44,20 @@ function EventDetailsView({ event }) {
     const deleteReservation = async (correo) => {
         updateEventUsers(eventUsers.filter(item => item.userEmail !== correo))
         try {
-            const res = await deleteReserv({
+            return await delReservation({
                 variables: {
                     eventDate: eventDate,
                     eventTrip: eventTrip,
                     users: eventUsers
                 }
-            })
-            console.log(eventUsers)
-            return res.data.deleteEventUsers
+            }).data?.deleteEventUser
         } catch (error) {
-            console.log(eventUsers)
             return error.message
         }
     }
 
     const updateReservation = async () => {
-        console.log("UPDATE")
+        console.log("update")
     }
 
     return (
@@ -88,7 +91,7 @@ function EventDetailsView({ event }) {
                         <ModalEvent user={user} trip={event.event.eventTrip} date={event.event.eventDate}
                             updateReservation={updateReservation}
                             deleteReservation={deleteReservation}
-                            id={ user } />
+                            id={user} />
                     </div>
                 )) : <div className={Styles.noReservation}>Aún no hay reservaciones</div>}
             </div>

@@ -1,6 +1,6 @@
 import React, { useRef, useState } from 'react';
 
-import Styles from '../../styles/elementStyles/ContratoPdf.module.css'
+import Styles from '../../styles/elementStyles/PDFContract.module.css'
 
 import { useRouter } from 'next/router';
 
@@ -8,7 +8,7 @@ import Image from 'next/image';
 import html2canvas from 'html2canvas';
 import jsPDF from 'jspdf';
 
-function ContratoPdf() {
+function PDFContract() {
 
     const Header = 'https://drive.google.com/uc?export=view&id=1BKC3ZvHOvZZ3S8DYHa_Ux7WHuDCfo5hE'
     const Footer = 'https://drive.google.com/uc?export=view&id=1Audw8DRFk6sEm3WwHAo45owPgDGfQzxP'
@@ -24,26 +24,14 @@ function ContratoPdf() {
 
     const generarContrato = async () => {
         setError("")
-        if (!salida){ setError("¡Seleccione una hora válida!"); return; }
+        if (!salida) { setError("¡Seleccione una hora válida!"); return; }
         const element = pdfRef.current;
         const canvas = await html2canvas(element);
         const data = canvas.toDataURL('image/png');
-        // const link = document.createElement('a');
-
-         const pdf = new jsPDF();
-         pdf.addImage(data, 'PNG', 0, 0);
-         pdf.save(`Contrato de ${cliente}.pdf`)
-        // window.history.back()
-
-        // if (typeof link.download === 'string') {
-		// 	link.href = data;
-		// 	link.download = `Contrato de ${cliente}.png`;
-		// 	document.body.appendChild(link);
-		// 	link.click();
-		// 	document.body.removeChild(link);
-		// } else {
-		// 	window.open(data);
-		// }
+        const pdf = new jsPDF();
+        pdf.addImage(data, 'PNG', 0, 0);
+        pdf.save(`Contrato de ${cliente}.pdf`)
+        window.history.back()
     }
 
     const switchMes = (numMes) => {
@@ -97,15 +85,15 @@ function ContratoPdf() {
             </div>
             <div className={Styles.pdf} ref={pdfRef}>
                 <div>
-                <Image src={Header} width={792} height={92} alt='Header' className={Styles.imgHeader} ></Image>
-                <div className={Styles.header}>CONTRATO DE RESERVA NAAYARI TOURS</div>
-                <div className={Styles.fecha}>Tepic, Nay. A <u>{dia}</u> de <u>{mes}</u> del <u>{año}</u></div>
+                    <Image src={Header} width={792} height={92} alt='Header' className={Styles.imgHeader} ></Image>
+                    <div className={Styles.header}>CONTRATO DE RESERVA NAAYARI TOURS</div>
+                    <div className={Styles.fecha}>Tepic, Nay. A <u>{dia}</u> de <u>{mes}</u> del <u>{año}</u></div>
                 </div>
                 <div className={Styles.textoGeneral}>
                     <p>La tour-operadora <b>Naayari tours</b> con domicilio en <b>Av. Che Guevara #84, Col. 2 de Agosto en Tepic</b>
                         &nbsp; acredita que el C. <u>{cliente}</u> con número de celular: <u>{celular}</u></p>
                     <p>Reserva <u>{lugares}</u> lugares al tour con nombre <u>{tour}</u> programado para la fecha del&nbsp;
-                        <u>{newFecha}</u> con hora de salida las <u>{salida}</u> con un formato de 24 horas.</p> 
+                        <u>{newFecha}</u> con hora de salida las <u>{salida}</u> con un formato de 24 horas.</p>
                     <p>Reserva con un anticipo de $<u>{anticipo}</u>, restando la cantidad de $<u>{resto}</u> misma que deberá
                         liquidarse el día del tour antes de partir en efectivo siendo el caso de un tour ida y vuelta el mismo día.</p>
                     <p>Si el tour es con abonos, se estipula que sus fechas serán cada ___ días de los próximos ___ por la cantidad
@@ -142,4 +130,4 @@ function ContratoPdf() {
     )
 }
 
-export default ContratoPdf;
+export default PDFContract;

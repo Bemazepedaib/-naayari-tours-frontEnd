@@ -16,8 +16,8 @@ function CatalogueCards() {
             {!loading && !error && (
                 <div>
                     <div id={Styles.catalogue}>{data.trips.map(trip => (
-                        <Catalogue key={key++} trip={trip}>
-                        </Catalogue>
+                        trip.tripStatus ?
+                        <Catalogue key={key++} trip={trip}/> :""
                     ))}
                     </div>
                 </div>

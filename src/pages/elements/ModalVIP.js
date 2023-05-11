@@ -24,13 +24,11 @@ function ModalVIP({titleText,text,send,date,trip}) {
 
   const handleClose = () => {
     setShow(false);     
-    setmyMessage("");
-    setmyMessageErr("");
   }
   const handleShow = () => setShow(true);
 
   useEffect(() => {
-    counter==0 ? handleClose : ""
+    counter==0 ? setShow(false) : ""
       const timer =
       counter > 0 && setInterval(() => setCounter(counter - 1), 1000);
     return () => clearInterval(timer);
@@ -48,6 +46,7 @@ function ModalVIP({titleText,text,send,date,trip}) {
       await Router.push({ pathname: '/' })
       window.location.reload(true)
     }else{
+
       handleShow();
     }
   }

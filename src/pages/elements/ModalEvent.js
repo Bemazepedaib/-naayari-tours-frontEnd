@@ -25,7 +25,7 @@ function ModalEvent({ user, trip, date, deleteReservation, updateReservation }) 
     const [showConfirm, setShowConfirm] = useState(false)
     const handleConfirmClose = () => setShowConfirm(false);
     const handleConfirmShow = () => setShowConfirm(true);
-    const [confirmMessage, setConfirmMessage] = useState("¿Está seguro que desea hacer el cambio?");
+    const [confirmMessage, setConfirmMessage] = useState("¿Está seguro que desea eliminar la reservación?");
 
     let id = 0;
 
@@ -50,7 +50,7 @@ function ModalEvent({ user, trip, date, deleteReservation, updateReservation }) 
             <button className={Styles.btn} onClick={handleShow}>
                 {userData.user.name}
             </button>
-            <Modal show={show} onHide={handleClose} size='xl' backdrop="static" keyboard={false}>
+            <Modal show={show} onHide={handleClose} size='xl' backdrop="static" keyboard={false} centered>
                 <Modal.Header bsPrefix={Styles.modalHeader} closeButton>
                     <Image src={image} className={Styles.image} width={70} height={70} alt="Naayari tours" />
                     <Modal.Title bsPrefix={Styles.modalTitle}>Datos de {user.userEmail} </Modal.Title>
@@ -124,7 +124,11 @@ function ModalEvent({ user, trip, date, deleteReservation, updateReservation }) 
                             <Button bsPrefix={Styles.cancelButton} onClick={handleConfirmClose}>
                                 Cancelar
                             </Button>
-                            <Button bsPrefix={Styles.confirmButton} onClick={() => { deleteReservation(user.userEmail) }}>
+                            <Button bsPrefix={Styles.confirmButton} onClick={async () => { 
+                                setConfirmMessage(await deleteReservation(user.userEmail))
+                                handleConfirmClose()
+                                handleClose()
+                            }}>
                                 Confirmar
                             </Button>
                         </Modal.Footer>

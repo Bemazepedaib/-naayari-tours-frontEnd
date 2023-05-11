@@ -28,28 +28,39 @@ function EventsView() {
             <div className={Styles.titulo1}>Viajes activos</div>
             <div className={Styles.contenedorEvents}>
                 {eventData.events.map(event => (
-                    event.eventStatus ?
+                    event.eventStatus === "active" ?
                         <div className={Styles.contenedorEvent} key={i++}>
                             <div className={Styles.miniFlex}><div className={Styles.textHid}>Viaje:&nbsp;</div> {event.eventTrip}</div>
                             <div className={Styles.miniFlex}><div className={Styles.textHid}>Fecha:&nbsp;</div> {event.eventDate}</div>
                             <div className={Styles.miniFlex}><div className={Styles.textHid}>Tipo de viaje:&nbsp;</div> {event.eventType === "Public" ? "Público" : "VIP"}</div>
                             <button className={Styles.btn} onClick={() => { clickEvent(event.eventTrip, event.eventDate) }} >Ver más</button>
-                        </div>
-                        : null
+                        </div> : null
                 ))}
             </div>
-            {/* <div className={Styles.titulo1}>Viajes pasados</div>
+            <div className={Styles.titulo1}>Viajes cerrados</div>
             <div className={Styles.contenedorEvents}>
                 {eventData.events.map(event => (
-                    event.eventStatus ? null :
+                    event.eventStatus === "closed" ?
                         <div className={Styles.contenedorEvent} key={i++}>
-                            <div>Viaje: {event.eventTrip}</div>
-                            <div>Fecha: {event.eventDate}</div>
-                            <div>{event.eventType === "Public" ? "Público" : "Privado"}</div>
+                            <div className={Styles.miniFlex}><div className={Styles.textHid}>Viaje:&nbsp;</div> {event.eventTrip}</div>
+                            <div className={Styles.miniFlex}><div className={Styles.textHid}>Fecha:&nbsp;</div> {event.eventDate}</div>
+                            <div className={Styles.miniFlex}><div className={Styles.textHid}>Tipo de viaje:&nbsp;</div> {event.eventType === "Public" ? "Público" : "VIP"}</div>
                             <button className={Styles.btn} onClick={() => { clickEvent(event.eventTrip, event.eventDate) }} >Ver más</button>
-                        </div>
+                        </div> : null
                 ))}
-            </div> */}
+            </div>
+            <div className={Styles.titulo1}>Viajes pasados</div>
+            <div className={Styles.contenedorEvents}>
+                {eventData.events.map(event => (
+                    event.eventStatus !== "closed" && event.eventStatus !== "active" ?
+                        <div className={Styles.contenedorEvent} key={i++}>
+                            <div className={Styles.miniFlex}><div className={Styles.textHid}>Viaje:&nbsp;</div> {event.eventTrip}</div>
+                            <div className={Styles.miniFlex}><div className={Styles.textHid}>Fecha:&nbsp;</div> {event.eventDate}</div>
+                            <div className={Styles.miniFlex}><div className={Styles.textHid}>Tipo de viaje:&nbsp;</div> {event.eventType === "Public" ? "Público" : "VIP"}</div>
+                            <button className={Styles.btn} onClick={() => { clickEvent(event.eventTrip, event.eventDate) }} >Ver más</button>
+                        </div> : null
+                ))}
+            </div>
         </div>
     )
 }

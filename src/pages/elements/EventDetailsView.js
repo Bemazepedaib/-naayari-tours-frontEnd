@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 
 import Styles from '../../styles/elementStyles/EventDetailsView.module.css'
 
@@ -22,7 +22,7 @@ function EventDetailsView({ event }) {
     const eventDate = event.event.eventDate
     const eventTrip = event.event.eventTrip
 
-    const [eventUsers, updateEventUsers] = useState(event.event.users.map(({ __typename, ...rest }) => { return rest }))
+    const [eventUsers, setEventUsers] = useState(event.event.users.map(({ __typename, ...rest }) => { return rest }))
     const [eventStatus, setEventStatus] = useState(opciones[0].value)
     const [currentStatus, setCurrentStatus] = useState(event.event.eventStatus)
 
@@ -42,15 +42,16 @@ function EventDetailsView({ event }) {
     }
 
     const deleteReservation = async (correo) => {
-        updateEventUsers(eventUsers.filter(item => item.userEmail !== correo))
         try {
-            return await delReservation({
+            const res = await delReservation({
                 variables: {
                     eventDate: eventDate,
                     eventTrip: eventTrip,
-                    users: eventUsers
+                    user: correo
                 }
-            }).data?.deleteEventUser
+            })
+            setEventUsers(res.data?.deleteEventUser)
+            return "¡Reserva eliminada exitósamente!"
         } catch (error) {
             return error.message
         }

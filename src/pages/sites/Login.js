@@ -1,5 +1,5 @@
 import Link from 'next/link';
-import styles from "../../styles/Login.module.css";
+import Styles from "../../styles/Login.module.css";
 
 import React, { useState, useEffect } from "react"
 import { useMutation } from '@apollo/client';
@@ -67,20 +67,20 @@ function Login() {
     return (
         <div>
             <Navbar />
-            <div className={styles.container}>
-                <div className={styles.wrapper}>
-                    <div className={styles.left}>
-                        <div className={styles.showcase}>
+            <div className={Styles.container}>
+                <div className={Styles.wrapper}>
+                    <div className={Styles.left}>
+                        <div className={Styles.showcase}>
                             <div>
-                                <h1 className={styles.showcaseText}>
+                                <h1 className={Styles.showcaseText}>
                                     <strong>¡Viajar es Cultura!</strong>
                                 </h1>
                             </div>
                         </div>
                     </div>
-                    <div className={styles.right}>
-                        <div className={styles.signin}>
-                            <form className={styles.formulario} onSubmit={onSubmit}>
+                    <div className={Styles.right}>
+                        <div className={Styles.signin}>
+                            <form className={Styles.formulario} onSubmit={onSubmit}>
                                 <InputComponent
                                     estado={mail}
                                     cambiarEstado={setMail}
@@ -98,24 +98,24 @@ function Login() {
                                     name="pass"
                                     auto="on"
                                 />
-                                <div className={styles.grupoBoton}>
-                                    {validLog === false && <div className={styles.msgError}>
+                                <div className={Styles.grupoBoton}>
+                                    {validLog === false && <div className={Styles.msgError}>
                                         <FontAwesomeIcon icon={faTriangleExclamation} />
                                         &nbsp; {myError}
                                     </div>}
-                                    <button type="submit" className={styles.primaryBtn}>Iniciar sesión</button>
+                                    <button type="submit" className={Styles.primaryBtn}>Iniciar sesión</button>
                                 </div>
                             </form>
-                            <div className={styles.links}>
+                            <div className={Styles.links}>
                                 <a href={forgotPass}>¿Olvidaste tu contraseña?</a>
                             </div>
-                            <div className={styles.or}>
-                                <hr className={styles.bar} />
+                            <div className={Styles.or}>
+                                <hr className={Styles.bar} />
                                 <span>Ó</span>
-                                <hr className={styles.bar} />
+                                <hr className={Styles.bar} />
                             </div>
-                            <Link href={{ pathname: '/sites/Signup' }} className={styles.secondaryBtn}>Crear una cuenta</Link>
-                            <footer className={styles.mainFooter}>
+                            <Link href={{ pathname: '/sites/Signup' }} className={Styles.secondaryBtn}>Crear una cuenta</Link>
+                            <footer className={Styles.mainFooter}>
                                 <div>
                                     <a href={terminos}>Terminos de uso</a> | <a href={privacidad}>Politica de Privacidad</a>
                                 </div>

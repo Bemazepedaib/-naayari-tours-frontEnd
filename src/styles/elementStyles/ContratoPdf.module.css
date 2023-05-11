@@ -1,15 +1,41 @@
+@import url('https://fonts.googleapis.com/css2?family=Oswald:wght@300&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Genos:ital,wght@1,700&display=swap');
 
 .mainContainer {
     display: flex;
     justify-content: center;
-    align-items: center;
+    background-image: url('https://drive.google.com/uc?export=view&id=1XPHv76qI1Y303811H7gbUPpmv9KQSa5u');
+    background-size: cover;
+    gap: 30px;
+}
+
+.buttonsContainer {
+    display: flex;
     flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 10px;
+    margin-top: 70px;
+}
+
+.titulo {
+    background-color: white;
+    width: 85%;
+    border-radius: 10px;
+    border: 2px solid #1D2128;
+    text-align: center;
+    margin: 10px;
+    margin-top: 20px;
+    font-family: 'Genos', sans-serif;
+    font-weight: bold;
+    font-size: 25px;
 }
 
 .pdf {
     display: flex;
     flex-direction: column;
     width: 650px;
+    background-color: #fff;
 }
 
 .header {
@@ -37,4 +63,95 @@
     text-align: justify;
     position: relative;
     top: -20px;
+}
+
+.confirmButton {
+    font-family: 'Oswald', sans-serif;
+    font-size: 20px;
+    background-color: #00a748;
+    border: NONE;
+    color: #ffffff;
+    padding: 7px 10px;
+    border-radius: 5px;
+    transition: 0.3s ease all;
+    width: 15vw;
+}
+
+.confirmButton:hover {
+    background-color: #00883b;
+    box-shadow: rgba(0, 0, 0, 0.25) 0 8px 15px;
+    transform: translateY(-2px);
+    border: NONE;
+}
+
+.inputTime {
+    font-family: 'Oswald', sans-serif;
+    font-size: 20px;
+    font-weight: bold;
+    width: 15vw;
+    text-align: center;
+}
+
+.error {
+    font-family: 'Oswald', sans-serif;
+    font-weight: bold;
+    font-size: 20px;
+    color: red;
+    text-transform: uppercase;
+    background-color: #fff;
+}
+
+.imgHeader {
+    width: 650px;
+    height: auto;
+}
+
+.imgFooter {
+    width: 650px;
+    height: auto;
+}
+
+@media (max-width: 1400px) {
+    .titulo {
+        font-size: 15px;
+    }
+
+    .inputTime {
+        font-size: 10px;
+    }
+
+    .error {
+        font-size: 10px;
+    }
+
+    .confirmButton {
+        font-size: 15px;
+    }
+
+    .header {
+        font-size: 8px;
+    }
+
+    .fecha {
+        font-size: 8px;
+    }
+
+    .textoGeneral {
+        font-size: 9px;
+    }
+
+    .pdf {
+        width: 488px;
+    }
+
+    .imgHeader {
+        width: 487px;
+        height: 69px;
+        z-index: 1000000000;
+    }
+
+    .imgFooter {
+        width: 487px;
+        height: 69px;
+    }
 }

@@ -23,10 +23,6 @@ function EventsView() {
         Router.push({ pathname: '/elements/EventDetails', query: { eventTrip, eventDate } })
     }
 
-    const pushDate = () => {
-
-    }
-
     return (!eventLoading && !eventError &&
         <div className={Styles.main}>
             <div className={Styles.titulo1}>Viajes activos</div>

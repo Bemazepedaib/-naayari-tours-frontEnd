@@ -7,7 +7,7 @@ import Styles from '../../styles/elementStyles/ModalReservation.module.css'
 
 import { Table } from 'react-bootstrap';
 import { useMutation } from '@apollo/client';
-import { DO_RESERVATIONS } from '../mutations/eventMutations';
+import { UPDATE_USERS } from '../mutations/eventMutations';
 import Router from 'next/router';
 
 function ModalReservation({ datosCompanion, datosUsuario, datosPrecio }) {
@@ -22,7 +22,7 @@ function ModalReservation({ datosCompanion, datosUsuario, datosPrecio }) {
     const handleShowConfirm = () => setShowConfirm(true);
     const [confirmMessage, setConfirmMessage] = useState("¿Está seguro que sus datos son correctos?");
 
-    const [doReservation] = useMutation(DO_RESERVATIONS)
+    const [doReservation] = useMutation(UPDATE_USERS)
 
     const total = datosPrecio[0].price * datosPrecio[0].number +
         datosPrecio[1].price * datosPrecio[1].number +

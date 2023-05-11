@@ -1,9 +1,10 @@
-import React, { useRef } from 'react';
+import React, { useRef, useState } from 'react';
 
 import Styles from '../../styles/elementStyles/ContratoPdf.module.css'
 
+import { useRouter } from 'next/router';
+
 import Image from 'next/image';
-import { Button } from 'react-bootstrap';
 import html2canvas from 'html2canvas';
 import jsPDF from 'jspdf';
 
@@ -12,41 +13,97 @@ function ContratoPdf() {
     const Header = 'https://drive.google.com/uc?export=view&id=1BKC3ZvHOvZZ3S8DYHa_Ux7WHuDCfo5hE'
     const Footer = 'https://drive.google.com/uc?export=view&id=1Audw8DRFk6sEm3WwHAo45owPgDGfQzxP'
 
-    const dia = "28"
-    const mes = "Abril"
-    const año = "2023"
-    const cliente = "Benjamín Maximiliano Zepeda Ibarra"
-    const celular = "3112430989"
-    const lugares = "2"
-    const tour = "El Manto"
-    const fechaViaje = "30 de Abril"
-    const horaSalida = "7:00AM"
-    const anticipo = 500
-    const resto = 800
+    const { query: { cliente, celular, lugares, tour, fechaViaje, anticipo, resto } } = useRouter();
+
+    const fechaHoy = new Date(Date.now()).toISOString().split("T")[0].split("-")
+
+    const [salida, setSalida] = useState()
+    const [error, setError] = useState("")
 
     const pdfRef = useRef()
 
     const generarContrato = async () => {
+        setError("")
+        if (!salida){ setError("¡Seleccione una hora válida!"); return; }
         const element = pdfRef.current;
         const canvas = await html2canvas(element);
         const data = canvas.toDataURL('image/png');
-        const pdf = new jsPDF();
-        pdf.addImage(data, 'PNG', 0, 0);
-        pdf.save('contrato.pdf')
+        const link = document.createElement('a');
+
+        // const pdf = new jsPDF();
+        // pdf.addImage(data, 'PNG', 0, 0);
+        // pdf.save(`Contrato de ${cliente}.pdf`)
+        // window.history.back()
+
+        if (typeof link.download === 'string') {
+			link.href = data;
+			link.download = `Contrato de ${cliente}.png`;
+			document.body.appendChild(link);
+			link.click();
+			document.body.removeChild(link);
+		} else {
+			window.open(data);
+		}
     }
+
+    const switchMes = (numMes) => {
+        switch (numMes) {
+            case "01":
+                return "Enero";
+            case "02":
+                return "Febrero";
+            case "03":
+                return "Marzo";
+            case "04":
+                return "Abril";
+            case "05":
+                return "Mayo";
+            case "06":
+                return "Junio";
+            case "07":
+                return "Julio";
+            case "08":
+                return "Agosto";
+            case "09":
+                return "Septiembre";
+            case "10":
+                return "Octubre";
+            case "11":
+                return "Noviembre";
+            case "12":
+                return "Diciembre";
+        }
+    }
+
+    const dia = fechaHoy[2]
+    const mes = switchMes(fechaHoy[1])
+    const año = fechaHoy[0]
+
+    const newFecha = fechaViaje.split("-")[2] + " de " + switchMes(fechaViaje.split("-")[1])
 
     return (
         <div className={Styles.mainContainer}>
-            <Button onClick={generarContrato}>Generar contrato</Button>
+            <div className={Styles.buttonsContainer}>
+                <div className={Styles.titulo}> Hora de salida </div>
+                <input
+                    type='time'
+                    value={salida}
+                    onChange={(e) => setSalida(e.target.value)}
+                    onBlur={(e) => setSalida(e.target.value)}
+                    className={Styles.inputTime}
+                ></input>
+                <div className={Styles.error}> {error} </div>
+                <button onClick={generarContrato} className={Styles.confirmButton} >Generar contrato</button>
+            </div>
             <div className={Styles.pdf} ref={pdfRef}>
-                <Image src={Header} width={650} height={92}></Image>
+                <Image src={Header} width={650} height={92} alt='Header' className={Styles.imgHeader} ></Image>
                 <div className={Styles.header}>CONTRATO DE RESERVA NAAYARI TOURS</div>
                 <div className={Styles.fecha}>Tepic, Nay. A <u>{dia}</u> de <u>{mes}</u> del <u>{año}</u></div>
                 <div className={Styles.textoGeneral}>
                     <p>La tour-operadora <b>Naayari tours</b> con domicilio en <b>Av. Che Guevara #84, Col. 2 de Agosto en Tepic</b>
                         &nbsp; acredita que el C. <u>{cliente}</u> con número de celular: <u>{celular}</u></p>
                     <p>Reserva <u>{lugares}</u> lugares al tour con nombre <u>{tour}</u> programado para la fecha del&nbsp;
-                        <u>{fechaViaje}</u> con hora de salida las <u>{horaSalida}</u></p>
+                        <u>{newFecha}</u> con hora de salida las <u>{salida}</u> con un formato de 24 horas.</p> 
                     <p>Reserva con un anticipo de $<u>{anticipo}</u>, restando la cantidad de $<u>{resto}</u> misma que deberá
                         liquidarse el día del tour antes de partir en efectivo siendo el caso de un tour ida y vuelta el mismo día.</p>
                     <p>Si el tour es con abonos, se estipula que sus fechas serán cada ___ días de los próximos ___ por la cantidad
@@ -77,7 +134,7 @@ function ContratoPdf() {
                         <b>FAVOR DE CONSERVAR ESTE COMPROBANTE PARA FUTURAS ACLARACIONES.</b>
                     </ol>
                 </div>
-                <Image src={Footer} width={650} height={92}></Image>
+                <Image src={Footer} width={650} height={92} alt='Futer' className={Styles.imgFooter}></Image>
             </div>
         </div>
     )

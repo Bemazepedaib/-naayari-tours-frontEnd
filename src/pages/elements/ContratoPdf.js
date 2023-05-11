@@ -84,7 +84,7 @@ function ContratoPdf() {
                 <button onClick={generarContrato} className={Styles.confirmButton} >Generar contrato</button>
             </div>
             <div className={Styles.pdf} ref={pdfRef}>
-                <Image src={Header} width={650} height={92} alt='Header'></Image>
+                <Image src={Header} width={650} height={92} alt='Header' className={Styles.imgHeader} ></Image>
                 <div className={Styles.header}>CONTRATO DE RESERVA NAAYARI TOURS</div>
                 <div className={Styles.fecha}>Tepic, Nay. A <u>{dia}</u> de <u>{mes}</u> del <u>{año}</u></div>
                 <div className={Styles.textoGeneral}>
@@ -122,7 +122,7 @@ function ContratoPdf() {
                         <b>FAVOR DE CONSERVAR ESTE COMPROBANTE PARA FUTURAS ACLARACIONES.</b>
                     </ol>
                 </div>
-                <Image src={Footer} width={650} height={92} alt='Futer'></Image>
+                <Image src={Footer} width={650} height={92} alt='Futer' className={Styles.imgFooter}></Image>
             </div>
         </div>
     )

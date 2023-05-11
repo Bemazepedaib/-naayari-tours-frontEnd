@@ -74,7 +74,7 @@
     padding: 7px 10px;
     border-radius: 5px;
     transition: 0.3s ease all;
-    width: 20vw;
+    width: 15vw;
 }
 
 .confirmButton:hover {
@@ -99,4 +99,48 @@
     color: red;
     text-transform: uppercase;
     background-color: #fff;
+}
+
+@media (max-width: 1400px){
+    .titulo {
+        font-size: 15px;
+    }
+
+    .inputTime {
+        font-size: 10px;
+    }
+
+    .error {
+        font-size: 10px;
+    }
+
+    .confirmButton {
+        font-size: 15px;
+    }
+
+    .header {
+        font-size: 8px;
+    }
+
+    .fecha {
+        font-size: 8px;
+    }
+
+    .textoGeneral {
+        font-size: 9px;
+    }
+
+    .pdf {
+        width: 488px;
+    }
+
+    .imgHeader {
+        width: 488px;
+        height: 69px;
+    }
+
+    .imgFooter {
+        width: 488px;
+        height: 69px;
+    }
 }

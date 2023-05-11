@@ -28,22 +28,22 @@ function ContratoPdf() {
         const element = pdfRef.current;
         const canvas = await html2canvas(element);
         const data = canvas.toDataURL('image/png');
-        const link = document.createElement('a');
+        // const link = document.createElement('a');
 
-        // const pdf = new jsPDF();
-        // pdf.addImage(data, 'PNG', 0, 0);
-        // pdf.save(`Contrato de ${cliente}.pdf`)
+         const pdf = new jsPDF();
+         pdf.addImage(data, 'PNG', 0, 0);
+         pdf.save(`Contrato de ${cliente}.pdf`)
         // window.history.back()
 
-        if (typeof link.download === 'string') {
-			link.href = data;
-			link.download = `Contrato de ${cliente}.png`;
-			document.body.appendChild(link);
-			link.click();
-			document.body.removeChild(link);
-		} else {
-			window.open(data);
-		}
+        // if (typeof link.download === 'string') {
+		// 	link.href = data;
+		// 	link.download = `Contrato de ${cliente}.png`;
+		// 	document.body.appendChild(link);
+		// 	link.click();
+		// 	document.body.removeChild(link);
+		// } else {
+		// 	window.open(data);
+		// }
     }
 
     const switchMes = (numMes) => {
@@ -96,9 +96,11 @@ function ContratoPdf() {
                 <button onClick={generarContrato} className={Styles.confirmButton} >Generar contrato</button>
             </div>
             <div className={Styles.pdf} ref={pdfRef}>
-                <Image src={Header} width={650} height={92} alt='Header' className={Styles.imgHeader} ></Image>
+                <div>
+                <Image src={Header} width={792} height={92} alt='Header' className={Styles.imgHeader} ></Image>
                 <div className={Styles.header}>CONTRATO DE RESERVA NAAYARI TOURS</div>
                 <div className={Styles.fecha}>Tepic, Nay. A <u>{dia}</u> de <u>{mes}</u> del <u>{año}</u></div>
+                </div>
                 <div className={Styles.textoGeneral}>
                     <p>La tour-operadora <b>Naayari tours</b> con domicilio en <b>Av. Che Guevara #84, Col. 2 de Agosto en Tepic</b>
                         &nbsp; acredita que el C. <u>{cliente}</u> con número de celular: <u>{celular}</u></p>
@@ -134,7 +136,7 @@ function ContratoPdf() {
                         <b>FAVOR DE CONSERVAR ESTE COMPROBANTE PARA FUTURAS ACLARACIONES.</b>
                     </ol>
                 </div>
-                <Image src={Footer} width={650} height={92} alt='Futer' className={Styles.imgFooter}></Image>
+                <Image src={Footer} width={792} height={92} alt='Futer' className={Styles.imgFooter}></Image>
             </div>
         </div>
     )

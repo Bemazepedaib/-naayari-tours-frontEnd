@@ -3,6 +3,7 @@
 
 .mainContainer {
     display: flex;
+    flex-direction: column;
     justify-content: center;
     background-image: url('https://drive.google.com/uc?export=view&id=1XPHv76qI1Y303811H7gbUPpmv9KQSa5u');
     background-size: cover;
@@ -34,21 +35,23 @@
 .pdf {
     display: flex;
     flex-direction: column;
-    width: 650px;
+    justify-content: space-between;
+    width: 793px;
+    height: 1123px;
     background-color: #fff;
 }
 
 .header {
     text-align: end;
     font-weight: bold;
-    font-size: 10px;
+    font-size: small;
     margin-right: 50px;
     position: relative;
     top: -30px;
 }
 
 .fecha {
-    font-size: 10px;
+    font-size: medium;
     text-align: end;
     margin-bottom: 20px;
     margin-right: 50px;
@@ -57,7 +60,7 @@
 }
 
 .textoGeneral {
-    font-size: 11px;
+    font-size: small;
     margin-right: 50px;
     margin-left: 60px;
     text-align: justify;
@@ -102,15 +105,15 @@
 }
 
 .imgHeader {
-    width: 650px;
+    width: 793px;
     height: auto;
 }
 
 .imgFooter {
-    width: 650px;
+    width: 793px;
     height: auto;
 }
-
+/* 
 @media (max-width: 1400px) {
     .titulo {
         font-size: 15px;
@@ -154,4 +157,4 @@
         width: 487px;
         height: 69px;
     }
-}
+} */

@@ -86,7 +86,6 @@ function ModalVIP({titleText,text,send,date,trip}) {
   return (
     <>
       <div  className={Styles.btnVIP} onClick={activateBothMethods}>
-        
         <p className={Styles.paragraph}>¡Crea tu grupo VIP!</p>
       </div>
       <Modal show={show} onHide={handleClose}>

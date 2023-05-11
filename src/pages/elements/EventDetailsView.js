@@ -1,4 +1,5 @@
-import React, { useEffect, useState } from 'react'
+import React, { useState } from 'react'
+import Image from 'next/image'
 
 import Styles from '../../styles/elementStyles/EventDetailsView.module.css'
 
@@ -6,7 +7,12 @@ import ModalEvent from './ModalEvent';
 import { useMutation } from '@apollo/client';
 import { UPDATE_STATUS, DELETE_USER } from '../mutations/eventMutations';
 
+import Modal from 'react-bootstrap/Modal';
+import Button from 'react-bootstrap/Button';
+
 function EventDetailsView({ event }) {
+
+    const image = 'https://drive.google.com/uc?export=view&id=1hKQxSheX5io9bPjn99_TedN8SCTNcsoK'
 
     let key = 0;
     const [updateStatus] = useMutation(UPDATE_STATUS)
@@ -25,10 +31,15 @@ function EventDetailsView({ event }) {
     const [eventUsers, setEventUsers] = useState(event.event.users.map(({ __typename, ...rest }) => { return rest }))
     const [eventStatus, setEventStatus] = useState(opciones[0].value)
     const [currentStatus, setCurrentStatus] = useState(event.event.eventStatus)
+    const [confirmMessage, setConfirmMessage] = useState("¿Está seguro que desea cambiar el estado?");
+
+    const [showConfirm, setShowConfirm] = useState(false)
+    const handleConfirmClose = () => setShowConfirm(false);
+    const handleConfirmShow = () => setShowConfirm(true);
 
     const changeStatus = async () => {
         try {
-            if (eventStatus === "null" || eventStatus === currentStatus) { console.log("Seleccione un valor válido"); return; }
+            if (eventStatus === "null" || eventStatus === currentStatus) { setConfirmMessage("¡Seleccione un valor válido!"); return; }
             setCurrentStatus((await updateStatus({
                 variables: {
                     eventDate: eventDate,
@@ -36,6 +47,9 @@ function EventDetailsView({ event }) {
                     eventStatus: eventStatus
                 }
             })).data.updateEventStatus.split("%")[1])
+            setConfirmMessage("¡Estado actualizado exitósamente!")
+            handleConfirmClose()
+            setConfirmMessage("¿Está seguro que desea cambiar el estado?")
         } catch (error) {
             console.log(error.message)
         }
@@ -80,9 +94,24 @@ function EventDetailsView({ event }) {
                             <option value={option.value} key={option.value}> {option.text} </option>
                         ))}
                     </select>
-                    <button className={Styles.btn} onClick={changeStatus}>
+                    <button className={Styles.btn} onClick={handleConfirmShow}>
                         Cambiar estado del viaje
                     </button>
+                    <Modal show={showConfirm} centered backdrop="static" keyboard={false}>
+                        <Modal.Header bsPrefix={Styles.confirmModalHeader}>
+                            <Image src={image} className={Styles.image} width={70} height={70} alt="Naayari tours" />
+                            <Modal.Title></Modal.Title>
+                        </Modal.Header>
+                        <Modal.Body bsPrefix={Styles.confirmModalBody}>{confirmMessage}</Modal.Body>
+                        <Modal.Footer bsPrefix={Styles.confirmModalFooter}>
+                            <Button bsPrefix={Styles.cancelButton} onClick={handleConfirmClose}>
+                                Cancelar
+                            </Button>
+                            <Button bsPrefix={Styles.confirmButton} onClick={changeStatus}>
+                                Confirmar
+                            </Button>
+                        </Modal.Footer>
+                    </Modal>
                 </div>
             </div>
             <div className={Styles.titulo2}>Reservaciones</div>

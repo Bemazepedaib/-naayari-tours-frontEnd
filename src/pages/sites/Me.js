@@ -15,7 +15,7 @@ import ModalMe from '../elements/ModalMe';
 import Styles from '../../styles/Me.module.css'
 
 function Me() {
-    //MUTATIONS
+    //MUTATIONS AND QUERYS
     const [userPass] = useMutation(UPDATE_USER_PASSWORD);
     const { loading, error, data } = useQuery(ME);
 

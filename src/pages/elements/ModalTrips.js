@@ -1,17 +1,24 @@
 import React, { useState } from 'react';
 import Modal from 'react-bootstrap/Modal';
-
+import { useMutation } from '@apollo/client';
 import Styles from '../../styles/elementStyles/ModalTrips.module.css'
 import { faPenToSquare } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import Image from 'next/image'
-const ModalTrips = ({ tripInfo }) => {
+import { DELETE_TRIP } from '../mutations/tripMutations';
+const ModalTrips = ({ tripInfo,deletrip}) => {
     const [show, setShow] = useState(false);
     const handleClose = () => setShow(false);
+    const handleClose1 = () => setShow1(false);
     const handleShow = () => setShow(true);
     const [show1, setShow1] = useState(false);
-    const handleClose1 = () => setShow1(false);
+    const handleCloseConfirm = async () => { 
+        const nombreViaje = tripInfo.tripName
+        await deleteTrip({ variables: {  tripName: nombreViaje }});
+        deletrip(nombreViaje);
+        setShow1(false);}
     const handleShow1 = () => {setShow1(true); setShow(false);}
+    const [deleteTrip] = useMutation(DELETE_TRIP);
     const image = 'https://drive.google.com/uc?export=view&id=1Gx08yGg-rGq0tUe5yVHWxbkaMfmrUOk0'
     return (
         <div>
@@ -45,7 +52,7 @@ const ModalTrips = ({ tripInfo }) => {
                 </Modal.Body>
                 <Modal.Footer className={Styles.modalFooter}>
                     <button className={Styles.btnCancel} onClick={handleClose1}>NO</button>
-                    <button className={Styles.btnConfirm} onClick={handleClose1}>SÍ</button>
+                    <button className={Styles.btnConfirm} onClick={handleCloseConfirm}>SÍ</button>
                 </Modal.Footer>
             </Modal>
         </div>

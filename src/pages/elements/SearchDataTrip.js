@@ -11,6 +11,11 @@ const SearchDataTrip = ({ data }) => {
     const [trips, setTrips] = useState(data);
     const [tripsTable, setTripsTable] = useState(data);
 
+    //Delete Trip
+    const deletrip = (trip) => {
+        setTrips(trips.filter(item => item.tripName !== trip));
+    }
+
     //OnChange Method
     const handleChange = (e) => {
         setSearch(e.target.value);
@@ -65,7 +70,7 @@ const SearchDataTrip = ({ data }) => {
                                             </td>
                                             {trips.tripInformation.discount.available ? <td>Si</td> : <td>No</td>}
                                             <td>
-                                                <ModalTrips tripInfo={trips}/>
+                                                <ModalTrips tripInfo={trips} deletrip = {deletrip}/>
                                             </td>
                                         </tr>
                                     ))}

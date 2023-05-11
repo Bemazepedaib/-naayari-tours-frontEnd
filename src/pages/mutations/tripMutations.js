@@ -7,5 +7,9 @@ const ADD_TRIP = gql`
                 tripStatus: $tripStatus, tripReview: $tripReview)
     }
 `;
-
-export { ADD_TRIP }
+const DELETE_TRIP = gql`
+    mutation deleteTrip($tripName: String!) {
+        deleteTrip(tripName: $tripName)
+    }
+`;
+export { ADD_TRIP,DELETE_TRIP}

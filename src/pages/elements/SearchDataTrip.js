@@ -4,14 +4,17 @@ import Styles from '../../styles/elementStyles/SearchDataTrip.module.css'
 
 import Table from 'react-bootstrap/Table';
 import HeaderTittle from './HeaderTittle';
-
+import ModalTrips from './ModalTrips';
 
 const SearchDataTrip = ({ data }) => {
     //HOOKS
     const [trips, setTrips] = useState(data);
     const [tripsTable, setTripsTable] = useState(data);
-    const [search, setSearch] = useState("");
 
+    //Delete Trip
+    const deletrip = (trip) => {
+        setTrips(trips.filter(item => item.tripName !== trip));
+    }
 
     //OnChange Method
     const handleChange = (e) => {
@@ -24,16 +27,12 @@ const SearchDataTrip = ({ data }) => {
             if (element.tripName.toString().toLowerCase().includes(term.toLowerCase())
                 || element.tripInformation.place.toString().toLowerCase().includes(term.toLowerCase())
                 || element.tripInformation.price[0].priceAmount.toString().toLowerCase().includes(term.toLowerCase())
-                || element.tripInformation.discount.available ? "con descuento".toLowerCase().includes(term.toLowerCase()):
-                 "sin descuento".toLowerCase().includes(term.toLowerCase())) {
+                || element.tripInformation.discount.available ? "con descuento".toLowerCase().includes(term.toLowerCase()) :
+                "sin descuento".toLowerCase().includes(term.toLowerCase())) {
                 return element;
             }
         })
         setTrips(searchResult);
-    }
-    //ONCLICK ROW FUNCTION
-    const rowClicked = (email) => {
-
     }
     return (
         <div>
@@ -50,6 +49,7 @@ const SearchDataTrip = ({ data }) => {
                                 <th>Lugar</th>
                                 <th>Precio Adulto</th>
                                 <th>Descuento</th>
+                                <th>Modificaciones</th>
                                 {console.log(trips[2])}
                             </tr>
                         </thead>
@@ -58,7 +58,7 @@ const SearchDataTrip = ({ data }) => {
                                 trips
                                     .map(trips => (
 
-                                        <tr key={trips.tripName} onClick={() => rowClicked("caca")}>
+                                        <tr key={trips.tripName}>
                                             <td>
                                                 {trips.tripName}
                                             </td>
@@ -69,6 +69,9 @@ const SearchDataTrip = ({ data }) => {
                                                 ${trips.tripInformation.price[0].priceAmount}
                                             </td>
                                             {trips.tripInformation.discount.available ? <td>Si</td> : <td>No</td>}
+                                            <td>
+                                                <ModalTrips tripInfo={trips} deletrip = {deletrip}/>
+                                            </td>
                                         </tr>
                                     ))}
                         </tbody>

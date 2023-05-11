@@ -18,9 +18,7 @@ function FormTripDate({ dates, selectedTrip }) {
     const { loading: userLoading, error: userError, data: userData } = useQuery(ME);
 
     async function send() {
-
             return false;
-
     }
 
     return (
@@ -57,7 +55,6 @@ function FormTripDate({ dates, selectedTrip }) {
                                     placeholder=""
                                     name="dateEnd"
                                     errorMsg=""
-                                    regExp={""}
                                 />
                                 </div>
                         <ModalVIP 

@@ -101,7 +101,17 @@
     background-color: #fff;
 }
 
-@media (max-width: 1400px){
+.imgHeader {
+    width: 650px;
+    height: auto;
+}
+
+.imgFooter {
+    width: 650px;
+    height: auto;
+}
+
+@media (max-width: 1400px) {
     .titulo {
         font-size: 15px;
     }
@@ -135,12 +145,13 @@
     }
 
     .imgHeader {
-        width: 488px;
+        width: 487px;
         height: 69px;
+        z-index: 1000000000;
     }
 
     .imgFooter {
-        width: 488px;
+        width: 487px;
         height: 69px;
     }
 }

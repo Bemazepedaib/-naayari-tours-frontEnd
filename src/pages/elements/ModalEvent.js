@@ -13,7 +13,7 @@ import Styles from '../../styles/elementStyles/ModalEvent.module.css'
 import { useQuery } from '@apollo/client';
 import { GET_USER } from '../querys/userQuerys';
 
-export default function ModalEvent({ user, trip, date, deleteReservation, updateReservation }) {
+function ModalEvent({ user, trip, date, deleteReservation, updateReservation }) {
 
     const image = 'https://drive.google.com/uc?export=view&id=1hKQxSheX5io9bPjn99_TedN8SCTNcsoK'
 
@@ -137,3 +137,5 @@ export default function ModalEvent({ user, trip, date, deleteReservation, update
         </>
     )
 }
+
+export default ModalEvent;

@@ -28,10 +28,22 @@ function ContratoPdf() {
         const element = pdfRef.current;
         const canvas = await html2canvas(element);
         const data = canvas.toDataURL('image/png');
-        const pdf = new jsPDF();
-        pdf.addImage(data, 'PNG', 0, 0);
-        pdf.save(`Contrato de ${cliente}.pdf`)
-        window.history.back()
+        const link = document.createElement('a');
+
+        // const pdf = new jsPDF();
+        // pdf.addImage(data, 'PNG', 0, 0);
+        // pdf.save(`Contrato de ${cliente}.pdf`)
+        // window.history.back()
+
+        if (typeof link.download === 'string') {
+			link.href = data;
+			link.download = `Contrato de ${cliente}.png`;
+			document.body.appendChild(link);
+			link.click();
+			document.body.removeChild(link);
+		} else {
+			window.open(data);
+		}
     }
 
     const switchMes = (numMes) => {

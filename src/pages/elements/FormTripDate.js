@@ -4,12 +4,15 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faCalendarDays} from '@fortawesome/free-solid-svg-icons'
 import ModalVIP from './ModalVIP';
 import Router from 'next/router';
+import InputComponent from '../elements/Input';
 
 import { useQuery } from '@apollo/client';
 import { ME } from '../querys/userQuerys';
 
 function FormTripDate({ dates, selectedTrip }) {
 
+    
+    const [dateAdd, setDateAdd] = useState({ value: "", valid: true });
     const [selectedDate, setselectedDate] = useState(dates[0])
     const [selectedDateVIP, setselectedDateVIP] = useState(dates[0])
     const { loading: userLoading, error: userError, data: userData } = useQuery(ME);
@@ -45,20 +48,23 @@ function FormTripDate({ dates, selectedTrip }) {
                          </button>
                     </div>
                     <div >
-                    <select
-                            className={Styles.textInput}
-                            value={selectedDateVIP}
-                            onChange={e => { setselectedDateVIP(e.target.value) }}
-                            onBlur={e => { setselectedDateVIP(e.target.value) }}>
-                            {dates.map(d => (
-                                <option className={Styles.op} value={d} key={d}> {d} </option>
-                            ))}
-                        </select>
+                        <div className={Styles.inputDate}>
+                    <InputComponent
+                                    estado={dateAdd}
+                                    cambiarEstado={setDateAdd}
+                                    tipo="date"
+                                    label="Seleccionar fecha para grupo VIP"
+                                    placeholder=""
+                                    name="dateEnd"
+                                    errorMsg=""
+                                    regExp={""}
+                                />
+                                </div>
                         <ModalVIP 
                         titleText='Solicitud VIP '
-                        text={ selectedTrip +" con fecha: "+ selectedDateVIP}
+                        text={ selectedTrip +" con fecha: "+ dateAdd.value}
                         send={ send }
-                        date={ selectedDateVIP }
+                        date={ dateAdd.value }
                         trip={ selectedTrip }>
                         </ModalVIP>
             </div>

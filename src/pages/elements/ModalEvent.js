@@ -13,7 +13,7 @@ import Styles from '../../styles/elementStyles/ModalEvent.module.css'
 import { useQuery } from '@apollo/client';
 import { GET_USER } from '../querys/userQuerys';
 
-export default function ModalEvent({ user, trip, date, deleteReservation, updateReservation }) {
+function ModalEvent({ user, trip, date, deleteReservation, updateReservation }) {
 
     const image = 'https://drive.google.com/uc?export=view&id=1hKQxSheX5io9bPjn99_TedN8SCTNcsoK'
 
@@ -31,7 +31,7 @@ export default function ModalEvent({ user, trip, date, deleteReservation, update
 
     const makeContract = () => {
         Router.push({
-            pathname: '/elements/ContratoPdf', query: {
+            pathname: '/elements/PDFContract', query: {
                 cliente: userData.user.name,
                 celular: userData.user.cellphone,
                 lugares: user.companion.length + 1,
@@ -137,3 +137,5 @@ export default function ModalEvent({ user, trip, date, deleteReservation, update
         </>
     )
 }
+
+export default ModalEvent;

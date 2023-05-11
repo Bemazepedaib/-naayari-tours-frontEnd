@@ -22,11 +22,15 @@ function ModalVIP({titleText,text,send,date,trip}) {
   const [show, setShow] = useState(false);
   const [counter, setCounter] = useState();
 
-  const handleClose = () => setShow(false);
+  const handleClose = () => {
+    setShow(false);     
+    setmyMessage("");
+    setmyMessageErr("");
+  }
   const handleShow = () => setShow(true);
 
   useEffect(() => {
-    counter==0 ? setShow(false) : ""
+    counter==0 ? handleClose : ""
       const timer =
       counter > 0 && setInterval(() => setCounter(counter - 1), 1000);
     return () => clearInterval(timer);
@@ -52,7 +56,11 @@ function ModalVIP({titleText,text,send,date,trip}) {
   const HandleClick = async () => {
     setmyMessage("");
     setmyMessageErr("");
-    setCounter(3)
+    setCounter(3);
+    if (!date) {
+      setmyMessageErr("Seleccione una fecha");
+    }
+    else{
     try{
     await addRequest({
         variables: {
@@ -68,9 +76,8 @@ function ModalVIP({titleText,text,send,date,trip}) {
     }
     if (!myMessageErr) {
       setmyMessage("Solicitud enviada exitosamente!!");
-
-
     }
+  }
   }
 
 

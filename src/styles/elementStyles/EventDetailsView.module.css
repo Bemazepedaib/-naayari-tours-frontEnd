@@ -152,4 +152,24 @@
     .contenedorUsuarios {
         gap: 0;
     }
+
+    .contenedorDatos {
+        font-size: 11px;
+    }
+
+    .subtitle {
+        font-size: 13px;
+    }
+    
+    .comboBox {
+        width: 90%;
+        height: fit-content;
+        font-size: 8px;
+    }
+
+    .btn {
+        width: 80%;
+        height: fit-content;
+        font-size: 8px;
+    }
 }

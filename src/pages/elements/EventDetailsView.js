@@ -1,4 +1,4 @@
-import React, { use, useEffect, useState } from 'react'
+import React, { useState } from 'react'
 
 import Styles from '../../styles/elementStyles/EventDetailsView.module.css'
 

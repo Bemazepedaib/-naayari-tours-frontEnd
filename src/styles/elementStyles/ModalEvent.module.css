@@ -191,7 +191,7 @@
     }
 
     .tableBody {
-        font-size: 10px;
+        font-size: 8px;
     }
     
     .btn {
@@ -203,9 +203,16 @@
 
     .cancelButton {
         font-size: 8px;
+        width: fit-content;
     }
 
     .confirmButton {
         font-size: 8px;
+        width: fit-content;
+    }
+
+    .updateButton {
+        font-size: 8px;
+        width: fit-content;
     }
 }

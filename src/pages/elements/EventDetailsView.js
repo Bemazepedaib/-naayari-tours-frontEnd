@@ -5,7 +5,7 @@ import Styles from '../../styles/elementStyles/EventDetailsView.module.css'
 
 import ModalEvent from './ModalEvent';
 import { useMutation } from '@apollo/client';
-import { UPDATE_STATUS, DELETE_USER } from '../mutations/eventMutations';
+import { UPDATE_STATUS, DELETE_USER, UPDATE_USER } from '../mutations/eventMutations';
 
 import Modal from 'react-bootstrap/Modal';
 import Button from 'react-bootstrap/Button';
@@ -17,6 +17,7 @@ function EventDetailsView({ event }) {
     let key = 0;
     const [updateStatus] = useMutation(UPDATE_STATUS)
     const [delReservation] = useMutation(DELETE_USER)
+    const [updReservation] = useMutation(UPDATE_USER)
 
     const opciones = [
         { value: "null", text: "Seleccione una opcion" },
@@ -71,8 +72,26 @@ function EventDetailsView({ event }) {
         }
     }
 
-    const updateReservation = async () => {
-        console.log("update")
+    const updateReservation = async (correo, fechaA, viajeA) => {
+        console.log(eventDate)
+        console.log(eventTrip)
+        console.log(fechaA)
+        console.log(viajeA)
+        console.log(correo)
+        try {
+            const res = await updReservation({
+                variables: {
+                    eventDateFrom: eventDate,
+                    eventTripFrom: eventTrip,
+                    eventDateTo: fechaA,
+                    eventTripTo: viajeA,
+                    user: correo
+                }
+            })
+            setEventUsers(res.data?.updateEventUser)
+        } catch (error) {
+            return error.message
+        }
     }
 
     return (

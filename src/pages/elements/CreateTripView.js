@@ -1,9 +1,10 @@
 //IMPORTS
-import { React, useState } from 'react'
+import { React, useState, useEffect } from 'react'
 import { useQuery, useMutation } from '@apollo/client'
 
 //APOLLO REQUEST
 import { ADD_TRIP } from '../mutations/tripMutations';
+import { ADD_EVENT } from '../mutations/eventMutations';
 
 //COMPONENTS
 import HeaderTittle from './HeaderTittle'
@@ -18,8 +19,10 @@ import Styles from '../../styles/elementStyles/CreateTripView.module.css'
 import InputComponent from './Input'
 
 const CreateTripView = () => {
-    //HOOKS
+    //MUTATION
+    const [addEvent] = useMutation(ADD_EVENT);
     const [addTrip] = useMutation(ADD_TRIP);
+    //HOOKS
     const [name, setName] = useState({ value: "", valid: true });
     const [photo, setPhoto] = useState({ value: "", valid: true });
     const [price, setPrice] = useState({ value: "", valid: true });
@@ -52,7 +55,7 @@ const CreateTripView = () => {
     //ON SUBMIT
     const onSubmit = async (e) => {
         e.preventDefault();
-        console.log(activities)
+        
         try {
             await addTrip({
                 variables: {
@@ -63,7 +66,7 @@ const CreateTripView = () => {
                         place: place.value,
                         price: [{
                             priceType: "Adulto",
-                            priceAmount: parseInt(price.value,10)
+                            priceAmount: parseInt(price.value, 10)
                         }, {
                             priceType: "Bebé",
                             priceAmount: 100
@@ -73,7 +76,7 @@ const CreateTripView = () => {
                         discount: discount ? {
                             dateStart: dateStart.value,
                             dateEnd: dateEnd.value,
-                            amount: parseInt(amount.value,10),
+                            amount: parseInt(amount.value, 10),
                             available: true
                         } : {},
                         itinerary: itinerary,
@@ -87,10 +90,37 @@ const CreateTripView = () => {
                 }
             }
             )
-        } catch (err) {
+            dates.map(async date => (await addEvent({
+                variables:
+                {
+                    eventDate: date, eventTrip: name.value, eventType: "Public", eventStatus: "active",
+                    eventGuide: "Guia", users: []
+                }
+            })
+            ))
+        }catch (err) {
             console.log(err.message)
         }
     }
+    //ADD EVENT TO TRIP
+   /*  useEffect(() => {
+        // declare the data fetching function
+        const addEvents = () => {
+             dates.map(async date => (await addEvent({
+                variables:
+                {
+                    eventDate: date, eventTrip: name.value, eventType: "Public", eventStatus: "active",
+                    eventGuide: "", users: []
+                }
+            })
+            ))
+        }
+
+        // call the function
+        addEvents()
+
+    }, [addTrip]) */
+
     //CHANGE INPUT VALUES
     const onChange = (e) => {
         switch (e.target.name) {
@@ -104,7 +134,7 @@ const CreateTripView = () => {
                 break;
         }
         if (e.target.checked) {
-            setActivities(activities.concat({ activityName: e.target.name+"", activityPhoto: e.target.id+"" }))
+            setActivities(activities.concat({ activityName: e.target.name + "", activityPhoto: e.target.id + "" }))
         } else if (!e.target.checked) {
             let pos = activities.map(mocoMap => mocoMap.activityName).indexOf(e.target.name);
             activities.splice(pos, 1)

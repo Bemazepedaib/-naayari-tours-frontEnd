@@ -12,4 +12,9 @@ const DELETE_TRIP = gql`
         deleteTrip(tripName: $tripName)
     }
 `;
-export { ADD_TRIP,DELETE_TRIP}
+const UPDATE_TRIP_STATUS = gql`
+    mutation updateTripStatus($tripName: String!,$tripStatus: Boolean!) {
+        updateTripStatus(tripName: $tripName,tripStatus: $tripStatus)
+    }
+`;
+export { ADD_TRIP,DELETE_TRIP,UPDATE_TRIP_STATUS}

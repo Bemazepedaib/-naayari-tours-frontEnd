@@ -1,28 +1,46 @@
+//IMPORTS
 import React, { useState } from 'react';
-import Modal from 'react-bootstrap/Modal';
-import { useMutation } from '@apollo/client';
 import Styles from '../../styles/elementStyles/ModalTrips.module.css'
+
+//MUTATIONS
+import { useMutation } from '@apollo/client';
+import { UPDATE_TRIP_STATUS } from '../mutations/tripMutations';
+
+//COMPONENTS
+import Modal from 'react-bootstrap/Modal';
+import Image from 'next/image'
+
+//ICONS
 import { faPenToSquare } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import Image from 'next/image'
-import { DELETE_TRIP } from '../mutations/tripMutations';
-const ModalTrips = ({ tripInfo,deletrip}) => {
+
+
+const ModalTrips = ({ tripInfo,updateTrip}) => {
+    //MODAL NUMBER 1
     const [show, setShow] = useState(false);
     const handleClose = () => setShow(false);
-    const handleClose1 = () => setShow1(false);
     const handleShow = () => setShow(true);
+    //MODAL NUMBER 2
     const [show1, setShow1] = useState(false);
+    const handleClose1 = () => setShow1(false);
     const handleCloseConfirm = async () => { 
-        const nombreViaje = tripInfo.tripName
-        await deleteTrip({ variables: {  tripName: nombreViaje }});
-        deletrip(nombreViaje);
-        setShow1(false);}
+        const tripName = tripInfo.tripName
+        const status = !tripInfo.tripStatus 
+        await updateTripStatus({ variables: {  tripName: tripName,tripStatus: status }})
+        updateTrip(tripName,status)
+        setShow1(false)
+    }
     const handleShow1 = () => {setShow1(true); setShow(false);}
-    const [deleteTrip] = useMutation(DELETE_TRIP);
+    //MUTATION USE
+    const [updateTripStatus] = useMutation(UPDATE_TRIP_STATUS);
+    //NAAYARI TOURS IMAGE
     const image = 'https://drive.google.com/uc?export=view&id=1Gx08yGg-rGq0tUe5yVHWxbkaMfmrUOk0'
     return (
         <div>
+            {/*BUTTON TO OPEN MODAL 1*/}
+            <div className={Styles.buttonIcon}>
             <i className={Styles.icon} onClick={handleShow}><FontAwesomeIcon icon={faPenToSquare} ></FontAwesomeIcon></i>
+            </div>
             <Modal show={show} onHide={handleClose}>
                 <Modal.Header closeButton>
                     <Modal.Title className={Styles.modalTitle}>
@@ -36,19 +54,20 @@ const ModalTrips = ({ tripInfo,deletrip}) => {
                     Descuento: {tripInfo.tripInformation.discount.available ? "Sí" : "No"}
                 </Modal.Body>
                 <Modal.Footer className={Styles.modalFooter}>
-                    <button className={Styles.btnDelete} onClick={handleShow1 }>Eliminar</button>
+                    <button className={Styles.btnDelete} onClick={handleShow1 }>Cambiar estado</button>
                     <button className={Styles.btnUpdate} onClick={handleClose}>Actualizar</button>
                 </Modal.Footer>
             </Modal>
+            {/*MODAL 2*/}
             <Modal show={show1} onHide={handleClose1}>
                 <Modal.Header closeButton>
                     <Modal.Title className={Styles.modalTitle}>
                         <Image className={Styles.image} src={image} width={100} height={100} alt="Naayari tours" />
-                        CONFIRMAR ELIMINACIÓN
+                        CONFIRMAR CAMBIO
                     </Modal.Title>
                 </Modal.Header>
                 <Modal.Body className={Styles.modalBody}>
-                    ¡ESTE VIAJE YA NO SE PODRA RECUPERAR!
+                    ¡ESTE VIAJE CAMBIARA DE ESTADO!
                 </Modal.Body>
                 <Modal.Footer className={Styles.modalFooter}>
                     <button className={Styles.btnCancel} onClick={handleClose1}>NO</button>

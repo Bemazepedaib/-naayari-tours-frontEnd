@@ -1,34 +1,59 @@
-import { React, useState } from 'react'
-import Router from 'next/router';
+//IMPORTS
+import { React, useState,useEffect} from 'react'
 import Styles from '../../styles/elementStyles/SearchDataTrip.module.css'
 
+//COMPONENTS
 import Table from 'react-bootstrap/Table';
 import HeaderTittle from './HeaderTittle';
 import ModalTrips from './ModalTrips';
 
-const SearchDataTrip = ({ data }) => {
+const SearchDataTrip = ({ dataM }) => {
     //HOOKS
+    const [data, setData] = useState([...dataM]);
     const [trips, setTrips] = useState(data);
     const [tripsTable, setTripsTable] = useState(data);
+    const [search, setSearch] = useState("");
+    const [state, setState] = useState(true);
 
-    //Delete Trip
-    const deletrip = (trip) => {
-        setTrips(trips.filter(item => item.tripName !== trip));
+
+    //Update Trip
+    const updateTrip = (name, status) => {
+        let pos = data.map(e => e.tripName).indexOf(name);
+        let aux = {...data[pos]}
+        aux.tripStatus = !aux.tripStatus
+        setState(status)
+        data.splice(pos, 1)
+        setData(data.concat(aux))
     }
+
+    useEffect(() => {
+        if (state) {
+            setTrips(data.filter(item => item.tripStatus !== false))
+            setTripsTable(data.filter(item => item.tripStatus !== false))
+        } else {
+            setTrips(data.filter(item => item.tripStatus !== true))
+            setTripsTable(data.filter(item => item.tripStatus !== true))
+        }
+     }, [state]);
 
     //OnChange Method
     const handleChange = (e) => {
         setSearch(e.target.value);
         filter(e.target.value);
     }
+
+    const changeState = () => {
+        if (state) { setState(!state); }
+        else {
+            setState(!state);
+        }
+    }
     //TABLE FILTER
     const filter = (term) => {
         let searchResult = tripsTable.filter((element) => {
             if (element.tripName.toString().toLowerCase().includes(term.toLowerCase())
                 || element.tripInformation.place.toString().toLowerCase().includes(term.toLowerCase())
-                || element.tripInformation.price[0].priceAmount.toString().toLowerCase().includes(term.toLowerCase())
-                || element.tripInformation.discount.available ? "con descuento".toLowerCase().includes(term.toLowerCase()) :
-                "sin descuento".toLowerCase().includes(term.toLowerCase())) {
+                || element.tripInformation.price[0].priceAmount.toString().toLowerCase().includes(term.toLowerCase())) {
                 return element;
             }
         })
@@ -45,12 +70,11 @@ const SearchDataTrip = ({ data }) => {
                     <Table responsive size='sm' striped bordered hover className={Styles.table}>
                         <thead className={Styles.tHead}>
                             <tr>
-                                <th>Nombre</th>
-                                <th>Lugar</th>
-                                <th>Precio Adulto</th>
-                                <th>Descuento</th>
-                                <th>Modificaciones</th>
-                                {console.log(trips[2])}
+                                <th className={Styles.column}>Nombre</th>
+                                <th className={Styles.column}>Lugar</th>
+                                <th className={Styles.column}>Precio Adulto</th>
+                                <th className={Styles.column}>Estado</th>
+                                <th className={Styles.column}>Modificaciones</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -59,23 +83,29 @@ const SearchDataTrip = ({ data }) => {
                                     .map(trips => (
 
                                         <tr key={trips.tripName}>
-                                            <td>
+                                            <td className={Styles.column}>
                                                 {trips.tripName}
                                             </td>
-                                            <td>
+                                            <td className={Styles.column}>
                                                 {trips.tripInformation.place}
                                             </td>
-                                            <td>
+                                            <td className={Styles.column}>
                                                 ${trips.tripInformation.price[0].priceAmount}
                                             </td>
-                                            {trips.tripInformation.discount.available ? <td>Si</td> : <td>No</td>}
+                                            {trips.tripStatus
+                                                ? <td><div className={Styles.yes}></div></td>
+                                                : <td><div className={Styles.no}></div></td>}
                                             <td>
-                                                <ModalTrips tripInfo={trips} deletrip = {deletrip}/>
+                                                <ModalTrips tripInfo={trips} updateTrip={updateTrip} />
                                             </td>
                                         </tr>
                                     ))}
                         </tbody>
                     </Table>
+                </div>
+                <div className={Styles.btnContainer}>
+                    <button className={state ? Styles.btnStateActive : Styles.btnStateInactive}
+                        onClick={changeState}>Cambiar orden de estados</button>
                 </div>
             </div>
         </div>

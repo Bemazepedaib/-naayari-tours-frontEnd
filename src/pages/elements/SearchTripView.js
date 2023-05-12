@@ -13,7 +13,7 @@ const SearchTripView = () => {
         <div>
             {!loading && !error && (
                 
-                <SearchDataTrip data={data.trips}></SearchDataTrip>
+                <SearchDataTrip dataM={data.trips}></SearchDataTrip>
             )
             }
         </div >

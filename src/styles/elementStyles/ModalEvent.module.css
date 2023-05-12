@@ -144,6 +144,7 @@
 .confirmModalBody {
     font-family: 'Oswald', sans-serif;
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
     text-align: center;
@@ -168,7 +169,23 @@
     margin: 20px 30px;
 }
 
+.comboBox {
+    width: 20vw;
+    text-transform: uppercase;
+    text-align: center;
+    font-size: 15px;
+    height: 30px;
+    font-family: 'Oswald', sans-serif;
+}
+
 @media (max-width: 600px) {
+
+    .comboBox {
+        width: 90%;
+        height: fit-content;
+        font-size: 8px;
+    }
+
     .image {
         width: 30px;
     }

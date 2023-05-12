@@ -12,20 +12,27 @@ import Styles from '../../styles/elementStyles/ModalEvent.module.css'
 
 import { useQuery } from '@apollo/client';
 import { GET_USER } from '../querys/userQuerys';
+import { GET_EVENTS } from '../querys/eventQuerys';
 
 function ModalEvent({ user, trip, date, deleteReservation, updateReservation }) {
 
     const image = 'https://drive.google.com/uc?export=view&id=1hKQxSheX5io9bPjn99_TedN8SCTNcsoK'
 
     const { loading: userLoading, error: userError, data: userData } = useQuery(GET_USER, { variables: { email: user.userEmail } });
+    const { loading, eventLoading, error: eventError, data: eventData } = useQuery(GET_EVENTS)
 
     const [show, setShow] = useState(false);
     const handleClose = () => setShow(false);
     const handleShow = () => setShow(true);
-    const [showConfirm, setShowConfirm] = useState(false)
-    const handleConfirmClose = () => setShowConfirm(false);
-    const handleConfirmShow = () => setShowConfirm(true);
-    const [confirmMessage, setConfirmMessage] = useState("¿Está seguro que desea eliminar la reservación?");
+    const [showConfirm1, setShowConfirm1] = useState(false)
+    const handleConfirmClose1 = () => setShowConfirm1(false);
+    const handleConfirmShow1 = () => setShowConfirm1(true);
+    const [confirmMessage1, setConfirmMessage1] = useState("¿Está seguro que desea eliminar la reservación?");
+    const [showConfirm2, setShowConfirm2] = useState(false)
+    const handleConfirmClose2 = () => setShowConfirm2(false);
+    const handleConfirmShow2 = () => setShowConfirm2(true);
+    const [confirmMessage2, setConfirmMessage2] = useState("¿Está seguro que desea cambiar de viaje la reservación?");
+    const [event, selEvent] = useState("")
 
     let id = 0;
 
@@ -45,7 +52,7 @@ function ModalEvent({ user, trip, date, deleteReservation, updateReservation }) 
 
     if (userLoading) return (<Spinner />)
 
-    return (!userLoading && !userError &&
+    return (!eventLoading && !eventError && !userLoading && !userError &&
         <>
             <button className={Styles.btn} onClick={handleShow}>
                 {userData.user.name}
@@ -108,25 +115,61 @@ function ModalEvent({ user, trip, date, deleteReservation, updateReservation }) 
                     </Table>
                 </Modal.Body>
                 <Modal.Footer bsPrefix={Styles.modalFooter}>
-                    <Button bsPrefix={Styles.updateButton} onClick={() => updateReservation()}>
+                    <Button bsPrefix={Styles.updateButton} onClick={handleConfirmShow2}>
                         Cambio de viaje
                     </Button>
-                    <Button bsPrefix={Styles.cancelButton} onClick={handleConfirmShow}>
-                        Eliminar reservacion
-                    </Button>
-                    <Modal show={showConfirm} centered backdrop="static" keyboard={false}>
+                    <Modal show={showConfirm2} centered backdrop="static" keyboard={false}>
                         <Modal.Header bsPrefix={Styles.confirmModalHeader}>
                             <Image src={image} className={Styles.image} width={70} height={70} alt="Naayari tours" />
                             <Modal.Title></Modal.Title>
                         </Modal.Header>
-                        <Modal.Body bsPrefix={Styles.confirmModalBody}>{confirmMessage}</Modal.Body>
+                        <Modal.Body bsPrefix={Styles.confirmModalBody}>
+                            Seleccione el viaje a donde quiera cambiar la reservacion
+                            <br />
+                            <br />
+                            <select
+                                value={event}
+                                onChange={e => { selEvent(e.target.value) }}
+                                onBlur={e => { selEvent(e.target.value) }}
+                                className={Styles.comboBox}
+                            >
+                                <option> Seleccione un viaje </option>
+                                {eventData?.events.map(event => (
+                                    <option value={event.eventDate + "|" + event.eventTrip} key={event.eventDate + event.eventTrip}>
+                                        {event.eventDate + "|" + event.eventTrip}
+                                    </option>
+                                ))}
+                            </select>
+                        </Modal.Body>
                         <Modal.Footer bsPrefix={Styles.confirmModalFooter}>
-                            <Button bsPrefix={Styles.cancelButton} onClick={handleConfirmClose}>
+                            <Button bsPrefix={Styles.cancelButton} onClick={handleConfirmClose2}>
                                 Cancelar
                             </Button>
-                            <Button bsPrefix={Styles.confirmButton} onClick={async () => { 
-                                setConfirmMessage(await deleteReservation(user.userEmail))
-                                handleConfirmClose()
+                            <Button bsPrefix={Styles.confirmButton} onClick={async () => {
+                                setConfirmMessage2(await updateReservation(user.userEmail, event.split("|")[0], event.split("|")[1]))
+                                handleConfirmClose2()
+                                handleClose()
+                            }}>
+                                Confirmar
+                            </Button>
+                        </Modal.Footer>
+                    </Modal>
+                    <Button bsPrefix={Styles.cancelButton} onClick={handleConfirmShow1}>
+                        Eliminar reservacion
+                    </Button>
+                    <Modal show={showConfirm1} centered backdrop="static" keyboard={false}>
+                        <Modal.Header bsPrefix={Styles.confirmModalHeader}>
+                            <Image src={image} className={Styles.image} width={70} height={70} alt="Naayari tours" />
+                            <Modal.Title></Modal.Title>
+                        </Modal.Header>
+                        <Modal.Body bsPrefix={Styles.confirmModalBody}>{confirmMessage1}</Modal.Body>
+                        <Modal.Footer bsPrefix={Styles.confirmModalFooter}>
+                            <Button bsPrefix={Styles.cancelButton} onClick={handleConfirmClose1}>
+                                Cancelar
+                            </Button>
+                            <Button bsPrefix={Styles.confirmButton} onClick={async () => {
+                                setConfirmMessage1(await deleteReservation(user.userEmail))
+                                handleConfirmClose1()
                                 handleClose()
                             }}>
                                 Confirmar

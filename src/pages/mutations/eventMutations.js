@@ -24,10 +24,28 @@ const DELETE_USER = gql`
     }
 `;
 
+const UPDATE_USER = gql`
+    mutation updateEventUser($eventDateFrom: String!, $eventTripFrom: String!, $eventDateTo: String!, $eventTripTo: String!, $user: String){
+        updateEventUser(eventDateFrom: $eventDateFrom, eventTripFrom: $eventTripFrom, eventDateTo: $eventDateTo, eventTripTo: $eventTripTo, user: $user){
+            userEmail
+            companion {
+                companionName
+                companionType
+                companionCell
+            }
+            advancePayment
+            fullPayment
+            advancePaid
+            fullyPaid
+            observations
+        }
+    }
+`;
+
 const UPDATE_STATUS = gql`
     mutation updateEventStatus($eventDate: String!, $eventTrip: String!, $eventStatus: String!){
         updateEventStatus(eventDate: $eventDate, eventTrip: $eventTrip, eventStatus: $eventStatus)
     }
 `;
 
-export { UPDATE_USERS, DELETE_USER, UPDATE_STATUS };
+export { UPDATE_USERS, DELETE_USER, UPDATE_USER, UPDATE_STATUS };

@@ -29,8 +29,10 @@ const SearchDataTrip = ({ dataM }) => {
     useEffect(() => {
         if (state) {
             setTrips(data.filter(item => item.tripStatus !== false))
+            setTripsTable(data.filter(item => item.tripStatus !== false))
         } else {
             setTrips(data.filter(item => item.tripStatus !== true))
+            setTripsTable(data.filter(item => item.tripStatus !== true))
         }
      }, [state]);
 
@@ -41,9 +43,9 @@ const SearchDataTrip = ({ dataM }) => {
     }
 
     const changeState = () => {
-        if (state) { setTrips(data.filter(item => item.tripStatus !== false)); setState(!state); }
+        if (state) { setState(!state); }
         else {
-            setTrips(data.filter(item => item.tripStatus !== true)); setState(!state);
+            setState(!state);
         }
     }
     //TABLE FILTER

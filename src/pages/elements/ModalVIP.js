@@ -53,8 +53,6 @@ function ModalVIP({titleText,text,send,date,trip}) {
 
 
   const HandleClick = async () => {
-    setmyMessage("");
-    setmyMessageErr("");
     setCounter(3);
     if (!date) {
       setmyMessageErr("Seleccione una fecha");
@@ -69,10 +67,10 @@ function ModalVIP({titleText,text,send,date,trip}) {
             requestTrip:trip,
             requestStatus:"pending"
         }})
-        
     }catch(e){
         setmyMessageErr(e.message);
     }
+    if( loading)
     if (!myMessageErr) {
       setmyMessage("Solicitud enviada exitosamente!!");
     }

@@ -43,6 +43,7 @@ const GET_PI_TRIPS  = gql
         available
       }
     }
+    tripStatus
   }
 }
     `;

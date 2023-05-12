@@ -48,4 +48,12 @@ const UPDATE_STATUS = gql`
     }
 `;
 
-export { UPDATE_USERS, DELETE_USER, UPDATE_USER, UPDATE_STATUS };
+const ADD_EVENT = gql`
+    mutation addEvent($eventDate: String!, $eventTrip: String!,$eventType: String!,$eventStatus: String!,
+        $eventGuide: String,$users: [InputEventUser!]!){
+        addEvent(eventDate: $eventDate, eventTrip: $eventTrip,eventType: $eventType,eventStatus: $eventStatus,eventGuide:$eventGuide,
+            users: $users)
+    }
+`;
+
+export { UPDATE_USERS, DELETE_USER, UPDATE_USER, UPDATE_STATUS, ADD_EVENT };

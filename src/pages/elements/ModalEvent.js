@@ -31,8 +31,9 @@ function ModalEvent({ user, trip, date, deleteReservation, updateReservation }) 
     const [showConfirm2, setShowConfirm2] = useState(false)
     const handleConfirmClose2 = () => setShowConfirm2(false);
     const handleConfirmShow2 = () => setShowConfirm2(true);
-    const [confirmMessage2, setConfirmMessage2] = useState("¿Está seguro que desea cambiar de viaje la reservación?");
+    const [confirmMessage2, setConfirmMessage2] = useState("");
     const [event, selEvent] = useState("")
+    const [paid, selPaid] = useState(user.advancePaid)
 
     let id = 0;
 
@@ -111,6 +112,29 @@ function ModalEvent({ user, trip, date, deleteReservation, updateReservation }) 
                                 <td> <b>Anticipo &#40;50%&#41;</b> </td>
                                 <td> {user.advancePayment} </td>
                             </tr>
+                            <tr>
+                                <td> <b> ¿Pago anticipo? </b> </td>
+                                <td> {user.advancePaid ? "Pagado" : "No pagado"} </td>
+                            </tr>
+                            <tr>
+                                <td> <b> Cambiar estado de pago </b> </td>
+                                <td>
+                                    <select
+                                        value={paid}
+                                        onChange={e => { selPaid(e.target.value) }}
+                                        onBlur={e => { selPaid(e.target.value) }}
+                                        className={Styles.comboBox}
+                                    >
+                                        <option value="null"> Seleccione un estado </option>
+                                        <option value={true}> Pagado </option>
+                                        <option value={false}> No Pagado </option>
+                                    </select>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td> </td>
+                                <td> <button className={Styles.confirmButton}> Cambiar estado de pago </button> </td>
+                            </tr>
                         </tbody>
                     </Table>
                 </Modal.Body>
@@ -133,19 +157,22 @@ function ModalEvent({ user, trip, date, deleteReservation, updateReservation }) 
                                 onBlur={e => { selEvent(e.target.value) }}
                                 className={Styles.comboBox}
                             >
-                                <option> Seleccione un viaje </option>
+                                <option value="null"> Seleccione un viaje </option>
                                 {eventData?.events.map(event => (
                                     <option value={event.eventDate + "|" + event.eventTrip} key={event.eventDate + event.eventTrip}>
                                         {event.eventDate + "|" + event.eventTrip}
                                     </option>
                                 ))}
                             </select>
+                            <br />
+                            <div className={Styles.error} >{confirmMessage2}</div>
                         </Modal.Body>
                         <Modal.Footer bsPrefix={Styles.confirmModalFooter}>
                             <Button bsPrefix={Styles.cancelButton} onClick={handleConfirmClose2}>
                                 Cancelar
                             </Button>
                             <Button bsPrefix={Styles.confirmButton} onClick={async () => {
+                                if (event === "null" || event === "") { setConfirmMessage2("SELECCIONE UN VIAJE VÁLIDO"); return; }
                                 setConfirmMessage2(await updateReservation(user.userEmail, event.split("|")[0], event.split("|")[1]))
                                 handleConfirmClose2()
                                 handleClose()

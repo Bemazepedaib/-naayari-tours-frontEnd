@@ -7,8 +7,20 @@ const UPDATE_USERS = gql`
 `;
 
 const DELETE_USER = gql`
-    mutation deleteEventUser($eventDate: String!, $eventTrip: String!, $users: [InputEventUser!]!){
-        deleteEventUser(eventDate: $eventDate, eventTrip: $eventTrip, users: $users)
+    mutation deleteEventUser($eventDate: String!, $eventTrip: String!, $user: String!){
+        deleteEventUser(eventDate: $eventDate, eventTrip: $eventTrip, user: $user){
+            userEmail
+            companion {
+                companionName
+                companionType
+                companionCell
+            }
+            advancePayment
+            fullPayment
+            advancePaid
+            fullyPaid
+            observations
+        }
     }
 `;
 

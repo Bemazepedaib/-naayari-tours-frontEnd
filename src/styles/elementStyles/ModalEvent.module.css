@@ -215,4 +215,8 @@
         font-size: 8px;
         width: fit-content;
     }
+    
+    .confirmModalBody {
+        font-size: 12px;
+    }
 }

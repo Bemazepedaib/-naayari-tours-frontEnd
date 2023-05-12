@@ -45,6 +45,7 @@ function ModalReservation({ datosCompanion, datosUsuario, datosPrecio }) {
                         companion: a,
                         advancePayment: anticipo,
                         fullPayment: total,
+                        advancePaid: false,
                         fullyPaid: false,
                         observations: datosUsuario[3]
                     }

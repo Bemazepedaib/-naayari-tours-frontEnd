@@ -6,9 +6,9 @@ const UPDATE_USERS = gql`
     }
 `;
 
-const DELETE_USER = gql`
-    mutation deleteEventUser($eventDate: String!, $eventTrip: String!, $user: String!){
-        deleteEventUser(eventDate: $eventDate, eventTrip: $eventTrip, user: $user){
+const UPDATE_USER = gql`
+    mutation updateEventUser($eventDateFrom: String!, $eventTripFrom: String!, $eventDateTo: String!, $eventTripTo: String!, $user: String){
+        updateEventUser(eventDateFrom: $eventDateFrom, eventTripFrom: $eventTripFrom, eventDateTo: $eventDateTo, eventTripTo: $eventTripTo, user: $user){
             userEmail
             companion {
                 companionName
@@ -24,9 +24,9 @@ const DELETE_USER = gql`
     }
 `;
 
-const UPDATE_USER = gql`
-    mutation updateEventUser($eventDateFrom: String!, $eventTripFrom: String!, $eventDateTo: String!, $eventTripTo: String!, $user: String){
-        updateEventUser(eventDateFrom: $eventDateFrom, eventTripFrom: $eventTripFrom, eventDateTo: $eventDateTo, eventTripTo: $eventTripTo, user: $user){
+const DELETE_USER = gql`
+    mutation deleteEventUser($eventDate: String!, $eventTrip: String!, $user: String!){
+        deleteEventUser(eventDate: $eventDate, eventTrip: $eventTrip, user: $user){
             userEmail
             companion {
                 companionName

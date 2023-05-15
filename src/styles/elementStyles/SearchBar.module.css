@@ -3,12 +3,8 @@
 .mainContainer{
     font-family: 'Oswald', sans-serif;
     padding: 20px;
-    
 }
 
-.title{
-    
-}
 
 .inputContainer{
     text-align: center;
@@ -32,12 +28,13 @@
     overflow-y: scroll;
 }
 .table{
+    cursor: pointer;
     height: 5px;
     border:1px solid #1D2128;
     
 }
 .tHead{
+    cursor: default;
     background-color: #1D2128;
     color: #fff;
-    border: #fff;
 }

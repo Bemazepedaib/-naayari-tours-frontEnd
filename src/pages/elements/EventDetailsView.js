@@ -4,23 +4,27 @@ import Image from 'next/image'
 import Styles from '../../styles/elementStyles/EventDetailsView.module.css'
 
 import ModalEvent from './ModalEvent';
-import { useMutation } from '@apollo/client';
-import { UPDATE_STATUS, DELETE_USER, UPDATE_USER } from '../mutations/eventMutations';
+import { useMutation, useQuery } from '@apollo/client';
+import { UPDATE_STATUS, UPDATE_GUIDE, DELETE_USER, UPDATE_USER } from '../mutations/eventMutations';
 
 import Modal from 'react-bootstrap/Modal';
 import Button from 'react-bootstrap/Button';
+import { GET_USERS } from '../querys/userQuerys';
 
 function EventDetailsView({ event }) {
 
     const image = 'https://drive.google.com/uc?export=view&id=1hKQxSheX5io9bPjn99_TedN8SCTNcsoK'
 
+    const { loading, error, data } = useQuery(GET_USERS)
+
     let key = 0;
     const [updateStatus] = useMutation(UPDATE_STATUS)
+    const [updateGuide] = useMutation(UPDATE_GUIDE)
     const [delReservation] = useMutation(DELETE_USER)
     const [updReservation] = useMutation(UPDATE_USER)
 
     const opciones = [
-        { value: "null", text: "Seleccione una opcion" },
+        { value: '', text: "Seleccione una opcion" },
         { value: "active", text: "Activo" },
         { value: "closed", text: "Cerrado" },
         { value: "inactive", text: "Inactivo" }
@@ -32,27 +36,52 @@ function EventDetailsView({ event }) {
     const [eventUsers, setEventUsers] = useState(event.event.users.map(({ __typename, ...rest }) => { return rest }))
     const [eventStatus, setEventStatus] = useState(opciones[0].value)
     const [currentStatus, setCurrentStatus] = useState(event.event.eventStatus)
-    const [confirmMessage, setConfirmMessage] = useState("¿Está seguro que desea cambiar el estado?");
+    const [eventGuide, setEventGuide] = useState()
+    const [currentGuide, setCurrentGuide] = useState(event.event.eventGuide.split("|")[1])
+    const [confirmMessage1, setConfirmMessage1] = useState("¿Está seguro que desea cambiar el estado del viaje?");
+    const [confirmMessage2, setConfirmMessage2] = useState("¿Está seguro que desea cambiar el guía del viaje?");
+    
 
-    const [showConfirm, setShowConfirm] = useState(false)
-    const handleConfirmClose = () => setShowConfirm(false);
-    const handleConfirmShow = () => setShowConfirm(true);
+    const [showConfirm1, setShowConfirm1] = useState(false)
+    const handleConfirmClose1 = () => { setShowConfirm1(false); setConfirmMessage1("¿Está seguro que desea cambiar el estado del viaje?") }
+    const handleConfirmShow1 = () => setShowConfirm1(true);
+    const [showConfirm2, setShowConfirm2] = useState(false)
+    const handleConfirmClose2 = () => { setShowConfirm2(false); setConfirmMessage2("¿Está seguro que desea cambiar el guía del viaje?") }
+    const handleConfirmShow2 = () => setShowConfirm2(true);
 
     const changeStatus = async () => {
         try {
-            if (eventStatus === "null" || eventStatus === currentStatus) { setConfirmMessage("¡Seleccione un valor válido!"); return; }
-            setCurrentStatus((await updateStatus({
+            if (eventStatus === '' || eventStatus === currentStatus) { setConfirmMessage1("¡Seleccione un valor válido!"); return; }
+            const res = await updateStatus({
                 variables: {
                     eventDate: eventDate,
                     eventTrip: eventTrip,
                     eventStatus: eventStatus
                 }
-            })).data.updateEventStatus.split("%")[1])
-            setConfirmMessage("¡Estado actualizado exitósamente!")
-            handleConfirmClose()
-            setConfirmMessage("¿Está seguro que desea cambiar el estado?")
+            })
+            setCurrentStatus(res.data?.updateEventStatus)
+            setConfirmMessage1("¡Estado actualizado exitósamente!")
+            handleConfirmClose1();
         } catch (error) {
-            setConfirmMessage(error.message)
+            setConfirmMessage1(error.message)
+        }
+    }
+
+    const changeGuide = async () => {
+        try {
+            if (eventGuide === '' || eventGuide === undefined) { setConfirmMessage2("¡Seleccione un valor válido!"); return; }
+            const res = await updateGuide({
+                variables: {
+                    eventDate: eventDate,
+                    eventTrip: eventTrip,
+                    eventGuide: eventGuide
+                }
+            })
+            setCurrentGuide(res.data?.updateEventGuide)
+            setConfirmMessage2("¡Guía asignado exitósamente")
+            handleConfirmClose2();
+        } catch (error) {
+            setConfirmMessage2(error.message)
         }
     }
 
@@ -89,13 +118,23 @@ function EventDetailsView({ event }) {
         }
     }
 
-    return (
+    return (!loading && !error &&
         <div className={Styles.main}>
             <div className={Styles.titulo1}>{event.event.eventDate + " | " + event.event.eventTrip}</div>
             <div className={Styles.titulo2}>Datos del viaje</div>
             <div className={Styles.contenedorDatos}>
-                <div><div className={Styles.subtitle}> Tipo de viaje: </div>{event.event.eventType === "Public" ? "Público" : "VIP"}</div>
-                <div><div className={Styles.subtitle}> Estado del viaje: </div>{currentStatus === "active" ? "Activo" : currentStatus === "closed" ? "Cerrado" : "Inactivo"}</div>
+                <div className={Styles.grupoTexto} >
+                    <div className={Styles.subtitle}> Tipo de viaje: </div>
+                    {event.event.eventType === "Public" ? "Público" : "VIP"}
+                </div>
+                <div className={Styles.grupoTexto} >
+                    <div className={Styles.subtitle}> Estado del viaje: </div>
+                    {currentStatus === "active" ? "Activo" : currentStatus === "closed" ? "Cerrado" : "Inactivo"}
+                </div>
+                <div className={Styles.grupoTexto} >
+                    <div className={Styles.subtitle}> Guia del viaje: </div>
+                    {currentGuide}
+                </div>
                 <div className={Styles.grupoCambiarEstado}>
                     <div className={Styles.subtitle}> Cambiar estado: </div>
                     <select
@@ -108,20 +147,52 @@ function EventDetailsView({ event }) {
                             <option value={option.value} key={option.value}> {option.text} </option>
                         ))}
                     </select>
-                    <button className={Styles.btn} onClick={handleConfirmShow}>
+                    <button className={Styles.btn} onClick={handleConfirmShow1}>
                         Cambiar estado del viaje
                     </button>
-                    <Modal show={showConfirm} centered backdrop="static" keyboard={false}>
+                    <Modal show={showConfirm1} centered backdrop="static" keyboard={false}>
                         <Modal.Header bsPrefix={Styles.confirmModalHeader}>
                             <Image src={image} className={Styles.image} width={70} height={70} alt="Naayari tours" />
                             <Modal.Title></Modal.Title>
                         </Modal.Header>
-                        <Modal.Body bsPrefix={Styles.confirmModalBody}>{confirmMessage}</Modal.Body>
+                        <Modal.Body bsPrefix={Styles.confirmModalBody}>{confirmMessage1}</Modal.Body>
                         <Modal.Footer bsPrefix={Styles.confirmModalFooter}>
-                            <Button bsPrefix={Styles.cancelButton} onClick={handleConfirmClose}>
+                            <Button bsPrefix={Styles.cancelButton} onClick={handleConfirmClose1}>
                                 Cancelar
                             </Button>
                             <Button bsPrefix={Styles.confirmButton} onClick={changeStatus}>
+                                Confirmar
+                            </Button>
+                        </Modal.Footer>
+                    </Modal>
+                </div>
+                <div className={Styles.grupoCambiarEstado}>
+                    <div className={Styles.subtitle}> Cambiar guía: </div>
+                    <select
+                        value={eventGuide}
+                        onChange={e => { setEventGuide(e.target.value) }}
+                        onBlur={e => { setEventGuide(e.target.value) }}
+                        className={Styles.comboBox}
+                    >
+                        <option value='' > Seleccione un guía </option>
+                        {data.users.map(option => (
+                            option.userType === "guide" ? <option value={option.email+"|"+option.name} key={option.email}> {option.name} </option> : null
+                        ))}
+                    </select>
+                    <button className={Styles.btn} onClick={handleConfirmShow2}>
+                        Cambiar guia 
+                    </button>
+                    <Modal show={showConfirm2} centered backdrop="static" keyboard={false}>
+                        <Modal.Header bsPrefix={Styles.confirmModalHeader}>
+                            <Image src={image} className={Styles.image} width={70} height={70} alt="Naayari tours" />
+                            <Modal.Title></Modal.Title>
+                        </Modal.Header>
+                        <Modal.Body bsPrefix={Styles.confirmModalBody}>{confirmMessage2}</Modal.Body>
+                        <Modal.Footer bsPrefix={Styles.confirmModalFooter}>
+                            <Button bsPrefix={Styles.cancelButton} onClick={handleConfirmClose2}>
+                                Cancelar
+                            </Button>
+                            <Button bsPrefix={Styles.confirmButton} onClick={changeGuide}>
                                 Confirmar
                             </Button>
                         </Modal.Footer>

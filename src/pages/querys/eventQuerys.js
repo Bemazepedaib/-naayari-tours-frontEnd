@@ -36,6 +36,7 @@ const GET_EVENT = gql `
                 userEmail
                 advancePayment
                 fullPayment
+                advancePaid
                 fullyPaid
                 observations
                 companion {

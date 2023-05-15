@@ -52,7 +52,7 @@ function EventDetailsView({ event }) {
             handleConfirmClose()
             setConfirmMessage("¿Está seguro que desea cambiar el estado?")
         } catch (error) {
-            console.log(error.message)
+            setConfirmMessage(error.message)
         }
     }
 
@@ -73,11 +73,6 @@ function EventDetailsView({ event }) {
     }
 
     const updateReservation = async (correo, fechaA, viajeA) => {
-        console.log(eventDate)
-        console.log(eventTrip)
-        console.log(fechaA)
-        console.log(viajeA)
-        console.log(correo)
         try {
             const res = await updReservation({
                 variables: {

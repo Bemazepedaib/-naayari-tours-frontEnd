@@ -10,16 +10,19 @@ import Router from "next/router";
 
 import Styles from '../../styles/elementStyles/ModalEvent.module.css'
 
-import { useQuery } from '@apollo/client';
+import { useMutation, useQuery } from '@apollo/client';
 import { GET_USER } from '../querys/userQuerys';
 import { GET_EVENTS } from '../querys/eventQuerys';
+import { UPDATE_ADVANCE_PAYMENT } from '../mutations/eventMutations';
 
 function ModalEvent({ user, trip, date, deleteReservation, updateReservation }) {
 
     const image = 'https://drive.google.com/uc?export=view&id=1hKQxSheX5io9bPjn99_TedN8SCTNcsoK'
 
     const { loading: userLoading, error: userError, data: userData } = useQuery(GET_USER, { variables: { email: user.userEmail } });
-    const { loading, eventLoading, error: eventError, data: eventData } = useQuery(GET_EVENTS)
+    const { loading: eventLoading, error: eventError, data: eventData } = useQuery(GET_EVENTS)
+
+    const [changePayStatus] = useMutation(UPDATE_ADVANCE_PAYMENT)
 
     const [show, setShow] = useState(false);
     const handleClose = () => setShow(false);
@@ -32,8 +35,9 @@ function ModalEvent({ user, trip, date, deleteReservation, updateReservation }) 
     const handleConfirmClose2 = () => setShowConfirm2(false);
     const handleConfirmShow2 = () => setShowConfirm2(true);
     const [confirmMessage2, setConfirmMessage2] = useState("");
-    const [event, selEvent] = useState("")
-    const [paid, selPaid] = useState(user.advancePaid)
+    const [event, setEvent] = useState("")
+    const [paid, setPaid] = useState(user.advancePaid)
+    const [paidChange, setPaidChange] = useState()
 
     let id = 0;
 
@@ -49,6 +53,24 @@ function ModalEvent({ user, trip, date, deleteReservation, updateReservation }) 
                 resto: (user.fullPayment - user.advancePayment)
             }
         })
+    }
+
+    const changePaidStatus = async () => {
+        try {
+            if (paidChange === undefined || paidChange === '') { console.log("Elija un valor válido"); return; }
+            const newState = (paidChange === "true")
+            const res = await changePayStatus({
+                variables: {
+                    eventDate: date,
+                    eventTrip: trip,
+                    user: user.userEmail,
+                    newState
+                }
+            })
+            setPaid(res?.data.updateEventUserAdvancePaid)
+        } catch (error) {
+            console.log(error.message)
+        }
     }
 
     if (userLoading) return (<Spinner />)
@@ -114,18 +136,18 @@ function ModalEvent({ user, trip, date, deleteReservation, updateReservation }) 
                             </tr>
                             <tr>
                                 <td> <b> ¿Pago anticipo? </b> </td>
-                                <td> {user.advancePaid ? "Pagado" : "No pagado"} </td>
+                                <td> {paid === true ? "Pagado" : "No pagado"} </td>
                             </tr>
                             <tr>
                                 <td> <b> Cambiar estado de pago </b> </td>
                                 <td>
                                     <select
-                                        value={paid}
-                                        onChange={e => { selPaid(e.target.value) }}
-                                        onBlur={e => { selPaid(e.target.value) }}
+                                        value={paidChange}
+                                        onChange={e => { setPaidChange(e.target.value) }}
+                                        onBlur={e => { setPaidChange(e.target.value) }}
                                         className={Styles.comboBox}
                                     >
-                                        <option value="null"> Seleccione un estado </option>
+                                        <option value=''> Seleccione un estado </option>
                                         <option value={true}> Pagado </option>
                                         <option value={false}> No Pagado </option>
                                     </select>
@@ -133,7 +155,7 @@ function ModalEvent({ user, trip, date, deleteReservation, updateReservation }) 
                             </tr>
                             <tr>
                                 <td> </td>
-                                <td> <button className={Styles.confirmButton}> Cambiar estado de pago </button> </td>
+                                <td> <button className={Styles.confirmButton} onClick={changePaidStatus}> Cambiar estado de pago </button> </td>
                             </tr>
                         </tbody>
                     </Table>
@@ -153,8 +175,8 @@ function ModalEvent({ user, trip, date, deleteReservation, updateReservation }) 
                             <br />
                             <select
                                 value={event}
-                                onChange={e => { selEvent(e.target.value) }}
-                                onBlur={e => { selEvent(e.target.value) }}
+                                onChange={e => { setEvent(e.target.value) }}
+                                onBlur={e => { setEvent(e.target.value) }}
                                 className={Styles.comboBox}
                             >
                                 <option value="null"> Seleccione un viaje </option>

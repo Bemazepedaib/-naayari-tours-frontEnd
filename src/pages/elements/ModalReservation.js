@@ -139,11 +139,17 @@ function ModalReservation({ datosCompanion, datosUsuario, datosPrecio }) {
                         </thead>
                         <tbody className={Styles.tableBody}>
                             {datosPrecio ? datosPrecio?.map(price => (
+                                datosPrecio.indexOf(price) === 0 ?
                                 <tr key={id++}>
                                     <td>{price.type} &#40;${price.price}&#41;</td>
                                     <td>{price.number}</td>
                                     <td>${price.number * price.price}</td>
-                                </tr>
+                                </tr> : datosCompanion[datosPrecio.indexOf(price)].current.length > 0 ? 
+                                <tr key={id++}>
+                                    <td>{price.type} &#40;${price.price}&#41;</td>
+                                    <td>{price.number}</td>
+                                    <td>${price.number * price.price}</td>
+                                </tr> : null
                             )) : <div></div>}
                             <tr>
                                 <td>TOTAL A PAGAR</td>

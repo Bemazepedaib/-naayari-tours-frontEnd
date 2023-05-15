@@ -170,7 +170,7 @@
 }
 
 .comboBox {
-    width: 20vw;
+    width: 15vw;
     text-transform: uppercase;
     text-align: center;
     font-size: 15px;
@@ -178,7 +178,20 @@
     font-family: 'Oswald', sans-serif;
 }
 
+.error {
+    font-family: 'Oswald', sans-serif;
+    font-weight: bold;
+    font-size: 20px;
+    color: red;
+    text-transform: uppercase;
+    background-color: #fff;
+}
+
 @media (max-width: 600px) {
+
+    .error {
+        font-size: 10px;
+    }
 
     .comboBox {
         width: 90%;

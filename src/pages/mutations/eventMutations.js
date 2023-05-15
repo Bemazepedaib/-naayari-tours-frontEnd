@@ -48,6 +48,12 @@ const UPDATE_STATUS = gql`
     }
 `;
 
+const UPDATE_GUIDE = gql`
+    mutation updateEventGuide($eventDate: String!, $eventTrip: String!, $eventGuide: String!){
+        updateEventGuide(eventDate: $eventDate, eventTrip: $eventTrip, eventGuide: $eventGuide)
+    }
+`;
+
 const UPDATE_ADVANCE_PAYMENT = gql`
     mutation updateEventUserAdvancePaid($eventDate: String!, $eventTrip: String!, $user: String!, $newState: Boolean!){
         updateEventUserAdvancePaid(eventDate: $eventDate, eventTrip: $eventTrip, user: $user, newState: $newState)
@@ -62,4 +68,4 @@ const ADD_EVENT = gql`
     }
 `;
 
-export { UPDATE_USERS, DELETE_USER, UPDATE_USER, UPDATE_STATUS, UPDATE_ADVANCE_PAYMENT, ADD_EVENT };
+export { UPDATE_USERS, DELETE_USER, UPDATE_USER, UPDATE_STATUS, UPDATE_GUIDE, UPDATE_ADVANCE_PAYMENT, ADD_EVENT };

@@ -4,6 +4,7 @@ import Styles from '../../styles/elementStyles/SearchBar.module.css'
 
 import Table from 'react-bootstrap/Table';
 import HeaderTittle from './HeaderTittle';
+import ModalUsers from './ModalUsers';
 
 
 function SearchBar({dat}) {
@@ -31,13 +32,6 @@ function SearchBar({dat}) {
     }
 
 
-    function rowClicked(email) {
-        Router.push({
-            pathname: '../elements/User',
-            query: { email }
-        })
-    } 
-
     return (
         <div>
                 <div className={Styles.mainContainer}>
@@ -52,6 +46,7 @@ function SearchBar({dat}) {
                                     <th>Nombre</th>
                                     <th>Telefono</th>
                                     <th>Email</th>
+                                    <th>Modificaciones</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -60,7 +55,7 @@ function SearchBar({dat}) {
                                     users
                                     .map(user => (
 
-                                        <tr key={user.email} onClick={()=> rowClicked(user.email)}>
+                                        <tr key={user.email} >
                                             <td>
                                                 {user.name}
                                             </td>
@@ -69,6 +64,9 @@ function SearchBar({dat}) {
                                             </td>
                                             <td>
                                                 {user.email}
+                                            </td>
+                                            <td>
+                                                {<ModalUsers  userData={user} />}
                                             </td>
                                         </tr>
                                     ))}

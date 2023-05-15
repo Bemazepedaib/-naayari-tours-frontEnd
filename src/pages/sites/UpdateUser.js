@@ -1,4 +1,4 @@
-
+import Styles from "../../styles/elementStyles/UpdateUser.module.css"
 import { useState, React } from 'react'
 import ModalAdmin from "../elements/ModalAdmin"
 

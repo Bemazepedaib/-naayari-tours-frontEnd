@@ -22,7 +22,7 @@
     will-change: transform;
     margin-bottom: 5px;
     margin-top: 10px;
-    width: 25vw;
+    width: 20vw;
     height: 40px;
     text-transform: uppercase;
 }
@@ -181,7 +181,7 @@
 .error {
     font-family: 'Oswald', sans-serif;
     font-weight: bold;
-    font-size: 20px;
+    font-size: 18px;
     color: red;
     text-transform: uppercase;
     background-color: #fff;
@@ -194,7 +194,7 @@
     }
 
     .comboBox {
-        width: 90%;
+        width: 80%;
         height: fit-content;
         font-size: 8px;
     }

@@ -38,6 +38,7 @@ function ModalEvent({ user, trip, date, deleteReservation, updateReservation }) 
     const [event, setEvent] = useState("")
     const [paid, setPaid] = useState(user.advancePaid)
     const [paidChange, setPaidChange] = useState()
+    const [errorMessage, setErrorMessage] = useState("")
 
     let id = 0;
 
@@ -56,8 +57,9 @@ function ModalEvent({ user, trip, date, deleteReservation, updateReservation }) 
     }
 
     const changePaidStatus = async () => {
+        setErrorMessage("")
         try {
-            if (paidChange === undefined || paidChange === '') { console.log("Elija un valor válido"); return; }
+            if (paidChange === undefined || paidChange === '' || (paidChange === "true") === paid) { setErrorMessage("Elija un valor válido"); return; }
             const newState = (paidChange === "true")
             const res = await changePayStatus({
                 variables: {
@@ -69,7 +71,7 @@ function ModalEvent({ user, trip, date, deleteReservation, updateReservation }) 
             })
             setPaid(res?.data.updateEventUserAdvancePaid)
         } catch (error) {
-            console.log(error.message)
+            setErrorMessage(error.message)
         }
     }
 
@@ -154,7 +156,7 @@ function ModalEvent({ user, trip, date, deleteReservation, updateReservation }) 
                                 </td>
                             </tr>
                             <tr>
-                                <td> </td>
+                                <td> <div className={Styles.error} > {errorMessage} </div> </td>
                                 <td> <button className={Styles.confirmButton} onClick={changePaidStatus}> Cambiar estado de pago </button> </td>
                             </tr>
                         </tbody>

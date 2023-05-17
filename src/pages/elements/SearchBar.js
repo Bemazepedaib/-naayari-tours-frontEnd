@@ -1,4 +1,4 @@
-import { React, useCallback, useEffect, useState } from 'react'
+import { React,  useEffect,  useState } from 'react'
 import Router from 'next/router';
 import Styles from '../../styles/elementStyles/SearchBar.module.css'
 
@@ -7,13 +7,19 @@ import HeaderTittle from './HeaderTittle';
 import ModalUsers from './ModalUsers';
 
 
-function SearchBar({dat}) {
+function SearchBar({dat,newD}) {
 
    
     const [users, setUsers] = useState(dat);
     const [usersTable, setUsersTable] = useState(dat);
     const [search, setSearch] = useState("");
 
+    
+    useEffect(() => {
+        if(newD.name!==""){
+            setUsers(users.concat(newD))
+        }
+    },[newD])
 
     const handleChange=e=>{
         setSearch(e.target.value);
@@ -31,9 +37,17 @@ function SearchBar({dat}) {
         setUsers(searchResult);
     }
 
+    const deleteUserTable=(email)=>{
+ 
+        //users.splice(pos,1);
+        const newUsers = users.filter((user)=> user.email!==email)
+        setUsers(newUsers)
+        setUsersTable(newUsers)
+    }
 
     return (
         <div>
+            {console.log(dat.concat(newD) )}
                 <div className={Styles.mainContainer}>
                     <div className={Styles.inputContainer}>  
                         <HeaderTittle tittle={"Buscar Usuario"}></HeaderTittle>
@@ -51,10 +65,8 @@ function SearchBar({dat}) {
                             </thead>
                             <tbody>
                                 {
-
                                     users
                                     .map(user => (
-
                                         <tr key={user.email} >
                                             <td>
                                                 {user.name}
@@ -66,7 +78,7 @@ function SearchBar({dat}) {
                                                 {user.email}
                                             </td>
                                             <td>
-                                                {<ModalUsers  userData={user} />}
+                                                {<ModalUsers  userData={user} fun={deleteUserTable}/>}
                                             </td>
                                         </tr>
                                     ))}

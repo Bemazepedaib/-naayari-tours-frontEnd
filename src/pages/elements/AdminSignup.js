@@ -1,4 +1,4 @@
-import { React, useState } from 'react'
+import { React, useState,useEffect } from 'react'
 import { useMutation } from '@apollo/client';
 import { ADD_USER } from '../mutations/userMutations';
 import InputComponent from './Input';
@@ -7,8 +7,13 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faTriangleExclamation } from '@fortawesome/free-solid-svg-icons';
 import HeaderTittle from './HeaderTittle';
 
+import SearchData from './SearchData';
+
 function AdminSignup() {
 
+    const [newU,setNewU]= useState([{name:"",cellphone:"",email:""}]);
+
+       
 
     const onSubmit = async (e) => {
         e.preventDefault();
@@ -30,6 +35,18 @@ function AdminSignup() {
                         verified: false
                     }
                 })
+                setNewU({name:name.value,cellphone:cell.value,email:mail.value})
+
+                setName({value:"",valid:true});
+                setCell({value:"",valid:true});
+                setMail({value:"",valid:true});
+                setPass({value:"",valid:true});
+                setPass2({value:"",valid:true});
+                setDate({value:"",valid:true});
+                setSex("male");
+                setAdv("a friend");
+                setType("client");
+                setTerminos(false);
             } else {
                 throw new Error("Llene correctamente todos los campos")
             }
@@ -37,20 +54,6 @@ function AdminSignup() {
             setMyError(error.message);
             setValidForm(false);
             return;
-        }
-        finally{
-            if(validForm){
-                setName("");
-                setCell("");
-                setMail("");
-                setPass("");
-                setPass2("");
-                setDate("");
-                setSex("");
-                setAdv("");
-                setType("");
-                setTerminos(false);
-            }
         }
     }
 
@@ -108,7 +111,7 @@ function AdminSignup() {
 
 
     return (
-        
+        <>
         <div className={Styles.contenedor}>
             <HeaderTittle tittle={"Crear nuevo usuario"}></HeaderTittle>
             <form action="" onSubmit={onSubmit} className={Styles.formulario} autoComplete="off" >
@@ -234,7 +237,10 @@ function AdminSignup() {
                     <button type="submit" className={Styles.primaryBtn}>Crear cuenta</button>
                 </div>
             </form>
+
         </div>
+        <SearchData newU={newU}/>
+        </>
     )
 }
 

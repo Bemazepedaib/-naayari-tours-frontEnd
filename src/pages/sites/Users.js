@@ -42,7 +42,6 @@ function Users() {
       <SidebarAdmin />
       <div className={Styles.User}>
         <AdminSignup />
-        <SearchData />
       </div>
     </div>
   )

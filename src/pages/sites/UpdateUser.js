@@ -5,10 +5,9 @@ import ModalAdmin from "../elements/ModalAdmin"
 function UpdateUser({ user }) {
 
   let k = 0
-  const [pass, setPass] = useState({ valueue: "", valueid: true });
-
-  const [newName, setNewName] = useState("");
-
+  const [newName, setNewName] = useState(user.user.name);
+  const [newPhone, setNewPhone] = useState(user.user.cellphone);
+  const [newDate, setNewDate] = useState(user.user.birthDate);
 
 
 
@@ -19,13 +18,13 @@ function UpdateUser({ user }) {
       <div className={Styles.info}>
         <section  className={Styles.section}>
         <p className={` ${Styles.infoSubtitle}`}> Nombre de usuario:   </p>
-        <p className={`${Styles.infoP} ${Styles.update}`} >{user.user.name}
-          <ModalAdmin  ema={user.user.email} message="Cambia el nombre"  value={user.user.name} /></p>
+        <p className={`${Styles.infoP} ${Styles.update}`} >{newName}
+          <ModalAdmin  ema={user.user.email} message="Cambia el nombre"  value={newName} setNewName={setNewName}/></p>
         </section>
         <section className={Styles.section}>
         <p className={` ${Styles.infoSubtitle}`}> Telefono:            </p>
-        <p className={`${Styles.infoP} ${Styles.update}`}>{user.user.cellphone}
-          <ModalAdmin ema={user.user.email} message="Cambia el telefono"  value={user.user.cellphone} /></p>
+        <p className={`${Styles.infoP} ${Styles.update}`}>{newPhone}
+          <ModalAdmin ema={user.user.email} message="Cambia el telefono"  value={newPhone} setNewPhone={setNewPhone} /></p>
         </section>
         <section className={Styles.sectionUser}>
         <p className={` ${Styles.infoSubtitle}`}> Correo:              </p>
@@ -37,8 +36,8 @@ function UpdateUser({ user }) {
         </section>
         <section className={Styles.section}>
         <p className={` ${Styles.infoSubtitle}`}> Fecha de nacimiento: </p>
-        <p className={`${Styles.infoP} ${Styles.update}`}>{user.user.birthDate}
-          <ModalAdmin  ema={user.user.email} message="Cambia la fecha de nacimiento"  value={user.user.birthDate} /></p>
+        <p className={`${Styles.infoP} ${Styles.update}`}>{newDate}
+          <ModalAdmin  ema={user.user.email} message="Cambia la fecha de nacimiento"  value={newDate} setNewDate={setNewDate} /></p>
         </section>
         <section className={Styles.sectionUser}>
         <p className={` ${Styles.infoSubtitle}`}> Nivel de usuario:    </p>

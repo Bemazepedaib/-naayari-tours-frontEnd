@@ -13,7 +13,6 @@ function User() {
     const { loading, error, data } = useQuery(GET_USER,{variables: {email}});
     return (
         <div>
-           
             {!loading && !error && (
                 <UpdateUser user={data}></UpdateUser>
             )}

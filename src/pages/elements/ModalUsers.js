@@ -5,7 +5,7 @@ import Router from 'next/router';
 
 //MUTATIONS
 import { useMutation } from '@apollo/client';
-import { UPDATE_TRIP_STATUS } from '../mutations/tripMutations';
+import { DELETE_USER } from '../mutations/userMutations';
 
 //COMPONENTS
 import Modal from 'react-bootstrap/Modal';
@@ -24,16 +24,32 @@ const ModalUsers = ({userData}) => {
     //MODAL NUMBER 2
     const [show1, setShow1] = useState(false);
     const handleClose1 = () => setShow1(false);
+    //MUTATION
+    
+    const [deleteUser] = useMutation(DELETE_USER); 
+    const [error,setError] = useState();
+
+
+
     const handleCloseConfirm = async () => { 
-        console.log("Eliminar usuario")
+        try {
+            await deleteUser({ variables: { email:userData.email} });
+            
+        } catch (error) {
+            setError(error);
+        } finally{
+            if(!error){
+            setShow1(false); setShow(false);
+            }
+        }
     }
     const handleShow1 = () => {setShow1(true); setShow(false);}
-    //MUTATION USE
-    const [updateTripStatus] = useMutation(UPDATE_TRIP_STATUS);
+    
     //NAAYARI TOURS IMAGE
     const image = 'https://drive.google.com/uc?export=view&id=1Gx08yGg-rGq0tUe5yVHWxbkaMfmrUOk0'
 
     const email=userData.email;
+
     function updateUser() {
         console.log(userData)
         Router.push({
@@ -77,6 +93,7 @@ const ModalUsers = ({userData}) => {
                 <Modal.Footer className={Styles.modalFooter}>
                     <button className={Styles.btnCancel} onClick={handleClose1}>NO</button>
                     <button className={Styles.btnConfirm} onClick={handleCloseConfirm}>SÍ</button>
+                    <p>{error}</p>
                 </Modal.Footer>
             </Modal>
         </div>

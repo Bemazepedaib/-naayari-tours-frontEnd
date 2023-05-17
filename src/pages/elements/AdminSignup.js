@@ -39,6 +39,18 @@ function AdminSignup() {
             return;
         }
         finally{
+            if(validForm){
+                setName("");
+                setCell("");
+                setMail("");
+                setPass("");
+                setPass2("");
+                setDate("");
+                setSex("");
+                setAdv("");
+                setType("");
+                setTerminos(false);
+            }
         }
     }
 

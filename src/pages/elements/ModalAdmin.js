@@ -8,14 +8,16 @@ import Image from 'next/image'
 import { useMutation } from '@apollo/client';
 import { UPDATE_USER_NAME_ADMIN, UPDATE_USER_CELL_ADMIN,UPDATE_USER_BIRTH_ADMIN,UPDATE_USER_PASSWORD_ADMIN } from '../mutations/userMutations';
 
-function ModalAdmin({ema,message, value, setState }) {
+function ModalAdmin({ema,message, value, setNewName,setNewPhone,setNewDate }) {
 
-    const [newValue,setNewValue]= useState();
+    const [newValue,setNewValue]= useState("");
     const [show, setShow] = useState(false);
     const [userName] = useMutation(UPDATE_USER_NAME_ADMIN);
     const [userCellAdmin] = useMutation(UPDATE_USER_CELL_ADMIN);
     const [userBirthAdmin] = useMutation(UPDATE_USER_BIRTH_ADMIN);
     const [userPassAdmin] = useMutation(UPDATE_USER_PASSWORD_ADMIN);
+
+
 
     const image = 'https://drive.google.com/uc?export=view&id=1Gx08yGg-rGq0tUe5yVHWxbkaMfmrUOk0'
 
@@ -30,16 +32,20 @@ function ModalAdmin({ema,message, value, setState }) {
         switch (message) {
             case "Cambia el nombre":
                 try {
-                    await userName({ variables: { newName: newValue, email:ema} });
+                    const newName=(await userName({ variables: { newName: newValue, email:ema} })).data.updateUserName.split("%");
+                    setNewName(newName[1])
                     handleClose();
+                    setNewValue("")
                 } catch (error) {
                     console.log(error)
                 }
                 break;
             case "Cambia el telefono":
                 try {
-                    await userCellAdmin({ variables: { newCell: newValue, email: ema } });
+                    const newPhone=(await userCellAdmin({ variables: { newCell: newValue, email: ema } })).data.updateUserCell.split("%");
+                    setNewPhone(newPhone[1]);
                     handleClose();
+                    setNewValue("")
                 } catch (error) {
 
                     console.log(error.message)
@@ -47,8 +53,10 @@ function ModalAdmin({ema,message, value, setState }) {
                 break;
             case "Cambia la fecha de nacimiento":
                 try {
-                    await userBirthAdmin({ variables: { newDate: newValue, email: ema } });
+                    const newDate = (await userBirthAdmin({ variables: { newDate: newValue, email: ema } })).data.updateUserBirth.split("%");
+                    console.log(newDate)
                     handleClose();
+                    setNewValue("")
                 } catch (error) {
                     console.log(error.message)
                 }
@@ -57,6 +65,7 @@ function ModalAdmin({ema,message, value, setState }) {
                 try {
                     await userPassAdmin({ variables: { newPassword: newValue, email: ema } });
                     handleClose();
+                    setNewValue("")
                 } catch (error) {
                     console.log(error.message)
                 }

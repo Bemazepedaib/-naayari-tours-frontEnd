@@ -1,7 +1,7 @@
 //IMPORTS
 import { React, useState } from 'react'
 import { useQuery, useMutation } from '@apollo/client'
-
+import Router, { useRouter } from 'next/router';
 
 //APOLLO REQUEST
 import { ADD_TRIP, UPDATE_TRIP } from '../mutations/tripMutations';
@@ -139,6 +139,17 @@ const CreateTripView = ({ trip }) => {
                     }
                 }
                 )
+                dates.map(async date => {try{(await addEvent({
+                    variables:
+                    {
+                        eventDate: date, eventTrip: name.value, eventType: "Public", eventStatus: "active",
+                        eventGuide: "Guia", users: []
+                    }
+                })
+                )}catch(err){
+                    console.log("Ocurrio Una duplicación")
+                }})
+                Router.push({ pathname: '/sites/TripView' })
             }catch(err){
                 console.log(err.message)
             }

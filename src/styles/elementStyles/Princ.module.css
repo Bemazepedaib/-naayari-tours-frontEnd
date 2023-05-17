@@ -3,68 +3,67 @@
 
 .textPrimaryP {
     color: #a5aaad;
-    font-size: 14px;
+    font-size: 20px;
     font-weight: 700;
-}
-
-.fontBold {
-    font-weight: 700;
-}
-
-.textTitle {
-    color: #2e4a66;
+    font-family: 'Oswald', sans-serif;
 }
 
 .textLightblue {
     color: #469cac;
+    box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.75);
+    border-radius: 50%;
+    padding: 10px;
 }
 
 .textRed {
     color: #cc3d38;
+    box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.75);
+    border-radius: 50%;
+    padding: 10px;
 }
 
 .textYellow {
     color: #a98921;
+    box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.75);
+    border-radius: 50%;
+    padding: 10px;
 }
 
 .textGreen {
     color: #3b9668;
-    ;
+    box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.75);
+    border-radius: 50%;
+    padding: 10px;
 }
 
 .mainAdmin {
     grid-row-start: 2;
     grid-column-start: 2;
     grid-column-end: 3;
-    background: #d0d2d3;
+    background-image: url('https://drive.google.com/uc?export=view&id=1XPHv76qI1Y303811H7gbUPpmv9KQSa5u');
+    background-size: contain;
     display: block;
+    height: 100%;
 }
 
 .mainContainerAdmin {
     padding: 20px 35px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
 .mainTitleAdmin {
     display: flex;
     align-items: center;
+    justify-content: center;
 }
 
-.mainTitleAdmin>img {
-    max-height: 100px;
-    object-fit: contain;
-    margin-right: 20px;
-}
-
-.mainGreeting>h1 {
-    font-size: 24px;
-    color: #2e4a66;
+.mainGreeting {
+    font-family: 'Genos', sans-serif;
+    font-size: 40px;
+    color: #1D2128;
     margin-bottom: 5px;
-}
-
-.mainGreeting>p {
-    font-size: 14px;
-    font-weight: 700;
-    color: #a5aaad;
 }
 
 .mainCardsAdmin {
@@ -75,167 +74,57 @@
 }
 
 .cardAdmin {
-    margin: 20px 10px;
-    display: flex;
-    align-items: center;
-    width: 200px;
-    height: 100px;
-    padding: 20px;
-    border-radius: 5px;
-    background: #ffffff;
-    box-shadow: 5px 5px 13px #ededed, -5px -5p 13px #ffffff;
-}
-
-
-.cardInner {
-    margin-left: 15px;
     display: flex;
     align-items: center;
     justify-content: center;
+    width: 16vw;
+    height: 130px;
+    margin: 10px;
+    padding: 10px;
+    border-radius: 5px;
+    background: #ffffff;
+    box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.75);
 }
 
-.spanNumbers {
+.cardInner {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+
+.numbers {
+    font-family: 'Genos', sans-serif;
     font-size: 25px;
+    font-weight: 700;
+    color: #2e4a66;
 }
 
 .charts {
     display: flex;
     justify-content: center;
-    flex-wrap: wrap;
-    justify-content: space-evenly;
+    align-items: center;
+    flex-direction: column;
     margin-top: 50px;
-}
-
-.chartsLeft {
-    margin: 10px;
-    width: 450px;
-    padding: 25px;
-    border-radius: 5px;
     background: #ffffff;
-    box-shadow: 5px 5px 13px #ededed, -5px -5px 13ox #ffffff;
+    width: 68vw;
+    box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.75);
+    border-radius: 5px;
 }
 
 .chartPrins {
     display: flex;
+    justify-content: center;
     flex-direction: column;
-    justify-content: center;
+    width: 100%;
 }
 
-.chartsLeftTitle>div>h1 {
+.chartsTitle {
+    font-family: 'Genos', sans-serif;
     font-size: 24px;
     color: #2e4a66;
     margin-bottom: 5px;
-}
-
-.chartsLeftTitle>div>p {
-    font-size: 14px;
-    font-weight: 700;
-    color: #a5aaad;
-}
-
-.chartsLeftTitle>i {
-    color: #ffffff;
-    font-size: 20px;
-    background: #ffc100;
-    border-radius: 200px 0px 200px 200px;
-    -moz-border-radius: 200px 0px 200px 200px;
-    -webkit-border-radius: 200px 0px 200px 200px;
-    border: 0px solid #000000;
-    padding: 15px;
-}
-
-.chartsRight {
-    margin: 10px;
-    width: 450px;
-    padding: 25px;
-    border-radius: 5px;
-    background: #ffffff;
-}
-
-.chartsRightTitle {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-}
-
-.CRh1 {
-    font-size: 24px;
-    color: #2e4a66;
-    margin-bottom: 5px;
-}
-
-.crh1 {
-    font-size: 30px;
-}
-
-.CRp {
-    font-size: 14px;
-    font-weight: 700;
-    color: #a5aaad;
-}
-
-.chartsRightTitle>i {
-    color: #ffffff;
-    font-size: 20px;
-    background: #39447a;
-    border-radius: 200px 0px 200px 200px;
-    border: 0px solid #000000;
-    padding: 15px;
-}
-
-.chartsRightCards {
-    display: flex;
-    justify-content: center;
-    flex-wrap: wrap;
-    margin-top: 30px;
-}
-
-.PrinsCard1 {
-
-    margin: 20px;
-    width: 150px;
-    background: #d1ecf1;
-    color: #35a4ba;
-    text-align: center;
-    padding: 25px;
-    border-radius: 5px;
-    font-size: 14px;
-}
-
-.PrinsCard2 {
-
-    margin: 20px;
-    width: 150px;
-    background: #d2f9ee;
-    color: #38e1b0;
-    text-align: center;
-    padding: 25px;
-    border-radius: 5px;
-    font-size: 14px;
-}
-
-.PrinsCard3 {
-
-    margin: 20px;
-    width: 150px;
-    background: #d6d8d9;
-    color: #3a3e41;
-    text-align: center;
-    padding: 25px;
-    border-radius: 5px;
-    font-size: 14px;
-}
-
-.PrinsCard4 {
-
-    margin: 20px;
-    width: 150px;
-    background: #fddcdf;
-    color: #f65a6f;
-    text-align: center;
-    padding: 25px;
-    border-radius: 5px;
-    font-size: 14px;
 }
 
 .error {
@@ -244,13 +133,25 @@
     justify-content: center;
     align-items: center;
     height: 100vh;
-    font-size: 40px;    
+    font-size: 40px;
     text-align: center;
     background-image: url('https://drive.google.com/uc?export=view&id=1XPHv76qI1Y303811H7gbUPpmv9KQSa5u');
     background-size: cover;
 }
 
 @media (max-width: 600px) {
+
+    .mainGreeting {
+        font-size: 20px;
+    }
+
+    .textPrimaryP {
+        font-size: 15px;
+    }
+
+    .numbers {
+        font-size: 15px;
+    }
 
     .error {
         font-size: 20px;
@@ -260,6 +161,9 @@
 
 @media (max-width: 750px) {
 
+    .mainAdmin {
+        height: 100%;
+    }
 
     .mainCardsAdmin {
         display: flex;
@@ -268,16 +172,18 @@
         justify-content: space-between;
     }
 
-
     .charts {
         display: flex;
         flex-wrap: wrap;
         margin-top: 30px;
     }
+
+    .cardAdmin {
+        width: 100%;
+    }
 }
 
 @media (max-width: 570px) {
-
 
     .mainCardsAdmin {
         display: flex;

@@ -11,7 +11,7 @@ import {
     Filler
 } from "chart.js";
 
-function BarChart({ title, mydata, mylabels }) {
+function BarChart({ title, mydata, mylabels, max, label }) {
     Chartjs.register(
         CategoryScale,
         LinearScale,
@@ -28,9 +28,10 @@ function BarChart({ title, mydata, mylabels }) {
         labels: mylabels,
         datasets: [
             {
-                label: title,
+                label: label,
                 data: mydata,
-                backgroundColor: "rgba(0,210,195,0.5)",
+                backgroundColor: "#00a748",
+                borderRadius: 5
             },
         ],
     };
@@ -40,16 +41,19 @@ function BarChart({ title, mydata, mylabels }) {
         animation: false,
         plugins: {
             legend: {
-                display: false
+                display: true
             }
         },
         scales: {
             y: {
-                min: -25,
-                max: 100
+                min: 0,
+                max: max,
+                ticks: {
+                    stepSize: 1
+                }
             },
             x: {
-                ticks: { color: "rgba(0,220,195)" }
+                ticks: { color: "#00a748" }
             }
         }
     };

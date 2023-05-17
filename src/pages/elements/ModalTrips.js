@@ -1,6 +1,7 @@
 //IMPORTS
 import React, { useState } from 'react';
 import Styles from '../../styles/elementStyles/ModalTrips.module.css'
+import Router from 'next/router';
 
 //MUTATIONS
 import { useMutation } from '@apollo/client';
@@ -18,7 +19,14 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 const ModalTrips = ({ tripInfo,updateTrip}) => {
     //MODAL NUMBER 1
     const [show, setShow] = useState(false);
-    const handleClose = () => setShow(false);
+    const handleClose = () => {setShow(false);}
+    const updateInfo = () => {
+        const tripNameData = tripInfo.tripName 
+    Router.push({
+        pathname: '../elements/UpdatingTrip',
+        query: { tripNameData }
+    })
+    setShow(false);}
     const handleShow = () => setShow(true);
     //MODAL NUMBER 2
     const [show1, setShow1] = useState(false);
@@ -54,8 +62,8 @@ const ModalTrips = ({ tripInfo,updateTrip}) => {
                     Descuento: {tripInfo.tripInformation.discount.available ? "Sí" : "No"}
                 </Modal.Body>
                 <Modal.Footer className={Styles.modalFooter}>
-                    <button className={Styles.btnDelete} onClick={handleShow1 }>Cambiar estado</button>
-                    <button className={Styles.btnUpdate} onClick={handleClose}>Actualizar</button>
+                    <button className={Styles.btnDelete} onClick={handleShow1}>Cambiar estado</button>
+                    <button className={Styles.btnUpdate} onClick={updateInfo}>Actualizar</button>
                 </Modal.Footer>
             </Modal>
             {/*MODAL 2*/}

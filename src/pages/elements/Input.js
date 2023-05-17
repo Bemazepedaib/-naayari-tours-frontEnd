@@ -3,7 +3,7 @@ import Styles from '../../styles/elementStyles/Input.module.css'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCheckCircle, faTimesCircle } from '@fortawesome/free-solid-svg-icons';
 
-const InputComponent = ({ estado, cambiarEstado, tipo, label, placeholder, name, errorMsg, regExp, funcion, auto }) => {
+const InputComponent = ({ estado, cambiarEstado, tipo, label, placeholder, name, errorMsg, regExp, funcion, auto, noEditable }) => {
 
     const onChange = (e) => { cambiarEstado({ ...estado, value: e.target.value }) }
 
@@ -34,6 +34,7 @@ const InputComponent = ({ estado, cambiarEstado, tipo, label, placeholder, name,
                     onBlur={validacion}
                     className={estado.valid ? Styles.textInput : Styles.textInputError}
                     autoComplete={auto}
+                    readOnly={noEditable}
                 />
                 <FontAwesomeIcon
                     icon={estado.valid ? faCheckCircle : faTimesCircle}

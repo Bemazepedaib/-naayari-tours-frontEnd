@@ -1,9 +1,10 @@
 //IMPORTS
-import { React, useState, useEffect } from 'react'
+import { React, useState } from 'react'
 import { useQuery, useMutation } from '@apollo/client'
+import Router, { useRouter } from 'next/router';
 
 //APOLLO REQUEST
-import { ADD_TRIP } from '../mutations/tripMutations';
+import { ADD_TRIP, UPDATE_TRIP } from '../mutations/tripMutations';
 import { ADD_EVENT } from '../mutations/eventMutations';
 
 //COMPONENTS
@@ -18,29 +19,31 @@ import Styles from '../../styles/elementStyles/CreateTripView.module.css'
 //COMPONENTS
 import InputComponent from './Input'
 
-const CreateTripView = () => {
+const CreateTripView = ({ trip }) => {
     //MUTATION
     const [addEvent] = useMutation(ADD_EVENT);
     const [addTrip] = useMutation(ADD_TRIP);
+    const [updateTrip] = useMutation(UPDATE_TRIP);
     //HOOKS
-    const [name, setName] = useState({ value: "", valid: true });
-    const [photo, setPhoto] = useState({ value: "", valid: true });
-    const [price, setPrice] = useState({ value: "", valid: true });
-    const [duration, setDuration] = useState({ value: "", valid: true });
-    const [place, setPlace] = useState({ value: "", valid: true });
-    const [dateStart, setDateStart] = useState({ value: "", valid: true });
-    const [dateEnd, setDateEnd] = useState({ value: "", valid: true });
-    const [amount, setAmount] = useState({ value: "", valid: true });
+    const [name, setName] = useState(trip ? { value: trip.trip.tripName + '', valid: true } : { value: "", valid: true });
+    const [photo, setPhoto] = useState(trip ? { value: 'https://drive.google.com/file/d/' + trip.trip.tripInformation.photo + '/view?usp=share_link', valid: true } : { value: "", valid: true });
+    const [price, setPrice] = useState(trip ? { value: trip.trip.tripInformation.price[0].priceAmount + '', valid: true } : { value: "", valid: true });
+    const [duration, setDuration] = useState(trip ? { value: trip.trip.tripInformation.duration + '', valid: true } : { value: "", valid: true });
+    const [place, setPlace] = useState(trip ? { value: trip.trip.tripInformation.place + '', valid: true } : { value: "", valid: true });
+    const [dateStart, setDateStart] = useState(trip ? { value: trip.trip.tripInformation.discount.dateStart, valid: true } : { value: "", valid: true });
+    const [dateEnd, setDateEnd] = useState(trip ? { value: trip.trip.tripInformation.discount.dateEnd, valid: true } : { value: "", valid: true });
+    const [amount, setAmount] = useState(trip ? { value: trip.trip.tripInformation.discount.amount, valid: true } : { value: "", valid: true });
     const [dateAdd, setDateAdd] = useState({ value: "", valid: true });
+    const [action, setAction] = useState(trip ? true : false);
 
-    const [discount, setDiscount] = useState(false);
-    const [dates, setDates] = useState([]);
-    const [auxDates, setAuxDates] = useState("");
-    const [description, setDescription] = useState("");
-    const [itinerary, setItinerary] = useState("");
-    const [recomendations, setRecomendations] = useState("");
-    const [kit, setKit] = useState("");
-    const [activities, setActivities] = useState([]);
+    const [discount, setDiscount] = useState(trip ? trip.trip.tripInformation.discount.available : false);
+    const [dates, setDates] = useState(trip ? trip.trip.tripInformation.date : []);
+    const [auxDates, setAuxDates] = useState((trip ? trip.trip.tripInformation.date.join('\n') : ""));
+    const [description, setDescription] = useState(trip ? trip.trip.tripInformation.description : "");
+    const [itinerary, setItinerary] = useState(trip ? trip.trip.tripInformation.itinerary : "");
+    const [recomendations, setRecomendations] = useState(trip ? trip.trip.tripInformation.recomendations : "");
+    const [kit, setKit] = useState(trip ? trip.trip.tripKit : "");
+    const [activities, setActivities] = useState(trip ? trip.trip.tripInformation.activities : []);
 
     const expresiones = {
         link: /^https?:\/\/(www\.)?[-a-zA-Z0-9@:%._\+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b([-a-zA-Z0-9()@:%_\+.~#?&//=]*)/,
@@ -55,71 +58,105 @@ const CreateTripView = () => {
     //ON SUBMIT
     const onSubmit = async (e) => {
         e.preventDefault();
-        
-        try {
-            await addTrip({
-                variables: {
-                    tripName: name.value,
-                    tripInformation: {
-                        description: description,
-                        date: dates,
-                        place: place.value,
-                        price: [{
-                            priceType: "Adulto",
-                            priceAmount: parseInt(price.value, 10)
-                        }, {
-                            priceType: "Bebé",
-                            priceAmount: 100
-                        }],
-                        duration: duration.value,
-                        activities: activities,
-                        discount: discount ? {
-                            dateStart: dateStart.value,
-                            dateEnd: dateEnd.value,
-                            amount: parseInt(amount.value, 10),
-                            available: true
-                        } : {},
-                        itinerary: itinerary,
-                        recomendations: recomendations,
-                        photo: photo.value.split("/")[5]
-                    },
-                    tripKit: kit,
-                    tripRating: 0,
-                    tripStatus: true,
-                    tripReview: [{}]
+        if(!action){
+            try {
+                await addTrip({
+                    variables: {
+                        tripName: name.value,
+                        tripInformation: {
+                            description: description,
+                            date: dates,
+                            place: place.value,
+                            price: [{
+                                priceType: "Adulto",
+                                priceAmount: parseInt(price.value, 10)
+                            }, {
+                                priceType: "Bebé",
+                                priceAmount: 100
+                            }],
+                            duration: duration.value,
+                            activities: activities,
+                            discount: discount ? {
+                                dateStart: dateStart.value,
+                                dateEnd: dateEnd.value,
+                                amount: parseInt(amount.value, 10),
+                                available: true
+                            } : {},
+                            itinerary: itinerary,
+                            recomendations: recomendations,
+                            photo: photo.value.split("/")[5]
+                        },
+                        tripKit: kit,
+                        tripRating: 0,
+                        tripStatus: false,
+                        tripReview: [{}]
+                    }
                 }
+                )
+                dates.map(async date => (await addEvent({
+                    variables:
+                    {
+                        eventDate: date, eventTrip: name.value, eventType: "Public", eventStatus: "active",
+                        eventGuide: "Guia", users: []
+                    }
+                })
+                ))
+            } catch (err) {
+
             }
-            )
-            dates.map(async date => (await addEvent({
-                variables:
-                {
-                    eventDate: date, eventTrip: name.value, eventType: "Public", eventStatus: "active",
-                    eventGuide: "Guia", users: []
+        }else {
+            try{
+                await updateTrip({
+                    variables: {
+                        tripName: name.value,
+                        tripInformation: {
+                            description: description,
+                            date: dates,
+                            place: place.value,
+                            price: [{
+                                priceType: "Adulto",
+                                priceAmount: parseInt(price.value, 10)
+                            }, {
+                                priceType: "Bebé",
+                                priceAmount: 100
+                            }],
+                            duration: duration.value,
+                            activities: activities.map(({__typename,...rest}) => {return rest}),
+                            discount: discount ? {
+                                dateStart: dateStart.value,
+                                dateEnd: dateEnd.value,
+                                amount: parseInt(amount.value, 10),
+                                available: true
+                            } : {},
+                            itinerary: itinerary,
+                            recomendations: recomendations,
+                            photo: photo.value.split("/")[5]
+                        },
+                        tripKit: kit,
+                        tripRating: 0,
+                        tripStatus: false,
+                        tripReview: [{}]
+                    }
                 }
-            })
-            ))
-        }catch (err) {
-            console.log(err.message)
+                )
+                dates.map(async date => {try{(await addEvent({
+                    variables:
+                    {
+                        eventDate: date, eventTrip: name.value, eventType: "Public", eventStatus: "active",
+                        eventGuide: "Guia", users: []
+                    }
+                })
+                )}catch(err){
+                    console.log("Ocurrio Una duplicación")
+                }})
+                Router.push({ pathname: '/sites/TripView' })
+            }catch(err){
+                console.log(err.message)
+            }
         }
+
     }
-    //ADD EVENT TO TRIP
-   /*  useEffect(() => {
-        // declare the data fetching function
-        const addEvents = () => {
-             dates.map(async date => (await addEvent({
-                variables:
-                {
-                    eventDate: date, eventTrip: name.value, eventType: "Public", eventStatus: "active",
-                    eventGuide: "", users: []
-                }
-            })
-            ))
-        }
 
-        // call the function
-        addEvents()
-
-    }, [addTrip]) */
 
     //CHANGE INPUT VALUES
     const onChange = (e) => {
@@ -133,6 +170,9 @@ const CreateTripView = () => {
             case "kit": setKit(e.target.value)
                 break;
         }
+
+    }
+    const onChangeCheckbox = (e) => {
         if (e.target.checked) {
             setActivities(activities.concat({ activityName: e.target.name + "", activityPhoto: e.target.id + "" }))
         } else if (!e.target.checked) {
@@ -143,9 +183,17 @@ const CreateTripView = () => {
     //ADD A DATE
     const addADate = (e) => {
         e.preventDefault();
-        let separarCadena = dateAdd.value.split('-');
-        setDates(dates.concat((separarCadena[2] + '/' + separarCadena[1] + '/' + separarCadena[0])));
-        setAuxDates(auxDates + (separarCadena[2] + '/' + separarCadena[1] + '/' + separarCadena[0]) + '\n')
+        let splitChain = dateAdd.value.split('-');
+        setDates(dates.concat((splitChain[2] + '/' + splitChain[1] + '/' + splitChain[0])));
+        if (!trip) {
+            setAuxDates(auxDates + (splitChain[2] + '/' + splitChain[1] + '/' + splitChain[0]) + '\n')
+        }
+        else if (trip && dates.length === 0) {
+            setAuxDates(auxDates + (splitChain[2] + '/' + splitChain[1] + '/' + splitChain[0]))
+        } else {
+            setAuxDates(auxDates + '\n' + (splitChain[2] + '/' + splitChain[1] + '/' + splitChain[0]))
+        }
+
     }
 
     //DELETE A DATE
@@ -157,13 +205,17 @@ const CreateTripView = () => {
     const handleOnChange = () => {
         setDiscount(!discount);
     }
-
+    const prueba = (name) => {
+        let variable = false
+        activities.map(activity => {if (activity.activityName === name) {variable = true;}})
+        return variable
+    }
     if (loading) return <p>Loading...</p>;
     if (error) return <p>Something Went Wrong</p>
     return <>
         {!loading && !error && (
             <div className={Styles.main}>
-                <HeaderTittle tittle={"Crear nuevo viaje"}></HeaderTittle>
+                <HeaderTittle tittle={action ? "Actualizar Viaje" : "Crear Viaje"}></HeaderTittle>
                 <div className={Styles.infoContainer}>
                     {/*FORM*/}
                     <form onSubmit={onSubmit} className={Styles.formulario} autoComplete="off" >
@@ -178,6 +230,7 @@ const CreateTripView = () => {
                                 name="nombre"
                                 errorMsg="El nombre solo debe incluir letras"
                                 regExp={expresiones.letters}
+                                noEditable={action}
                             />
                             {/*PHOTO*/}
                             <InputComponent
@@ -197,9 +250,21 @@ const CreateTripView = () => {
                             <div className={Styles.activities}>
                                 {data.preferences.map(preference => (
                                     <div className={Styles.subActivities} key={preference.preferenceType}>
-                                        <label htmlFor={preference.preferenceType}>{preference.preferenceType}</label>
-                                        <input type="checkbox" name={preference.preferenceType}
-                                            id={preference.preferenceIcon} onChange={onChange}></input>
+                                        {!trip
+                                            ?
+                                            <>
+                                                <label htmlFor={preference.preferenceType}>{preference.preferenceType}</label>
+                                                <input type="checkbox" name={preference.preferenceType}
+                                                    id={preference.preferenceIcon} onChange={onChangeCheckbox}></input>
+                                            </>
+                                            :
+                                            <>
+                                                <label htmlFor={preference.preferenceType}>{preference.preferenceType}</label>
+                                                <input type="checkbox" name={preference.preferenceType}
+                                                    id={preference.preferenceIcon} onChange={onChangeCheckbox} 
+                                                    defaultChecked={prueba(preference.preferenceType)}></input>
+                                            </>
+                                        }
                                     </div>
                                 ))}
                             </div>
@@ -337,7 +402,8 @@ const CreateTripView = () => {
                         </fieldset>
                         {/*SEND INFORMATION*/}
                         <div className={Styles.btnSendContainer}>
-                            <button type="submit" className={Styles.btnSend}>¡Crear Viaje!</button>
+                            <button type="submit"
+                                className={Styles.btnSend}>{action ? "Actualizar Viaje" : "Crear Viaje"}</button>
                         </div>
                     </form>
                 </div>

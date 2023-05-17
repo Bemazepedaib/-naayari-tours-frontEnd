@@ -4,7 +4,7 @@ import { useQuery, useMutation } from '@apollo/client'
 
 
 //APOLLO REQUEST
-import { ADD_TRIP } from '../mutations/tripMutations';
+import { ADD_TRIP, UPDATE_TRIP } from '../mutations/tripMutations';
 import { ADD_EVENT } from '../mutations/eventMutations';
 
 //COMPONENTS
@@ -23,6 +23,7 @@ const CreateTripView = ({ trip }) => {
     //MUTATION
     const [addEvent] = useMutation(ADD_EVENT);
     const [addTrip] = useMutation(ADD_TRIP);
+    const [updateTrip] = useMutation(UPDATE_TRIP);
     //HOOKS
     const [name, setName] = useState(trip ? { value: trip.trip.tripName + '', valid: true } : { value: "", valid: true });
     const [photo, setPhoto] = useState(trip ? { value: 'https://drive.google.com/file/d/' + trip.trip.tripInformation.photo + '/view?usp=share_link', valid: true } : { value: "", valid: true });
@@ -57,53 +58,92 @@ const CreateTripView = ({ trip }) => {
     //ON SUBMIT
     const onSubmit = async (e) => {
         e.preventDefault();
-        console.log("ESTAS SON LAS PREFERENCIAS")
-        console.log(activities)
-        try {
-            await addTrip({
-                variables: {
-                    tripName: name.value,
-                    tripInformation: {
-                        description: description,
-                        date: dates,
-                        place: place.value,
-                        price: [{
-                            priceType: "Adulto",
-                            priceAmount: parseInt(price.value, 10)
-                        }, {
-                            priceType: "Bebé",
-                            priceAmount: 100
-                        }],
-                        duration: duration.value,
-                        activities: activities,
-                        discount: discount ? {
-                            dateStart: dateStart.value,
-                            dateEnd: dateEnd.value,
-                            amount: parseInt(amount.value, 10),
-                            available: true
-                        } : {},
-                        itinerary: itinerary,
-                        recomendations: recomendations,
-                        photo: photo.value.split("/")[5]
-                    },
-                    tripKit: kit,
-                    tripRating: 0,
-                    tripStatus: true,
-                    tripReview: [{}]
+        if(!action){
+            try {
+                await addTrip({
+                    variables: {
+                        tripName: name.value,
+                        tripInformation: {
+                            description: description,
+                            date: dates,
+                            place: place.value,
+                            price: [{
+                                priceType: "Adulto",
+                                priceAmount: parseInt(price.value, 10)
+                            }, {
+                                priceType: "Bebé",
+                                priceAmount: 100
+                            }],
+                            duration: duration.value,
+                            activities: activities,
+                            discount: discount ? {
+                                dateStart: dateStart.value,
+                                dateEnd: dateEnd.value,
+                                amount: parseInt(amount.value, 10),
+                                available: true
+                            } : {},
+                            itinerary: itinerary,
+                            recomendations: recomendations,
+                            photo: photo.value.split("/")[5]
+                        },
+                        tripKit: kit,
+                        tripRating: 0,
+                        tripStatus: false,
+                        tripReview: [{}]
+                    }
                 }
+                )
+                dates.map(async date => (await addEvent({
+                    variables:
+                    {
+                        eventDate: date, eventTrip: name.value, eventType: "Public", eventStatus: "active",
+                        eventGuide: "Guia", users: []
+                    }
+                })
+                ))
+            } catch (err) {
+
             }
-            )
-            dates.map(async date => (await addEvent({
-                variables:
-                {
-                    eventDate: date, eventTrip: name.value, eventType: "Public", eventStatus: "active",
-                    eventGuide: "Guia", users: []
+        }else {
+            try{
+                await updateTrip({
+                    variables: {
+                        tripName: name.value,
+                        tripInformation: {
+                            description: description,
+                            date: dates,
+                            place: place.value,
+                            price: [{
+                                priceType: "Adulto",
+                                priceAmount: parseInt(price.value, 10)
+                            }, {
+                                priceType: "Bebé",
+                                priceAmount: 100
+                            }],
+                            duration: duration.value,
+                            activities: activities.map(({__typename,...rest}) => {return rest}),
+                            discount: discount ? {
+                                dateStart: dateStart.value,
+                                dateEnd: dateEnd.value,
+                                amount: parseInt(amount.value, 10),
+                                available: true
+                            } : {},
+                            itinerary: itinerary,
+                            recomendations: recomendations,
+                            photo: photo.value.split("/")[5]
+                        },
+                        tripKit: kit,
+                        tripRating: 0,
+                        tripStatus: false,
+                        tripReview: [{}]
+                    }
                 }
-            })
-            ))
-        } catch (err) {
-            console.log(err.message)
+                )
+            }catch(err){
+                console.log(err.message)
+            }
         }
+
     }
 
 
@@ -156,7 +196,7 @@ const CreateTripView = ({ trip }) => {
     }
     const prueba = (name) => {
         let variable = false
-        activities.map(activity => {if (activity.activityName === name) {console.log(activity.activityName+" "+name);variable = true;}})
+        activities.map(activity => {if (activity.activityName === name) {variable = true;}})
         return variable
     }
     if (loading) return <p>Loading...</p>;
@@ -179,6 +219,7 @@ const CreateTripView = ({ trip }) => {
                                 name="nombre"
                                 errorMsg="El nombre solo debe incluir letras"
                                 regExp={expresiones.letters}
+                                noEditable={action}
                             />
                             {/*PHOTO*/}
                             <InputComponent

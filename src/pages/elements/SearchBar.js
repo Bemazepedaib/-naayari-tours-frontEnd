@@ -16,7 +16,7 @@ function SearchBar({dat,newD}) {
 
     
     useEffect(() => {
-        if(newD.name!==""){
+        if(newD.name){
             setUsers(users.concat(newD))
         }
     },[newD])

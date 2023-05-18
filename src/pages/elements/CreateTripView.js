@@ -1,7 +1,7 @@
 //IMPORTS
 import { React, useState } from 'react'
 import { useQuery, useMutation } from '@apollo/client'
-
+import Router, { useRouter } from 'next/router';
 
 //APOLLO REQUEST
 import { ADD_TRIP, UPDATE_TRIP } from '../mutations/tripMutations';
@@ -24,6 +24,7 @@ const CreateTripView = ({ trip }) => {
     const [addEvent] = useMutation(ADD_EVENT);
     const [addTrip] = useMutation(ADD_TRIP);
     const [updateTrip] = useMutation(UPDATE_TRIP);
+    
     //HOOKS
     const [name, setName] = useState(trip ? { value: trip.trip.tripName + '', valid: true } : { value: "", valid: true });
     const [photo, setPhoto] = useState(trip ? { value: 'https://drive.google.com/file/d/' + trip.trip.tripInformation.photo + '/view?usp=share_link', valid: true } : { value: "", valid: true });
@@ -139,6 +140,17 @@ const CreateTripView = ({ trip }) => {
                     }
                 }
                 )
+                dates.map(async date => {try{(await addEvent({
+                    variables:
+                    {
+                        eventDate: date, eventTrip: name.value, eventType: "Public", eventStatus: "active",
+                        eventGuide: "Guia", users: []
+                    }
+                })
+                )}catch(err){
+                    console.log("Ocurrio Una duplicación")
+                }})
+                Router.push({ pathname: '/sites/TripView' })
             }catch(err){
                 console.log(err.message)
             }
@@ -165,8 +177,8 @@ const CreateTripView = ({ trip }) => {
         if (e.target.checked) {
             setActivities(activities.concat({ activityName: e.target.name + "", activityPhoto: e.target.id + "" }))
         } else if (!e.target.checked) {
-            let pos = activities.map(mocoMap => mocoMap.activityName).indexOf(e.target.name);
-            activities.splice(pos, 1)
+            const newActivities = activities.filter((activity)=> activity.activityName!==e.target.name)
+            setActivities(newActivities)
         }
     }
     //ADD A DATE

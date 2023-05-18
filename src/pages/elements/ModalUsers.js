@@ -16,7 +16,7 @@ import { faPenToSquare } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
 
-const ModalUsers = ({userData}) => {
+const ModalUsers = ({userData,fun}) => {
     //MODAL NUMBER 1
     const [show, setShow] = useState(false);
     const handleClose = () => setShow(false);
@@ -39,6 +39,7 @@ const ModalUsers = ({userData}) => {
             setError(error);
         } finally{
             if(!error){
+            fun(userData.email)
             setShow1(false); setShow(false);
             }
         }

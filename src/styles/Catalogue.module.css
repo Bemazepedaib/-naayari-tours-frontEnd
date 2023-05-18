@@ -1,4 +1,5 @@
-@import url(https://fonts.googleapis.com/css?family=Lato:300,400,700%7CRaleway:400,300,700);
+@import url(https://fonts.googleapis.com/css2?family=Oswald:wght@300&display=swap);;
+@import url(https://fonts.googleapis.com/css2?family=Genos:ital,wght@1,700&display=swap%27);
 
 .cam {
     text-decoration: none;
@@ -8,6 +9,7 @@
 .popularSectionContainer {
     width: 350px;
     box-shadow: inset;
+    font-family: 'Oswald', sans-serif;
 }
 
 .mainContentGrid {
@@ -304,12 +306,12 @@
     font-size: small;
     position: relative;
     padding: 2px;
-    color: #1D2128;;
+    color: #fff;
     border-radius: 1rem;
     margin: 8px;
     margin-top: 0;
-    background: transparent;
-    border: solid 1px #1D2128;
+    background: #00a748;
+    border: solid 1px #00a748;
     text-align: center;
     min-width: 70px;
     flex-grow: 1;

@@ -11,7 +11,6 @@ const TripView = () => {
             <SidebarAdmin />
             <div className={Styles.trip}>
             <CreateTripView/>
-            <SearchTripView/>
             </div>
         </div>
     )

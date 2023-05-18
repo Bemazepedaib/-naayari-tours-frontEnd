@@ -176,8 +176,8 @@ const CreateTripView = ({ trip }) => {
         if (e.target.checked) {
             setActivities(activities.concat({ activityName: e.target.name + "", activityPhoto: e.target.id + "" }))
         } else if (!e.target.checked) {
-            let pos = activities.map(mocoMap => mocoMap.activityName).indexOf(e.target.name);
-            activities.splice(pos, 1)
+            const newActivities = activities.filter((activity)=> activity.activityName!==e.target.name)
+            setActivities(newActivities)
         }
     }
     //ADD A DATE

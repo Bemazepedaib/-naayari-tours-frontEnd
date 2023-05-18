@@ -3,7 +3,6 @@ import { gql } from "@apollo/client";
 const GET_TRIPS = gql
   `query getTrips {
     trips{
-    id
     tripName
     tripInformation{
       description

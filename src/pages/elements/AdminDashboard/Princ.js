@@ -60,6 +60,7 @@ function Princ() {
                 }
             }
         })
+        usersReference.sort((a, b) => { return b - a; })
     }
 
     const fillUsersLevel = () => {
@@ -81,6 +82,7 @@ function Princ() {
                 }
             }
         })
+        usersLevels.sort((a, b) => { return b - a; })
     }
 
     const fillTripsWithReservations = () => {
@@ -151,38 +153,28 @@ function Princ() {
                     </div>
                 </div>
                 <div className={Styles.charts}>
-
                     <div className={Styles.chart}>
                         <div className={Styles.chartsTitle}>Nivel de usuarios</div>
-                        <Bars
-                            title="Nivel de usuarios"
+                        <Pies
                             mylabels={['Básicos', 'Novatos', 'Experimentados', 'Veteranos']}
                             mydata={usersLevels}
-                            max={users + 1}
                             label={"Naayaros"}
-                            stepsize={1}
                         />
                     </div>
                     <div className={Styles.chart}>
                         <div className={Styles.chartsTitle}>¿Cómo nos conoce?</div>
-                        <Bars
-                            title="¿Cómo nos conoce?"
+                        <Pies
                             mylabels={['Conocidos', 'Anuncios', 'Facebook', 'Ninguno']}
                             mydata={usersReference}
-                            max={users + 1}
                             label={"Cantidad"}
-                            stepsize={1}
                         />
                     </div>
                     <div className={Styles.chart}>
                         <div className={Styles.chartsTitle}>Viajes con más reservaciones</div>
-                        <Bars
-                            title="Viajes con más reservaciones"
+                        <Pies
                             mylabels={tripsWithReservations.slice(0, 5).map(trip => { return trip.tripName})}
                             mydata={tripsWithReservations.slice(0, 5).map(trip => { return trip.tripReservations})}
-                            max={tripsWithReservations[0].tripReservations + 1}
                             label={"Reservaciones"}
-                            stepsize={1}
                         />
                     </div>
                     <div className={Styles.chart}>
@@ -196,18 +188,6 @@ function Princ() {
                             stepsize={1}
                         />
                     </div>
-                    {/* <Lines
-                            title="Meses"
-                            mylabels={['Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio', 'Julio', 'Agosto', 'Septiembre', 'Octubre', 'Noviembre', 'Diciembre']}
-                            mydata={[0, 56, 20, 36, 80, 40, 30, -20, 25, 30, 12, 60]}
-                        />
-
-                        <Pies
-                            title="Popularidad en Navidad"
-                            mylabels={["Carne", "Jamón", "Dulces", "Turrón", "Vino"]}
-                            mydata={[35, 20, 20, 15, 10]}
-                        /> */}
-
                 </div>
             </div>
         </main>

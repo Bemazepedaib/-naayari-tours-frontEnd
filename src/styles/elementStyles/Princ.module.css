@@ -170,6 +170,17 @@
     .textPrimaryP {
         display: none;
     }
+
+    .charts {
+        padding: 0;
+        margin: 0;
+        flex-direction: column;
+    }
+
+    .chart {
+        margin: 0;
+        width: 100%;
+    }
 }
 
 @media (max-width: 750px) {

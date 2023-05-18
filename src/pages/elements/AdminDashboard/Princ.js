@@ -57,7 +57,6 @@ function Princ() {
                 }
             }
         })
-        console.log(usersLevels)
     }
 
     if (meLoading || usersLoading) return (<div className={Styles.error}><Spinner /></div>)

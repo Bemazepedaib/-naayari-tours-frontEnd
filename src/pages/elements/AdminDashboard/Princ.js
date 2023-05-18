@@ -27,6 +27,7 @@ function Princ() {
     let usersReference = [0, 0, 0, 0]
     let tripsWithReservations = []
     let tripsRating = []
+    let tripsOfTheMonth = []
 
     const fillUsers = () => {
         usersData.users.map(user => {
@@ -100,10 +101,28 @@ function Princ() {
         tripsWithReservations.sort((a, b) => { return b.tripReservations - a.tripReservations; })
     }
 
+    const fillTripsOfTheMonth = () => {
+        const fechaHoy = new Date(Date.now()).toISOString().split("T")[0].split("-")
+        eventData.events.map(event => {
+            const fechaViaje = event.eventDate.split("/")
+            if (fechaViaje[1] === fechaHoy[1] && fechaViaje[2] === fechaHoy[0]) {
+                const i = tripsOfTheMonth.findIndex(item => item.tripName === event.eventTrip)
+                if (i > -1) {
+                    tripsOfTheMonth[i].tripReservations += event.users.length;
+                } else {
+                    tripsOfTheMonth.push({
+                        tripName: event.eventTrip,
+                        tripReservations: event.users.length
+                    })
+                }
+            }
+        })
+        tripsOfTheMonth.sort((a, b) => { return b.tripReservations - a.tripReservations; })
+    }
+
     const fillTripsRating = () => {
-        tripsRating = tripsData.trips.map(({ __typename, tripInformation, tripStatus, ...rest }) => { return rest    })
+        tripsRating = tripsData.trips.map(({ __typename, tripInformation, tripStatus, ...rest }) => { return rest })
         tripsRating.sort((a, b) => { return b.tripRating - a.tripRating; })
-        console.log(tripsRating)
     }
 
     if (meLoading || usersLoading) return (<div className={Styles.error}><Spinner /></div>)
@@ -116,6 +135,7 @@ function Princ() {
             {fillUsersReference()}
             {fillTripsWithReservations()}
             {fillTripsRating()}
+            {fillTripsOfTheMonth()}
             <div className={Styles.mainContainerAdmin}>
                 <div className={Styles.mainTitleAdmin}>
                     <div className={Styles.mainGreeting}>
@@ -172,17 +192,24 @@ function Princ() {
                     <div className={Styles.chart}>
                         <div className={Styles.chartsTitle}>Viajes con más reservaciones</div>
                         <Pies
-                            mylabels={tripsWithReservations.slice(0, 5).map(trip => { return trip.tripName})}
-                            mydata={tripsWithReservations.slice(0, 5).map(trip => { return trip.tripReservations})}
+                            mylabels={tripsWithReservations.slice(0, 5).map(trip => { return trip.tripName })}
+                            mydata={tripsWithReservations.slice(0, 5).map(trip => { return trip.tripReservations })}
+                            label={"Reservaciones"}
+                        />
+                    </div>
+                    <div className={Styles.chart}>
+                        <div className={Styles.chartsTitle}>Viajes del mes</div>
+                        <Pies
+                            mylabels={tripsOfTheMonth.slice(0, 5).map(trip => { return trip.tripName })}
+                            mydata={tripsOfTheMonth.slice(0, 5).map(trip => { return trip.tripReservations })}
                             label={"Reservaciones"}
                         />
                     </div>
                     <div className={Styles.chart}>
                         <div className={Styles.chartsTitle}>Viajes con mejor calificación</div>
                         <Bars
-                            title="Viajes con mejor calificación"
-                            mylabels={tripsRating.slice(0, 5).map(trip => { return trip.tripName})}
-                            mydata={tripsRating.slice(0, 5).map(trip => { return trip.tripRating})}
+                            mylabels={tripsRating.slice(0, 5).map(trip => { return trip.tripName })}
+                            mydata={tripsRating.slice(0, 5).map(trip => { return trip.tripRating })}
                             max={6}
                             label={"Calificación"}
                             stepsize={1}

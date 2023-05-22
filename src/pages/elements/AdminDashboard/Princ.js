@@ -153,7 +153,7 @@ function Princ() {
                     <div className={Styles.cardAdmin}>
                         <div className={Styles.cardInner}>
                             <FontAwesomeIcon icon={faPlane} className={Styles.textRed} />
-                            <div className={Styles.textPrimaryP}>Viajes</div>
+                            <div className={Styles.textPrimaryP}>Destinos</div>
                             <div className={Styles.numbers}>{trips}</div>
                         </div>
                     </div>

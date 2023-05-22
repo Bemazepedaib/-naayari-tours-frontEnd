@@ -35,6 +35,12 @@ const SearchDataTrip = ({ dataM,newTrip}) => {
         }
      }, [state]);
 
+     useEffect(() => {
+        if(newTrip){
+            setData(data.concat(newTrip))
+            setState(false)
+        }
+     }, [newTrip]);
 
     //OnChange Method
     const handleChange = (e) => {

@@ -147,6 +147,11 @@
     align-items: center;
     height: 50px;
 }
+.sucessfullMessage{
+    text-align: center;
+    text-transform: uppercase;
+    padding-bottom: 10px;
+}
 @media (max-width: 600px) {
     .area {
         width: 150px;

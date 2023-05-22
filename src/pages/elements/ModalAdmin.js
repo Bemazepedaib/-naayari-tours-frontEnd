@@ -7,6 +7,9 @@ import { Modal } from 'react-bootstrap'
 import Image from 'next/image'
 import InputComponent from './Input'
 
+import ReactDatePicker from 'react-datepicker'
+import "react-datepicker/dist/react-datepicker.css"
+
 function ModalAdmin({message, value,setNew,err,exp }) {
 
 
@@ -18,12 +21,8 @@ function ModalAdmin({message, value,setNew,err,exp }) {
     const [newValue,setNewValue]= useState("");
     const [show, setShow] = useState(false);
     const [error, setError] = useState("");
-    
-    const [date, setDate] = useState({ value: "", valid: true });
 
-
-    const [startDate, setStartDate] = useState(new Date());
-    const [endDate, setEndDate] = useState(new Date());
+    const [selectedDate, setSelectedDate] = useState("");
 
 
         //ONCHANGE FOR INPUT METHODS
@@ -53,7 +52,7 @@ function ModalAdmin({message, value,setNew,err,exp }) {
                 break;
             case "Cambia la fecha de nacimiento":
                 try {
-                   setNew(date.value)
+                   setNew(selectedDate.toISOString().split("T")[0].split("-").reverse().join("/"))
                    handleClose()
                 } catch (error) {
                     console.log(error.message)
@@ -88,17 +87,11 @@ function ModalAdmin({message, value,setNew,err,exp }) {
     
 }
 
-const validarFecha = () => {
-    if (date.value !== '') {
-        const fecha = date.value.split("-")
-        const fechaHoy = new Date(Date.now()).toISOString().split("T")[0].split("-")
-        if (fechaHoy[0] - fecha[0] > 18) {
-            setDate((prevState) => { return { ...prevState, valid: true } })
-        } else {
-            setDate((prevState) => { return { ...prevState, valid: false } })
-        }
-    }
-}
+
+
+const handleDateChange = (date) => {
+    setSelectedDate(date);
+  };
 
     return (
         <>
@@ -120,17 +113,25 @@ const validarFecha = () => {
                         <label>{error}</label>
                         </>
                         :  
-
-                         <InputComponent
-                         estado={date}
-                         cambiarEstado={setDate}
-                         tipo="date"
-                         label="Fecha de nacimiento"
-                         placeholder="Fecha de nacimiento"
-                         name="dateNac"
-                         errorMsg="Elija una fecha válida"
-                         funcion={validarFecha}
-                     />
+                        <div className={Styles.dataP}>
+                        <ReactDatePicker
+                            className={Styles.input}
+                            selected={selectedDate}
+                            onChange={handleDateChange}
+                            dateFormat="dd/MM/yyyy"
+                            placeholderText={message}
+                        />
+                        </div>
+                    //      <InputComponent
+                    //      estado={date}
+                    //      cambiarEstado={setDate}
+                    //      tipo="date"
+                    //      label="Fecha de nacimiento"
+                    //      placeholder="Fecha de nacimiento"
+                    //      name="dateNac"
+                    //      errorMsg="Elija una fecha válida"
+                    //      funcion={validarFecha}
+                    //  />
                         
                         }
                     

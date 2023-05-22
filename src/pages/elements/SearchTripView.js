@@ -7,13 +7,13 @@ import { useQuery } from '@apollo/client';
 //COMPONENTS
 import SearchDataTrip from './SearchDataTrip'
 
-const SearchTripView = () => {
+const SearchTripView = ({newTrip}) => {
     const { loading, error, data } = useQuery(GET_PI_TRIPS);
     return (
         <div>
             {!loading && !error && (
                 
-                <SearchDataTrip dataM={data.trips}></SearchDataTrip>
+                <SearchDataTrip newTrip={newTrip}  dataM={data.trips}></SearchDataTrip>
             )
             }
         </div >

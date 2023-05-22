@@ -35,6 +35,7 @@ const GET_USERS = gql`
         email
         password
         sex
+        reference
         userType
         userLevel
         membership
@@ -61,18 +62,19 @@ const GET_USER = gql`
             email
             password
             sex
+            reference
             userType
             userLevel
             membership
             coupons {
                 couponType
-               couponDescription
-               couponAmount
-               couponDate
-               couponApplied
+                couponDescription
+                couponAmount
+                couponDate
+                couponApplied
             }
             preferences {
-            preferenceType
+                preferenceType
             }
         }
     }

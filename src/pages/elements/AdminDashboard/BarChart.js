@@ -11,7 +11,7 @@ import {
     Filler
 } from "chart.js";
 
-function BarChart({ title, mydata, mylabels, max, label }) {
+function BarChart({ mydata, mylabels, max, label, stepsize }) {
     Chartjs.register(
         CategoryScale,
         LinearScale,
@@ -49,7 +49,7 @@ function BarChart({ title, mydata, mylabels, max, label }) {
                 min: 0,
                 max: max,
                 ticks: {
-                    stepSize: 1
+                    stepSize: stepsize
                 }
             },
             x: {

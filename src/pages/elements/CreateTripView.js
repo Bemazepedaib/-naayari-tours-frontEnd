@@ -2,7 +2,7 @@
 import { React, useState } from 'react'
 import { useQuery, useMutation } from '@apollo/client'
 import Router, { useRouter } from 'next/router';
-
+import SearchTripView from "../elements/SearchTripView"
 //APOLLO REQUEST
 import { ADD_TRIP, UPDATE_TRIP } from '../mutations/tripMutations';
 import { ADD_EVENT } from '../mutations/eventMutations';
@@ -24,7 +24,7 @@ const CreateTripView = ({ trip }) => {
     const [addEvent] = useMutation(ADD_EVENT);
     const [addTrip] = useMutation(ADD_TRIP);
     const [updateTrip] = useMutation(UPDATE_TRIP);
-    
+
     //HOOKS
     const [name, setName] = useState(trip ? { value: trip.trip.tripName + '', valid: true } : { value: "", valid: true });
     const [photo, setPhoto] = useState(trip ? { value: 'https://drive.google.com/file/d/' + trip.trip.tripInformation.photo + '/view?usp=share_link', valid: true } : { value: "", valid: true });
@@ -36,6 +36,8 @@ const CreateTripView = ({ trip }) => {
     const [amount, setAmount] = useState(trip ? { value: trip.trip.tripInformation.discount.amount, valid: true } : { value: "", valid: true });
     const [dateAdd, setDateAdd] = useState({ value: "", valid: true });
     const [action, setAction] = useState(trip ? true : false);
+    const [newTrip, setNewTrip] = useState();
+    const [successful,setSuccessful] = useState("")
 
     const [discount, setDiscount] = useState(trip ? trip.trip.tripInformation.discount.available : false);
     const [dates, setDates] = useState(trip ? trip.trip.tripInformation.date : []);
@@ -59,7 +61,11 @@ const CreateTripView = ({ trip }) => {
     //ON SUBMIT
     const onSubmit = async (e) => {
         e.preventDefault();
-        if(!action){
+        if (!action === true && (name.value !== "" && photo.value !== "" && price.value !== ""
+            && duration.value !== "" && place.value !== "" && dates.length > 0 &&
+            description !== "" && itinerary !== "" && recomendations !== "" && kit !== ""
+            && activities.length > 0) && (discount ? dateStart.value !== "" : dateStart.value === "")
+            && (discount ? dateEnd.value !== "" : dateEnd.value === "") && (discount ? amount.value !== "" : amount.value === "")) {
             try {
                 await addTrip({
                     variables: {
@@ -90,7 +96,7 @@ const CreateTripView = ({ trip }) => {
                         tripKit: kit,
                         tripRating: 0,
                         tripStatus: false,
-                        tripReview: [{}]
+                        tripReview: []
                     }
                 }
                 )
@@ -102,11 +108,31 @@ const CreateTripView = ({ trip }) => {
                     }
                 })
                 ))
+                setNewTrip({
+                    tripName: name.value,
+                    tripInformation: {
+                        place: place.value,
+                        price: [{
+                            priceType: "Adulto",
+                            priceAmount: parseInt(price.value, 10)
+                        }],
+                        discount: discount ? {
+                            dateStart: dateStart.value,
+                            dateEnd: dateEnd.value,
+                            amount: parseInt(amount.value, 10),
+                            available: true
+                        } : {}
+                    }, tripStatus: false
+                })
+                setSuccessful("Viaje Creado Exitosamente")
             } catch (err) {
-
             }
-        }else {
-            try{
+        } else if (!action === false && (name.value !== "" && photo.value !== "" && price.value !== ""
+            && duration.value !== "" && place.value !== "" && dates.length > 0 &&
+            description !== "" && itinerary !== "" && recomendations !== "" && kit !== ""
+            && activities.length > 0) && (discount ? dateStart.value !== "" : dateStart.value === "")
+            && (discount ? dateEnd.value !== "" : dateEnd.value === "") && (discount ? amount.value !== "" : amount.value === "")) {
+            try {
                 await updateTrip({
                     variables: {
                         tripName: name.value,
@@ -122,7 +148,7 @@ const CreateTripView = ({ trip }) => {
                                 priceAmount: 100
                             }],
                             duration: duration.value,
-                            activities: activities.map(({__typename,...rest}) => {return rest}),
+                            activities: activities.map(({ __typename, ...rest }) => { return rest }),
                             discount: discount ? {
                                 dateStart: dateStart.value,
                                 dateEnd: dateEnd.value,
@@ -134,26 +160,31 @@ const CreateTripView = ({ trip }) => {
                             photo: photo.value.split("/")[5]
                         },
                         tripKit: kit,
-                        tripRating: 0,
+                        tripRating: parseInt(trip.trip.tripRating),
                         tripStatus: false,
-                        tripReview: [{}]
+                        tripReview: []
                     }
                 }
                 )
-                dates.map(async date => {try{(await addEvent({
-                    variables:
-                    {
-                        eventDate: date, eventTrip: name.value, eventType: "Public", eventStatus: "active",
-                        eventGuide: "Guia", users: []
+                dates.map(async date => {
+                    try {
+                        (await addEvent({
+                            variables:
+                            {
+                                eventDate: date, eventTrip: name.value, eventType: "Public", eventStatus: "active",
+                                eventGuide: "Guia", users: []
+                            }
+                        })
+                        )
+                    } catch (err) {
+                        console.log("Ocurrio Una duplicación")
                     }
                 })
-                )}catch(err){
-                    console.log("Ocurrio Una duplicación")
-                }})
-                Router.push({ pathname: '/sites/TripView' })
-            }catch(err){
-                console.log(err.message)
+                window.location.href = "/sites/TripView";
+            } catch (err) {
             }
+        } else {
+            setSuccessful("Porfavor Completa Todos los campos")
         }
 
     }
@@ -177,7 +208,7 @@ const CreateTripView = ({ trip }) => {
         if (e.target.checked) {
             setActivities(activities.concat({ activityName: e.target.name + "", activityPhoto: e.target.id + "" }))
         } else if (!e.target.checked) {
-            const newActivities = activities.filter((activity)=> activity.activityName!==e.target.name)
+            const newActivities = activities.filter((activity) => activity.activityName !== e.target.name)
             setActivities(newActivities)
         }
     }
@@ -206,9 +237,9 @@ const CreateTripView = ({ trip }) => {
     const handleOnChange = () => {
         setDiscount(!discount);
     }
-    const prueba = (name) => {
+    const checkPreferences = (name) => {
         let variable = false
-        activities.map(activity => {if (activity.activityName === name) {variable = true;}})
+        activities.map(activity => { if (activity.activityName === name) { variable = true; } })
         return variable
     }
     if (loading) return <p>Loading...</p>;
@@ -262,8 +293,8 @@ const CreateTripView = ({ trip }) => {
                                             <>
                                                 <label htmlFor={preference.preferenceType}>{preference.preferenceType}</label>
                                                 <input type="checkbox" name={preference.preferenceType}
-                                                    id={preference.preferenceIcon} onChange={onChangeCheckbox} 
-                                                    defaultChecked={prueba(preference.preferenceType)}></input>
+                                                    id={preference.preferenceIcon} onChange={onChangeCheckbox}
+                                                    defaultChecked={checkPreferences(preference.preferenceType)}></input>
                                             </>
                                         }
                                     </div>
@@ -406,7 +437,11 @@ const CreateTripView = ({ trip }) => {
                             <button type="submit"
                                 className={Styles.btnSend}>{action ? "Actualizar Viaje" : "Crear Viaje"}</button>
                         </div>
+                        <div className={Styles.sucessfullMessage}>{successful}</div>
                     </form>
+                </div>
+                <div className={!action ? "" : Styles.noUpdateWindow}>
+                    <SearchTripView newTrip={newTrip} />
                 </div>
             </div>
         )}</>;

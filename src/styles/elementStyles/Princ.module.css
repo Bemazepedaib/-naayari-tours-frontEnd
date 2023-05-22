@@ -101,19 +101,26 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    flex-direction: column;
-    margin-top: 50px;
+    flex-wrap: wrap;
     background: #ffffff;
+    gap: 20px;
     width: 68vw;
     box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.75);
     border-radius: 5px;
 }
 
+.chart {
+    width: 40%;
+    margin: 20px;
+}
+
 .chartsTitle {
     font-family: 'Genos', sans-serif;
+    text-align: center;
     font-size: 24px;
     color: #2e4a66;
     margin-bottom: 5px;
+    width: 100%;
 }
 
 .error {
@@ -162,6 +169,17 @@
     
     .textPrimaryP {
         display: none;
+    }
+
+    .charts {
+        padding: 0;
+        margin: 0;
+        flex-direction: column;
+    }
+
+    .chart {
+        margin: 0;
+        width: 100%;
     }
 }
 

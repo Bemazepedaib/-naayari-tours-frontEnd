@@ -47,7 +47,6 @@ function SearchBar({dat,newD}) {
 
     return (
         <div>
-            {console.log(dat.concat(newD) )}
                 <div className={Styles.mainContainer}>
                     <div className={Styles.inputContainer}>  
                         <HeaderTittle tittle={"Buscar Usuario"}></HeaderTittle>

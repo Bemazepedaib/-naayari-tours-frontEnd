@@ -1,12 +1,11 @@
-import React, { useState } from 'react'
+import { React,  useState,useEffect } from 'react'
 import { GET_PI_USERS } from '../querys/userQuerys';
 import { useQuery } from '@apollo/client';
 import SearchBar from './SearchBar';
-import { useEffect } from 'react';
 
 function SearchData({newU}) {
 
-
+   
     const { loading,  error, data } = useQuery(GET_PI_USERS);
     const [users,setUsers]=useState();
 

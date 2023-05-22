@@ -1,27 +1,30 @@
-import { React, useState } from 'react'
+import { React, useEffect, useState } from 'react'
 import { faPenToSquare } from '@fortawesome/free-solid-svg-icons'
 import Styles from '../../styles/elementStyles/ModalAdmin.module.css'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { Button } from 'react-bootstrap'
 import { Modal } from 'react-bootstrap'
 import Image from 'next/image'
-import { useMutation } from '@apollo/client';
-import { UPDATE_USER_NAME_ADMIN, UPDATE_USER_CELL_ADMIN,UPDATE_USER_BIRTH_ADMIN,UPDATE_USER_PASSWORD_ADMIN } from '../mutations/userMutations';
+import InputComponent from './Input'
 
-function ModalAdmin({ema,message, value, setNewName,setNewPhone,setNewDate }) {
-
-    const [newValue,setNewValue]= useState("");
-    const [show, setShow] = useState(false);
-    const [userName] = useMutation(UPDATE_USER_NAME_ADMIN);
-    const [userCellAdmin] = useMutation(UPDATE_USER_CELL_ADMIN);
-    const [userBirthAdmin] = useMutation(UPDATE_USER_BIRTH_ADMIN);
-    const [userPassAdmin] = useMutation(UPDATE_USER_PASSWORD_ADMIN);
+function ModalAdmin({message, value,setNew,err,exp }) {
 
 
 
     const image = 'https://drive.google.com/uc?export=view&id=1Gx08yGg-rGq0tUe5yVHWxbkaMfmrUOk0'
 
     const handleShow = () => {setShow(true);}
+
+    const [newValue,setNewValue]= useState("");
+    const [show, setShow] = useState(false);
+    const [error, setError] = useState("");
+    
+    const [date, setDate] = useState({ value: "", valid: true });
+
+
+    const [startDate, setStartDate] = useState(new Date());
+    const [endDate, setEndDate] = useState(new Date());
+
 
         //ONCHANGE FOR INPUT METHODS
         const onChange = (e) => {
@@ -32,40 +35,35 @@ function ModalAdmin({ema,message, value, setNewName,setNewPhone,setNewDate }) {
         switch (message) {
             case "Cambia el nombre":
                 try {
-                    const newName=(await userName({ variables: { newName: newValue, email:ema} })).data.updateUserName.split("%");
-                    setNewName(newName[1])
-                    handleClose();
+                    setNew(newValue)
                     setNewValue("")
+                    handleClose()
                 } catch (error) {
                     console.log(error)
                 }
                 break;
             case "Cambia el telefono":
                 try {
-                    const newPhone=(await userCellAdmin({ variables: { newCell: newValue, email: ema } })).data.updateUserCell.split("%");
-                    setNewPhone(newPhone[1]);
-                    handleClose();
+                    setNew(newValue);
                     setNewValue("")
+                    handleClose()
                 } catch (error) {
-
                     console.log(error.message)
                 }
                 break;
             case "Cambia la fecha de nacimiento":
                 try {
-                    const newDate = (await userBirthAdmin({ variables: { newDate: newValue, email: ema } })).data.updateUserBirth.split("%");
-                    console.log(newDate)
-                    handleClose();
-                    setNewValue("")
+                   setNew(date.value)
+                   handleClose()
                 } catch (error) {
                     console.log(error.message)
                 }
                 break;
             case "Cambia la contraseña":
                 try {
-                    await userPassAdmin({ variables: { newPassword: newValue, email: ema } });
-                    handleClose();
+                    setNew[newValue]
                     setNewValue("")
+                    handleClose()
                 } catch (error) {
                     console.log(error.message)
                 }
@@ -73,6 +71,34 @@ function ModalAdmin({ema,message, value, setNewName,setNewPhone,setNewDate }) {
         }
     }
     const handleClose = () => setShow(false);
+
+
+
+   const valid =()=>{
+    if(message!="Cambia la fecha de nacimiento"){
+        if(exp.test(newValue)){
+            setError("")
+        }else{
+            setError(err)
+        }
+    }else{
+
+
+    }
+    
+}
+
+const validarFecha = () => {
+    if (date.value !== '') {
+        const fecha = date.value.split("-")
+        const fechaHoy = new Date(Date.now()).toISOString().split("T")[0].split("-")
+        if (fechaHoy[0] - fecha[0] > 18) {
+            setDate((prevState) => { return { ...prevState, valid: true } })
+        } else {
+            setDate((prevState) => { return { ...prevState, valid: false } })
+        }
+    }
+}
 
     return (
         <>
@@ -87,7 +113,27 @@ function ModalAdmin({ema,message, value, setNewName,setNewPhone,setNewDate }) {
                 <Modal.Body className={Styles.modalBody}>
                     <input className={Styles.input} readOnly  
                         defaultValue={value} required></input>
-                    <input className={Styles.input} placeholder={message} required value={newValue} onChange={onChange}></input>
+                        {exp ?
+                        <>
+                        <input 
+                        onKeyUp={valid} className={Styles.input} placeholder={message} required value={newValue} onChange={onChange}></input>
+                        <label>{error}</label>
+                        </>
+                        :  
+
+                         <InputComponent
+                         estado={date}
+                         cambiarEstado={setDate}
+                         tipo="date"
+                         label="Fecha de nacimiento"
+                         placeholder="Fecha de nacimiento"
+                         name="dateNac"
+                         errorMsg="Elija una fecha válida"
+                         funcion={validarFecha}
+                     />
+                        
+                        }
+                    
                 </Modal.Body>
                 <Modal.Footer className={Styles.modalFooter}>
                     <Button className={Styles.btnSave} variant="btn btn-dark" onClick={changeData}>

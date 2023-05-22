@@ -126,7 +126,6 @@ const CreateTripView = ({ trip }) => {
                 })
                 setSuccessful("Viaje Creado Exitosamente")
             } catch (err) {
-
             }
         } else if (!action === false && (name.value !== "" && photo.value !== "" && price.value !== ""
             && duration.value !== "" && place.value !== "" && dates.length > 0 &&
@@ -134,7 +133,6 @@ const CreateTripView = ({ trip }) => {
             && activities.length > 0) && (discount ? dateStart.value !== "" : dateStart.value === "")
             && (discount ? dateEnd.value !== "" : dateEnd.value === "") && (discount ? amount.value !== "" : amount.value === "")) {
             try {
-                console.log(trip.trip.tripRating)
                 await updateTrip({
                     variables: {
                         tripName: name.value,
@@ -184,9 +182,9 @@ const CreateTripView = ({ trip }) => {
                 })
                 window.location.href = "/sites/TripView";
             } catch (err) {
-                console.log(err.message)
             }
         } else {
+            setSuccessful("Porfavor Completa Todos los campos")
         }
 
     }

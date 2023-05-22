@@ -37,6 +37,7 @@ const CreateTripView = ({ trip }) => {
     const [dateAdd, setDateAdd] = useState({ value: "", valid: true });
     const [action, setAction] = useState(trip ? true : false);
     const [newTrip, setNewTrip] = useState();
+    const [successful,setSuccessful] = useState("")
 
     const [discount, setDiscount] = useState(trip ? trip.trip.tripInformation.discount.available : false);
     const [dates, setDates] = useState(trip ? trip.trip.tripInformation.date : []);
@@ -60,7 +61,11 @@ const CreateTripView = ({ trip }) => {
     //ON SUBMIT
     const onSubmit = async (e) => {
         e.preventDefault();
-        if (!action) {
+        if (!action === true && (name.value !== "" && photo.value !== "" && price.value !== ""
+            && duration.value !== "" && place.value !== "" && dates.length > 0 &&
+            description !== "" && itinerary !== "" && recomendations !== "" && kit !== ""
+            && activities.length > 0) && (discount ? dateStart.value !== "" : dateStart.value === "")
+            && (discount ? dateEnd.value !== "" : dateEnd.value === "") && (discount ? amount.value !== "" : amount.value === "")) {
             try {
                 await addTrip({
                     variables: {
@@ -117,12 +122,17 @@ const CreateTripView = ({ trip }) => {
                             amount: parseInt(amount.value, 10),
                             available: true
                         } : {}
-                    },tripStatus: false
+                    }, tripStatus: false
                 })
+                setSuccessful("Viaje Creado Exitosamente")
             } catch (err) {
 
             }
-        } else {
+        } else if (!action === false && (name.value !== "" && photo.value !== "" && price.value !== ""
+            && duration.value !== "" && place.value !== "" && dates.length > 0 &&
+            description !== "" && itinerary !== "" && recomendations !== "" && kit !== ""
+            && activities.length > 0) && (discount ? dateStart.value !== "" : dateStart.value === "")
+            && (discount ? dateEnd.value !== "" : dateEnd.value === "") && (discount ? amount.value !== "" : amount.value === "")) {
             try {
                 await updateTrip({
                     variables: {
@@ -175,6 +185,7 @@ const CreateTripView = ({ trip }) => {
             } catch (err) {
                 console.log(err.message)
             }
+        } else {
         }
 
     }
@@ -227,7 +238,7 @@ const CreateTripView = ({ trip }) => {
     const handleOnChange = () => {
         setDiscount(!discount);
     }
-    const prueba = (name) => {
+    const checkPreferences = (name) => {
         let variable = false
         activities.map(activity => { if (activity.activityName === name) { variable = true; } })
         return variable
@@ -284,7 +295,7 @@ const CreateTripView = ({ trip }) => {
                                                 <label htmlFor={preference.preferenceType}>{preference.preferenceType}</label>
                                                 <input type="checkbox" name={preference.preferenceType}
                                                     id={preference.preferenceIcon} onChange={onChangeCheckbox}
-                                                    defaultChecked={prueba(preference.preferenceType)}></input>
+                                                    defaultChecked={checkPreferences(preference.preferenceType)}></input>
                                             </>
                                         }
                                     </div>
@@ -427,10 +438,11 @@ const CreateTripView = ({ trip }) => {
                             <button type="submit"
                                 className={Styles.btnSend}>{action ? "Actualizar Viaje" : "Crear Viaje"}</button>
                         </div>
+                        <div className={Styles.sucessfullMessage}>{successful}</div>
                     </form>
                 </div>
                 <div className={!action ? "" : Styles.noUpdateWindow}>
-                <SearchTripView newTrip={newTrip}/>
+                    <SearchTripView newTrip={newTrip} />
                 </div>
             </div>
         )}</>;

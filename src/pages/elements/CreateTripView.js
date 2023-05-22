@@ -171,7 +171,7 @@ const CreateTripView = ({ trip }) => {
                         console.log("Ocurrio Una duplicación")
                     }
                 })
-                Router.push({ pathname: '/sites/TripView' })
+                window.location.href = "/sites/TripView";
             } catch (err) {
                 console.log(err.message)
             }
@@ -430,7 +430,7 @@ const CreateTripView = ({ trip }) => {
                     </form>
                 </div>
                 <div className={!action ? "" : Styles.noUpdateWindow}>
-                <SearchTripView newTrip={newTrip} action={!action}/>
+                <SearchTripView newTrip={newTrip}/>
                 </div>
             </div>
         )}</>;

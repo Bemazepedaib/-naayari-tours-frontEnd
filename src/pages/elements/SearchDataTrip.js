@@ -7,13 +7,13 @@ import Table from 'react-bootstrap/Table';
 import HeaderTittle from './HeaderTittle';
 import ModalTrips from './ModalTrips';
 
-const SearchDataTrip = ({ dataM,newTrip,action}) => {
+const SearchDataTrip = ({ dataM,newTrip}) => {
     //HOOKS
     const [data, setData] = useState([...dataM]);
     const [trips, setTrips] = useState(data);
     const [tripsTable, setTripsTable] = useState(data);
     const [search, setSearch] = useState("");
-    const [state, setState] = useState(action);
+    const [state, setState] = useState(true);
 
     //Update Trip
     const updateTrip = (name, status) => {
@@ -35,12 +35,6 @@ const SearchDataTrip = ({ dataM,newTrip,action}) => {
         }
      }, [state]);
 
-     useEffect(() => {
-        if(newTrip){
-            setData(data.concat(newTrip))
-            setState(false)
-        }
-     }, [newTrip]);
 
     //OnChange Method
     const handleChange = (e) => {

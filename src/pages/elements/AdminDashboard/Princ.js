@@ -207,12 +207,10 @@ function Princ() {
                     </div>
                     <div className={Styles.chart}>
                         <div className={Styles.chartsTitle}>Viajes con mejor calificación</div>
-                        <Bars
+                        <Pies
                             mylabels={tripsRating.slice(0, 5).map(trip => { return trip.tripName })}
                             mydata={tripsRating.slice(0, 5).map(trip => { return trip.tripRating })}
-                            max={6}
-                            label={"Calificación"}
-                            stepsize={1}
+                            label={"Calificación"}  
                         />
                     </div>
                 </div>

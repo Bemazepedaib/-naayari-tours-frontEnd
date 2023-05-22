@@ -11,7 +11,7 @@ import {
     Filler
 } from "chart.js";
 
-function LinearChart({ title, mydata, mylabels }) {
+function LinearChart({ mydata, mylabels, label }) {
     Chartjs.register(
         CategoryScale,
         LinearScale,
@@ -28,7 +28,7 @@ function LinearChart({ title, mydata, mylabels }) {
         labels: mylabels,
         datasets: [ //Cada una de las lineas del grafico
             {
-                label: title,
+                label: label,
                 data: mydata,
                 tension: 0.5,
                 fill: true,

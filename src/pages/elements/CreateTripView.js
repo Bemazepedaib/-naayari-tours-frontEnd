@@ -96,7 +96,7 @@ const CreateTripView = ({ trip }) => {
                         tripKit: kit,
                         tripRating: 0,
                         tripStatus: false,
-                        tripReview: [{}]
+                        tripReview: []
                     }
                 }
                 )
@@ -134,6 +134,7 @@ const CreateTripView = ({ trip }) => {
             && activities.length > 0) && (discount ? dateStart.value !== "" : dateStart.value === "")
             && (discount ? dateEnd.value !== "" : dateEnd.value === "") && (discount ? amount.value !== "" : amount.value === "")) {
             try {
+                console.log(trip.trip.tripRating)
                 await updateTrip({
                     variables: {
                         tripName: name.value,
@@ -161,9 +162,9 @@ const CreateTripView = ({ trip }) => {
                             photo: photo.value.split("/")[5]
                         },
                         tripKit: kit,
-                        tripRating: 0,
+                        tripRating: parseInt(trip.trip.tripRating),
                         tripStatus: false,
-                        tripReview: [{}]
+                        tripReview: []
                     }
                 }
                 )

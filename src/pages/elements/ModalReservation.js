@@ -16,11 +16,30 @@ function ModalReservation({ datosCompanion, datosUsuario, datosPrecio }) {
 
     const [show, setShow] = useState(false);
     const handleClose = () => setShow(false);
-    const handleShow = () => setShow(true);
+    const handleShow = () => {
+        for (let i = 0; i < 3; i++) {
+            if (i == 0) {
+                if (datosCompanion[i].current.length !== datosPrecio[i].number - 1) {
+                    setErrorMessage("¡Llene correctamente los datos de todos los acompañantes!");
+                    setShow(false);
+                    return;
+                }
+            } else {
+                if (datosCompanion[i].current.length !== datosPrecio[i].number) {
+                    setErrorMessage("¡Llene correctamente los datos de todos los acompañantes!");
+                    setShow(false);
+                    return;
+                }
+            }
+        }
+        setErrorMessage("")
+        setShow(true);
+    }
     const [showConfirm, setShowConfirm] = useState(false);
     const handleCloseConfirm = () => setShowConfirm(false);
     const handleShowConfirm = () => setShowConfirm(true);
     const [confirmMessage, setConfirmMessage] = useState("¿Está seguro que sus datos son correctos?");
+    const [errorMessage, setErrorMessage] = useState("")
 
     const [doReservation] = useMutation(UPDATE_USERS)
 
@@ -69,10 +88,14 @@ function ModalReservation({ datosCompanion, datosUsuario, datosPrecio }) {
 
     return (
         <>
-            <Button bsPrefix={Styles.btn} onClick={handleShow} >
-                Haz tu reservación
-            </Button>
-
+            <div className={Styles.miniFlex}>
+                <div className={Styles.errorMessage}>
+                    {errorMessage}
+                </div>
+                <Button bsPrefix={Styles.btn} onClick={handleShow} >
+                    Haz tu reservación
+                </Button>
+            </div>
             <Modal id={datosCompanion} show={show} onHide={handleClose} size="lg" centered backdrop="static" keyboard={false}>
                 <Modal.Header bsPrefix={Styles.modalHeader} closeButton>
                     <Image src={image} className={Styles.image} width={70} height={70} alt="Naayari tours" />
@@ -142,16 +165,16 @@ function ModalReservation({ datosCompanion, datosUsuario, datosPrecio }) {
                         <tbody className={Styles.tableBody}>
                             {datosPrecio ? datosPrecio?.map(price => (
                                 datosPrecio.indexOf(price) === 0 ?
-                                <tr key={id++}>
-                                    <td>{price.type} &#40;${price.price}&#41;</td>
-                                    <td>{price.number}</td>
-                                    <td>${price.number * price.price}</td>
-                                </tr> : datosCompanion[datosPrecio.indexOf(price)].current.length > 0 ? 
-                                <tr key={id++}>
-                                    <td>{price.type} &#40;${price.price}&#41;</td>
-                                    <td>{price.number}</td>
-                                    <td>${price.number * price.price}</td>
-                                </tr> : null
+                                    <tr key={id++}>
+                                        <td>{price.type} &#40;${price.price}&#41;</td>
+                                        <td>{price.number}</td>
+                                        <td>${price.number * price.price}</td>
+                                    </tr> : datosCompanion[datosPrecio.indexOf(price)].current.length > 0 ?
+                                        <tr key={id++}>
+                                            <td>{price.type} &#40;${price.price}&#41;</td>
+                                            <td>{price.number}</td>
+                                            <td>${price.number * price.price}</td>
+                                        </tr> : null
                             )) : <div></div>}
                             <tr>
                                 <td>TOTAL A PAGAR</td>

@@ -12,7 +12,7 @@
     justify-content: center;
     width: 100vw;
     flex-direction: column;
-    height: 100vh;
+    height: 100%;
 }
 
 .header {
@@ -43,6 +43,19 @@
     font-family: 'Genos', sans-serif;
     font-weight: bold;
     font-size: 30px;
+}
+
+.titulo2 {
+    background-color: white;
+    width: 100%;
+    border-radius: 10px;
+    border: 2px solid #1D2128;
+    text-align: center;
+    margin: 10px;
+    margin-top: 20px;
+    font-family: 'Genos', sans-serif;
+    font-weight: bold;
+    font-size: 25px;
 }
 
 .dato {
@@ -118,8 +131,17 @@
 }
 
 @media (max-width: 600px) {
+    .mainContainer {
+        background-size: contain;
+    }
+
     .titulo {
         font-size: 20px;
+    }
+
+    .titulo2 {
+        font-size: 15px;
+        margin: 0px 10px;
     }
 
     .textArea {

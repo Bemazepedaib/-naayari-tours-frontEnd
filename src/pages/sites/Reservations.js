@@ -83,6 +83,7 @@ function Reservations() {
                     />
                     {adultNumber !== 1 ? [...Array(adultNumber - 1).keys()].map((key) => (
                         <Slide key={key} triggerOnce={true} direction={"down"}>
+                            <div className={Styles.titulo2}>Acompañante adulto {key+1}</div>
                             <CompanionComponent tipo={"adult"} funcion={funcionPush} />
                         </Slide>
                     )) : <div />}
@@ -93,6 +94,7 @@ function Reservations() {
                     />
                     {childNumber !== 0 ? [...Array(childNumber).keys()].map((key) => (
                         <Slide key={key} triggerOnce={true} direction={"down"}>
+                            <div className={Styles.titulo2}>Acompañante niño {key+1}</div>
                             <CompanionComponent tipo={"child"} funcion={funcionPush} />
                         </Slide>
                     )) : <div />}
@@ -103,6 +105,7 @@ function Reservations() {
                     />
                     {babyNumber !== 0 ? [...Array(babyNumber).keys()].map((key) => (
                         <Slide key={key} triggerOnce={true} direction={"down"}>
+                            <div className={Styles.titulo2}>Acompañante bebé {key+1}</div>
                             <CompanionComponent tipo={"baby"} funcion={funcionPush} />
                         </Slide>
                     )) : <div />}

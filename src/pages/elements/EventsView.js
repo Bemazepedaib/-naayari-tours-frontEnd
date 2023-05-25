@@ -7,10 +7,11 @@ import { useQuery } from '@apollo/client';
 import { ME } from '../querys/userQuerys';
 import { Spinner } from 'react-bootstrap';
 
+import VipsManager from '../sites/VipsManager'
+
 function EventsView(eventData) {
 
     const { loading: meLoading, error: meError, data: meData } = useQuery(ME);
-
     const [activeEvents, setActiveEvents] = useState(eventData.eventData.events.filter(event => event.eventStatus === 'active'))
     const [closedEvents, setClosedEvents] = useState(eventData.eventData.events.filter(event => event.eventStatus === 'closed'))
     const [inactiveEvents, setInactiveEvents] = useState(eventData.eventData.events.filter(event => event.eventStatus === 'inactive'))
@@ -127,6 +128,7 @@ function EventsView(eventData) {
                     </div>
                 ))}
             </div>
+            <VipsManager/>
         </div>
     )
 }

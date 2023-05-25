@@ -40,9 +40,9 @@ function Signup() {
 
     const validarFecha = () => {
         if (date.value !== '') {
-            const fecha = date.value.split("-")
-            const fechaHoy = new Date(Date.now()).toISOString().split("T")[0].split("-")
-            if (fechaHoy[0] - fecha[0] > 18) {
+            const fecha = new Date(date.value).toISOString().split("T")[0].split("-").reverse()
+            const fechaHoy = new Date(Date.now()).toISOString().split("T")[0].split("-").reverse()
+            if (fechaHoy[2] - fecha[2] > 18) {
                 setDate((prevState) => { return { ...prevState, valid: true } })
             } else {
                 setDate((prevState) => { return { ...prevState, valid: false } })

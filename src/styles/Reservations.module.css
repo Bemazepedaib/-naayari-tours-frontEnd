@@ -130,6 +130,16 @@
     height: 50px;
 }
 
+.error {
+    font-family: 'Genos', sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 81vh;
+    font-size: 40px;
+    text-align: center;
+}
+
 @media (max-width: 600px) {
     .mainContainer {
         background-size: contain;

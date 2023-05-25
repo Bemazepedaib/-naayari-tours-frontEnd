@@ -1,6 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Oswald:wght@300&display=swap');
 .reviewSection{
 background-color: black;
+min-height: 120vh;
 }
 .title{
     color: white;

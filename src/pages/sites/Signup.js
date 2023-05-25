@@ -64,10 +64,14 @@ function Signup() {
         setTerminos(e.target.checked);
     }
 
+    const getFecha = (fecha) => {
+        return new Date(fecha).toISOString().split("T")[0].split("-").reverse().join("/")
+    }
+
     useEffect(() => {
         if (token) {
             setValidForm(true);
-            Router.push({ pathname: '/sites/Preferences',query: {preferences: []}})
+            Router.push({ pathname: '/sites/Preferences', query: { preferences: [] } })
             localStorage.setItem('token', token.data.addUser);
         }
     }, [token])
@@ -76,14 +80,13 @@ function Signup() {
         e.preventDefault();
         try {
             if (name.valid && cell.valid && mail.valid && pass.valid && pass2.valid && date.valid && terminos) {
-                const fecha = date.value.split("-")
-                const newFecha = fecha[2]+"/"+fecha[1]+"/"+fecha[0]
+                const fecha = getFecha(date.value)
                 setValidForm(true)
                 setToken(await addUser({
                     variables: {
                         name: name.value,
                         cellphone: cell.value,
-                        birthDate: newFecha,
+                        birthDate: fecha,
                         email: mail.value,
                         password: pass.value,
                         sex: sex,

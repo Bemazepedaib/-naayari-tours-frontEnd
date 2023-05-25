@@ -40,6 +40,8 @@ function ModalEvent({ user, trip, date, deleteReservation, updateReservation }) 
     const [paidChange, setPaidChange] = useState()
     const [errorMessage, setErrorMessage] = useState("")
 
+    const fechaHoy = new Date(Date.now()).toISOString().split("T")[0].split("-").reverse()
+
     let id = 0;
 
     const makeContract = () => {
@@ -103,6 +105,10 @@ function ModalEvent({ user, trip, date, deleteReservation, updateReservation }) 
                                 <td>Email</td>
                                 <td>{userData.user.email}</td>
                             </tr>
+                            <tr>
+                                <td>Edad del titular</td>
+                                <td>{fechaHoy[2] - userData.user.birthDate.split("/")[2]}</td>
+                            </tr>
                         </tbody>
                     </Table>
                     {user.companion.length > 0 ? <div className={Styles.modalTitle}>Acompañantes</div> : null}
@@ -110,9 +116,10 @@ function ModalEvent({ user, trip, date, deleteReservation, updateReservation }) 
                         <Table>
                             <thead className={Styles.tableHeader}>
                                 <tr>
-                                    <th> Tipo de acompañante </th>
-                                    <th> Nombre de acompañante </th>
-                                    <th> Teléfono de acompañante </th>
+                                    <th> Tipo </th>
+                                    <th> Nombre </th>
+                                    <th> Teléfono </th>
+                                    <th> Edad </th>
                                 </tr>
                             </thead>
                             <tbody className={Styles.tableBody}>
@@ -121,7 +128,9 @@ function ModalEvent({ user, trip, date, deleteReservation, updateReservation }) 
                                         <td>{comp.companionType === "adult" ? "Adulto" : comp.companionType === "child" ? "Niño" : "Bebé"}</td>
                                         <td>{comp.companionName}</td>
                                         <td>{comp.companionCell}</td>
+                                        <td>{fechaHoy[2] - comp.companionBirthdate.split("/")[2]}</td>
                                     </tr>
+
                                 ))}
                             </tbody>
                         </Table> : null}

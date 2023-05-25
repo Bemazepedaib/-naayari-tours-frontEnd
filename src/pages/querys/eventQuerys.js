@@ -43,6 +43,7 @@ const GET_EVENT = gql `
                     companionType
                     companionName
                     companionCell
+                    companionBirthdate
                 }
             }
         }

@@ -24,21 +24,23 @@ const CreateTripView = ({ trip }) => {
     const [addEvent] = useMutation(ADD_EVENT);
     const [addTrip] = useMutation(ADD_TRIP);
     const [updateTrip] = useMutation(UPDATE_TRIP);
-
     //HOOKS
     const [name, setName] = useState(trip ? { value: trip.trip.tripName + '', valid: true } : { value: "", valid: true });
     const [photo, setPhoto] = useState(trip ? { value: 'https://drive.google.com/file/d/' + trip.trip.tripInformation.photo + '/view?usp=share_link', valid: true } : { value: "", valid: true });
     const [price, setPrice] = useState(trip ? { value: trip.trip.tripInformation.price[0].priceAmount + '', valid: true } : { value: "", valid: true });
     const [duration, setDuration] = useState(trip ? { value: trip.trip.tripInformation.duration + '', valid: true } : { value: "", valid: true });
     const [place, setPlace] = useState(trip ? { value: trip.trip.tripInformation.place + '', valid: true } : { value: "", valid: true });
-    const [dateStart, setDateStart] = useState(trip ? { value: trip.trip.tripInformation.discount.dateStart, valid: true } : { value: "", valid: true });
-    const [dateEnd, setDateEnd] = useState(trip ? { value: trip.trip.tripInformation.discount.dateEnd, valid: true } : { value: "", valid: true });
     const [amount, setAmount] = useState(trip ? { value: trip.trip.tripInformation.discount.amount, valid: true } : { value: "", valid: true });
     const [dateAdd, setDateAdd] = useState({ value: "", valid: true });
     const [action, setAction] = useState(trip ? true : false);
     const [newTrip, setNewTrip] = useState();
     const [successful,setSuccessful] = useState("")
 
+
+    const [dateStart, setDateStart] = useState(trip ? { value: new Date(trip.trip.tripInformation.discount.dateStart), valid: true } : { value: "", valid: true });
+    const [dateEnd, setDateEnd] = useState(trip ? { value: new Date(trip.trip.tripInformation.discount.dateEnd), valid: true } : { value: "", valid: true });
+
+    
     const [discount, setDiscount] = useState(trip ? trip.trip.tripInformation.discount.available : false);
     const [dates, setDates] = useState(trip ? trip.trip.tripInformation.date : []);
     const [auxDates, setAuxDates] = useState((trip ? trip.trip.tripInformation.date.join('\n') : ""));
@@ -58,6 +60,11 @@ const CreateTripView = ({ trip }) => {
     const { loading, error, data } = useQuery(GET_PREFERENCES)
 
     //FUNCTIONS
+    const getFecha = (fecha) => {
+        return new Date(fecha).toISOString().split("T")[0].split("-").reverse().join("/")
+    }
+
+
     //ON SUBMIT
     const onSubmit = async (e) => {
         e.preventDefault();
@@ -84,8 +91,8 @@ const CreateTripView = ({ trip }) => {
                             duration: duration.value,
                             activities: activities,
                             discount: discount ? {
-                                dateStart: dateStart.value,
-                                dateEnd: dateEnd.value,
+                                dateStart: getFecha(dateStart.value),
+                                dateEnd: getFecha(dateEnd.value),
                                 amount: parseInt(amount.value, 10),
                                 available: true
                             } : {},
@@ -117,8 +124,8 @@ const CreateTripView = ({ trip }) => {
                             priceAmount: parseInt(price.value, 10)
                         }],
                         discount: discount ? {
-                            dateStart: dateStart.value,
-                            dateEnd: dateEnd.value,
+                            dateStart:  getFecha(dateStart.value),
+                            dateEnd:  getFecha(dateEnd.value),
                             amount: parseInt(amount.value, 10),
                             available: true
                         } : {}
@@ -150,8 +157,8 @@ const CreateTripView = ({ trip }) => {
                             duration: duration.value,
                             activities: activities.map(({ __typename, ...rest }) => { return rest }),
                             discount: discount ? {
-                                dateStart: dateStart.value,
-                                dateEnd: dateEnd.value,
+                                dateStart: getFecha(dateStart.value),
+                                dateEnd: getFecha(dateEnd.value),
                                 amount: parseInt(amount.value, 10),
                                 available: true
                             } : {},
@@ -162,7 +169,7 @@ const CreateTripView = ({ trip }) => {
                         tripKit: kit,
                         tripRating: parseInt(trip.trip.tripRating),
                         tripStatus: false,
-                        tripReview: []
+                        tripReview: trip.trip.tripReview.map(({ __typename, ...rest }) => { return rest })
                     }
                 }
                 )
@@ -215,17 +222,16 @@ const CreateTripView = ({ trip }) => {
     //ADD A DATE
     const addADate = (e) => {
         e.preventDefault();
-        let splitChain = dateAdd.value.split('-');
-        setDates(dates.concat((splitChain[2] + '/' + splitChain[1] + '/' + splitChain[0])));
+        let splitChain = getFecha(dateAdd.value)
+        setDates(dates.concat(splitChain));
         if (!trip) {
-            setAuxDates(auxDates + (splitChain[2] + '/' + splitChain[1] + '/' + splitChain[0]) + '\n')
+            setAuxDates(auxDates + splitChain + '\n')
         }
         else if (trip && dates.length === 0) {
-            setAuxDates(auxDates + (splitChain[2] + '/' + splitChain[1] + '/' + splitChain[0]))
+            setAuxDates(auxDates + splitChain)
         } else {
-            setAuxDates(auxDates + '\n' + (splitChain[2] + '/' + splitChain[1] + '/' + splitChain[0]))
+            setAuxDates(auxDates + '\n' + splitChain)
         }
-
     }
 
     //DELETE A DATE
@@ -348,7 +354,7 @@ const CreateTripView = ({ trip }) => {
                                         cambiarEstado={setDateStart}
                                         tipo="date"
                                         label="Fecha de inicio"
-                                        placeholder=""
+                                        placeholder="Fecha de inicio"
                                         name="dateStart"
                                     />
                                     <InputComponent
@@ -366,7 +372,7 @@ const CreateTripView = ({ trip }) => {
                                         cambiarEstado={setDateEnd}
                                         tipo="date"
                                         label="Fecha de termino"
-                                        placeholder=""
+                                        placeholder="Fecha de termino"
                                         name="dateEnd"
                                     />
                                 </div>
@@ -380,7 +386,7 @@ const CreateTripView = ({ trip }) => {
                                     cambiarEstado={setDateAdd}
                                     tipo="date"
                                     label="Fechas"
-                                    placeholder=""
+                                    placeholder="Agregar Fecha"
                                     name="dateEnd"
                                     errorMsg=""
                                     regExp={""}

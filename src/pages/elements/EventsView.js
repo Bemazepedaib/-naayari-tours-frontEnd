@@ -19,18 +19,6 @@ function EventsView(eventData) {
     const [input2, setInput2] = useState("")
     const [input3, setInput3] = useState("")
 
-    const datos = [activeEvents, closedEvents, inactiveEvents]
-    const inputs = [
-        { hook: input1, setHook: setInput1 },
-        { hook: input2, setHook: setInput2 },
-        { hook: input3, setHook: setInput3 },
-    ]
-    const nombres = [
-        { titulo: 'Viajes activos', hook: 'activeEvents' },
-        { titulo: 'Viajes cerrados', hook: 'closedEvents' },
-        { titulo: 'Viajes inactivos', hook: 'inactiveEvents' }
-    ]
-
     if (meLoading) return (<div className={Styles.error}><Spinner /></div>)
     if (meError) return (<div className={Styles.error}>Inicie sesión para continuar</div>)
     if (meData.me.userType !== "admin") return (<div className={Styles.error}>Necesitas permisos de administrador para acceder a este módulo</div>)

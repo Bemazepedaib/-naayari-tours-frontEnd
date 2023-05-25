@@ -187,7 +187,28 @@
     transform: translateY(0);
 }
 
+.errorMessage {
+    color: red;
+    font-weight: bold;
+    font-family: 'Genos', sans-serif;
+    background-color: white;
+    text-align: center;
+    font-size: 30px;
+}
+
+.miniFlex {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+}
+
 @media (max-width: 600px) {
+    .errorMessage {
+        font-size: 15px;
+    }
+
     .image {
         width: 50px;
     }

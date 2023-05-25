@@ -14,6 +14,8 @@ import SelectComponent from '../elements/Select';
 import CompanionComponent from '../elements/Companion';
 import ModalReservation from '../elements/ModalReservation';
 
+import { Spinner } from 'react-bootstrap';
+
 function Reservations() {
 
     const router = useRouter()
@@ -35,11 +37,18 @@ function Reservations() {
     let precioBebe = tripData?.trip.tripInformation.price[1].priceAmount
     if (tripData?.trip.tripInformation.discount.available) precioPasajero -= tripData?.trip.tripInformation.discount.amount
 
-    if (tripLoading) return (<div>Loading...</div>)
-    if (tripError) return (<div>{tripError.message}</div>)
-
-    if (userLoading) return (<div>Loading...</div>)
-    if (userError) return (<div>{userError.message}</div>)
+    if (tripLoading || userLoading) return (
+        <div className={Styles.mainContainer}>
+            <div className={Styles.header}><HeaderTittle tittle={"RESERVACIÓN"}></HeaderTittle></div>
+            <div className={Styles.error}><Spinner /></div>
+        </div>
+    )
+    if (tripError || userError) return (
+        <div className={Styles.mainContainer}>
+            <div className={Styles.header}><HeaderTittle tittle={"RESERVACIÓN"}></HeaderTittle></div>
+            <div className={Styles.error}>Oops... Algo ha salído mal, intente de nuevo más tarde.</div>
+        </div>
+    )
 
     const funcionType = (tipo, objeto) => {
         if (tipo.current === []) { tipo.current = objeto }
@@ -47,16 +56,18 @@ function Reservations() {
     }
 
     const funcionPush = (nombre, telefono, fecha, tipo) => {
-        const objeto = {
-            companionType: tipo,
-            companionName: nombre,
-            companionCell: telefono,
-            companionBirthdate: fecha.toISOString().split("T")[0].split("-").reverse().join("/")
-        }
-        switch (tipo) {
-            case "adult": if (nombre && telefono && fecha) funcionType(adult, objeto); break;
-            case "child": if (nombre && fecha) funcionType(child, objeto); break;
-            case "baby": if (nombre && fecha) funcionType(baby, objeto); break;
+        if (nombre && fecha) {
+            const objeto = {
+                companionType: tipo,
+                companionName: nombre,
+                companionCell: telefono,
+                companionBirthdate: fecha.toISOString().split("T")[0].split("-").reverse().join("/")
+            }
+            switch (tipo) {
+                case "adult": if (telefono) funcionType(adult, objeto); break;
+                case "child": funcionType(child, objeto); break;
+                case "baby": funcionType(baby, objeto); break;
+            }
         }
     }
 
@@ -75,32 +86,35 @@ function Reservations() {
                 <div className={Styles.contenedorFormulario}>
                     <div className={Styles.titulo}>Participantes</div>
                     <SelectComponent
-                        textoLabel={"Adultos " + precioPasajero + "$"} dato={adultNumber}
+                        textoLabel={"Adultos $" + precioPasajero} dato={adultNumber}
                         cambiarDato={setAdultNumber} opciones={Array.from({ length: 9 }, (_, i) => i + 1)}
                         funcion={() => { funcionSlice("adult", adultNumber) }}
                     />
                     {adultNumber !== 1 ? [...Array(adultNumber - 1).keys()].map((key) => (
                         <Slide key={key} triggerOnce={true} direction={"down"}>
+                            <div className={Styles.titulo2}>Acompañante adulto {key + 1}</div>
                             <CompanionComponent tipo={"adult"} funcion={funcionPush} />
                         </Slide>
                     )) : <div />}
                     <SelectComponent
-                        textoLabel={"Niños " + precioPasajero + "$"} dato={childNumber}
+                        textoLabel={"Niños $" + precioPasajero} dato={childNumber}
                         cambiarDato={setChildNumber} opciones={[...Array(10).keys()]}
                         funcion={() => { funcionSlice("child", childNumber) }}
                     />
                     {childNumber !== 0 ? [...Array(childNumber).keys()].map((key) => (
                         <Slide key={key} triggerOnce={true} direction={"down"}>
+                            <div className={Styles.titulo2}>Acompañante niño {key + 1}</div>
                             <CompanionComponent tipo={"child"} funcion={funcionPush} />
                         </Slide>
                     )) : <div />}
                     <SelectComponent
-                        textoLabel={"Bebés " + precioBebe + "$"} dato={babyNumber}
+                        textoLabel={"Bebés $" + precioBebe} dato={babyNumber}
                         cambiarDato={setBabyNumber} opciones={[...Array(10).keys()]}
                         funcion={() => { funcionSlice("baby", babyNumber) }}
                     />
                     {babyNumber !== 0 ? [...Array(babyNumber).keys()].map((key) => (
                         <Slide key={key} triggerOnce={true} direction={"down"}>
+                            <div className={Styles.titulo2}>Acompañante bebé {key + 1}</div>
                             <CompanionComponent tipo={"baby"} funcion={funcionPush} />
                         </Slide>
                     )) : <div />}

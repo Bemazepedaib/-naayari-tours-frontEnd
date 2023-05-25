@@ -25,7 +25,7 @@ function Gallery({ tripReviews }) {
         reviewInfo.current.review = reviews.review + ''
     }
     { for (let index = 1; index <= reviewInfo.current.rating; index++) stars = stars + "⋆"; }
-    if(tripReviews[0].user){
+    if(tripReviews.length>0){
         return (
             <div className={Styles.mainContainer}>
                 <div className={imgSelected ? Styles.imgOpen : Styles.imgClosed}>

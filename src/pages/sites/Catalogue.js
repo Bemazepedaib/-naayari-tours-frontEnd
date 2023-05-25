@@ -19,7 +19,7 @@ function Catalogue({ trip }) {
         Router.push({
             pathname: 'elements/DetailCard',
             query: { name }
-        }, 'elements/DetailCard')
+        })
     }
     { for (let index = 1; index <= trip.tripRating; index++) stars = stars + "⋆"; }
     return (

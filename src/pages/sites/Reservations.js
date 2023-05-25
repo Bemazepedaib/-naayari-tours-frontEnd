@@ -46,12 +46,12 @@ function Reservations() {
         else { tipo.current.push(objeto) }
     }
 
-    const funcionPush = (nombre, telefono, tipo) => {
-        const objeto = { companionName: nombre, companionType: tipo, companionCell: telefono }
+    const funcionPush = (nombre, telefono, fecha, tipo) => {
+        const objeto = { companionName: nombre, companionType: tipo, companionCell: telefono, companionBirthdate: fecha }
         switch (tipo) {
-            case "adult": if (nombre && telefono) funcionType(adult, objeto); break;
-            case "child": if (nombre) funcionType(child, objeto); break;
-            case "baby": if (nombre) funcionType(baby, objeto); break;
+            case "adult": if (nombre && telefono && fecha) funcionType(adult, objeto); break;
+            case "child": if (nombre && fecha) funcionType(child, objeto); break;
+            case "baby": if (nombre && fecha) funcionType(baby, objeto); break;
         }
     }
 

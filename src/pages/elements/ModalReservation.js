@@ -52,7 +52,7 @@ function ModalReservation({ datosCompanion, datosUsuario, datosPrecio }) {
                 }
             })
             setConfirmMessage(res.data.updateEventUsers)
-            Router.push({ pathname: '/elements/ReservationPayment', query: { anticipo: anticipo } }, '/elements/ReservationPayment')
+            Router.push({ pathname: '/elements/ReservationPayment', query: { anticipo: anticipo } })
         } catch (error) {
             setConfirmMessage(error.message)
         }
@@ -108,6 +108,7 @@ function ModalReservation({ datosCompanion, datosUsuario, datosPrecio }) {
                                     <th> Tipo de acompañante </th>
                                     <th> Nombre de acompañante </th>
                                     <th> Teléfono de acompañante </th>
+                                    <th> Fecha de nacimiento </th>
                                 </tr>
                             </thead>
                             <tbody className={Styles.tableBody}>
@@ -117,6 +118,7 @@ function ModalReservation({ datosCompanion, datosUsuario, datosPrecio }) {
                                             <td>{companion.companionType === "adult" ? "Adulto" : companion.companionType === "child" ? "Niño" : "Bebé"}</td>
                                             <td>{companion.companionName}</td>
                                             <td>{companion.companionCell}</td>
+                                            <td>{companion.companionBirthdate}</td>
                                         </tr>
                                     ))
                                 )) : <div></div>}

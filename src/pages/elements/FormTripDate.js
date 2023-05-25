@@ -38,9 +38,9 @@ function FormTripDate({ dates, selectedTrip }) {
                         </select>
                         <button className={Styles.btn} type='submit' onClick={() => {
                             if (!userError){
-                                Router.push({ pathname: '/sites/Reservations', query: { selectedDate, selectedTrip } }, '/sites/Reservations')
+                                Router.push({ pathname: '/sites/Reservations', query: { selectedDate, selectedTrip } })
                             } else {
-                                Router.push({ pathname: '/sites/Login', query: { place: "reservations", selectedDate, selectedTrip } }, '/sites/Login')
+                                Router.push({ pathname: '/sites/Login', query: { place: "reservations", selectedDate, selectedTrip } })
                             }
                         }}> Reservar lugares
                          </button>

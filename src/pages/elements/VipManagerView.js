@@ -25,7 +25,6 @@ const VipManagerView = ({ requests }) => {
   return (
     <div className={Styles.main}>
       <div>
-        {console.log(new Date("02 / 02 / 2023"))}
         <HeaderTittle tittle={"Solicitudes VIP pendientes"} />
         <div className={Styles.contenedorEvents}>
           {pendingRequests?.map((request) => (
@@ -83,6 +82,33 @@ const VipManagerView = ({ requests }) => {
         <HeaderTittle tittle={"Solicitudes VIP denegadas"} />
         <div className={Styles.contenedorEvents}>
           {rejectedRequests?.map((request) => (
+            <div
+              className={Styles.contenedorEvent}
+              key={request.requesTrip + request.requestUser}
+            >
+              <div className={Styles.miniFlex}>
+                <div className={Styles.textHid}>Viaje:&nbsp; </div>{" "}
+                {request.requestTrip}
+              </div>
+              <div className={Styles.miniFlex}>
+                <div className={Styles.textHid}>Fecha:&nbsp;</div>{" "}
+                {request.requestDate}
+              </div>
+              <div className={Styles.miniFlex}>
+                <div className={Styles.textHid}>Usuario:&nbsp;</div>{" "}
+                {request.requestUser}
+              </div>
+              <button className={Styles.btn} onClick={() => {}}>
+                Ver más
+              </button>
+            </div>
+          ))}
+        </div>
+      </div>
+      <div>
+        <HeaderTittle tittle={"Solicitudes VIP finalizadas"} />
+        <div className={Styles.contenedorEvents}>
+          {finishedRequests?.map((request) => (
             <div
               className={Styles.contenedorEvent}
               key={request.requesTrip + request.requestUser}

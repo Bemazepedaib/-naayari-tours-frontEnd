@@ -47,7 +47,12 @@ function Reservations() {
     }
 
     const funcionPush = (nombre, telefono, fecha, tipo) => {
-        const objeto = { companionName: nombre, companionType: tipo, companionCell: telefono, companionBirthdate: fecha }
+        const objeto = {
+            companionType: tipo,
+            companionName: nombre,
+            companionCell: telefono,
+            companionBirthdate: fecha.toISOString().split("T")[0].split("-").reverse().join("/")
+        }
         switch (tipo) {
             case "adult": if (nombre && telefono && fecha) funcionType(adult, objeto); break;
             case "child": if (nombre && fecha) funcionType(child, objeto); break;
@@ -100,9 +105,9 @@ function Reservations() {
                         </Slide>
                     )) : <div />}
                     <div className={Styles.titulo}>Observaciones</div>
-                    <textarea 
-                        className={Styles.textArea} 
-                        rows={5} 
+                    <textarea
+                        className={Styles.textArea}
+                        rows={5}
                         placeholder='Si quieres comentarnos alguna situación especial, ponlo aquí...'
                         value={observaciones}
                         onChange={e => setObservaciones(e.target.value)}

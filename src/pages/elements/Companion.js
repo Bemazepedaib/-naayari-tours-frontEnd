@@ -1,5 +1,8 @@
-import React, { use, useState } from 'react';
+import React, { useState } from 'react';
 import Styles from '../../styles/elementStyles/Companion.module.css';
+
+import ReactDatePicker from 'react-datepicker'
+import "react-datepicker/dist/react-datepicker.css"
 
 const CompanionComponent = ({ tipo, funcion }) => {
 
@@ -9,7 +12,7 @@ const CompanionComponent = ({ tipo, funcion }) => {
 
     const onChangeName = (e) => { setName(e.target.value); }
     const onChangeCell = (e) => { setCell(e.target.value); }
-    const onChangeDate = (e) => { setDate(e.target.value.split("-").reverse().join("/")); }    
+    const onChangeDate = (e) => { setDate(e) }    
     const onBlur = (e) => { funcion(name, cell, date, tipo); }
 
     return (
@@ -38,13 +41,13 @@ const CompanionComponent = ({ tipo, funcion }) => {
             </div> : <div />}
             <div className={Styles.grupoCompanion}>
                 <div className={Styles.label}>Fecha de nacimiento</div>
-                <input
+                <ReactDatePicker
                     className={Styles.input}
-                    type='date'
-                    placeholder='Número de celular'
+                    placeholderText='Fecha de nacimiento'
                     onChange={onChangeDate}
                     onBlur={onBlur}
-                    value={date}
+                    dateFormat="dd/MM/yyyy"
+                    selected={date}
                 />
             </div>
         </div>

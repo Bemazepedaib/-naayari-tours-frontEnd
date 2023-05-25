@@ -10,27 +10,27 @@ import InputComponent from './Input'
 import ReactDatePicker from 'react-datepicker'
 import "react-datepicker/dist/react-datepicker.css"
 
-function ModalAdmin({message, value,setNew,err,exp }) {
+function ModalAdmin({ message, value, setNew, err, exp }) {
 
 
 
     const image = 'https://drive.google.com/uc?export=view&id=1Gx08yGg-rGq0tUe5yVHWxbkaMfmrUOk0'
 
-    const handleShow = () => {setShow(true);}
+    const handleShow = () => { setShow(true); }
 
-    const [newValue,setNewValue]= useState("");
+    const [newValue, setNewValue] = useState("");
     const [show, setShow] = useState(false);
     const [error, setError] = useState("");
 
     const [selectedDate, setSelectedDate] = useState("");
 
 
-        //ONCHANGE FOR INPUT METHODS
-        const onChange = (e) => {
-            setNewValue(e.target.value)
-        }
+    //ONCHANGE FOR INPUT METHODS
+    const onChange = (e) => {
+        setNewValue(e.target.value)
+    }
     //UPDATE THE NAME AND PHONE
-    const changeData = async  () => {
+    const changeData = async () => {
         switch (message) {
             case "Cambia el nombre":
                 try {
@@ -52,8 +52,8 @@ function ModalAdmin({message, value,setNew,err,exp }) {
                 break;
             case "Cambia la fecha de nacimiento":
                 try {
-                   setNew(selectedDate.toISOString().split("T")[0].split("-").reverse().join("/"))
-                   handleClose()
+                    setNew(selectedDate.toISOString().split("T")[0].split("-").reverse().join("/"))
+                    handleClose()
                 } catch (error) {
                     console.log(error.message)
                 }
@@ -73,25 +73,25 @@ function ModalAdmin({message, value,setNew,err,exp }) {
 
 
 
-   const valid =()=>{
-    if(message!="Cambia la fecha de nacimiento"){
-        if(exp.test(newValue)){
-            setError("")
-        }else{
-            setError(err)
-        }
-    }else{
+    const valid = () => {
+        if (message != "Cambia la fecha de nacimiento") {
+            if (exp.test(newValue)) {
+                setError("")
+            } else {
+                setError(err)
+            }
+        } else {
 
+
+        }
 
     }
-    
-}
 
 
 
-const handleDateChange = (date) => {
-    setSelectedDate(date);
-  };
+    const handleDateChange = (date) => {
+        setSelectedDate(date);
+    };
 
     return (
         <>
@@ -104,37 +104,37 @@ const handleDateChange = (date) => {
                     </Modal.Title>
                 </Modal.Header>
                 <Modal.Body className={Styles.modalBody}>
-                    <input className={Styles.input} readOnly  
+                    <input className={Styles.input} readOnly
                         defaultValue={value} required></input>
-                        {exp ?
+                    {exp ?
                         <>
-                        <input 
-                        onKeyUp={valid} className={Styles.input} placeholder={message} required value={newValue} onChange={onChange}></input>
-                        <label>{error}</label>
+                            <input
+                                onKeyUp={valid} className={Styles.input} placeholder={message} required value={newValue} onChange={onChange}></input>
+                            <label>{error}</label>
                         </>
-                        :  
+                        :
                         <div className={Styles.dataP}>
-                        <ReactDatePicker
-                            className={Styles.input}
-                            selected={selectedDate}
-                            onChange={handleDateChange}
-                            dateFormat="dd/MM/yyyy"
-                            placeholderText={message}
-                        />
+                            <ReactDatePicker
+                                className={Styles.input}
+                                selected={selectedDate}
+                                onChange={handleDateChange}
+                                dateFormat="dd/MM/yyyy"
+                                placeholderText={message}
+                            />
                         </div>
-                    //      <InputComponent
-                    //      estado={date}
-                    //      cambiarEstado={setDate}
-                    //      tipo="date"
-                    //      label="Fecha de nacimiento"
-                    //      placeholder="Fecha de nacimiento"
-                    //      name="dateNac"
-                    //      errorMsg="Elija una fecha válida"
-                    //      funcion={validarFecha}
-                    //  />
-                        
-                        }
-                    
+                        //      <InputComponent
+                        //      estado={date}
+                        //      cambiarEstado={setDate}
+                        //      tipo="date"
+                        //      label="Fecha de nacimiento"
+                        //      placeholder="Fecha de nacimiento"
+                        //      name="dateNac"
+                        //      errorMsg="Elija una fecha válida"
+                        //      funcion={validarFecha}
+                        //  />
+
+                    }
+
                 </Modal.Body>
                 <Modal.Footer className={Styles.modalFooter}>
                     <Button className={Styles.btnSave} variant="btn btn-dark" onClick={changeData}>

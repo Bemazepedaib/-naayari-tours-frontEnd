@@ -47,16 +47,18 @@ function Reservations() {
     }
 
     const funcionPush = (nombre, telefono, fecha, tipo) => {
-        const objeto = {
-            companionType: tipo,
-            companionName: nombre,
-            companionCell: telefono,
-            companionBirthdate: fecha.toISOString().split("T")[0].split("-").reverse().join("/")
-        }
-        switch (tipo) {
-            case "adult": if (nombre && telefono && fecha) funcionType(adult, objeto); break;
-            case "child": if (nombre && fecha) funcionType(child, objeto); break;
-            case "baby": if (nombre && fecha) funcionType(baby, objeto); break;
+        if (nombre && fecha) {
+            const objeto = {
+                companionType: tipo,
+                companionName: nombre,
+                companionCell: telefono,
+                companionBirthdate: fecha.toISOString().split("T")[0].split("-").reverse().join("/")
+            }
+            switch (tipo) {
+                case "adult": if (telefono) funcionType(adult, objeto); break;
+                case "child": funcionType(child, objeto); break;
+                case "baby": funcionType(baby, objeto); break;
+            }
         }
     }
 
@@ -75,7 +77,7 @@ function Reservations() {
                 <div className={Styles.contenedorFormulario}>
                     <div className={Styles.titulo}>Participantes</div>
                     <SelectComponent
-                        textoLabel={"Adultos " + precioPasajero + "$"} dato={adultNumber}
+                        textoLabel={"Adultos $" + precioPasajero} dato={adultNumber}
                         cambiarDato={setAdultNumber} opciones={Array.from({ length: 9 }, (_, i) => i + 1)}
                         funcion={() => { funcionSlice("adult", adultNumber) }}
                     />
@@ -85,7 +87,7 @@ function Reservations() {
                         </Slide>
                     )) : <div />}
                     <SelectComponent
-                        textoLabel={"Niños " + precioPasajero + "$"} dato={childNumber}
+                        textoLabel={"Niños $" + precioPasajero} dato={childNumber}
                         cambiarDato={setChildNumber} opciones={[...Array(10).keys()]}
                         funcion={() => { funcionSlice("child", childNumber) }}
                     />
@@ -95,7 +97,7 @@ function Reservations() {
                         </Slide>
                     )) : <div />}
                     <SelectComponent
-                        textoLabel={"Bebés " + precioBebe + "$"} dato={babyNumber}
+                        textoLabel={"Bebés $" + precioBebe} dato={babyNumber}
                         cambiarDato={setBabyNumber} opciones={[...Array(10).keys()]}
                         funcion={() => { funcionSlice("baby", babyNumber) }}
                     />

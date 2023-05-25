@@ -3,7 +3,6 @@
 
 #sidebarAdmin {
     background: #121820;
-    overflow-y: auto;
     padding: 10px;
     -webkit-transition: all .5s;
     transition: all .5s;
@@ -19,11 +18,15 @@
     color: #f3f4f6;
     margin-bottom: 30px;
     font-family: 'Genos', sans-serif;
+    position: relative;
 }
 
 .sidebarAdminMenu {
     display: flex;
     flex-direction: column;
+    position: sticky;
+    top: 0vh;
+
 }
 
 .fTitle {
@@ -84,8 +87,9 @@
 .sidebar {
     grid-row-start: 1;
     grid-row-end: 3;
-    display: inline !important;
     left: 0 !important;
+    position: sticky;
+    top: 0vh;
 }
 
 @media (max-width: 1000px) {

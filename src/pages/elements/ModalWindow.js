@@ -20,7 +20,6 @@ function ModalWindow({titleText,text,send}) {
       handleShow();
     }
   }
-
   return (
     <>
       <div className={Styles.buttonWbords} onClick={activateBothMethods}>

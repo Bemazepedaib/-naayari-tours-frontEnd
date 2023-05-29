@@ -1,8 +1,8 @@
 //IMPORTS
 import { React, useState } from 'react'
 import { useQuery, useMutation } from '@apollo/client'
-import Router, { useRouter } from 'next/router';
 import SearchTripView from "../elements/SearchTripView"
+import ReactDatePicker from 'react-datepicker'
 //APOLLO REQUEST
 import { ADD_TRIP, UPDATE_TRIP } from '../mutations/tripMutations';
 import { ADD_EVENT } from '../mutations/eventMutations';
@@ -21,6 +21,11 @@ import InputComponent from './Input'
 
 const CreateTripView = ({ trip }) => {
     //MUTATION
+    const miniFunction = (date) => {
+        const [dia, mes, anio] = date.split("/");
+        return new Date(anio, mes - 1, dia);
+    }
+
     const [addEvent] = useMutation(ADD_EVENT);
     const [addTrip] = useMutation(ADD_TRIP);
     const [updateTrip] = useMutation(UPDATE_TRIP);
@@ -34,14 +39,22 @@ const CreateTripView = ({ trip }) => {
     const [dateAdd, setDateAdd] = useState({ value: "", valid: true });
     const [action, setAction] = useState(trip ? true : false);
     const [newTrip, setNewTrip] = useState();
-    const [successful,setSuccessful] = useState("")
+    const [successful, setSuccessful] = useState("")
+    const [dateStart, setDateStart] = useState(trip ? (trip.trip.tripInformation.discount
+        ? (trip.trip.tripInformation.discount.available == true ? {
+            value: miniFunction(trip.trip.tripInformation.discount.dateStart)
+            , valid: true
+        } :
+            { value: "", valid: true }) : { value: "", valid: true }) : { value: "", valid: true });
+    const [dateEnd, setDateEnd] = useState(trip ? (trip.trip.tripInformation.discount
+        ? (trip.trip.tripInformation.discount.available == true ? {
+            value: miniFunction(trip.trip.tripInformation.discount.dateEnd), valid: true
+        } :
+            { value: "", valid: true }) : { value: "", valid: true }) : { value: "", valid: true });
+    const [discount, setDiscount] = useState(trip ? (trip.trip.tripInformation.discount
+        ? (trip.trip.tripInformation.discount.available === true ? true : false)
+        : false) : false)
 
-
-    const [dateStart, setDateStart] = useState(trip ? { value: new Date(trip.trip.tripInformation.discount.dateStart), valid: true } : { value: "", valid: true });
-    const [dateEnd, setDateEnd] = useState(trip ? { value: new Date(trip.trip.tripInformation.discount.dateEnd), valid: true } : { value: "", valid: true });
-
-    
-    const [discount, setDiscount] = useState(trip ? trip.trip.tripInformation.discount.available : false);
     const [dates, setDates] = useState(trip ? trip.trip.tripInformation.date : []);
     const [auxDates, setAuxDates] = useState((trip ? trip.trip.tripInformation.date.join('\n') : ""));
     const [description, setDescription] = useState(trip ? trip.trip.tripInformation.description : "");
@@ -60,14 +73,16 @@ const CreateTripView = ({ trip }) => {
     const { loading, error, data } = useQuery(GET_PREFERENCES)
 
     //FUNCTIONS
+
     const getFecha = (fecha) => {
-        return new Date(fecha).toISOString().split("T")[0].split("-").reverse().join("/")
+        if (fecha) {
+            return new Date(fecha).toISOString().split("T")[0].split("-").reverse().join("/")
+        }
     }
-
-
     //ON SUBMIT
     const onSubmit = async (e) => {
         e.preventDefault();
+        console.log(dateStart.value)
         if (!action === true && (name.value !== "" && photo.value !== "" && price.value !== ""
             && duration.value !== "" && place.value !== "" && dates.length > 0 &&
             description !== "" && itinerary !== "" && recomendations !== "" && kit !== ""
@@ -124,8 +139,8 @@ const CreateTripView = ({ trip }) => {
                             priceAmount: parseInt(price.value, 10)
                         }],
                         discount: discount ? {
-                            dateStart:  getFecha(dateStart.value),
-                            dateEnd:  getFecha(dateEnd.value),
+                            dateStart: getFecha(dateStart.value),
+                            dateEnd: getFecha(dateEnd.value),
                             amount: parseInt(amount.value, 10),
                             available: true
                         } : {}
@@ -137,8 +152,10 @@ const CreateTripView = ({ trip }) => {
         } else if (!action === false && (name.value !== "" && photo.value !== "" && price.value !== ""
             && duration.value !== "" && place.value !== "" && dates.length > 0 &&
             description !== "" && itinerary !== "" && recomendations !== "" && kit !== ""
-            && activities.length > 0) && (discount ? dateStart.value !== "" : dateStart.value === "")
-            && (discount ? dateEnd.value !== "" : dateEnd.value === "") && (discount ? amount.value !== "" : amount.value === "")) {
+            && activities.length > 0)
+            && (discount ? dateStart.value !== "" : dateStart.value === "")
+            && (discount ? dateEnd.value !== "" : dateEnd.value === "")
+            && (discount ? amount.value !== "" : amount.value === "")) {
             try {
                 await updateTrip({
                     variables: {
@@ -187,16 +204,14 @@ const CreateTripView = ({ trip }) => {
                         console.log("Ocurrio Una duplicación")
                     }
                 })
-                window.location.href = "/sites/TripView";
             } catch (err) {
             }
+            window.location.href = "/sites/TripView";
         } else {
             setSuccessful("Porfavor Completa Todos los campos")
         }
 
     }
-
-
     //CHANGE INPUT VALUES
     const onChange = (e) => {
         switch (e.target.name) {
@@ -242,6 +257,10 @@ const CreateTripView = ({ trip }) => {
     }
     const handleOnChange = () => {
         setDiscount(!discount);
+        setDateStart({ value: "", valid: true });
+        setDateEnd({ value: "", valid: true });
+        setAmount({ value: "", valid: true });
+
     }
     const checkPreferences = (name) => {
         let variable = false

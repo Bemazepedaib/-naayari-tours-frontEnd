@@ -40,6 +40,9 @@ function ModalEvent({ user, trip, date, deleteReservation, updateReservation }) 
     const [paidChange, setPaidChange] = useState()
     const [errorMessage, setErrorMessage] = useState("")
 
+    const [input, setInput] = useState("");
+    const [comboData, setComboData] = useState(eventData?.events)
+
     const fechaHoy = new Date(Date.now()).toISOString().split("T")[0].split("-").reverse()
 
     let id = 0;
@@ -76,6 +79,21 @@ function ModalEvent({ user, trip, date, deleteReservation, updateReservation }) 
             setErrorMessage(error.message)
         }
     }
+
+    const handlechange = (e) => {
+        e.preventDefault();
+        setInput(e.target.value);
+        searchBar(e.target.value, eventData?.events, setComboData);
+    };
+
+    const searchBar = (termino, hook, setHook) => {
+        let searchResult = hook.filter((element) => {
+            if (element.eventTrip.toString().toLowerCase().includes(termino.toLowerCase()) ||
+                element.eventDate.toString().toLowerCase().includes(termino.toLowerCase()))
+                return element;
+        });
+        setHook(searchResult);
+    };
 
     if (userLoading) return (<Spinner />)
 
@@ -183,6 +201,14 @@ function ModalEvent({ user, trip, date, deleteReservation, updateReservation }) 
                         <Modal.Body bsPrefix={Styles.confirmModalBody}>
                             Seleccione el viaje a donde quiera cambiar la reservacion
                             <br />
+                            <input
+                                className={Styles.input}
+                                placeholder="Ingrese datos del evento a buscar"
+                                value={input}
+                                onChange={handlechange}
+                                name={"events"}
+                                key={"events"}
+                            ></input>
                             <br />
                             <select
                                 value={event}
@@ -191,7 +217,7 @@ function ModalEvent({ user, trip, date, deleteReservation, updateReservation }) 
                                 className={Styles.comboBox}
                             >
                                 <option value="null"> Seleccione un viaje </option>
-                                {eventData?.events.map(event => (
+                                {comboData.map(event => (
                                     <option value={event.eventDate + "|" + event.eventTrip} key={event.eventDate + event.eventTrip}>
                                         {event.eventDate + "|" + event.eventTrip}
                                     </option>

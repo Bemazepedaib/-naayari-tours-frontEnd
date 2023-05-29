@@ -170,10 +170,11 @@
 }
 
 .comboBox {
-    width: 15vw;
+    width: 60%;
     text-transform: uppercase;
     text-align: center;
     font-size: 15px;
+    border-radius: 5px;
     height: 30px;
     font-family: 'Oswald', sans-serif;
 }
@@ -185,6 +186,14 @@
     color: red;
     text-transform: uppercase;
     background-color: #fff;
+}
+
+.input {
+    width: 60%;
+    margin-top: 20px;
+    border-radius: 5px;
+    font-size: 15px;
+    text-align: center;
 }
 
 @media (max-width: 600px) {

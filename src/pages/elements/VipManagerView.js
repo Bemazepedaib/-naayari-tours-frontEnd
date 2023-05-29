@@ -1,9 +1,9 @@
 import { React, useState } from "react";
 import HeaderTittle from "./HeaderTittle";
 import Styles from "../../styles/elementStyles/RequestsView.module.css";
+import Router from "next/router";
 
 const VipManagerView = ({ requests }) => {
-  console.log(requests.requests);
   const [pendingRequests, setPendingRequests] = useState(
     requests.requests.filter((requests) => requests.requestStatus === "pending")
   );
@@ -22,6 +22,14 @@ const VipManagerView = ({ requests }) => {
       (requests) => requests.requestStatus === "finished"
     )
   );
+
+  const clickEvent = (requestUser) => {
+    Router.push({
+      pathname: "/elements/VipDetails",
+      query: { requestUser },
+    });
+  };
+
   return (
     <div className={Styles.main}>
       <div>
@@ -44,7 +52,12 @@ const VipManagerView = ({ requests }) => {
                 <div className={Styles.textHid}>Usuario:&nbsp;</div>{" "}
                 {request.requestUser}
               </div>
-              <button className={Styles.btn} onClick={() => {}}>
+              <button
+                className={Styles.btn}
+                onClick={() => {
+                  clickEvent(request.requestUser);
+                }}
+              >
                 Ver más
               </button>
             </div>
@@ -60,18 +73,23 @@ const VipManagerView = ({ requests }) => {
               key={request.requesTrip + request.requestUser}
             >
               <div className={Styles.miniFlex}>
-                <div className={Styles.textHid}>Viaje:&nbsp; </div>{" "}
+                <div className={Styles.textHid}>Viaje:&nbsp; </div>
                 {request.requestTrip}
               </div>
               <div className={Styles.miniFlex}>
-                <div className={Styles.textHid}>Fecha:&nbsp;</div>{" "}
+                <div className={Styles.textHid}>Fecha:&nbsp;</div>
                 {request.requestDate}
               </div>
               <div className={Styles.miniFlex}>
-                <div className={Styles.textHid}>Usuario:&nbsp;</div>{" "}
+                <div className={Styles.textHid}>Usuario:&nbsp;</div>
                 {request.requestUser}
               </div>
-              <button className={Styles.btn} onClick={() => {}}>
+              <button
+                className={Styles.btn}
+                onClick={() => {
+                  clickEvent(request.requestUser);
+                }}
+              >
                 Ver más
               </button>
             </div>
@@ -98,7 +116,12 @@ const VipManagerView = ({ requests }) => {
                 <div className={Styles.textHid}>Usuario:&nbsp;</div>{" "}
                 {request.requestUser}
               </div>
-              <button className={Styles.btn} onClick={() => {}}>
+              <button
+                className={Styles.btn}
+                onClick={() => {
+                  clickEvent(request.requestUser);
+                }}
+              >
                 Ver más
               </button>
             </div>
@@ -125,7 +148,12 @@ const VipManagerView = ({ requests }) => {
                 <div className={Styles.textHid}>Usuario:&nbsp;</div>{" "}
                 {request.requestUser}
               </div>
-              <button className={Styles.btn} onClick={() => {}}>
+              <button
+                className={Styles.btn}
+                onClick={() => {
+                  clickEvent(request.requestUser);
+                }}
+              >
                 Ver más
               </button>
             </div>

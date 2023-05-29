@@ -9,6 +9,11 @@
     font-family: 'Oswald', sans-serif;
 }
 
+.stick{
+    position: sticky;
+    top: 10px;
+}
+
 .sidebarAdminTitle {
     display: flex;
     flex-direction: column;
@@ -24,8 +29,6 @@
 .sidebarAdminMenu {
     display: flex;
     flex-direction: column;
-    position: sticky;
-    top: 0vh;
 
 }
 

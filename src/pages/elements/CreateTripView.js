@@ -25,7 +25,7 @@ const CreateTripView = ({ trip }) => {
         const [dia, mes, anio] = date.split("/");
         return new Date(anio, mes - 1, dia);
     }
-    
+
     const [addEvent] = useMutation(ADD_EVENT);
     const [addTrip] = useMutation(ADD_TRIP);
     const [updateTrip] = useMutation(UPDATE_TRIP);

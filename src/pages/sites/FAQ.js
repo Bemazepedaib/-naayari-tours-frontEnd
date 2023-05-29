@@ -6,7 +6,7 @@ import AccordionItem from '../elements/AccordionItem';
 
 function Preguntas(link) {
 
-    const linkCalendario = link;
+    const linkCatalogo = link;
     const linkMapa = "https://www.google.com/maps/@21.4811868,-104.867171,3a,75y,119.94h,86.92t/data=!3m7!1e1!3m5!1s8QHh_X8lk1xe6fX13yxktA!2e0!6shttps:%2F%2Fstreetviewpixels-pa.googleapis.com%2Fv1%2Fthumbnail%3Fpanoid%3D8QHh_X8lk1xe6fX13yxktA%26cb_client%3Dmaps_sv.tactile.gps%26w%3D203%26h%3D100%26yaw%3D156.55252%26pitch%3D0%26thumbfov%3D100!7i16384!8i8192"
 
     const preguntas = [
@@ -114,9 +114,9 @@ function Preguntas(link) {
                     <p />
                     <b>Paso 2:</b> Ve al inicio y selecciona el viaje que más te interese.
                     <p />
-                    <b>Paso 3:</b> Aquí, haz clic en el botón de "¡Crea tu grupo VIP!".
+                    <b>Paso 3:</b> Selecciona la fecha que desees reservar.
                     <p />
-                    <b>Paso 4:</b> Selecciona la fecha que desees reservar y manda tu solicitud con el botón.
+                    <b>Paso 4:</b> Después, haz clic en el botón de "¡Crea tu grupo VIP!".
                     <p />
                     <b>Paso 5:</b> Espera a que un administrador se comunique contigo vía whatsapp para continuar con el proceso.
                     <p />
@@ -124,8 +124,8 @@ function Preguntas(link) {
                 </div>)
         },
         {
-            eventKey: "12", header: "¿Qué viajes hay este mes?",
-            body: (<div>Da clic para ver el calendario del mes → <a href={linkCalendario}>Calendario</a> </div>)
+            eventKey: "12", header: "¿Qué viajes ofrecen?",
+            body: (<div>Da clic para ver nuestro catálogo → <a href={linkCatalogo}>Catalogo</a> </div>)
         },
     ]
 

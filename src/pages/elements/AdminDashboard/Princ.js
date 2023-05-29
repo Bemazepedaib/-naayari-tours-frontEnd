@@ -248,7 +248,7 @@ function Princ() {
                             className={Styles.comboBox}
                         >
                             {months.map(month => (
-                                <option value={month.value}> {month.text} </option>
+                                <option key={month.value} value={month.value}> {month.text} </option>
                             ))}
                         </select>
                         <select
@@ -258,7 +258,7 @@ function Princ() {
                             className={Styles.comboBox}
                         >
                             {years.map(year => (
-                                <option value={year.value}> {year.text}  </option>
+                                <option key={year.value} value={year.value}> {year.text} </option>
                             ))}
                         </select>
                     </div>

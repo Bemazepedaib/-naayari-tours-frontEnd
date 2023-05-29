@@ -116,7 +116,6 @@
     flex-wrap: wrap;
     justify-content: center;
     align-items: center;
-    gap: 10px;
 }
 
 .chartsTitle {
@@ -148,6 +147,7 @@
     border-radius: 5px;
     height: 30px;
     font-family: 'Oswald', sans-serif;
+    margin: 10px;
 }
 
 @media (max-width: 600px) {

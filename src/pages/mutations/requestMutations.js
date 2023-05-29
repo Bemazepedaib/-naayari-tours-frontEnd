@@ -8,4 +8,10 @@ const ADD_REQUEST = gql`
     }
 `;
 
-export { ADD_REQUEST };
+const UPDATE_REQUEST = gql`
+    mutation updateRequest($requestUser:String!,$requestStatus:String!){
+        updateRequest(requestUser:$requestUser,requestStatus:$requestStatus)
+    }
+`
+
+export { ADD_REQUEST, UPDATE_REQUEST };

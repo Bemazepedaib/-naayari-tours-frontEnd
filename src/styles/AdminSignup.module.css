@@ -20,7 +20,7 @@
 
 .formulario {
   align-self: center;
-  background-image: url('https://drive.google.com/uc?export=view&id=13KXgd3DJj2oeqYJS7EoqNaajsPUJKsDr');
+  background-color: #f0f0f0;
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   padding-bottom: 15px;

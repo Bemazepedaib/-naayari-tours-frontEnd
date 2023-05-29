@@ -1,7 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Oswald:wght@300&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Genos:ital,wght@1,700&display=swap');
 
-.main {
+.sidebar {
     display: grid;
     grid-template-columns: 20% 80%;
     grid-template-rows: repeat(3, 1);
@@ -9,7 +8,7 @@
 }
 
 .error {
-    font-family: 'Genos', sans-serif;
+    font-family: 'Oswald', sans-serif;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -25,5 +24,285 @@
     .error {
         font-size: 20px;
         text-align: center;
+    }
+}
+
+.main {
+    font-family: 'Oswald', sans-serif;
+    font-size: 30px;
+    padding: 20px 35px;
+    height: 100vh;
+    background-image: url('https://drive.google.com/uc?export=view&id=1XPHv76qI1Y303811H7gbUPpmv9KQSa5u');
+    background-size: cover;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.titulo1 {
+    background-color: #1D2128;
+    color: white;
+    width: 95%;
+    border-radius: 10px;
+    text-shadow: 2px 6px 4px rgba(0, 0, 0, 0.4);
+    text-align: center;
+    margin: 10px;
+    margin-top: 20px;
+    font-family: 'Oswald', sans-serif;
+    font-weight: bold;
+    font-size: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100px;
+}
+
+.titulo2 {
+    background-color: white;
+    width: 85%;
+    border-radius: 10px;
+    border: 2px solid #1D2128;
+    text-align: center;
+    margin: 10px;
+    margin-top: 20px;
+    font-family: 'Oswald', sans-serif;
+    font-weight: bold;
+    font-size: 30px;
+}
+
+.subtitle {
+    font-family: 'Oswald', sans-serif;
+    font-size: 25px;
+}
+
+.contenedorUsuarios {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 30px;
+    justify-content: center;
+    width: 90%;
+}
+
+.contenedorDatos {
+    background-color: #fff;
+    width: 80%;
+    text-align: center;
+    font-size: 20px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    gap: 10px;
+    padding: 10px;
+}
+
+.noReservation {
+    border-radius: 10px;
+    border: 2px solid #1D2128;
+    font-family: 'Oswald', sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 40px;
+    text-align: center;
+    background-color: #fff;
+    padding: 30px;  
+}
+
+.comboBox {
+    width: 18vw;
+    text-transform: uppercase;
+    text-align: center;
+    font-size: 15px;
+    height: 30px;
+    font-family: 'Oswald', sans-serif;
+}
+
+.grupoCambiarEstado {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    justify-content: center;
+    align-items: center;
+    font-family: 'Oswald', sans-serif;
+    width: 40%;
+}
+
+.grupoTexto {
+    width: 30%;
+}
+
+.btn {
+    font-family: 'Oswald', sans-serif;
+    background-color: #00a748;
+    border: NONE;
+    border-radius: 10px;
+    box-sizing: border-box;
+    color: #ffffff;
+    cursor: pointer;
+    display: inline-block;
+    font-size: 13px;
+    line-height: normal;
+    text-align: center;
+    transition: all 300ms cubic-bezier(.23, 1, 0.32, 1);
+    will-change: transform;
+    width: 15vw;
+    height: 30px;
+    text-transform: uppercase;
+}
+
+.btn:hover {
+    color: #ffffff;
+    background-color: #00a748;
+    box-shadow: rgba(0, 0, 0, 0.25) 0 8px 15px;
+    transform: translateY(-2px);
+    border: NONE;
+}
+
+.btn:active {
+    box-shadow: none;
+    transform: translateY(0);
+}
+
+
+.confirmModalBody {
+    font-family: 'Oswald', sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    margin: 5px 10px;
+    font-size: 20px;
+}
+
+.confirmModalHeader {
+    font-family: 'Oswald', sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 10px;
+    margin: 10px 30px;
+}
+
+.confirmModalFooter {
+    font-family: 'Oswald', sans-serif;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    margin: 20px 30px;
+}
+
+
+.confirmButton {
+    font-family: 'Oswald', sans-serif;
+    font-size: 20px;
+    background-color: #00a748;
+    border: NONE;
+    color: #ffffff;
+    padding: 7px 10px;
+    border-radius: 5px;
+    transition: 0.3s ease all;
+    width: 12vw;
+}
+
+.confirmButton:hover {
+    background-color: #00883b;
+    box-shadow: rgba(0, 0, 0, 0.25) 0 8px 15px;
+    transform: translateY(-2px);
+    border: NONE;
+}
+
+.cancelButton {
+    font-family: 'Oswald', sans-serif;
+    font-size: 20px;
+    background-color: #db1010;
+    border: NONE;
+    color: #ffffff;
+    padding: 7px 10px;
+    border-radius: 5px;
+    transition: 0.3s ease all;
+    width: 12vw;
+}
+
+.cancelButton:hover {
+    background-color: #ac0c0c;
+    box-shadow: rgba(0, 0, 0, 0.25) 0 8px 15px;
+    transform: translateY(-2px);
+    border: NONE;
+}
+
+@media (max-width: 600px) {
+
+    .noReservation {
+        font-size: 15px;
+    }
+    .main {
+        padding: 15px;
+        background-size: contain;
+        height: 100%;
+    }
+
+    .titulo1 {
+        font-size: 16px;
+        width: 100%;
+        height: 50px;
+        margin: 2px;
+    }
+
+    .titulo2 {
+        font-size: 17px;
+    }
+
+    .contenedorUsuarios {
+        gap: 0;
+    }
+
+    .grupoTexto {
+        width: 100%;
+    }
+
+    .grupoCambiarEstado {
+        width: 100%;
+    }
+
+    .contenedorDatos {
+        font-size: 11px;
+        flex-direction: column;
+        flex-wrap: nowrap;
+    }
+
+    .subtitle {
+        font-size: 13px;
+    }
+    
+    .comboBox {
+        width: 80%;
+        height: fit-content;
+        font-size: 8px;
+    }
+
+    .btn {
+        width: 80%;
+        height: fit-content;
+        font-size: 8px;
+    }
+
+    .confirmModalBody {
+        font-size: 12px;
+    }
+
+    .cancelButton {
+        font-size: 8px;
+        width: fit-content;
+    }
+
+    .confirmButton {
+        font-size: 8px;
+        width: fit-content;
+    }
+
+    .image {
+        width: 50px;
     }
 }

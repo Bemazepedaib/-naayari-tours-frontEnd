@@ -11,6 +11,7 @@ import { useQuery } from '@apollo/client';
 import { GET_USERS, ME } from '../../querys/userQuerys';
 import { GET_TRIPS } from 'naayari-tours/pages/querys/tripQuerys';
 import { GET_EVENTS } from 'naayari-tours/pages/querys/eventQuerys';
+import { useState } from 'react';
 
 function Princ() {
 
@@ -28,6 +29,35 @@ function Princ() {
     let tripsWithReservations = []
     let tripsRating = []
     let tripsOfTheMonth = []
+
+    const fechaHoy = new Date(Date.now()).toISOString().split("T")[0].split("-").reverse()
+    const [month, setMonth] = useState(fechaHoy[1])
+    const [year, setYear] = useState(fechaHoy[2])
+
+    const months =
+        [
+            { value: "01", text: "Enero" },
+            { value: "02", text: "Febrero" },
+            { value: "03", text: "Marzo" },
+            { value: "04", text: "Abril" },
+            { value: "05", text: "Mayo" },
+            { value: "06", text: "Junio" },
+            { value: "07", text: "Julio" },
+            { value: "08", text: "Agosto" },
+            { value: "09", text: "Septiembre" },
+            { value: "10", text: "Octubre" },
+            { value: "11", text: "Noviembre" },
+            { value: "12", text: "Diciembre" }
+        ]
+
+    const years = 
+    [
+        { value: "2022", text: "2022"},
+        { value: "2023", text: "2023"},
+        { value: "2024", text: "2024"},
+        { value: "2025", text: "2025"},
+        { value: "2026", text: "2026"},
+    ]
 
     const fillUsers = () => {
         usersData.users.map(user => {
@@ -102,10 +132,9 @@ function Princ() {
     }
 
     const fillTripsOfTheMonth = () => {
-        const fechaHoy = new Date(Date.now()).toISOString().split("T")[0].split("-")
         eventData.events.map(event => {
             const fechaViaje = event.eventDate.split("/")
-            if (fechaViaje[1] === fechaHoy[1] && fechaViaje[2] === fechaHoy[0]) {
+            if (fechaViaje[1] === month && fechaViaje[2] === year) {
                 const i = tripsOfTheMonth.findIndex(item => item.tripName === event.eventTrip)
                 if (i > -1) {
                     tripsOfTheMonth[i].tripReservations += event.users.length;
@@ -198,20 +227,40 @@ function Princ() {
                         />
                     </div>
                     <div className={Styles.chart}>
+                        <div className={Styles.chartsTitle}>Viajes con mejor calificación</div>
+                        <Pies
+                            mylabels={tripsRating.slice(0, 5).map(trip => { return trip.tripName })}
+                            mydata={tripsRating.slice(0, 5).map(trip => { return trip.tripRating })}
+                            label={"Calificación"}
+                        />
+                    </div>
+                    <div className={Styles.chart}>
                         <div className={Styles.chartsTitle}>Viajes del mes</div>
                         <Pies
                             mylabels={tripsOfTheMonth.slice(0, 5).map(trip => { return trip.tripName })}
                             mydata={tripsOfTheMonth.slice(0, 5).map(trip => { return trip.tripReservations })}
                             label={"Reservaciones"}
                         />
-                    </div>
-                    <div className={Styles.chart}>
-                        <div className={Styles.chartsTitle}>Viajes con mejor calificación</div>
-                        <Pies
-                            mylabels={tripsRating.slice(0, 5).map(trip => { return trip.tripName })}
-                            mydata={tripsRating.slice(0, 5).map(trip => { return trip.tripRating })}
-                            label={"Calificación"}  
-                        />
+                        <select
+                            value={month}
+                            onChange={e => { setMonth(e.target.value) }}
+                            onBlur={e => { setMonth(e.target.value) }}
+                            className={Styles.comboBox}
+                        >
+                            {months.map(month => (
+                                <option value={month.value}> {month.text} </option>
+                            ))}
+                        </select>
+                        <select
+                            value={year}
+                            onChange={e => { setYear(e.target.value) }}
+                            onBlur={e => { setYear(e.target.value) }}
+                            className={Styles.comboBox}
+                        >
+                            {years.map(year => (
+                                <option value={year.value}> {year.text}  </option>
+                            ))}
+                        </select>
                     </div>
                 </div>
             </div>

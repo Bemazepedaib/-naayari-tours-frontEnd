@@ -112,6 +112,11 @@
 .chart {
     width: 40%;
     margin: 20px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
 }
 
 .chartsTitle {
@@ -133,6 +138,16 @@
     text-align: center;
     background-image: url('https://drive.google.com/uc?export=view&id=1XPHv76qI1Y303811H7gbUPpmv9KQSa5u');
     background-size: cover;
+}
+
+.comboBox {
+    width: 40%;
+    text-transform: uppercase;
+    text-align: center;
+    font-size: 15px;
+    border-radius: 5px;
+    height: 30px;
+    font-family: 'Oswald', sans-serif;
 }
 
 @media (max-width: 600px) {

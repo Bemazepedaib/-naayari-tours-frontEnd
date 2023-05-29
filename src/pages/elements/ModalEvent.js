@@ -30,10 +30,11 @@ function ModalEvent({ user, trip, date, deleteReservation, updateReservation }) 
     const [showConfirm1, setShowConfirm1] = useState(false)
     const handleConfirmClose1 = () => setShowConfirm1(false);
     const handleConfirmShow1 = () => setShowConfirm1(true);
-    const [confirmMessage1, setConfirmMessage1] = useState("¿Está seguro que desea eliminar la reservación?");
     const [showConfirm2, setShowConfirm2] = useState(false)
     const handleConfirmClose2 = () => setShowConfirm2(false);
     const handleConfirmShow2 = () => setShowConfirm2(true);
+
+    const [confirmMessage1, setConfirmMessage1] = useState("¿Está seguro que desea eliminar la reservación?");
     const [confirmMessage2, setConfirmMessage2] = useState("");
     const [event, setEvent] = useState("")
     const [paid, setPaid] = useState(user.advancePaid)
@@ -217,7 +218,7 @@ function ModalEvent({ user, trip, date, deleteReservation, updateReservation }) 
                                 className={Styles.comboBox}
                             >
                                 <option value="null"> Seleccione un viaje </option>
-                                {comboData.map(event => (
+                                {comboData?.map(event => (
                                     <option value={event.eventDate + "|" + event.eventTrip} key={event.eventDate + event.eventTrip}>
                                         {event.eventDate + "|" + event.eventTrip}
                                     </option>

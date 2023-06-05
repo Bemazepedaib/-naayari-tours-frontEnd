@@ -280,10 +280,7 @@
     }
     .dataSubContainer {
         flex-direction: column;
-    }
-    .btnEdit{
-        width: 50px;
-        height: 100px;
+        text-align: center;
     }
     /*USER LEVEL.*/
     .circleLvl {

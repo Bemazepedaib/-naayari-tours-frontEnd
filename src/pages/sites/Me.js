@@ -212,16 +212,18 @@ function Me() {
                         <hr />
                         <form className={Styles.inputContainer} onSubmit={changePassword}>
                             <input className={Styles.input} value={password} onChange={onChange}
-                                type="password" placeholder='Introducir contraseña actual' name='password'>
+                                type="password" placeholder='Introducir contraseña actual' 
+                                autoComplete = "on" name='password'>
 
                             </input>
                             <input className={Styles.input} value={updateValue} onChange={onChange}
-                                type="password" placeholder='Introducir nueva contraseña' name='updateValue'>
+                                type="password" placeholder='Introducir nueva contraseña'
+                                autoComplete = "on" name='updateValue'>
 
                             </input>
                             <input className={Styles.input} value={confirmValue} onChange={onChange}
                                 type="password" placeholder='Introducir nueva contraseña de nuevo'
-                                name='confirmValue'>
+                                autoComplete = "on" name='confirmValue'>
                             </input>
                             <button type="submit" className={Styles.btnChange}>CAMBIAR LA CONTRASEÑA</button>
                         </form>

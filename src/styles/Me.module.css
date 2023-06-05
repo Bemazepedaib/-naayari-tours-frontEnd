@@ -163,6 +163,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    text-align: center;
     flex-wrap: wrap;
     width: minmax(min-content, 80%);
     padding: 10px 20px;
@@ -252,16 +253,66 @@
     font-size: 30px;
     margin-top: 15px;
 }
+
 .errorMessage {
     color: rgb(255, 0, 0);
     font-size: 18px;
     text-align: center;
     text-transform: uppercase;
 }
-.sucessMessage{
+
+.sucessMessage {
     color: green;
     font-size: 18px;
     text-align: center;
     text-transform: uppercase;
+}
 
+@media (max-width: 600px) {
+.titleChanges {
+    font-size: 20px;
+}
+
+    /*USER LEVEL.*/
+    .circleLvl {
+        width: 50px;
+        height: 50px;
+        top: 110px;
+        right: 50px;
+    }
+
+    .numberLvl {
+        top: -5px;
+        left: 18px;
+        font-size: 30px;
+    }
+    .numberLvlDesc {
+        top: 31px;
+        left: 16px;
+        font-size: 10px;
+    }
+
+    .persoInfoSub {
+        font-size: 15px;
+    }
+
+    .persoInfoData {
+        width: 160px;
+        height: 50px;
+    }
+    .subtitleData {
+        font-size: 15px;
+    }
+    .dataContainer {
+        width: 160px;
+        height: 50px;
+    }
+    .btnChange {
+        width: 150PX;
+        height: 60px;
+    }
+    .couponsCard {
+        width: 180px;
+        height: max-content;
+    }
 }

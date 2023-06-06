@@ -195,7 +195,7 @@ function Me() {
                         <hr />
                         <div className={Styles.couponSubContainer}>
                             {data.me.coupons.map(coupons => (
-                                coupons.couponApplied ? null
+                                !coupons.couponApplied ? null
                                     : <div key={coupons.couponType + coupons.couponDate} className={Styles.couponsCard}>
                                         <span>Nombre: {coupons.couponType}</span>
                                         <span>Descripción: {coupons.couponDescription}</span>

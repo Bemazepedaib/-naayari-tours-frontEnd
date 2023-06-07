@@ -1,20 +1,35 @@
 import Styles from "../../styles/elementStyles/UpdateUser.module.css"
 import { useState, React } from 'react'
 import ModalAdmin from "../elements/ModalAdmin"
+
+import Modal from 'react-bootstrap/Modal';
 import HeaderTittle from "../elements/HeaderTittle"
-import { Button } from 'react-bootstrap'
+import Button from 'react-bootstrap/Button';
+
+import Image from 'next/image'
+
 import { useMutation } from '@apollo/client';
-import { UPDATE_USER_NAME_ADMIN, UPDATE_USER_CELL_ADMIN, UPDATE_USER_BIRTH_ADMIN, UPDATE_USER_PASSWORD_ADMIN } from '../mutations/userMutations';
+import { UPDATE_USER_NAME_ADMIN, UPDATE_USER_CELL_ADMIN, UPDATE_USER_BIRTH_ADMIN, UPDATE_USER_PASSWORD_ADMIN, UPDATE_COUPONS } from '../mutations/userMutations';
 
 
 function UpdateUser({ user }) {
 
 	let k = 0
+	let k2 = 0
+
+
+	const image = 'https://drive.google.com/uc?export=view&id=1hKQxSheX5io9bPjn99_TedN8SCTNcsoK'
+	const [confirmMessage1, setConfirmMessage1] = useState("¿Está seguro que desea cambiar el estado de la solicitud?");
+
+	const handleConfirmClose1 = () => { setShowConfirm1(false); setConfirmMessage1("¿Está seguro que desea cambiar el estado de la solicitud?") }
+	const handleConfirmShow1 = () => setShowConfirm1(true);
+	const [showConfirm1, setShowConfirm1] = useState(false)
 
 	const [userName] = useMutation(UPDATE_USER_NAME_ADMIN);
 	const [userCellAdmin] = useMutation(UPDATE_USER_CELL_ADMIN);
 	const [userBirthAdmin] = useMutation(UPDATE_USER_BIRTH_ADMIN);
 	const [userPassAdmin] = useMutation(UPDATE_USER_PASSWORD_ADMIN);
+	const [userCoupon] = useMutation(UPDATE_COUPONS);
 
 	const [newName, setNewName] = useState(user.user.name);
 	const [newPhone, setNewPhone] = useState(user.user.cellphone);
@@ -59,10 +74,21 @@ function UpdateUser({ user }) {
 		telefono: /^\d{7,14}$/ // 7 a 14 numeros.
 	}
 
+	const UpdateCoupon = () => {
+		console.log("entra bro")
+	};
+
+	const changeStatus = async (ema, coTy, coDa) => {
+		await userCoupon({ variables: { email: ema, couponType: coTy, couponDate: coDa } })
+
+		handleConfirmClose1();
+	}
+
 
 	return (
 
 		<div className={Styles.mainContainer}>
+			{console.log(user)}
 			<HeaderTittle tittle={"Actualizar Usuario"}></HeaderTittle>
 			<div className={Styles.info}>
 				<section className={Styles.section}>
@@ -125,8 +151,41 @@ function UpdateUser({ user }) {
 					</div>
 				</section>
 			</div>
-			<Button variant="btn btn-dark" onClick={changeData}>Guardar Cambios</Button>
+			<Button variant="btn btn-dark" className={Styles.saveChanges} onClick={changeData}>Guardar Cambios</Button>
 			<div className={Styles.tags}>
+				<p className={`${Styles.tagsInfo} ${Styles.infoSubtitle}`}> Cupón activo </p>
+				{user.user.coupons.map(c => (
+					!c.couponApplied ?
+						<div className={Styles.contenedorEvents} key={k2++}>
+							<div className={Styles.contenedorEvent}>
+								<div className={Styles.miniFlex}>
+									<div className={Styles.textHid}>Tipo:&nbsp; </div>{c.couponType === "birthdayGift" ? "cupon de cumpleaños" : ""}</div>
+								<div className={Styles.miniFlex}><div className={Styles.textHid}>Fecha:&nbsp;</div>{c.couponDate}</div>
+								<div className={Styles.miniFlex}><div className={Styles.textHid}>Descripción:&nbsp;</div>{c.couponDescription}</div>
+								<button className={Styles.btn} onClick={handleConfirmShow1}>
+									Cambiar estado del viaje
+								</button>
+							</div>
+
+							<Modal show={showConfirm1} centered backdrop="static" keyboard={false}>
+								<Modal.Header bsPrefix={Styles.confirmModalHeader}>
+									<Image src={image} className={Styles.image} width={70} height={70} alt="Naayari tours" />
+									<Modal.Title></Modal.Title>
+								</Modal.Header>
+								<Modal.Body bsPrefix={Styles.confirmModalBody}>{confirmMessage1}</Modal.Body>
+								<Modal.Footer bsPrefix={Styles.confirmModalFooter}>
+									<Button bsPrefix={Styles.cancelButton} onClick={handleConfirmClose1}>
+										Cancelar
+									</Button>
+									<Button bsPrefix={Styles.confirmButton} onClick={() => changeStatus(user.user.email, c.couponType, c.couponDate)}>
+										Confirmar
+									</Button>
+								</Modal.Footer>
+							</Modal>
+						</div>
+						: ""
+
+				))}
 				<p className={`${Styles.tagsInfo} ${Styles.infoSubtitle}`}> Preferencias </p>
 				<div className={Styles.pref}>
 					{user.user.preferences.map(pr => (

@@ -19,9 +19,9 @@ function UpdateUser({ user }) {
 
 
 	const image = 'https://drive.google.com/uc?export=view&id=1hKQxSheX5io9bPjn99_TedN8SCTNcsoK'
-	const [confirmMessage1, setConfirmMessage1] = useState("¿Está seguro que desea cambiar el estado de la solicitud?");
+	const [confirmMessage1, setConfirmMessage1] = useState("¿Está seguro que desea cambiar el estado del cupón?");
 
-	const handleConfirmClose1 = () => { setShowConfirm1(false); setConfirmMessage1("¿Está seguro que desea cambiar el estado de la solicitud?") }
+	const handleConfirmClose1 = () => { setShowConfirm1(false); setConfirmMessage1("¿Está seguro que desea cambiar el estado del cupón?") }
 	const handleConfirmShow1 = () => setShowConfirm1(true);
 	const [showConfirm1, setShowConfirm1] = useState(false)
 
@@ -163,7 +163,7 @@ function UpdateUser({ user }) {
 								<div className={Styles.miniFlex}><div className={Styles.textHid}>Fecha:&nbsp;</div>{c.couponDate}</div>
 								<div className={Styles.miniFlex}><div className={Styles.textHid}>Descripción:&nbsp;</div>{c.couponDescription}</div>
 								<button className={Styles.btn} onClick={handleConfirmShow1}>
-									Cambiar estado del viaje
+									Cambiar estado del cupón
 								</button>
 							</div>
 

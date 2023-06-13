@@ -2,8 +2,8 @@ import React from 'react'
 import Styles from '../../styles/Catalogue.module.css'
 
 function CataloguePrices({ trip }) {
-    const disc = trip.discount.available;
-    const discAmount = trip.discount.amount;
+    const disc = trip && trip.discount.available;
+    const discAmount = trip && trip.discount.amount;
     var keyp = 0;
     //(disc)
     return (

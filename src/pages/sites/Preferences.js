@@ -1,11 +1,11 @@
-import { GET_PREFERENCES } from '../querys/preferenceQuerys'
+import { GET_PREFERENCES } from '../../backendOperations/querys/preferenceQuerys'
 import { useQuery } from '@apollo/client'
 import Styles from '../../styles/Preferences.module.css'
 import PreferenceCard from '../elements/PreferenceCard'
 import ModalWindow from '../elements/ModalWindow'
 
 import { useMutation } from '@apollo/client';
-import { UPDATE_USER_PREFERENCES } from '../mutations/userMutations';
+import { UPDATE_USER_PREFERENCES } from '../../backendOperations/mutations/userMutations';
 
 function Preferences({ preferences }) {
 

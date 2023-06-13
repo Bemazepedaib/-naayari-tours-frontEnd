@@ -5,11 +5,11 @@ import Styles from '../../styles/elementStyles/EventDetailsView.module.css'
 
 import ModalEvent from './ModalEvent';
 import { useMutation, useQuery } from '@apollo/client';
-import { UPDATE_STATUS, UPDATE_GUIDE, DELETE_USER, UPDATE_USER } from '../mutations/eventMutations';
+import { UPDATE_STATUS, UPDATE_GUIDE, DELETE_USER, UPDATE_USER } from '../../backendOperations/mutations/eventMutations';
 
 import Modal from 'react-bootstrap/Modal';
 import Button from 'react-bootstrap/Button';
-import { GET_USERS } from '../querys/userQuerys';
+import { GET_USERS } from '../../backendOperations/querys/userQuerys';
 
 function EventDetailsView({ event }) {
 

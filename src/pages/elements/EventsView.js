@@ -4,7 +4,7 @@ import Router from "next/router";
 import Styles from "../../styles/elementStyles/EventsView.module.css";
 
 import { useQuery } from "@apollo/client";
-import { ME } from "../querys/userQuerys";
+import { ME } from "../../backendOperations/querys/userQuerys";
 import { Spinner } from "react-bootstrap";
 
 function EventsView(eventData) {

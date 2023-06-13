@@ -8,9 +8,9 @@ import { faUser, faPlane, faCompass, faInbox, faUsd } from '@fortawesome/free-so
 
 import { Spinner } from 'react-bootstrap';
 import { useQuery } from '@apollo/client';
-import { GET_USERS, ME } from '../../querys/userQuerys';
-import { GET_TRIPS } from 'naayari-tours/pages/querys/tripQuerys';
-import { GET_EVENTS } from 'naayari-tours/pages/querys/eventQuerys';
+import { GET_USERS, ME } from '../../../backendOperations/querys/userQuerys';
+import { GET_TRIPS } from 'naayari-tours/backendOperations/querys/tripQuerys';
+import { GET_EVENTS } from 'naayari-tours/backendOperations/querys/eventQuerys';
 import { useState } from 'react';
 
 function Princ() {

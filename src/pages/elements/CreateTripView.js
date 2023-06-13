@@ -4,14 +4,14 @@ import { useQuery, useMutation } from '@apollo/client'
 import SearchTripView from "../elements/SearchTripView"
 import ReactDatePicker from 'react-datepicker'
 //APOLLO REQUEST
-import { ADD_TRIP, UPDATE_TRIP } from '../mutations/tripMutations';
-import { ADD_EVENT } from '../mutations/eventMutations';
+import { ADD_TRIP, UPDATE_TRIP } from '../../backendOperations/mutations/tripMutations';
+import { ADD_EVENT } from '../../backendOperations/mutations/eventMutations';
 
 //COMPONENTS
 import HeaderTittle from './HeaderTittle'
 
 //GET PREFERENCES
-import { GET_PREFERENCES } from '../querys/preferenceQuerys'
+import { GET_PREFERENCES } from '../../backendOperations/querys/preferenceQuerys'
 
 //CSS
 import Styles from '../../styles/elementStyles/CreateTripView.module.css'

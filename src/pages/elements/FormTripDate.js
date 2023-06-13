@@ -7,7 +7,7 @@ import Router from 'next/router';
 import InputComponent from '../elements/Input';
 
 import { useQuery } from '@apollo/client';
-import { ME } from '../querys/userQuerys';
+import { ME } from '../../backendOperations/querys/userQuerys';
 
 function FormTripDate({ dates, selectedTrip }) {
 

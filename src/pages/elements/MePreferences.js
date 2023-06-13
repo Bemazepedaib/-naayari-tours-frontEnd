@@ -1,5 +1,5 @@
 import React from 'react'
-import { ME } from '../querys/userQuerys';
+import { ME } from '../../backendOperations/querys/userQuerys';
 import { useQuery } from '@apollo/client'
 import Preferences from '../sites/Preferences';
 

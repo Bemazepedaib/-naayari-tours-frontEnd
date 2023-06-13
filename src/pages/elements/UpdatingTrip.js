@@ -1,6 +1,6 @@
 import React from 'react'
 import { useQuery } from '@apollo/client';
-import { GET_TRIP } from '../querys/tripQuerys';
+import { GET_TRIP } from '../../backendOperations/querys/tripQuerys';
 import { useRouter } from 'next/router';
 import CreateTripView from '../elements/CreateTripView';
 import SidebarAdmin from '../elements/AdminDashboard/SidebarAdmin';

@@ -1,7 +1,7 @@
 import React from 'react'
 
 //APOLLO SERVER
-import { GET_PI_TRIPS } from '../querys/tripQuerys';
+import { GET_PI_TRIPS } from '../../backendOperations/querys/tripQuerys';
 import { useQuery } from '@apollo/client';
 
 //COMPONENTS

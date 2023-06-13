@@ -6,7 +6,7 @@ import SidebarAdmin from "./AdminDashboard/SidebarAdmin";
 import Styles from "../../styles/elementStyles/VipDetails.module.css";
 import VipDetailsState from "./VipDetailsState";
 
-import { GET_REQUEST } from "../querys/requestQuerys";
+import { GET_REQUEST } from "../../backendOperations/querys/requestQuerys";
 import { useQuery } from "@apollo/client";
 
 const VipDetails = () => {

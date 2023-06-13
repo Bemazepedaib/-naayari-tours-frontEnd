@@ -5,7 +5,7 @@ import Router from 'next/router';
 
 //MUTATIONS
 import { useMutation } from '@apollo/client';
-import { DELETE_USER } from '../mutations/userMutations';
+import { DELETE_USER } from '../../backendOperations/mutations/userMutations';
 
 //COMPONENTS
 import Modal from 'react-bootstrap/Modal';

@@ -1,6 +1,6 @@
 import React from 'react'
 
-import { GET_EVENT } from '../querys/eventQuerys';
+import { GET_EVENT } from '../../backendOperations/querys/eventQuerys';
 import { useQuery } from '@apollo/client';
 import { Spinner } from 'react-bootstrap';
 

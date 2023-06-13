@@ -6,7 +6,7 @@ import { Button } from 'react-bootstrap'
 import { Modal } from 'react-bootstrap'
 import Image from 'next/image'
 
-import { UPDATE_USER_NAME, UPDATE_USER_CELL } from '../mutations/userMutations';
+import { UPDATE_USER_NAME, UPDATE_USER_CELL } from '../../backendOperations/mutations/userMutations';
 import { useMutation } from '@apollo/client';
 
 function ModalMe({ title, message, setState }) {

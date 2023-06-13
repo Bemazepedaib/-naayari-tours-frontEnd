@@ -4,8 +4,8 @@ import Router from 'next/router';
 
 //QUERYS AND MUTATIONS
 import { useQuery, useMutation } from '@apollo/client';
-import { ME } from '../querys/userQuerys';
-import { UPDATE_USER_PASSWORD } from '../mutations/userMutations';
+import { ME } from '../../backendOperations/querys/userQuerys';
+import { UPDATE_USER_PASSWORD } from '../../backendOperations/mutations/userMutations';
 
 //COMPONENTS
 import Navbar from './Navbar';

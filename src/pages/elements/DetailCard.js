@@ -1,6 +1,6 @@
 import React from 'react'
 
-import { GET_TRIP } from '../querys/tripQuerys';
+import { GET_TRIP } from '../../backendOperations/querys/tripQuerys';
 import { useQuery } from '@apollo/client';
 
 import { useRouter } from 'next/router';

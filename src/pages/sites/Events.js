@@ -4,7 +4,7 @@ import SidebarAdmin from '../elements/AdminDashboard/SidebarAdmin'
 import EventsView from '../elements/EventsView'
 import Styles from '../../styles/Events.module.css'
 import { useQuery } from '@apollo/client';
-import { GET_EVENTS } from '../querys/eventQuerys';
+import { GET_EVENTS } from '../../backendOperations/querys/eventQuerys';
 
 function Events() {
 

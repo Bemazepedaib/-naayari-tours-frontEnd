@@ -7,7 +7,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faTriangleExclamation } from '@fortawesome/free-solid-svg-icons';
 
 import { useMutation } from '@apollo/client';
-import { ADD_USER } from '../mutations/userMutations';
+import { ADD_USER } from '../../backendOperations/mutations/userMutations';
 
 import Navbar from './Navbar';
 import Footer from './Footer';

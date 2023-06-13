@@ -11,9 +11,9 @@ import Router from "next/router";
 import Styles from '../../styles/elementStyles/ModalEvent.module.css'
 
 import { useMutation, useQuery } from '@apollo/client';
-import { GET_USER } from '../querys/userQuerys';
-import { GET_EVENTS } from '../querys/eventQuerys';
-import { UPDATE_ADVANCE_PAYMENT } from '../mutations/eventMutations';
+import { GET_USER } from '../../backendOperations/querys/userQuerys';
+import { GET_EVENTS } from '../../backendOperations/querys/eventQuerys';
+import { UPDATE_ADVANCE_PAYMENT } from '../../backendOperations/mutations/eventMutations';
 
 function ModalEvent({ user, trip, date, deleteReservation, updateReservation }) {
 

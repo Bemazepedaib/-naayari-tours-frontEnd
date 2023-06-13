@@ -1,5 +1,5 @@
 import {React,useEffect} from 'react'
-import { GET_USER } from '../querys/userQuerys';
+import { GET_USER } from '../../backendOperations/querys/userQuerys';
 import { useQuery } from '@apollo/client';
 import { useRouter } from 'next/router';
 import UpdateUser from '../sites/UpdateUser';

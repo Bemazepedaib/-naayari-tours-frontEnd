@@ -7,7 +7,7 @@ import Button from 'react-bootstrap/Button';
 import Image from 'next/image'
 
 import { useMutation } from '@apollo/client';
-import { UPDATE_REQUEST } from "../mutations/requestMutations";
+import { UPDATE_REQUEST } from "../../backendOperations/mutations/requestMutations";
 
 
 const VipDetailsState = ({ data }) => {

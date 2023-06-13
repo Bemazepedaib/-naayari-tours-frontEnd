@@ -4,8 +4,8 @@ import Styles from '../../styles/elementStyles/FormTripDate.module.css'
 import Router from 'next/router';
 import Image from 'next/image';
 import { useMutation,useQuery } from '@apollo/client';
-import { ADD_REQUEST} from '../mutations/requestMutations';
-import { ME } from '../querys/userQuerys';
+import { ADD_REQUEST} from '../../backendOperations/mutations/requestMutations';
+import { ME } from '../../backendOperations/querys/userQuerys';
 
 const image = 'https://drive.google.com/uc?export=view&id=1Gx08yGg-rGq0tUe5yVHWxbkaMfmrUOk0'
 

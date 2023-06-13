@@ -1,5 +1,5 @@
 import { React,  useState,useEffect } from 'react'
-import { GET_PI_USERS } from '../querys/userQuerys';
+import { GET_PI_USERS } from '../../backendOperations/querys/userQuerys';
 import { useQuery } from '@apollo/client';
 import SearchBar from './SearchBar';
 

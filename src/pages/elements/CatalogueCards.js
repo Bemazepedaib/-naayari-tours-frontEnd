@@ -1,5 +1,5 @@
 import React from 'react'
-import { GET_TRIPS } from '../querys/tripQuerys';
+import { GET_TRIPS } from '../../backendOperations/querys/tripQuerys';
 
 import Styles from '../../styles/Home.module.css';
 import { useQuery } from '@apollo/client';

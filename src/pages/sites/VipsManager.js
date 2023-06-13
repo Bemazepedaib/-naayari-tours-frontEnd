@@ -1,6 +1,6 @@
 import React from "react";
 import { useQuery } from "@apollo/client";
-import { GET_REQUESTS } from "../querys/requestQuerys";
+import { GET_REQUESTS } from "../../backendOperations/querys/requestQuerys";
 import VipManagerView from "../elements/VipManagerView";
 import SidebarAdmin from "../elements/AdminDashboard/SidebarAdmin";
 import Styles from "../../styles/elementStyles/RequestsView.module.css";

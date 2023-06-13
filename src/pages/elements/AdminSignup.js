@@ -1,6 +1,6 @@
 import { React, useState,useEffect } from 'react'
 import { useMutation } from '@apollo/client';
-import { ADD_USER } from '../mutations/userMutations';
+import { ADD_USER } from '../../backendOperations/mutations/userMutations';
 import InputComponent from './Input';
 import Styles from '../../styles/AdminSignup.module.css'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';

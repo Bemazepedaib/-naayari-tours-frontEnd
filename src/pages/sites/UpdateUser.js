@@ -9,7 +9,7 @@ import Button from 'react-bootstrap/Button';
 import Image from 'next/image'
 
 import { useMutation } from '@apollo/client';
-import { UPDATE_USER_NAME_ADMIN, UPDATE_USER_CELL_ADMIN, UPDATE_USER_BIRTH_ADMIN, UPDATE_USER_PASSWORD_ADMIN, UPDATE_COUPONS } from '../mutations/userMutations';
+import { UPDATE_USER_NAME_ADMIN, UPDATE_USER_CELL_ADMIN, UPDATE_USER_BIRTH_ADMIN, UPDATE_USER_PASSWORD_ADMIN, UPDATE_COUPONS } from '../../backendOperations/mutations/userMutations';
 
 
 function UpdateUser({ user }) {

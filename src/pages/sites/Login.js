@@ -3,7 +3,7 @@ import Styles from "../../styles/Login.module.css";
 
 import React, { useState, useEffect } from "react"
 import { useMutation } from '@apollo/client';
-import { LOGIN } from '../mutations/userMutations';
+import { LOGIN } from '../../backendOperations/mutations/userMutations';
 
 import InputComponent from '../elements/Input';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';

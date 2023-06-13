@@ -5,7 +5,7 @@ import Router from 'next/router';
 
 //MUTATIONS
 import { useMutation } from '@apollo/client';
-import { UPDATE_TRIP_STATUS } from '../mutations/tripMutations';
+import { UPDATE_TRIP_STATUS } from '../../backendOperations/mutations/tripMutations';
 
 //COMPONENTS
 import Modal from 'react-bootstrap/Modal';

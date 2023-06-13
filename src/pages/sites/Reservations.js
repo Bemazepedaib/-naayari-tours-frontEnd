@@ -2,8 +2,8 @@ import React, { useState, useRef } from 'react'
 import { useQuery } from '@apollo/client';
 import { useRouter } from 'next/router';
 
-import { ME } from '../querys/userQuerys';
-import { GET_TRIP_PRICES } from '../querys/tripQuerys';
+import { ME } from '../../backendOperations/querys/userQuerys';
+import { GET_TRIP_PRICES } from '../../backendOperations/querys/tripQuerys';
 
 import { Slide } from "react-awesome-reveal";
 

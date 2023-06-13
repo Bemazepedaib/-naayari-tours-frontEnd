@@ -9,17 +9,17 @@ function CataloguePrices({ trip }) {
     return (
         <div>
             <div className={Styles.precios}>
-                {disc ? trip?.price.slice(0, 1).map(p => (
+                {disc ? trip.price?.slice(0, 1).map(p => (
                     <p className={Styles.catp} key={keyp++}>{p.priceType} ${p.priceAmount}</p>
                 )) : <p />
                 }
             </div>
             <div className={Styles.descuentosPrecios}>
-                {disc  ? trip?.price.map(p => (
+                {disc  ? trip.price?.map(p => (
                     p.priceType=="Adulto" ? <p className={Styles.catp} key={keyp++}>{p.priceType} ${Math.round(p.priceAmount - discAmount)}</p>
                     : <p className={Styles.catp} key={keyp++}>{p.priceType} ${p.priceAmount}</p>
                     
-                )) : trip.price.map(p => (
+                )) : trip.price?.map(p => (
                     <p className={Styles.catp} key={keyp++}>{p.priceType} ${p.priceAmount}</p>
                 ))}
 

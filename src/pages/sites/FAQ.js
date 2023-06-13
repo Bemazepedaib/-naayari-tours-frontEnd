@@ -60,14 +60,14 @@ function Preguntas(link) {
                     <p />
                     <b>Paso 5:</b> En este apartado selecciona el viaje al que quieras dejar una reseña.
                     <p />
-                    <b>Paso 6:</b> Escribe tu reseña y dale a "Enviar".
+                    <b>Paso 6:</b> Escribe tu reseña y dale a &#34;Enviar&#34;.
                 </div>)
         },
         {
             eventKey: "7", header: "¿Cómo puedo hacer una reservación?",
             body:
                 (<div>
-                    <b>Paso 1:</b> Inicia sesión en tu cuenta o crea una desde el apartado de "Iniciar Sesión".
+                    <b>Paso 1:</b> Inicia sesión en tu cuenta o crea una desde el apartado de &#34;Iniciar Sesión&#34;.
                     <p />
                     <b>Paso 2:</b> Ve al inicio y selecciona el viaje que más te interese.
                     <p />
@@ -88,7 +88,7 @@ function Preguntas(link) {
             eventKey: "8", header: "Me equivoqué al crear mi cuenta. ¿Puedo cambiar mis datos?",
             body:
                 (<div>
-                    <b>Opción 1:</b> Para cambiar los datos de tu cuenta, debes iniciar sesión y en el apartado de 'Mi perfil' puedes hacer el cambio.
+                    <b>Opción 1:</b> Para cambiar los datos de tu cuenta, debes iniciar sesión y en el apartado de &#34;Mi perfil&#34; puedes hacer el cambio.
                     <p />
                     <b>Opción 2:</b> Puedes solicitar a un administrador que cambie tus datos mandando whatsapp al +52 311 910 4138
                 </div>)
@@ -110,13 +110,13 @@ function Preguntas(link) {
             eventKey: "11", header: "¿Cómo puedo solicitar un viaje VIP?",
             body:
                 (<div>
-                    <b>Paso 1:</b> Inicia sesión en tu cuenta o crea una desde el apartado de "Iniciar Sesión".
+                    <b>Paso 1:</b> Inicia sesión en tu cuenta o crea una desde el apartado de &#34;Iniciar Sesión&#34;.
                     <p />
                     <b>Paso 2:</b> Ve al inicio y selecciona el viaje que más te interese.
                     <p />
                     <b>Paso 3:</b> Selecciona la fecha que desees reservar.
                     <p />
-                    <b>Paso 4:</b> Después, haz clic en el botón de "¡Crea tu grupo VIP!".
+                    <b>Paso 4:</b> Después, haz clic en el botón de &#34;¡Crea tu grupo VIP!&#34;.
                     <p />
                     <b>Paso 5:</b> Espera a que un administrador se comunique contigo vía whatsapp para continuar con el proceso.
                     <p />

@@ -9,7 +9,7 @@ import Image from 'next/image'
 
 const image = 'https://drive.google.com/uc?export=view&id=1hKQxSheX5io9bPjn99_TedN8SCTNcsoK'
 
-function checkForToken() {
+function CheckForToken() {
 
     const [login, setLogin] = useState()
     useEffect(() => {
@@ -21,7 +21,7 @@ function checkForToken() {
 
 function Navbar() {
 
-    const [login, setLogin] = checkForToken()
+    const [login, setLogin] = CheckForToken()
 
     const navRef = useRef();
 

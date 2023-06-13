@@ -13,7 +13,7 @@ import {
 import Link from "next/link";
 import Image from "next/image";
 
-function checkForToken() {
+function CheckForToken() {
   const [login, setLogin] = useState();
   useEffect(() => {
     setLogin(localStorage.getItem("token"));
@@ -26,7 +26,7 @@ function SidebarAdmin() {
   const image =
     "https://drive.google.com/uc?export=view&id=1hKQxSheX5io9bPjn99_TedN8SCTNcsoK";
 
-  const [login, setLogin] = checkForToken();
+  const [login, setLogin] = CheckForToken();
 
   useEffect(() => {
     if (localStorage.getItem("token") !== null) {

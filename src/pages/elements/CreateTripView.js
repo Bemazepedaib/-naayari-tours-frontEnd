@@ -455,6 +455,14 @@ const CreateTripView = ({ trip }) => {
                                         value={kit} onChange={onChange}>
                                     </textarea>
                                 </div>
+                                <div className={Styles.areaSubContainer}>
+                                    <label className={Styles.areaTitle} htmlFor="kit">Lugares Recomendados</label>
+                                    <textarea className={Styles.area} name="kit" id="kit" cols="30" rows="10"
+                                        placeholder={" • Nieves Artesanas El John \n" +
+                                            "• Iglesia de San Nicolas\n" + "• Mirador Del Toro "}
+                                        value={kit} onChange={onChange}>
+                                    </textarea>
+                                </div>
                             </div>
                         </fieldset>
                         {/*SEND INFORMATION*/}

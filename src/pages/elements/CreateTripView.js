@@ -61,6 +61,7 @@ const CreateTripView = ({ trip }) => {
     const [itinerary, setItinerary] = useState(trip ? trip.trip.tripInformation.itinerary : "");
     const [recomendations, setRecomendations] = useState(trip ? trip.trip.tripInformation.recomendations : "");
     const [kit, setKit] = useState(trip ? trip.trip.tripKit : "");
+    const [places, setPlaces] = useState(trip ? trip.trip.tripKit : "");
     const [activities, setActivities] = useState(trip ? trip.trip.tripInformation.activities : []);
 
     const expresiones = {
@@ -113,6 +114,7 @@ const CreateTripView = ({ trip }) => {
                             } : {},
                             itinerary: itinerary,
                             recomendations: recomendations,
+                            recommendedPlaces: places,
                             photo: photo.value.split("/")[5]
                         },
                         tripKit: kit,
@@ -181,6 +183,7 @@ const CreateTripView = ({ trip }) => {
                             } : {},
                             itinerary: itinerary,
                             recomendations: recomendations,
+                            recommendedPlaces: places,
                             photo: photo.value.split("/")[5]
                         },
                         tripKit: kit,
@@ -222,6 +225,8 @@ const CreateTripView = ({ trip }) => {
             case "recomend": setRecomendations(e.target.value)
                 break;
             case "kit": setKit(e.target.value)
+                break;
+            case "places": setPlaces(e.target.value)
                 break;
         }
 
@@ -455,14 +460,14 @@ const CreateTripView = ({ trip }) => {
                                         value={kit} onChange={onChange}>
                                     </textarea>
                                 </div>
-                                <div className={Styles.areaSubContainer}>
-                                    <label className={Styles.areaTitle} htmlFor="kit">Lugares Recomendados</label>
-                                    <textarea className={Styles.area} name="kit" id="kit" cols="30" rows="10"
-                                        placeholder={" • Nieves Artesanas El John \n" +
-                                            "• Iglesia de San Nicolas\n" + "• Mirador Del Toro "}
-                                        value={kit} onChange={onChange}>
-                                    </textarea>
-                                </div>
+                            </div>
+                            <div className={Styles.areaSubContainer}>
+                                <label className={Styles.areaTitle} htmlFor="places">Lugares Recomendados</label>
+                                <textarea className={Styles.area} name="places" id="places" cols="30" rows="10"
+                                    placeholder={" • Nieves Artesanas El John \n" +
+                                        "• Iglesia de San Nicolas\n" + "• Mirador Del Toro "}
+                                    value={places} onChange={onChange}>
+                                </textarea>
                             </div>
                         </fieldset>
                         {/*SEND INFORMATION*/}

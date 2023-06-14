@@ -34,7 +34,7 @@ const CreateTripView = ({ trip }) => {
     const [photo, setPhoto] = useState(trip ? { value: 'https://drive.google.com/file/d/' + trip.trip.tripInformation.photo + '/view?usp=share_link', valid: true } : { value: "", valid: true });
     const [price, setPrice] = useState(trip ? { value: trip.trip.tripInformation.price[0].priceAmount + '', valid: true } : { value: "", valid: true });
     const [duration, setDuration] = useState(trip ? { value: trip.trip.tripInformation.duration + '', valid: true } : { value: "", valid: true });
-    const [place, setPlace] = useState(trip ? { value: trip.trip.tripInformation.place + '', valid: true } : { value: "", valid: true });
+    const [place, setPlace] = useState(trip ? { value: trip.trip.tripInformation.place + "", valid: true } : { value: "", valid: true });
     const [amount, setAmount] = useState(trip ? { value: trip.trip.tripInformation.discount.amount, valid: true } : { value: "", valid: true });
     const [dateAdd, setDateAdd] = useState({ value: "", valid: true });
     const [action, setAction] = useState(trip ? true : false);
@@ -83,12 +83,11 @@ const CreateTripView = ({ trip }) => {
     //ON SUBMIT
     const onSubmit = async (e) => {
         e.preventDefault();
-        console.log(dateStart.value)
         if (!action === true && (name.value !== "" && photo.value !== "" && price.value !== ""
             && duration.value !== "" && place.value !== "" && dates.length > 0 &&
-            description !== "" && itinerary !== "" && recomendations !== "" && kit !== ""
+            description !== "" && itinerary !== "" && recomendations !== "" && kit !== "" && places != ""
             && activities.length > 0) && (discount ? dateStart.value !== "" : dateStart.value === "")
-            && (discount ? dateEnd.value !== "" : dateEnd.value === "") && (discount ? amount.value !== "" : amount.value === "")) {
+            && (discount ? dateEnd.value !== "" : dateEnd.value === "") && (discount ? amount.value !== "" : amount.value === null)) {
             try {
                 await addTrip({
                     variables: {
@@ -153,11 +152,11 @@ const CreateTripView = ({ trip }) => {
             }
         } else if (!action === false && (name.value !== "" && photo.value !== "" && price.value !== ""
             && duration.value !== "" && place.value !== "" && dates.length > 0 &&
-            description !== "" && itinerary !== "" && recomendations !== "" && kit !== ""
+            description !== "" && itinerary !== "" && recomendations !== "" && kit !== "" && places != ""
             && activities.length > 0)
             && (discount ? dateStart.value !== "" : dateStart.value === "")
             && (discount ? dateEnd.value !== "" : dateEnd.value === "")
-            && (discount ? amount.value !== "" : amount.value === "")) {
+            && (discount ? amount.value !== "" : amount.value === null)) {
             try {
                 await updateTrip({
                     variables: {
@@ -262,6 +261,7 @@ const CreateTripView = ({ trip }) => {
     }
     const handleOnChange = () => {
         setDiscount(!discount);
+        console.log("Valor de discount: " + discount)
         setDateStart({ value: "", valid: true });
         setDateEnd({ value: "", valid: true });
         setAmount({ value: "", valid: true });

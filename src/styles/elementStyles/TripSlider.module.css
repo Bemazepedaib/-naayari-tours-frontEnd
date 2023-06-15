@@ -1,0 +1,56 @@
+.container{
+    position: relative;
+  }
+.buttons{
+    display: flex;
+    margin-top: 10px;
+}
+.sliderContainer{
+    margin: 30px;
+}
+.imageContainer{
+    margin: 20px;
+}
+.imageCa{
+    width: 400px;
+    object-fit: cover;
+    border-radius: 10px ;
+}
+.header{
+    display: flex;
+    justify-content: space-between;
+    padding: '0 10px';
+}
+.buttonBack{
+    width: 40px;
+    height: 40px;
+    box-shadow: 0 5px 10px rgba(0, 0, 0, .3);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-right: 10px;
+    border-radius: 1rem;
+    cursor: pointer;
+    position: absolute;
+    top: 45%;
+    left: 60px;
+    z-index: 99;
+    background: rgba(255, 255, 255,0.8);
+    color: black;
+}
+.buttonNext{
+    width: 40px;
+    height: 40px;
+    box-shadow: 0 5px 10px rgba(0, 0, 0, .3);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 1rem;
+    cursor: pointer;
+    position: absolute;
+    top: 45%;
+    right: 60px;
+    z-index: 99;
+    background: rgba(255, 255, 255,0.8);
+    color: black;
+}

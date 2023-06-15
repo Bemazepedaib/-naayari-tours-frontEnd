@@ -4,6 +4,7 @@ import Styles from '../styles/Home.module.css';
 import Footer from './sites/Footer';
 import Navbar from './sites/Navbar';
 import CatalogueCards from './elements/CatalogueCards'
+import TripSlider from './elements/TripSlider';
 
 export default function Home() {
 
@@ -18,6 +19,9 @@ export default function Home() {
       </div>
       <div>
         <CatalogueCards/>
+      </div>
+      <div>
+        <TripSlider/>
       </div>
       <Footer></Footer>
     </div>

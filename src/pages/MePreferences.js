@@ -1,7 +1,7 @@
 import React from 'react'
 import { ME } from '../backendOperations/querys/userQuerys';
 import { useQuery } from '@apollo/client'
-import Preferences from '../pages/sites/Preferences';
+import Preferences from './Preferences';
 
 const MePreferences = () => {
     const { loading, error, data } = useQuery(ME)

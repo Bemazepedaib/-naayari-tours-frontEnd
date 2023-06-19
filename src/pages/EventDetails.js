@@ -5,8 +5,8 @@ import { useQuery } from '@apollo/client';
 import { Spinner } from 'react-bootstrap';
 
 import { useRouter } from 'next/router';
-import EventDetailsView from './EventDetailsView';
-import SidebarAdmin from './AdminDashboard/SidebarAdmin';
+import EventDetailsView from '../elements/EventDetailsView';
+import SidebarAdmin from '../elements/AdminDashboard/SidebarAdmin';
 
 import Styles from '../styles/elementStyles/EventDetails.module.css'
 

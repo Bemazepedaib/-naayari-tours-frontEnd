@@ -5,6 +5,11 @@ import "slick-carousel/slick/slick-theme.css";
 import Slider from "react-slick";
 import { useRef } from 'react';
 import { ArrowBackIos, ArrowForwardIos } from '@mui/icons-material';
+import { ME } from '../backendOperations/querys/userQuerys';
+import { useQuery } from '@apollo/client';
+import { faArrowLeft, faArrowRight } from '@fortawesome/free-solid-svg-icons'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+
 
 let a = 0;
 var settings = {
@@ -26,7 +31,7 @@ const TripSlider = ({ title }) => {
       <div className={Styles.container}>
         <div className={Styles.buttons}>
           <div className={Styles.buttonBack} onClick={() => sliderRef.current.slickPrev()}>
-            <ArrowBackIos />
+            <FontAwesomeIcon icon={faArrowLeft} />
           </div>
         </div>
         <div className={Styles.sliderContainer}>
@@ -44,7 +49,7 @@ const TripSlider = ({ title }) => {
         </div>
         <div className={Styles.buttons}>
           <div className={Styles.buttonNext} onClick={() => sliderRef.current.slickNext()}>
-            <ArrowForwardIos />
+            <FontAwesomeIcon icon={faArrowRight} />
           </div>
         </div>
       </div>

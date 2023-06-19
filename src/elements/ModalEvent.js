@@ -50,7 +50,7 @@ function ModalEvent({ user, trip, date, deleteReservation, updateReservation }) 
 
     const makeContract = () => {
         Router.push({
-            pathname: '/elements/PDFContract', query: {
+            pathname: '/PDFContract', query: {
                 cliente: userData.user.name,
                 celular: userData.user.cellphone,
                 lugares: user.companion.length + 1,

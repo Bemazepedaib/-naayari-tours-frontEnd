@@ -67,7 +67,7 @@ function PDFContract() {
     const mes = switchMes(fechaHoy[1])
     const año = fechaHoy[0]
 
-    const newFecha = fechaViaje.split("-")[2] + " de " + switchMes(fechaViaje.split("-")[1])
+    const newFecha = fechaViaje && fechaViaje.split("-")[2] + " de " + switchMes(fechaViaje.split("-")[1])
 
     return (
         <div className={Styles.mainContainer}>

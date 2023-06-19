@@ -16,29 +16,30 @@ import { faPenToSquare } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
 
-const ModalTrips = ({ tripInfo,updateTrip}) => {
+const ModalTrips = ({ tripInfo, updateTrip }) => {
     //MODAL NUMBER 1
     const [show, setShow] = useState(false);
-    const handleClose = () => {setShow(false);}
+    const handleClose = () => { setShow(false); }
     const updateInfo = () => {
-        const tripNameData = tripInfo.tripName 
-    Router.push({
-        pathname: '../elements/UpdatingTrip',
-        query: { tripNameData }
-    })
-    setShow(false);}
+        const tripNameData = tripInfo.tripName
+        Router.push({
+            pathname: '/UpdatingTrip',
+            query: { tripNameData }
+        })
+        setShow(false);
+    }
     const handleShow = () => setShow(true);
     //MODAL NUMBER 2
     const [show1, setShow1] = useState(false);
     const handleClose1 = () => setShow1(false);
-    const handleCloseConfirm = async () => { 
+    const handleCloseConfirm = async () => {
         const tripName = tripInfo.tripName
-        const status = !tripInfo.tripStatus 
-        await updateTripStatus({ variables: {  tripName: tripName,tripStatus: status }})
-        updateTrip(tripName,status)
+        const status = !tripInfo.tripStatus
+        await updateTripStatus({ variables: { tripName: tripName, tripStatus: status } })
+        updateTrip(tripName, status)
         setShow1(false)
     }
-    const handleShow1 = () => {setShow1(true); setShow(false);}
+    const handleShow1 = () => { setShow1(true); setShow(false); }
     //MUTATION USE
     const [updateTripStatus] = useMutation(UPDATE_TRIP_STATUS);
     //NAAYARI TOURS IMAGE
@@ -47,7 +48,7 @@ const ModalTrips = ({ tripInfo,updateTrip}) => {
         <div>
             {/*BUTTON TO OPEN MODAL 1*/}
             <div className={Styles.buttonIcon}>
-            <i className={Styles.icon} onClick={handleShow}><FontAwesomeIcon icon={faPenToSquare} ></FontAwesomeIcon></i>
+                <i className={Styles.icon} onClick={handleShow}><FontAwesomeIcon icon={faPenToSquare} ></FontAwesomeIcon></i>
             </div>
             <Modal show={show} onHide={handleClose}>
                 <Modal.Header closeButton>

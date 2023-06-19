@@ -99,7 +99,7 @@ const VipManagerView = ({ requests }) => {
 
   const clickEvent = (requestUser) => {
     Router.push({
-      pathname: "/elements/VipDetails",
+      pathname: "/VipDetails",
       query: { requestUser },
     });
   };

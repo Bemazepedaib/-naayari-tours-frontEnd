@@ -2,9 +2,9 @@ import React from "react";
 import { useRouter } from "next/router";
 
 import { Spinner } from "react-bootstrap";
-import SidebarAdmin from "./AdminDashboard/SidebarAdmin";
+import SidebarAdmin from "../elements/AdminDashboard/SidebarAdmin";
 import Styles from "../styles/elementStyles/VipDetails.module.css";
-import VipDetailsState from "./VipDetailsState";
+import VipDetailsState from "../elements/VipDetailsState";
 
 import { GET_REQUEST } from "../backendOperations/querys/requestQuerys";
 import { useQuery } from "@apollo/client";

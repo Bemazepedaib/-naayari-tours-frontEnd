@@ -5,7 +5,7 @@ import { useQuery } from '@apollo/client';
 
 import { useRouter } from 'next/router';
 
-import Details from '../pages/sites/Details'
+import Details from './Details'
 
 function DetailCard() {
     const router = useRouter();

@@ -4,7 +4,8 @@ import Styles from '../styles/Home.module.css';
 import Footer from './Footer';
 import Navbar from './Navbar';
 import CatalogueCards from '../elements/CatalogueCards'
-import TripSlider from '../elements/TripSlider';
+import TripsSliders from 'naayari-tours/elements/TripsSliders';
+
 
 export default function Home() {
 
@@ -21,9 +22,7 @@ export default function Home() {
         <CatalogueCards />
       </div>
       <div>
-        <TripSlider title={"LUGARES RECOMENDADOS PARA TI"} />
-        <TripSlider title={"TOP 3 LUGARES"} />
-        <TripSlider title={"VIAJES MAS FAMOSOS DE NAAYARI TOURS"} />
+        <TripsSliders />
       </div>
       <Footer></Footer>
     </div>

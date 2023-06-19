@@ -5,9 +5,6 @@ import "slick-carousel/slick/slick-theme.css";
 import Slider from "react-slick";
 import { useRef } from 'react';
 import { ArrowBackIos, ArrowForwardIos } from '@mui/icons-material';
-import { ME } from '../backendOperations/querys/userQuerys';
-import { useQuery } from '@apollo/client';
-
 
 let a = 0;
 var settings = {
@@ -21,8 +18,7 @@ var settings = {
 };
 const TripSlider = ({ title }) => {
   const sliderRef = useRef(null)
-  const { loading, error, data } = useQuery(ME);
-  return !loading && !error && (
+  return (
     <div>
       <div className={Styles.header}>
         <h2 className={Styles.headerTitle}>{title}</h2>

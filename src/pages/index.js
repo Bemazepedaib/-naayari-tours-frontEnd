@@ -1,10 +1,10 @@
 import React from 'react'
-import MainVideo from './sites/MainVideo'
+import MainVideo from './MainVideo'
 import Styles from '../styles/Home.module.css';
-import Footer from './sites/Footer';
-import Navbar from './sites/Navbar';
-import CatalogueCards from './elements/CatalogueCards'
-import TripSlider from './elements/TripSlider';
+import Footer from './Footer';
+import Navbar from './Navbar';
+import CatalogueCards from '../elements/CatalogueCards'
+import TripSlider from '../elements/TripSlider';
 
 export default function Home() {
 

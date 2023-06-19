@@ -71,7 +71,7 @@ function ModalReservation({ datosCompanion, datosUsuario, datosPrecio }) {
                 }
             })
             setConfirmMessage(res.data.updateEventUsers)
-            Router.push({ pathname: '/elements/ReservationPayment', query: { anticipo: anticipo } })
+            Router.push({ pathname: '/ReservationPayment', query: { anticipo: anticipo } })
         } catch (error) {
             setConfirmMessage(error.message)
         }

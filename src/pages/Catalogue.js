@@ -17,7 +17,7 @@ function Catalogue({ trip }) {
     function clickViajes() {
         const name = trip && trip.tripName;
         Router.push({
-            pathname: 'elements/DetailCard',
+            pathname: '/DetailCard',
             query: { name }
         })
     }

@@ -54,7 +54,7 @@ const ModalUsers = ({userData,fun}) => {
     function updateUser() {
         console.log(userData)
         Router.push({
-            pathname: '../elements/User',
+            pathname: '/User',
             query: { email }
         })
     } 

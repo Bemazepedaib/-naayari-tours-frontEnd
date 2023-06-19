@@ -2,8 +2,8 @@ import React from 'react'
 import { useQuery } from '@apollo/client';
 import { GET_TRIP } from '../backendOperations/querys/tripQuerys';
 import { useRouter } from 'next/router';
-import CreateTripView from './CreateTripView';
-import SidebarAdmin from './AdminDashboard/SidebarAdmin';
+import CreateTripView from '../elements/CreateTripView';
+import SidebarAdmin from '../elements/AdminDashboard/SidebarAdmin';
 import Styles from '../styles/elementStyles/UpdatingTrip.module.css'
 const UpdatingTrip = () => {
     const router = useRouter()

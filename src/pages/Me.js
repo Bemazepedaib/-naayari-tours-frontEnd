@@ -33,7 +33,7 @@ function Me() {
     //FUNCTIONS
     //ROUTE FOR GO TO PREFERENCES
     const goPreferences = () => {
-        Router.push({ pathname: '../elements/MePreferences' })
+        Router.push({ pathname: '/MePreferences' })
     }
     //FOR UPDATE PASSWORD
     const onChange = (e) => {

@@ -52,7 +52,7 @@ function EventsView(eventData) {
 
 	let i = 0;
 
-	const clickEvent = (eventTrip, eventDate) => { Router.push({ pathname: "/elements/EventDetails", query: { eventTrip, eventDate } }) }
+	const clickEvent = (eventTrip, eventDate) => { Router.push({ pathname: "/EventDetails", query: { eventTrip, eventDate } }) }
 
 	const handlechange = (e) => {
 		e.preventDefault();

@@ -5,8 +5,8 @@ import Styles from '../styles/elementStyles/ReservationPayment.module.css'
 
 import html2canvas from 'html2canvas';
 import { Button } from 'react-bootstrap';
-import Navbar from '../pages/sites/Navbar';
-import Footer from '../pages/sites/Footer';
+import Navbar from './Navbar';
+import Footer from './Footer';
 
 import { useRouter } from 'next/router';
 

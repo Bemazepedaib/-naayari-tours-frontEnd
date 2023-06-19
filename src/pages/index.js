@@ -18,10 +18,12 @@ export default function Home() {
         <Navbar />
       </div>
       <div>
-        <CatalogueCards/>
+        <CatalogueCards />
       </div>
       <div>
-        <TripSlider/>
+        <TripSlider title={"LUGARES RECOMENDADOS PARA TI"} />
+        <TripSlider title={"TOP 3 LUGARES"} />
+        <TripSlider title={"VIAJES MAS FAMOSOS DE NAAYARI TOURS"} />
       </div>
       <Footer></Footer>
     </div>

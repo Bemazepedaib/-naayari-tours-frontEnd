@@ -1,27 +1,43 @@
-.container{
+.container {
     position: relative;
-  }
-.buttons{
+}
+
+.buttons {
     display: flex;
     margin-top: 10px;
 }
-.sliderContainer{
+
+.sliderContainer {
     margin: 30px;
 }
-.imageContainer{
+
+.imageContainer {
     margin: 20px;
 }
-.imageCa{
+
+.imageCa {
     width: 400px;
     object-fit: cover;
-    border-radius: 10px ;
+    border-radius: 10px;
 }
-.header{
+
+.header {
+    text-align: center;
     display: flex;
-    justify-content: space-between;
-    padding: '0 10px';
+    justify-content: center;
+    align-items: center;
 }
-.buttonBack{
+
+.headerTitle {
+    font-size: 40px;
+    background: black;
+    border-radius: 10px;
+    width: 90%;
+    height: 50px;
+    color: white;
+}
+
+.buttonBack {
     width: 40px;
     height: 40px;
     box-shadow: 0 5px 10px rgba(0, 0, 0, .3);
@@ -35,10 +51,11 @@
     top: 45%;
     left: 60px;
     z-index: 99;
-    background: rgba(255, 255, 255,0.8);
+    background: rgba(255, 255, 255, 0.8);
     color: black;
 }
-.buttonNext{
+
+.buttonNext {
     width: 40px;
     height: 40px;
     box-shadow: 0 5px 10px rgba(0, 0, 0, .3);
@@ -51,6 +68,6 @@
     top: 45%;
     right: 60px;
     z-index: 99;
-    background: rgba(255, 255, 255,0.8);
+    background: rgba(255, 255, 255, 0.8);
     color: black;
 }

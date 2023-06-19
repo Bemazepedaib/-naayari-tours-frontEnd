@@ -5,8 +5,11 @@ import "slick-carousel/slick/slick-theme.css";
 import Slider from "react-slick";
 import { useRef } from 'react';
 import { ArrowBackIos, ArrowForwardIos } from '@mui/icons-material';
+import { ME } from '../backendOperations/querys/userQuerys';
+import { useQuery } from '@apollo/client';
 
-let a=0;
+
+let a = 0;
 var settings = {
   infinite: true,
   slidesToShow: 3,
@@ -16,12 +19,13 @@ var settings = {
   pauseOnHover: true,
   arrows: true
 };
-const TripSlider = () => {
+const TripSlider = ({ title }) => {
   const sliderRef = useRef(null)
-  return (
+  const { loading, error, data } = useQuery(ME);
+  return !loading && !error && (
     <div>
       <div className={Styles.header}>
-        <h1>Match Highlights</h1>
+        <h2 className={Styles.headerTitle}>{title}</h2>
       </div>
       <div className={Styles.container}>
         <div className={Styles.buttons}>
@@ -43,8 +47,8 @@ const TripSlider = () => {
           </Slider>
         </div>
         <div className={Styles.buttons}>
-        <div className={Styles.buttonNext} onClick={() => sliderRef.current.slickNext()}>
-          <ArrowForwardIos />
+          <div className={Styles.buttonNext} onClick={() => sliderRef.current.slickNext()}>
+            <ArrowForwardIos />
           </div>
         </div>
       </div>

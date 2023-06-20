@@ -195,7 +195,7 @@ function Me() {
                         <hr />
                         <div className={Styles.couponSubContainer}>
                             {data.me.coupons.map(coupons => (
-                                !coupons.couponApplied ? null
+                                coupons.couponApplied ? null
                                     : <div key={coupons.couponType + coupons.couponDate} className={Styles.couponsCard}>
                                         <span>Nombre: {coupons.couponType}</span>
                                         <span>Descripción: {coupons.couponDescription}</span>
@@ -222,7 +222,7 @@ function Me() {
 
                             </input>
                             <input className={Styles.input} value={confirmValue} onChange={onChange}
-                                type="password" placeholder='Introducir nueva contraseña de nuevo'
+                                type="password" placeholder='Introducir nueva contraseña'
                                 autoComplete = "on" name='confirmValue'>
                             </input>
                             <button type="submit" className={Styles.btnChange}>CAMBIAR LA CONTRASEÑA</button>

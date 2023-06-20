@@ -21,8 +21,7 @@ const TripSlider = ({ title, preferences }) => {
     arrows: false
   };
   const [settings, setSettings] = useState(variable);
-  const goToDetailCard = () =>{
-    const name = preferences.tripName;
+  const goToDetailCard = (name) =>{
     Router.push({
       pathname: '/DetailCard',
       query: { name }
@@ -67,7 +66,7 @@ const TripSlider = ({ title, preferences }) => {
             {
               preferences.map(preference => (
                 <div className={Styles.cardsContainer} key={a++}>
-                  <div className={Styles.imageContainer} onClick={() => goToDetailCard()}>
+                  <div className={Styles.imageContainer} onClick={() => goToDetailCard(preference.tripName)}>
                     <img className={Styles.imageCa}
                       src={'https://drive.google.com/uc?export=view&id=' + preference.tripInformation.photo} alt=''>
                     </img>

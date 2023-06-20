@@ -1,23 +1,49 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import Styles from '../styles/elementStyles/TripSlider.module.css'
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import Slider from "react-slick";
-import { useRef } from 'react';
+import { useRef,useState } from 'react';
 import { faArrowLeft, faArrowRight } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-let a = 0;
-var settings = {
-  infinite: true,
-  slidesToShow: 3,
-  slidesToScroll: 1,
-  autoplay: true,
-  autoplaySpeed: 4000,
-  pauseOnHover: true,
-  arrows: true
-};
+
 const TripSlider = ({ title, preferences }) => {
   const sliderRef = useRef(null)
+  let a = 0;
+  var variable = {
+    infinite: true,
+    slidesToShow: window.innerWidth <= 950 ? 1 : 3,
+    slidesToScroll: 1,
+    autoplay: true,
+    autoplaySpeed: 4000,
+    pauseOnHover: true,
+    arrows: true
+  };
+  const [settings, setSettings] = useState(variable);
+
+  useEffect(() => {
+    const handleResize = () => {
+      var variable = {
+        infinite: true,
+        slidesToShow: window.innerWidth <= 950 ? 1 : 3,
+        slidesToScroll: 1,
+        autoplay: true,
+        autoplaySpeed: 4000,
+        pauseOnHover: true,
+        arrows: true
+      };
+      setSettings(variable)
+      
+    };
+
+    // Agregar el evento 'resize' al cargar el componente
+    window.addEventListener('resize', handleResize);
+
+    // Eliminar el evento 'resize' al desmontar el componente
+    return () => {
+      window.removeEventListener('resize', handleResize);
+    };
+  }, []);
   return (
     <div>
       <div className={Styles.header}>

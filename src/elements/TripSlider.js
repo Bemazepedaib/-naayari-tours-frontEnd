@@ -4,13 +4,8 @@ import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import Slider from "react-slick";
 import { useRef } from 'react';
-import { ArrowBackIos, ArrowForwardIos } from '@mui/icons-material';
-import { ME } from '../backendOperations/querys/userQuerys';
-import { useQuery } from '@apollo/client';
 import { faArrowLeft, faArrowRight } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-
-
 let a = 0;
 var settings = {
   infinite: true,
@@ -21,8 +16,9 @@ var settings = {
   pauseOnHover: true,
   arrows: true
 };
-const TripSlider = ({ title }) => {
+const TripSlider = ({ title,preferences }) => {
   const sliderRef = useRef(null)
+  console.log(preferences)
   return (
     <div>
       <div className={Styles.header}>
@@ -37,10 +33,10 @@ const TripSlider = ({ title }) => {
         <div className={Styles.sliderContainer}>
           <Slider ref={sliderRef} {...settings}>
             {
-              Array(10).fill('').map(() => (
+              preferences.map(preference => (
                 <div className={Styles.imageContainer} key={a++}>
                   <img className={Styles.imageCa}
-                    src='https://cf-images.eu-west-1.prod.boltdns.net/v1/static/3588749423001/a880e174-faca-40d2-b36c-2ae929095d4f/fc2797bc-6c33-4150-be12-6860453fceb9/1280x720/match/image.jpg' alt=''>
+                    src={'https://drive.google.com/uc?export=view&id='+preference.tripInformation.photo} alt=''>
                   </img>
                 </div>
               ))

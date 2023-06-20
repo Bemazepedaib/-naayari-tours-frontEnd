@@ -4,6 +4,7 @@ import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import Slider from "react-slick";
 import { useRef,useState } from  'react';
+import Router from "next/router";
 import { faArrowLeft, faArrowRight } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
@@ -20,7 +21,13 @@ const TripSlider = ({ title, preferences }) => {
     arrows: false
   };
   const [settings, setSettings] = useState(variable);
-
+  const goToDetailCard = () =>{
+    const name = preferences.tripName;
+    Router.push({
+      pathname: '/DetailCard',
+      query: { name }
+  })
+  }
   useEffect(() => {
     const handleResize = () => {
       var variable = {
@@ -60,7 +67,7 @@ const TripSlider = ({ title, preferences }) => {
             {
               preferences.map(preference => (
                 <div className={Styles.cardsContainer} key={a++}>
-                  <div className={Styles.imageContainer}>
+                  <div className={Styles.imageContainer} onClick={() => goToDetailCard()}>
                     <img className={Styles.imageCa}
                       src={'https://drive.google.com/uc?export=view&id=' + preference.tripInformation.photo} alt=''>
                     </img>
@@ -74,7 +81,6 @@ const TripSlider = ({ title, preferences }) => {
                       </p>
                     </div>
                   </div>
-
                 </div>
 
               ))

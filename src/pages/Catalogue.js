@@ -6,7 +6,6 @@ import CataloguePrices from "../elements/CataloguePrices"
 
 
 function Catalogue({ trip }) {
-
     const photo = trip && trip.tripInformation.photo;
     var back = photo
     const disc = trip && trip.tripInformation.discount.available;

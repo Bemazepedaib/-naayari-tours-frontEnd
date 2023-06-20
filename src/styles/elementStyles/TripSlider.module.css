@@ -102,7 +102,7 @@
 
 .headerTitle {
     font-size: 40px;
-    background: black;
+    background: #181818;
     border-radius: 10px;
     width: 90%;
     height: 50px;
@@ -158,11 +158,13 @@
 @media screen and (max-width:800px) {
     .headerTitle {
         font-size: 30px;
+        height: 40px;
     }
 }
 @media screen and (max-width:650px) {
     .headerTitle {
-        font-size: 25px;
+        font-size: 20px;
+        height: 30px;
     }
     .imageContainer {
         width: 280px;
@@ -171,6 +173,13 @@
     .imageCa{
         width: 280px;
         height: 240px;
+    }
+    
+}
+@media screen and (max-width:500px) {
+    .headerTitle {
+        font-size: 16px;
+        height: 20px;
     }
     
 }

@@ -7,7 +7,7 @@ import { useQuery } from '@apollo/client';
 const TripsSliders = () => {
     const { loading: meLoading, error: meError, data: meData } = useQuery(ME);
     const { loading: tripLoading, error: tripError, data: tripData } = useQuery(GET_TRIPS);
-    const getGoodTrips = () => {
+    const getRecomendedPlaces = () => {
         let arr1 = []
         for (let i = 0; i < tripData.trips.length; i++) {
             const trip = tripData.trips[i];
@@ -28,12 +28,23 @@ const TripsSliders = () => {
             }
         }
         return arr1
-    };
+    }
+    const getTopTrips = () => {
+        let aux = tripData.trips.slice(); // Create a copy of the trips array
+        for (let i = 0; i < aux.length; i++) {
+            for (let j = 0; j < aux.length - 1 - i; j++) {
+                if (aux[j].tripRating < aux[j + 1].tripRating) {
+                    // Intercambiar elementos
+                    [aux[j], aux[j + 1]] = [aux[j + 1], aux[j]];
+                }
+            }
+        }
+        return aux.slice(0,4)
+    }
     return !meLoading && !meError && !tripLoading && !tripError && (
         <div>
-            <TripSlider title={"LUGARES RECOMENDADOS PARA TI"} preferences={getGoodTrips()} />
-            <TripSlider title={"TOP VIAJES DE NAYARI TOURS"} preferences={getGoodTrips()}/>
-            <TripSlider title={"LUGARES RECOMENDADOS PARA TI"} preferences={getGoodTrips()}/>
+            <TripSlider title={"LUGARES RECOMENDADOS PARA TI"} preferences={getRecomendedPlaces()} />
+            <TripSlider title={"TOP VIAJES DE NAAYARI TOURS"} preferences={getTopTrips()} />
         </div>
     )
 }

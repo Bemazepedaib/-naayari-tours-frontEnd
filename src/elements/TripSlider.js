@@ -16,9 +16,8 @@ var settings = {
   pauseOnHover: true,
   arrows: true
 };
-const TripSlider = ({ title,preferences }) => {
+const TripSlider = ({ title, preferences }) => {
   const sliderRef = useRef(null)
-  console.log(preferences)
   return (
     <div>
       <div className={Styles.header}>
@@ -34,11 +33,24 @@ const TripSlider = ({ title,preferences }) => {
           <Slider ref={sliderRef} {...settings}>
             {
               preferences.map(preference => (
-                <div className={Styles.imageContainer} key={a++}>
-                  <img className={Styles.imageCa}
-                    src={'https://drive.google.com/uc?export=view&id='+preference.tripInformation.photo} alt=''>
-                  </img>
+                <div className={Styles.cardsContainer} key={a++}>
+                  <div className={Styles.imageContainer}>
+                    <img className={Styles.imageCa}
+                      src={'https://drive.google.com/uc?export=view&id=' + preference.tripInformation.photo} alt=''>
+                    </img>
+                    <div className={Styles.overlayTitle}>
+                      <h3 className={Styles.title}>{preference.tripName}</h3>
+                    </div>
+                    <div className={Styles.overlayInfo}>
+                      <h3 className={Styles.title}>{preference.tripName}</h3>
+                      <p className={Styles.catpd}>
+                        {preference.tripInformation.description.slice(0, 200)}...
+                      </p>
+                    </div>
+                  </div>
+
                 </div>
+
               ))
             }
           </Slider>

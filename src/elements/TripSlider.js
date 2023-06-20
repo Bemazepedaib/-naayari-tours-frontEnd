@@ -3,7 +3,7 @@ import Styles from '../styles/elementStyles/TripSlider.module.css'
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import Slider from "react-slick";
-import { useRef,useState } from 'react';
+import { useRef,useState } from  'react';
 import { faArrowLeft, faArrowRight } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
@@ -17,7 +17,7 @@ const TripSlider = ({ title, preferences }) => {
     autoplay: true,
     autoplaySpeed: 4000,
     pauseOnHover: true,
-    arrows: true
+    arrows: false
   };
   const [settings, setSettings] = useState(variable);
 
@@ -30,7 +30,7 @@ const TripSlider = ({ title, preferences }) => {
         autoplay: true,
         autoplaySpeed: 4000,
         pauseOnHover: true,
-        arrows: true
+        arrows: false
       };
       setSettings(variable)
       

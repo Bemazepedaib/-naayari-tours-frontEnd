@@ -154,6 +154,12 @@
     .headerTitle {
         font-size: 35px;
     }
+    .buttonBack {
+        display: none;
+    }
+    .buttonNext {
+        display: none;
+    }
 }
 @media screen and (max-width:800px) {
     .headerTitle {

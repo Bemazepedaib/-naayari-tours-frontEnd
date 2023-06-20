@@ -7,21 +7,16 @@
     margin-top: 10px;
 }
 
-.sliderContainer {
-    margin: 30px;
-}
-
-.cardsContainer {
-    margin: 20px;
-}
-.imageContainer{
+.imageContainer {
     position: relative;
     width: 350px;
     height: 280px;
     object-fit: cover;
     border-radius: 10px;
     overflow: hidden;
+    margin: 50px auto;
 }
+
 .overlayTitle {
     position: absolute;
     display: flex;
@@ -37,6 +32,7 @@
     width: 100%;
     transition: 0.4s;
 }
+
 .overlayInfo {
     overflow: hidden;
     position: absolute;
@@ -64,6 +60,7 @@
     text-align: center;
     margin-bottom: 50px;
 }
+
 .imageContainer:hover .overlayInfo {
     overflow: visible;
     padding: 1rem 1.5rem;
@@ -73,6 +70,7 @@
 .imageContainer:hover .overlayTitle {
     height: 0%;
 }
+
 .catpd {
     position: absolute;
     margin: auto 10px;
@@ -94,6 +92,7 @@
     object-fit: cover;
     border-radius: 10px;
 }
+
 .header {
     text-align: center;
     display: flex;
@@ -128,6 +127,12 @@
     color: black;
 }
 
+.prueba {
+    display: flex;
+    justify-content: center;
+    margin: auto;
+}
+
 .buttonNext {
     width: 40px;
     height: 40px;
@@ -143,4 +148,29 @@
     z-index: 99;
     background: rgba(255, 255, 255, 0.8);
     color: black;
+}
+
+@media screen and (max-width:920px) {
+    .headerTitle {
+        font-size: 35px;
+    }
+}
+@media screen and (max-width:800px) {
+    .headerTitle {
+        font-size: 30px;
+    }
+}
+@media screen and (max-width:650px) {
+    .headerTitle {
+        font-size: 25px;
+    }
+    .imageContainer {
+        width: 280px;
+        height: 240px;
+    }
+    .imageCa{
+        width: 280px;
+        height: 240px;
+    }
+    
 }

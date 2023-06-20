@@ -12,7 +12,7 @@ const TripSlider = ({ title, preferences }) => {
   let a = 0;
   var variable = {
     infinite: true,
-    slidesToShow: window.innerWidth <= 950 ? 1 : 3,
+    slidesToShow: window.innerWidth <= 1080 ? 1 : 3,
     slidesToScroll: 1,
     autoplay: true,
     autoplaySpeed: 4000,
@@ -25,7 +25,7 @@ const TripSlider = ({ title, preferences }) => {
     const handleResize = () => {
       var variable = {
         infinite: true,
-        slidesToShow: window.innerWidth <= 950 ? 1 : 3,
+        slidesToShow: window.innerWidth <= 1080 ? 1 : 3,
         slidesToScroll: 1,
         autoplay: true,
         autoplaySpeed: 4000,
@@ -56,7 +56,7 @@ const TripSlider = ({ title, preferences }) => {
           </div>
         </div>
         <div className={Styles.sliderContainer}>
-          <Slider ref={sliderRef} {...settings}>
+          <Slider ref={sliderRef} {...settings} className={Styles.prueba}>
             {
               preferences.map(preference => (
                 <div className={Styles.cardsContainer} key={a++}>

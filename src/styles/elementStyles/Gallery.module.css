@@ -147,6 +147,7 @@ min-height: 120vh;
         top: 10%;
         margin-top: 10%;
         display: inline-block;
+        width: 100%;
         background-color: rgb(255, 255, 255);
     }
     .review{
@@ -198,7 +199,7 @@ min-height: 120vh;
         margin-top: 30%;
     }
     .image{
-        width: 120%;
+        width: 100%;
     }
     .user{
         font-size: 1rem;     

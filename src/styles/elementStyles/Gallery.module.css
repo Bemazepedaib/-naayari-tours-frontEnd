@@ -107,8 +107,8 @@ min-height: 120vh;
 .cardContainer{
     border-radius: 1rem;
     position: sticky;
-    top: 10%;
-    margin-top: 10%;
+    top: 7%;
+    margin-top: 7%;
     display: grid;
     grid-template-columns: 500px minmax(500px,1fr);
     background-color: rgb(255, 255, 255);
@@ -193,6 +193,13 @@ min-height: 120vh;
     }  
 }
 @media (max-width: 600px){
+    .cardContainer{
+        top: 30%;
+        margin-top: 30%;
+    }
+    .image{
+        width: 120%;
+    }
     .user{
         font-size: 1rem;     
     } 

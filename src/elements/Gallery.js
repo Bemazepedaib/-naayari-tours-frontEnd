@@ -25,23 +25,23 @@ function Gallery({ tripReviews }) {
         reviewInfo.current.review = reviews.review + ''
     }
     { for (let index = 1; index <= reviewInfo.current.rating; index++) stars = stars + "⋆"; }
-    if(tripReviews.length>0){
+    if (tripReviews.length > 0) {
         return (
             <div className={Styles.mainContainer}>
-                <div className={imgSelected ? Styles.imgOpen : Styles.imgClosed}>
-                    <div className={Styles.cardContainer}>
-                        <Image className={Styles.image} width={500} height={500} alt={'Image Selected'}
-                            src={'https://drive.google.com/uc?export=view&id=' + reviewInfo.current.photo}></Image>
-                        <div className={Styles.cardInformation}>
-                            <h2 className={Styles.user}>{reviewInfo.current.user}</h2>
-                            <hr className={Styles.horizontalLine} />
-                            <span className={Styles.date}>Fecha de publicación: {reviewInfo.current.date}</span>
-                            <span className={Styles.stars}>{stars}</span>
-                            <p className={Styles.review}>{reviewInfo.current.review}</p>
+                    <div className={imgSelected ? Styles.imgOpen : Styles.imgClosed}>
+                        <div className={Styles.cardContainer}>
+                            <Image className={Styles.image} width={500} height={500} alt={'Image Selected'}
+                                src={'https://drive.google.com/uc?export=view&id=' + reviewInfo.current.photo}></Image>
+                            <div className={Styles.cardInformation}>
+                                <h2 className={Styles.user}>{reviewInfo.current.user}</h2>
+                                <hr className={Styles.horizontalLine} />
+                                <span className={Styles.date}>Fecha de publicación: {reviewInfo.current.date}</span>
+                                <span className={Styles.stars}>{stars}</span>
+                                <p className={Styles.review}>{reviewInfo.current.review}</p>
+                            </div>
+                            <button className={Styles.btnClosed} onClick={() => setImgSelected(false)}><FontAwesomeIcon icon={faXmark}></FontAwesomeIcon></button>
                         </div>
-                        <button className={Styles.btnClosed} onClick={() => setImgSelected(false)}><FontAwesomeIcon icon={faXmark}></FontAwesomeIcon></button>
                     </div>
-                </div>
                 <div className={Styles.mainBackground}>
                     <div className={Styles.reviewSection}>
                         <h2 className={Styles.title} id='exp'><hr />Experiencias Anteriores<hr /></h2>

@@ -61,6 +61,7 @@ function ModalReservation({ datosCompanion, datosUsuario, datosPrecio }) {
                     eventTrip: datosUsuario[2],
                     users: {
                         userEmail: datosUsuario[0].me.email,
+                        userName: datosUsuario[0].me.name,
                         companion: a,
                         advancePayment: anticipo,
                         fullPayment: total,

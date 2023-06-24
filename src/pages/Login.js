@@ -16,7 +16,7 @@ function Login() {
 
     const terminos = ""
     const privacidad = ""
-    const forgotPass = ""
+    const forgotPass = "//api.whatsapp.com/send?phone=523119104138&text=¡Hola!, Olvidé mi contraseña, a continuación le proporciono el correo de mi cuenta."
 
     const [myError, setMyError] = useState("");
 
@@ -42,7 +42,7 @@ function Login() {
                     Router.push({ pathname: '/Dashboard' })
                 } else if (token[1] === "") {
                     setValidLog(true);
-                    Router.push({ pathname: '/Preferences'})
+                    Router.push({ pathname: '/Preferences' })
                 } else {
                     setValidLog(true);
                     Router.push({ pathname: '/Me' })

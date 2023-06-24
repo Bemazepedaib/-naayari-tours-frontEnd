@@ -1,63 +1,66 @@
 @import url('https://fonts.googleapis.com/css2?family=Oswald:wght@300&display=swap');
 
-.mainContainer{
+.mainContainer {
     font-family: 'Oswald', sans-serif;
-    padding: 20px;
-    
 }
-.inputContainer{
+
+.inputContainer {
     text-align: center;
-    width: 90%;
-    text-align: center;
-    padding: 25px;
+    width: 100%;
     border-radius: 5px;
     font-size: 14px;
-    margin: 0 5%;
 }
 
-.inputText{
+.inputText {
     width: 60%;
     margin-top: 20px;
-    
+
 }
 
-.tableContainer{
+.tableContainer {
     max-height: 500px;
     padding: 20px;
     overflow-y: scroll;
 }
-.table{
+
+.table {
     height: 5px;
-    border:1px solid #1D2128;
-    
+    border: 1px solid #1D2128;
+
 }
-.tHead{
+
+.tHead {
     background-color: #1D2128;
     color: #fff;
     border: #fff;
 }
-.column{
+
+.column {
     text-align: center;
 }
-.yes{
+
+.yes {
     margin: auto;
     width: 20px;
     height: 20px;
     border-radius: 50%;
     background: #00a748;
 }
-.no{
+
+.no {
     margin: auto;
     width: 20px;
     height: 20px;
     border-radius: 50%;
     background: red;
 }
-.btnContainer{
+
+.btnContainer {
     display: flex;
     justify-content: center;
 }
-.btnStateActive{
+
+.btnStateActive {
     background: #00a748;
     color: white;
     width: 200px;
@@ -66,9 +69,10 @@
     font-size: 1rem;
     box-shadow: 0 0px 10px rgba(0, 0, 0, .3);
     border: none;
-    cursor: pointer;   
+    cursor: pointer;
 }
-.btnStateActive{
+
+.btnStateActive {
     background: #00a748;
     color: white;
     width: 200px;
@@ -77,9 +81,10 @@
     font-size: 1rem;
     box-shadow: 0 0px 10px rgba(0, 0, 0, .3);
     border: none;
-    cursor: pointer;   
+    cursor: pointer;
 }
-.btnStateInactive{
+
+.btnStateInactive {
     background: red;
     color: white;
     width: 200px;
@@ -88,5 +93,5 @@
     font-size: 1rem;
     box-shadow: 0 0px 10px rgba(0, 0, 0, .3);
     border: none;
-    cursor: pointer;  
+    cursor: pointer;
 }

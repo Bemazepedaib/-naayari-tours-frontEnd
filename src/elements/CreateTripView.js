@@ -2,7 +2,8 @@
 import { React, useState } from 'react'
 import { useQuery, useMutation } from '@apollo/client'
 import SearchTripView from "./SearchTripView"
-import ReactDatePicker from 'react-datepicker'
+import { Spinner } from 'react-bootstrap';
+
 //APOLLO REQUEST
 import { ADD_TRIP, UPDATE_TRIP } from '../backendOperations/mutations/tripMutations';
 import { ADD_EVENT } from '../backendOperations/mutations/eventMutations';
@@ -12,6 +13,7 @@ import HeaderTittle from './HeaderTittle'
 
 //GET PREFERENCES
 import { GET_PREFERENCES } from '../backendOperations/querys/preferenceQuerys'
+import { ME } from '../backendOperations/querys/userQuerys';
 
 //CSS
 import Styles from '../styles/elementStyles/CreateTripView.module.css'
@@ -71,7 +73,8 @@ const CreateTripView = ({ trip }) => {
     }
 
     //QUERY
-    const { loading, error, data } = useQuery(GET_PREFERENCES)
+    const { loading: prefLoading, error: prefError, data: prefData } = useQuery(GET_PREFERENCES)
+    const { loading: meLoading, error: meError, data: meData } = useQuery(ME);
 
     //FUNCTIONS
 
@@ -272,10 +275,12 @@ const CreateTripView = ({ trip }) => {
         activities.map(activity => { if (activity.activityName === name) { variable = true; } })
         return variable
     }
-    if (loading) return <p>Loading...</p>;
-    if (error) return <p>Something Went Wrong</p>
+    if (prefLoading || meLoading) return <div className={Styles.error}><Spinner /></div>;
+    if (prefError || meError) return (<div className={Styles.error}>Inicie sesión para continuar</div>)
+    if (meData.me.userType !== "admin") return (<div className={Styles.error}>Necesitas permisos de administrador para acceder a este módulo</div>)
+
     return <>
-        {!loading && !error && (
+        {!prefLoading && !prefError && !meLoading && !meError && (
             <div className={Styles.main}>
                 <HeaderTittle tittle={action ? "Actualizar Viaje" : "Crear Viaje"}></HeaderTittle>
                 <div className={Styles.infoContainer}>
@@ -310,7 +315,7 @@ const CreateTripView = ({ trip }) => {
                         <fieldset>
                             <legend className={Styles.activitiesTitle}>ACTIVIDADES</legend>
                             <div className={Styles.activities}>
-                                {data.preferences.map(preference => (
+                                {prefData.preferences.map(preference => (
                                     <div className={Styles.subActivities} key={preference.preferenceType}>
                                         {!trip
                                             ?

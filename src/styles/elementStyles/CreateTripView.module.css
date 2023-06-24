@@ -4,6 +4,9 @@
 .main {
     font-family: 'Oswald', sans-serif;
     padding: 20px 35px;
+    background-image: url('https://drive.google.com/uc?export=view&id=1XPHv76qI1Y303811H7gbUPpmv9KQSa5u');
+    background-size: contain;
+    height: 100%;
 }
 
 /*FORM*/
@@ -152,6 +155,19 @@
     text-transform: uppercase;
     padding-bottom: 10px;
 }
+
+.error {
+    font-family: 'Genos', sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    font-size: 40px;
+    text-align: center;
+    background-image: url('https://drive.google.com/uc?export=view&id=1XPHv76qI1Y303811H7gbUPpmv9KQSa5u');
+    background-size: cover;
+}
+
 @media (max-width: 600px) {
     .area {
         width: 150px;
@@ -166,5 +182,10 @@
 
     .activitiesTitle {
         margin-top: 35px;
+    }
+
+    .error {
+        font-size: 20px;
+        text-align: center;
     }
 }

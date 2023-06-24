@@ -8,7 +8,7 @@ function Dashboard() {
 
   return (
     <div className={Styles.DashBoardContainer}>
-      <SidebarAdmin ></SidebarAdmin>
+      <SidebarAdmin />
       <Princ />
     </div>
   )

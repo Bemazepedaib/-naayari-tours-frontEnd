@@ -4,6 +4,7 @@ import { useRouter } from 'next/router';
 
 import { ME } from '../backendOperations/querys/userQuerys';
 import { GET_TRIP_PRICES } from '../backendOperations/querys/tripQuerys';
+import { GET_EVENT } from '../backendOperations/querys/eventQuerys';
 
 import { Slide } from "react-awesome-reveal";
 
@@ -22,6 +23,7 @@ function Reservations() {
     const { query: { selectedDate, selectedTrip } } = router;
     const { loading: userLoading, error: userError, data: userData } = useQuery(ME);
     const { loading: tripLoading, error: tripError, data: tripData } = useQuery(GET_TRIP_PRICES, { variables: { tripName: selectedTrip } });
+    const { loading: eventLoading, error: eventError, data: eventData } = useQuery(GET_EVENT, { variables: { eventDate: selectedDate, eventTrip: selectedTrip } })
 
     const [adultNumber, setAdultNumber] = useState(1);
     const [childNumber, setChildNumber] = useState(0);
@@ -37,19 +39,24 @@ function Reservations() {
     let precioBebe = tripData?.trip.tripInformation.price[1].priceAmount
     if (tripData?.trip.tripInformation.discount.available) precioPasajero -= tripData?.trip.tripInformation.discount.amount
 
-    if (tripLoading || userLoading) return (
+    if (tripLoading || userLoading || eventLoading) return (
         <div className={Styles.mainContainer}>
             <div className={Styles.header}><HeaderTittle tittle={"RESERVACIÓN"}></HeaderTittle></div>
             <div className={Styles.error}><Spinner /></div>
         </div>
     )
-    if (tripError || userError) return (
+    if (tripError || userError || eventError) return (
         <div className={Styles.mainContainer}>
             <div className={Styles.header}><HeaderTittle tittle={"RESERVACIÓN"}></HeaderTittle></div>
             <div className={Styles.error}>Oops... Algo ha salído mal, intente de nuevo más tarde.</div>
         </div>
     )
-
+    if (eventData.event.eventStatus !== "active") return (
+        <div className={Styles.mainContainer}>
+            <div className={Styles.header}><HeaderTittle tittle={"RESERVACIÓN"}></HeaderTittle></div>
+            <div className={Styles.error}>Disculpa, por el momento este viaje no acepta más reservaciones. Muchas gracias</div>
+        </div>
+    )
     const funcionType = (tipo, objeto) => {
         if (tipo.current === []) { tipo.current = objeto }
         else { tipo.current.push(objeto) }
@@ -79,7 +86,7 @@ function Reservations() {
         }
     }
 
-    return (
+    return !tripLoading && !userLoading && !eventLoading && !tripError && !userError && !eventError &&(
         <div>
             <div className={Styles.mainContainer}>
                 <div className={Styles.header}><HeaderTittle tittle={"RESERVACIÓN"}></HeaderTittle></div>

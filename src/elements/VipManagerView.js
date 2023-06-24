@@ -5,15 +5,10 @@ import Router from "next/router";
 
 const VipManagerView = ({ requests }) => {
 
-  const [vip, setVip] = useState(requests.requests);
-
   const [visible1, setVisible1] = useState({ prev: 0, next: 9 })
   const [visible2, setVisible2] = useState({ prev: 0, next: 9 })
   const [visible3, setVisible3] = useState({ prev: 0, next: 9 })
   const [visible4, setVisible4] = useState({ prev: 0, next: 9 })
-
-  const [input1, setInput1] = useState("");
-
 
   const verMas1 = () => {
     if (visible1.prev + 9 > pendingRequests.length) return
@@ -48,7 +43,6 @@ const VipManagerView = ({ requests }) => {
     setVisible4({ prev: visible4.prev - 9, next: visible4.prev })
   }
 
-
   const handlechange = (e) => {
     filter(e.target.value, pendingRequestsS, setPendingRequests);
     filter(e.target.value, acceptedRequestsS, setAcceptedRequests);
@@ -61,13 +55,8 @@ const VipManagerView = ({ requests }) => {
       if (element.requestTrip.toString().toLowerCase().includes(term.toLowerCase()) ||
         element.requestUser.toString().includes(term.toLowerCase()))
         return element
-      // || element.email.toString().toLowerCase().includes(term.toLowerCase())){
-      //     return element;
-      // }
     })
     setSearch(searchResult1)
-
-
   }
 
 

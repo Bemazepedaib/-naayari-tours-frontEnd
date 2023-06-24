@@ -2,7 +2,6 @@ import React from 'react'
 import SidebarAdmin from '../elements/AdminDashboard/SidebarAdmin'
 import Styles from '../styles/Users.module.css'
 import AdminSignup from '../elements/AdminSignup'
-import SearchData from '../elements/SearchData'
 
 import { useQuery } from '@apollo/client';
 import { ME } from '../backendOperations/querys/userQuerys';

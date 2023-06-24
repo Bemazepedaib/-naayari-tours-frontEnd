@@ -62,6 +62,7 @@ function EventDetailsView({ event }) {
             setCurrentStatus(res.data?.updateEventStatus)
             setConfirmMessage1("¡Estado actualizado exitósamente!")
             handleConfirmClose1();
+            window.location.reload(true)
         } catch (error) {
             setConfirmMessage1(error.message)
         }

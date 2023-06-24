@@ -126,8 +126,8 @@ function EventsView(eventData) {
 				))}
 			</div>
 			<div className={Styles.botones}>
-				{visible2.prev !== 0 ? <button className={Styles.input} onClick={() => verMenos2()}>Anterior</button> : null}
-				{visible2.next < closedEvents.length ? <button className={Styles.input} onClick={() => verMas2()}>Siguiente</button> : null}
+				{visible2.prev !== 0 ? <button className={Styles.btn} onClick={() => verMenos2()}>Anterior</button> : null}
+				{visible2.next < closedEvents.length ? <button className={Styles.btn} onClick={() => verMas2()}>Siguiente</button> : null}
 			</div>
 			<div className={Styles.titulo1}>Viajes inactivos</div>
 			<input
@@ -149,8 +149,8 @@ function EventsView(eventData) {
 				))}
 			</div>
 			<div className={Styles.botones}>
-				{visible3.prev !== 0 ? <button className={Styles.input} onClick={() => verMenos3()}>Anterior</button> : null}
-				{visible3.next < inactiveEvents.length ? <button className={Styles.input} onClick={() => verMas3()}>Siguiente</button> : null}
+				{visible3.prev !== 0 ? <button className={Styles.btn} onClick={() => verMenos3()}>Anterior</button> : null}
+				{visible3.next < inactiveEvents.length ? <button className={Styles.btn} onClick={() => verMas3()}>Siguiente</button> : null}
 			</div>
 		</div>
 	)

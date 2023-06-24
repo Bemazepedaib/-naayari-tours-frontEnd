@@ -8,9 +8,9 @@ const LOGIN = gql`
 
 const ADD_USER = gql`
     mutation addUser($name: String!, $cellphone: String!, $birthDate: String!, $email: String!, $password: String!, $sex: String!, 
-                     $reference: String!, $userType: String!, $userLevel: String!, $membership: Boolean!, $verified: Boolean!){
+                     $reference: String!, $userType: String!, $userLevel: String!, $membership: Boolean!, $guideDescription: String, $guidePhoto: String){
         addUser(name: $name, cellphone: $cellphone, birthDate: $birthDate, email: $email, password: $password, sex: $sex,
-                    reference: $reference, userType: $userType, userLevel: $userLevel, membership: $membership, verified: $verified)
+                    reference: $reference, userType: $userType, userLevel: $userLevel, membership: $membership, guideDescription: $guideDescription, guidePhoto: $guidePhoto)
     }
 `;
 

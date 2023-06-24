@@ -93,8 +93,7 @@ function Signup() {
                         reference: adv,
                         userType: "client",
                         userLevel: "0",
-                        membership: false,
-                        verified: false
+                        membership: false
                     }
                 }))
             } else {

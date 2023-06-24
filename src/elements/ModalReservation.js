@@ -8,6 +8,7 @@ import Styles from '../styles/elementStyles/ModalReservation.module.css'
 import { Table } from 'react-bootstrap';
 import { useMutation } from '@apollo/client';
 import { UPDATE_USERS } from '../backendOperations/mutations/eventMutations';
+
 import Router from 'next/router';
 
 function ModalReservation({ datosCompanion, datosUsuario, datosPrecio }) {

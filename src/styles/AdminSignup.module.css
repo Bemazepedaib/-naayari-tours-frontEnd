@@ -5,12 +5,12 @@
   font-family: 'Oswald', sans-serif;
   font-weight: 300;
   color: #181818;
+  background-image: url('https://drive.google.com/uc?export=view&id=1XPHv76qI1Y303811H7gbUPpmv9KQSa5u');
   background-size: cover;
   display: flex;
   flex-direction: column;
   padding-top: 5vh;
   padding-bottom: 10vh;
-  margin: 10px;
 }
 
 .logo {
@@ -27,7 +27,7 @@
   gap: 5px;
   border-radius: 5px;
   box-shadow: 0 5px 10px rgba(0, 0, 0, .3);
-  margin-top: 20px;
+  margin: 20px 10px;
 }
 
 .grupoBoton {
@@ -107,9 +107,11 @@
   width: 100%;
 }
 
-.addGuide {}
-
 @media (max-width: 1025px) {
+
+  .contenedor {
+    background-size: contain;
+  }
 
   .formulario {
     display: grid;

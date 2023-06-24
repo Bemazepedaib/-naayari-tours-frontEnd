@@ -135,7 +135,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 81vh;
+    height: 85vh;
     font-size: 40px;
     text-align: center;
 }
@@ -165,5 +165,10 @@
 
     .contenedorFormulario {
         width: 90%;
+    }
+
+    .error {
+        font-size: 20px;
+        text-align: center;
     }
 }

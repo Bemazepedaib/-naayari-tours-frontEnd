@@ -74,13 +74,8 @@ function UpdateUser({ user }) {
 		telefono: /^\d{7,14}$/ // 7 a 14 numeros.
 	}
 
-	const UpdateCoupon = () => {
-		console.log("entra bro")
-	};
-
 	const changeStatus = async (ema, coTy, coDa) => {
 		await userCoupon({ variables: { email: ema, couponType: coTy, couponDate: coDa } })
-
 		handleConfirmClose1();
 	}
 
@@ -88,7 +83,6 @@ function UpdateUser({ user }) {
 	return user && (
 
 		<div className={Styles.mainContainer}>
-			{console.log(user)}
 			<HeaderTittle tittle={"Actualizar Usuario"}></HeaderTittle>
 			<div className={Styles.info}>
 				<section className={Styles.section}>

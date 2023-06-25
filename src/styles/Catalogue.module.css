@@ -10,6 +10,7 @@
     width: 350px;
     box-shadow: inset;
     font-family: 'Oswald', sans-serif;
+    cursor: pointer;
 }
 
 .mainContentGrid {

@@ -150,6 +150,10 @@
     color: black;
 }
 
+.cardsContainer {
+    cursor: pointer;
+}
+
 @media screen and (max-width:920px) {
     .headerTitle {
         font-size: 35px;

@@ -1,4 +1,4 @@
-import React, { useState, useRef, lazy } from 'react';
+import React, { useState, useRef } from 'react';
 import Styles from '../styles/elementStyles/Gallery.module.css'
 import PhotoGallery from "./photoGallery";
 import Image from 'next/image';
@@ -8,7 +8,9 @@ function Gallery({ tripReviews }) {
     let i = 0;
     let stars = "";
     let photos = tripReviews.slice(0, tripReviews.length).map(review =>
-        <PhotoGallery key={i++} getImg={getImg} review={review}></PhotoGallery>).reverse();
+        <div className={Styles.fotoGallery}>
+            <PhotoGallery key={i++} getImg={getImg} review={review}></PhotoGallery>
+        </div>).reverse();
     let photosGallery = useRef(photos);
     const [imgSelected, setImgSelected] = useState(false);
     const [visible, setVisible] = useState(10);
@@ -28,20 +30,20 @@ function Gallery({ tripReviews }) {
     if (tripReviews.length > 0) {
         return (
             <div className={Styles.mainContainer}>
-                    <div className={imgSelected ? Styles.imgOpen : Styles.imgClosed}>
-                        <div className={Styles.cardContainer}>
-                            <Image className={Styles.image} width={500} height={500} alt={'Image Selected'}
-                                src={'https://drive.google.com/uc?export=view&id=' + reviewInfo.current.photo}></Image>
-                            <div className={Styles.cardInformation}>
-                                <h2 className={Styles.user}>{reviewInfo.current.user}</h2>
-                                <hr className={Styles.horizontalLine} />
-                                <span className={Styles.date}>Fecha de publicación: {reviewInfo.current.date}</span>
-                                <span className={Styles.stars}>{stars}</span>
-                                <p className={Styles.review}>{reviewInfo.current.review}</p>
-                            </div>
-                            <button className={Styles.btnClosed} onClick={() => setImgSelected(false)}><FontAwesomeIcon icon={faXmark}></FontAwesomeIcon></button>
+                <div className={imgSelected ? Styles.imgOpen : Styles.imgClosed}>
+                    <div className={Styles.cardContainer}>
+                        <Image className={Styles.image} width={500} height={500} alt={'Image Selected'}
+                            src={'https://drive.google.com/uc?export=view&id=' + reviewInfo.current.photo}></Image>
+                        <div className={Styles.cardInformation}>
+                            <h2 className={Styles.user}>{reviewInfo.current.user}</h2>
+                            <hr className={Styles.horizontalLine} />
+                            <span className={Styles.date}>Fecha de publicación: {reviewInfo.current.date}</span>
+                            <span className={Styles.stars}>{stars}</span>
+                            <p className={Styles.review}>{reviewInfo.current.review}</p>
                         </div>
+                        <button className={Styles.btnClosed} onClick={() => setImgSelected(false)}><FontAwesomeIcon icon={faXmark}></FontAwesomeIcon></button>
                     </div>
+                </div>
                 <div className={Styles.mainBackground}>
                     <div className={Styles.reviewSection}>
                         <h2 className={Styles.title} id='exp'><hr />Experiencias Anteriores<hr /></h2>

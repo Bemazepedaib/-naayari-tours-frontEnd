@@ -3,7 +3,7 @@ import Styles from '../styles/elementStyles/TripSlider.module.css'
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import Slider from "react-slick";
-import { useRef,useState } from  'react';
+import { useRef, useState } from 'react';
 import Router from "next/router";
 import { faArrowLeft, faArrowRight } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
@@ -21,11 +21,11 @@ const TripSlider = ({ title, preferences }) => {
     arrows: false
   };
   const [settings, setSettings] = useState(variable);
-  const goToDetailCard = (name) =>{
+  const goToDetailCard = (name) => {
     Router.push({
       pathname: '/DetailCard',
       query: { name }
-  })
+    })
   }
   useEffect(() => {
     const handleResize = () => {
@@ -39,7 +39,7 @@ const TripSlider = ({ title, preferences }) => {
         arrows: false
       };
       setSettings(variable)
-      
+
     };
 
     // Agregar el evento 'resize' al cargar el componente

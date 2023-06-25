@@ -1,9 +1,11 @@
 @import url('https://fonts.googleapis.com/css2?family=Oswald:wght@300&display=swap');
-.reviewSection{
-background-color: black;
-min-height: 120vh;
+
+.reviewSection {
+    background-color: black;
+    min-height: 120vh;
 }
-.title{
+
+.title {
     color: white;
     font-family: 'Oswald', sans-serif;
     font-size: 100px;
@@ -11,7 +13,8 @@ min-height: 120vh;
     padding-top: 20px;
     text-transform: uppercase;
 }
-.date{
+
+.date {
     display: flex;
     text-align: center;
     justify-content: center;
@@ -19,76 +22,87 @@ min-height: 120vh;
     font-size: 30px;
     text-transform: uppercase;
 }
-.btnSection{
+
+.btnSection {
     display: flex;
     align-items: center;
     justify-content: center;
     padding-bottom: 10px;
 }
-.gallery{
+
+.gallery {
     -webkit-column-count: 3;
     -moz-column-count: 3;
     column-count: 3;
-    -webkit-column-width: 33%;
-    -moz-column-width: 33%;
-    column-width: 33%;
     gap: 10px;
     margin-left: 10px;
     margin-right: 10px;
-}.btnSeeMore:hover {
+}
+
+.fotoGallery {
+    -webkit-column-width: 33%;
+    -moz-column-width: 33%;
+    column-width: 33%;
+}
+
+.btnSeeMore:hover {
     color: #fff;
     background-color: #00a748;
     box-shadow: rgba(0, 0, 0, 0.25) 0 8px 15px;
     transform: translateY(-2px);
-  }
-  
-.btnSeeMore{
-        appearance: none;
-        background-color: transparent;
-        border: 2px solid #ffffff;
-        border-radius: 5px;
-        box-sizing: border-box;
-        color: #ffffff;
-        cursor: pointer;
-        display: inline-block;
-        font-family: Roobert,-apple-system,BlinkMacSystemFont,"Segoe UI",Helvetica,Arial,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
-        font-size: 15px;
-        font-weight: 600;
-        line-height: normal;
-        margin: 0;
-        min-height: 10px;
-        min-width: 0;
-        outline: none;
-        padding: 4px 10px;
-        text-align: center;
-        text-decoration: none;
-        transition: all 300ms cubic-bezier(.23, 1, 0.32, 1);
-        user-select: none;
-        -webkit-user-select: none;
-        touch-action: manipulation;
-        will-change: transform;
-        margin-bottom: 5px;
-        margin-top: 5px;
-        width: 90%;
 }
-.user{
+
+.btnSeeMore {
+    appearance: none;
+    background-color: transparent;
+    border: 2px solid #ffffff;
+    border-radius: 5px;
+    box-sizing: border-box;
+    color: #ffffff;
+    cursor: pointer;
+    display: inline-block;
+    font-family: Roobert, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+    font-size: 15px;
+    font-weight: 600;
+    line-height: normal;
+    margin: 0;
+    min-height: 10px;
+    min-width: 0;
+    outline: none;
+    padding: 4px 10px;
+    text-align: center;
+    text-decoration: none;
+    transition: all 300ms cubic-bezier(.23, 1, 0.32, 1);
+    user-select: none;
+    -webkit-user-select: none;
+    touch-action: manipulation;
+    will-change: transform;
+    margin-bottom: 5px;
+    margin-top: 5px;
+    width: 90%;
+}
+
+.user {
     font-size: 30px;
     margin-top: 10px;
     text-transform: uppercase;
 }
-.review{
+
+.review {
     font-size: 22px;
     margin: 20px;
     text-align: center;
 }
-.cardInformation{
+
+.cardInformation {
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
     font-family: 'Oswald', sans-serif;
 }
-.btnClosed{
+
+.btnClosed {
     position: absolute;
     right: 0;
     border: none;
@@ -96,38 +110,45 @@ min-height: 120vh;
     font-size: 30px;
     transition: all 1s;
 }
-.btnClosed:hover{
+
+.btnClosed:hover {
     cursor: pointer;
     transform: scale(1.02);
     rotate: 90deg;
 }
-.horizontalLine{
+
+.horizontalLine {
     width: 90%;
     margin: 0 5%;
 }
-.cardContainer{
+
+.cardContainer {
     border-radius: 1rem;
     position: sticky;
     top: 7%;
     margin-top: 7%;
     display: grid;
-    grid-template-columns: 500px minmax(500px,1fr);
+    grid-template-columns: 500px minmax(500px, 1fr);
     background-color: rgb(255, 255, 255);
 }
-.image{
+
+.image {
     object-fit: fill;
     border-top-left-radius: 1rem;
     border-bottom-left-radius: 1rem;
 }
-.mainContainer{
+
+.mainContainer {
     position: relative;
     z-index: 0;
 }
-.stars{
+
+.stars {
     font-size: 30px;
     color: yellow;
 }
-.imgOpen{
+
+.imgOpen {
     background-color: #0009;
     position: absolute;
     z-index: 1;
@@ -135,82 +156,101 @@ min-height: 120vh;
     height: 100%;
     padding: 10%;
 }
-.mainBackground{
+
+.mainBackground {
     position: relative;
 }
-.imgClosed{
+
+.imgClosed {
     display: none;
 }
-@media (max-width: 1225px){
-    .cardContainer{
+
+@media (max-width: 1225px) {
+    .cardContainer {
         top: 10%;
         margin-top: 10%;
         display: inline-block;
         width: 100%;
         background-color: rgb(255, 255, 255);
     }
-    .review{
+
+    .review {
         font-size: 17px;
     }
-    .image{
+
+    .image {
         border-radius: 1rem;
         width: 100%;
         height: 300px;
         object-fit: cover;
     }
-    .stars{
+
+    .stars {
         font-size: 25px;
         color: yellow;
     }
-    .date{
+
+    .date {
         font-size: 20px;
     }
-    .user{
-        font-size: 25px; 
+
+    .user {
+        font-size: 25px;
     }
-    .btnClosed{
+
+    .btnClosed {
         position: absolute;
         right: 0;
         top: 0;
         color: white;
     }
 }
-@media (max-width: 1000px){
-    .gallery{ /*No borrar*/
+
+@media (max-width: 1000px) {
+    .gallery {
+        /*No borrar*/
         -webkit-column-count: 2;
         -moz-column-count: 2;
         column-count: 2;
     }
 }
-@media (max-width: 700px){ 
-    .gallery{/*No borrar*/
+
+@media (max-width: 700px) {
+    .gallery {
+        /*No borrar*/
         -webkit-column-count: 1;
         -moz-column-count: 1;
         column-count: 1;
         -webkit-column-width: 100%;
         -moz-column-width: 100%;
         column-width: 100%;
-    }  
+    }
 }
-@media (max-width: 600px){
-    .cardContainer{
+
+@media (max-width: 600px) {
+    .cardContainer {
         top: 30%;
         margin-top: 30%;
     }
-    .image{
+
+    .image {
         width: 100%;
         height: 200px;
     }
-    .user{
-        font-size: 1rem;     
-    } 
+
+    .user {
+        font-size: 1rem;
+    }
+
     .title {
         font-size: 1.5rem;
     }
-    .review{
+
+    .review {
         font-size: 0.7rem;
     }
-    .date{
+
+    .date {
         font-size: 0.8rem;
     }
 }

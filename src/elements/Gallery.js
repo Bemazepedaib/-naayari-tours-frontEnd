@@ -8,8 +8,8 @@ function Gallery({ tripReviews }) {
     let i = 0;
     let stars = "";
     let photos = tripReviews.slice(0, tripReviews.length).map(review =>
-        <div className={Styles.fotoGallery}>
-            <PhotoGallery key={i++} getImg={getImg} review={review}></PhotoGallery>
+        <div className={Styles.fotoGallery} key={i++}>
+            <PhotoGallery getImg={getImg} review={review}></PhotoGallery>
         </div>).reverse();
     let photosGallery = useRef(photos);
     const [imgSelected, setImgSelected] = useState(false);

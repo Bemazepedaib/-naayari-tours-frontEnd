@@ -8,7 +8,7 @@ import Router from "next/router";
 import { faArrowLeft, faArrowRight } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
-const TripSlider = ({ title, preferences }) => {
+const TripSlider = ({ title, preferencesData }) => {
   const sliderRef = useRef(null)
   let a = 0;
   var variable = {
@@ -64,7 +64,7 @@ const TripSlider = ({ title, preferences }) => {
         <div className={Styles.sliderContainer}>
           <Slider ref={sliderRef} {...settings} className={Styles.prueba}>
             {
-              preferences.map(preference => (
+              preferencesData.map(preference => (
                 <div className={Styles.cardsContainer} key={a++}>
                   <div className={Styles.imageContainer} onClick={() => goToDetailCard(preference.tripName)}>
                     <img className={Styles.imageCa}

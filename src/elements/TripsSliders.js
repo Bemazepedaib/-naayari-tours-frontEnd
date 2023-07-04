@@ -54,8 +54,8 @@ const TripsSliders = () => {
 
     return !meLoading && !meError && !tripLoading && !tripError && (
         <div>
-            <TripSlider title={"LUGARES RECOMENDADOS PARA TI"} preferences={getRecomendedPlaces()} />
-            <TripSlider title={"TOP VIAJES DE NAAYARI TOURS"} preferences={getTopTrips()} />
+            <TripSlider title={"LUGARES RECOMENDADOS PARA TI"} preferencesData={getRecomendedPlaces()} />
+            <TripSlider title={"TOP VIAJES DE NAAYARI TOURS"} preferencesData={getTopTrips()} />
         </div>
     )
 }

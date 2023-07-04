@@ -1,5 +1,6 @@
 import React from 'react'
 import TripSlider from './TripSlider';
+import { Spinner } from 'react-bootstrap';
 import { ME } from '../backendOperations/querys/userQuerys';
 import { GET_TRIPS } from '../backendOperations/querys/tripQuerys';
 import { useQuery } from '@apollo/client';
@@ -16,7 +17,7 @@ const TripsSliders = () => {
             let coincidenceFound = false;
             for (const activity of trip.tripInformation.activities) {
 
-                const preferenceMatch = meData && meData.me.preferences.some(preference => preference.preferenceType === activity.activityName);
+                const preferenceMatch = meData.me.preferences.some(preference => preference.preferenceType === activity.activityName);
 
                 if (preferenceMatch) {
                     coincidenceFound = true;
@@ -40,6 +41,17 @@ const TripsSliders = () => {
         }
         return aux.slice(0, 4)
     }
+
+    if (meLoading || tripLoading) return (
+        <div>
+            <Spinner />
+            <Spinner />
+        </div>
+    )
+    if (meError || tripError) return (
+        <div></div>
+    )
+
     return !meLoading && !meError && !tripLoading && !tripError && (
         <div>
             <TripSlider title={"LUGARES RECOMENDADOS PARA TI"} preferences={getRecomendedPlaces()} />

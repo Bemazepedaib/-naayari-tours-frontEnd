@@ -16,7 +16,7 @@ const TripsSliders = () => {
             let coincidenceFound = false;
             for (const activity of trip.tripInformation.activities) {
 
-                const preferenceMatch = meData.me.preferences.some(preference => preference.preferenceType === activity.activityName);
+                const preferenceMatch = meData && meData.me.preferences.some(preference => preference.preferenceType === activity.activityName);
 
                 if (preferenceMatch) {
                     coincidenceFound = true;
@@ -42,7 +42,7 @@ const TripsSliders = () => {
     }
     return !meLoading && !meError && !tripLoading && !tripError && (
         <div>
-            <TripSlider title={"LUGARES RECOMENDADOS PARA TI"} preferences={meData && getRecomendedPlaces()} />
+            <TripSlider title={"LUGARES RECOMENDADOS PARA TI"} preferences={getRecomendedPlaces()} />
             <TripSlider title={"TOP VIAJES DE NAAYARI TOURS"} preferences={getTopTrips()} />
         </div>
     )

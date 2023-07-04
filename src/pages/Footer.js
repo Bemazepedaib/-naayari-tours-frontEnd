@@ -52,7 +52,7 @@ function Footer() {
                 <div className={Styles.footerRight}>
                     <div>
                         <div className={Styles.title}>¡VISITA NUESTRAS REDES SOCIALES!</div>
-                        Siguenos y entérate de las novedades que Naayari tours tiene para ti.
+                        Síguenos y entérate de las novedades que Naayari tours tiene para ti.
                     </div>
                     <div className={Styles.footerIcons}>
                         <a href="https://www.facebook.com/naayaritours"><FontAwesomeIcon icon={faFacebook} className={Styles.icon} /></a>

@@ -41,7 +41,8 @@ const CreateTripView = ({ trip }) => {
     const [dateAdd, setDateAdd] = useState({ value: "", valid: true });
     const [action, setAction] = useState(trip ? true : false);
     const [newTrip, setNewTrip] = useState();
-    const [successful, setSuccessful] = useState("")
+    const [successful, setSuccessful] = useState("");
+    const [bolSuccessful, setBolSuccessful] = useState(false);
     const [dateStart, setDateStart] = useState(trip ? (trip.trip.tripInformation.discount
         ? (trip.trip.tripInformation.discount.available == true ? {
             value: miniFunction(trip.trip.tripInformation.discount.dateStart)
@@ -150,7 +151,8 @@ const CreateTripView = ({ trip }) => {
                         } : {}
                     }, tripStatus: false
                 })
-                setSuccessful("Viaje Creado Exitosamente")
+                setBolSuccessful(true)
+                setSuccessful("¡Viaje Creado Exitosamente!")
             } catch (err) {
             }
         } else if (!action === false && (name.value !== "" && photo.value !== "" && price.value !== ""
@@ -213,7 +215,8 @@ const CreateTripView = ({ trip }) => {
             }
             window.location.href = "/TripView";
         } else {
-            setSuccessful("Porfavor Completa Todos los campos")
+            setBolSuccessful(false)
+            setSuccessful("¡Porfavor Completa Todos los campos!")
         }
 
     }
@@ -400,8 +403,8 @@ const CreateTripView = ({ trip }) => {
                                         estado={dateEnd}
                                         cambiarEstado={setDateEnd}
                                         tipo="date"
-                                        label="Fecha de termino"
-                                        placeholder="Fecha de termino"
+                                        label="Fecha de término"
+                                        placeholder="Fecha de término"
                                         name="dateEnd"
                                     />
                                 </div>
@@ -480,7 +483,15 @@ const CreateTripView = ({ trip }) => {
                             <button type="submit"
                                 className={Styles.btnSend}>{action ? "Actualizar Viaje" : "Crear Viaje"}</button>
                         </div>
-                        <div className={Styles.sucessfullMessage}>{successful}</div>
+                        {bolSuccessful ?
+                            <div className={Styles.sucessfullMessage}>
+                                {successful}
+                            </div>
+                            :
+                            <div className={Styles.unSucessfullMessage}>
+                                {successful}
+                            </div>
+                        }
                     </form>
                 </div>
                 <div className={!action ? "" : Styles.noUpdateWindow}>

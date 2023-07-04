@@ -23,7 +23,7 @@ function ModalWindow({titleText,text,send}) {
   return (
     <>
       <div className={Styles.buttonWbords} onClick={activateBothMethods}>
-        <p className={Styles.paragraph}>Vamos a viajar!</p>
+        <p className={Styles.paragraph}>¡Vamos a viajar!</p>
       </div>
       <Modal show={show} onHide={handleClose}>
         <Modal.Header closeButton>

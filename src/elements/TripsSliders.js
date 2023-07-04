@@ -30,20 +30,19 @@ const TripsSliders = () => {
         return arr1
     }
     const getTopTrips = () => {
-        let aux = tripData.trips.slice(); // Create a copy of the trips array
+        let aux = tripData.trips.slice();
         for (let i = 0; i < aux.length; i++) {
             for (let j = 0; j < aux.length - 1 - i; j++) {
                 if (aux[j].tripRating < aux[j + 1].tripRating) {
-                    // Intercambiar elementos
                     [aux[j], aux[j + 1]] = [aux[j + 1], aux[j]];
                 }
             }
         }
-        return aux.slice(0,4)
+        return aux.slice(0, 4)
     }
     return !meLoading && !meError && !tripLoading && !tripError && (
         <div>
-            <TripSlider title={"LUGARES RECOMENDADOS PARA TI"} preferences={getRecomendedPlaces()} />
+            <TripSlider title={"LUGARES RECOMENDADOS PARA TI"} preferences={meData && getRecomendedPlaces()} />
             <TripSlider title={"TOP VIAJES DE NAAYARI TOURS"} preferences={getTopTrips()} />
         </div>
     )

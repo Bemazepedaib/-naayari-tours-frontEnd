@@ -76,7 +76,7 @@ const ModalTrips = ({ tripInfo, updateTrip }) => {
                     </Modal.Title>
                 </Modal.Header>
                 <Modal.Body className={Styles.modalBody}>
-                    ¡ESTE VIAJE CAMBIARA DE ESTADO!
+                    ¡ESTE VIAJE CAMBIARÁ DE ESTADO!
                 </Modal.Body>
                 <Modal.Footer className={Styles.modalFooter}>
                     <button className={Styles.btnCancel} onClick={handleClose1}>NO</button>

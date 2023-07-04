@@ -46,7 +46,6 @@ const VipDetailsState = ({ data }) => {
                 },
             });
             setCurrentStatus(eventStatus);
-            console.log(res)
             setConfirmMessage1("¡Estado actualizado exitósamente!");
             handleConfirmClose1();
             window.location.href = "/VipsManager";

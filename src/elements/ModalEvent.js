@@ -147,9 +147,8 @@ function ModalEvent({ user, trip, date, deleteReservation, updateReservation }) 
                                         <td>{comp.companionType === "adult" ? "Adulto" : comp.companionType === "child" ? "Niño" : "Bebé"}</td>
                                         <td>{comp.companionName}</td>
                                         <td>{comp.companionCell}</td>
-                                        <td>{fechaHoy[2] - comp.companionBirthdate.split("/")[2]}</td>
+                                        <td>{comp.companionBirthdate && fechaHoy[2] - comp.companionBirthdate.split("/")[2]}</td>
                                     </tr>
-
                                 ))}
                             </tbody>
                         </Table> : null}
@@ -236,6 +235,7 @@ function ModalEvent({ user, trip, date, deleteReservation, updateReservation }) 
                                 setConfirmMessage2(await updateReservation(user.userEmail, event.split("|")[0], event.split("|")[1]))
                                 handleConfirmClose2()
                                 handleClose()
+                                window.location.reload(true)
                             }}>
                                 Confirmar
                             </Button>

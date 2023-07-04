@@ -9,6 +9,7 @@ import ModalTrips from './ModalTrips';
 
 const SearchDataTrip = ({ dataM, newTrip }) => {
     //HOOKS
+    const [btnMsg, setBtnMsg] = useState("Viajes activos")
     const [data, setData] = useState([...dataM]);
     const [trips, setTrips] = useState(data);
     const [tripsTable, setTripsTable] = useState(data);
@@ -49,10 +50,12 @@ const SearchDataTrip = ({ dataM, newTrip }) => {
     }
 
     const changeState = () => {
-        if (state) { setState(!state); }
-        else {
-            setState(!state);
+        if (state) {
+            setBtnMsg("Viajes inactivos")
+        } else {
+            setBtnMsg("Viajes activos")
         }
+        setState(!state);
     }
     //TABLE FILTER
     const filter = (term) => {
@@ -110,7 +113,7 @@ const SearchDataTrip = ({ dataM, newTrip }) => {
             </div>
             <div className={Styles.btnContainer}>
                 <button className={state ? Styles.btnStateActive : Styles.btnStateInactive}
-                    onClick={changeState}>Cambiar orden de estados</button>
+                    onClick={changeState}>{btnMsg}</button>
             </div>
         </div>
     )

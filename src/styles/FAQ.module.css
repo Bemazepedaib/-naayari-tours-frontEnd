@@ -8,7 +8,7 @@
     height: fit-content;
     padding-bottom: 10vh;
     background-image: url('https://drive.google.com/uc?export=view&id=1XPHv76qI1Y303811H7gbUPpmv9KQSa5u');
-    background-size: cover;
+    background-size: contain;
     font-family: 'Oswald', sans-serif;
 }
 
@@ -23,7 +23,7 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    gap: 5px;
+    gap: 13px;
     margin: 10px;
 }
 

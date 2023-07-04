@@ -154,8 +154,18 @@
     text-align: center;
     text-transform: uppercase;
     padding-bottom: 10px;
+    font-size: 25px;
+    font-weight: bold;
+    color: #00a748;
 }
-
+.unSucessfullMessage{
+    text-align: center;
+    text-transform: uppercase;
+    padding-bottom: 10px;
+    font-size: 25px;
+    font-weight: bold;
+    color: red;
+}
 .error {
     font-family: 'Genos', sans-serif;
     display: flex;

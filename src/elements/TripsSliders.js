@@ -54,7 +54,6 @@ const TripsSliders = () => {
 
     return !meLoading && !meError && !tripLoading && !tripError && (
         <div>
-            {console.log(meData.me)}
             {meData.me.preferences.length === 0 || meData.me.userType === "admin" ? null : <TripSlider title={"LUGARES RECOMENDADOS PARA TI"} preferencesData={getRecomendedPlaces()} />}
             <TripSlider title={"TOP VIAJES DE NAAYARI TOURS"} preferencesData={getTopTrips()} />
         </div>

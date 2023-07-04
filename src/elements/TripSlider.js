@@ -13,7 +13,7 @@ const TripSlider = ({ title, preferencesData }) => {
   let a = 0;
   var variable = {
     infinite: true,
-    slidesToShow: window.innerWidth <= 1080 ? 1 : 3,
+    slidesToShow: window.innerWidth <= 1080 ? 1 : preferencesData.length > 3 ? 3 : preferencesData.length,
     slidesToScroll: 1,
     autoplay: true,
     autoplaySpeed: 4000,
@@ -31,7 +31,7 @@ const TripSlider = ({ title, preferencesData }) => {
     const handleResize = () => {
       var variable = {
         infinite: true,
-        slidesToShow: window.innerWidth <= 1080 ? 1 : 3,
+        slidesToShow: window.innerWidth <= 1080 ? 1 : preferencesData.length > 3 ? 3 : preferencesData.length,
         slidesToScroll: 1,
         autoplay: true,
         autoplaySpeed: 4000,

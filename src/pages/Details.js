@@ -2,7 +2,7 @@ import React from "react";
 import Styles from '../styles/Details.module.css'
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faCalendarDays, faClock, faTags } from '@fortawesome/free-solid-svg-icons'
+import { faClock, faTags } from '@fortawesome/free-solid-svg-icons'
 import FormTripDate from "../elements/FormTripDate";
 import Gallery from "../elements/Gallery";
 import DetailActivities from "../elements/DetailActivities";

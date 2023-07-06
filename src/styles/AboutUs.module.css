@@ -1,6 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Oswald:wght@300&display=swap');
 
-.navbar{
+.navbar {
     position: sticky;
     top: 0;
     z-index: 9999;
@@ -13,16 +13,15 @@
     background-size: cover;
 }
 
-.orgSection,.valuesSection {
-    min-height: 100vh;
+.orgSection,
+.valuesSection {
     display: flex;
     justify-content: center;
     align-items: center;
     font-family: 'Oswald', sans-serif;
     color: #ffffff;
-    background-image: url('https://drive.google.com/uc?export=view&id=1XPHv76qI1Y303811H7gbUPpmv9KQSa5u');
-    background-size: cover;
 }
+
 /*SECTION NUMBER 2*/
 .infoSection {
     min-height: 100vh;
@@ -69,12 +68,11 @@
     grid-template-columns: repeat(3, 1fr);
 }
 
-
-
 .valuesContainer {
     padding: 0;
     margin: 0;
 }
+
 .valueImg {
     width: 500px;
     height: 300px;
@@ -93,6 +91,7 @@
     justify-content: center;
     align-items: center;
 }
+
 @media (max-width: 1150px) {
 
     .orgSection,
@@ -114,14 +113,17 @@
         width: 450px;
     }
 }
+
 @media (max-width: 600px) {
-    .infoImage{
+    .infoImage {
         width: 200px;
         height: 200px;
     }
-    .infoMainTittle{
+
+    .infoMainTittle {
         font-size: 20px;
     }
+
     .valueImg {
         width: 250px;
         height: 200px;

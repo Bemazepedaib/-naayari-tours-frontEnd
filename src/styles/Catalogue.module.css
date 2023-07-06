@@ -1,4 +1,4 @@
-@import url(https://fonts.googleapis.com/css2?family=Oswald:wght@300&display=swap);;
+@import url(https://fonts.googleapis.com/css2?family=Oswald:wght@300&display=swap);
 @import url(https://fonts.googleapis.com/css2?family=Genos:ital,wght@1,700&display=swap%27);
 
 .cam {
@@ -18,8 +18,8 @@
 }
 
 .singleDestination {
-    
-    border: solid 1px #1D212877;    
+
+    border: solid 1px #1D212877;
     overflow: hidden;
     border-radius: 1rem;
     box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
@@ -54,7 +54,6 @@
     transition: 0.4s;
 }
 
-
 .overlayTitle {
     position: absolute;
     display: flex;
@@ -72,7 +71,7 @@
 }
 
 .title {
-    
+
     position: absolute;
     right: 0;
     color: white;
@@ -84,7 +83,7 @@
 }
 
 .catp {
-    
+
     color: white;
     opacity: 1;
     font-size: 13px;
@@ -102,20 +101,8 @@
     transition: .8s;
 }
 
-.destFooter {
-    position: relative;
-    display: inline;
-    height: 50px;
-}
-
-
-.lugar {
-    color: black;
-
-}
-
 .Prices {
-    position: relative;
+    display: flex;
     height: 55px;
     justify-content: center;
     align-items: center;
@@ -130,11 +117,9 @@
 
 .hr {
     color: #cbcc5d;
-
     background-color: #cbcc5d;
     margin: 8px 0;
 }
-
 
 .precios .catp {
     color: black;
@@ -163,8 +148,6 @@
 .ahorro {
     color: rgb(36, 102, 9)
 }
-
-
 
 .destTextFlex {
     justify-content: space-between;
@@ -198,7 +181,6 @@
     top: 0;
 }
 
-
 .secContainer {
     border-radius: 1rem;
     height: 100%;
@@ -215,51 +197,45 @@
     transform: translateY(10%);
 }
 
-@media screen and (max-width:920px) {
-    .title {
-        color: white;
-        font-weight: 200;
-        text-align: center;
-    }
-
-}
-
 .tiempo {
     color: rgb(0, 0, 0);
 }
 
+.destFooter {
+    position: relative;
+    display: inline;
+    height: 50px;
+}
+
 .destFooterContenedor {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    grid-template-rows: repeat(2, 1fr);
-    grid-row-gap: 2px;
-    grid-column-gap: 20px;
-    padding: 2px;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
 }
 
 .lugar {
-    grid-column: 1/3;
-    padding-left: 15px;
-}
-
-.stars {
-    margin-left: 15%;
-    color: gold;
-    transform: scale(2);
-    padding: 2%;
-}
-
-.starsNumber {
-
-    transform: scale(1.5);
-    margin-left: 1rem;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    margin-left: 15px;
     color: black;
 }
 
 .StarsContainer {
     display: flex;
+    align-items: center;
 }
 
+.stars {
+    margin-left: 5px;
+    color: gold;
+    font-size: 32px;
+}
+
+.starsNumber {
+    margin-left: 15px;
+    font-size: 24px;
+    color: black;
+}
 
 /*caja de descuento*/
 .card {
@@ -295,15 +271,15 @@
     opacity: 0;
 }
 
-.contActivities{
+.contActivities {
     display: flex;
     margin: 0 10px;
     position: relative;
     flex-wrap: wrap;
-    justify-content:center;
+    justify-content: center;
 }
 
-.activity{
+.activity {
     font-size: small;
     position: relative;
     padding: 2px;
@@ -319,30 +295,36 @@
 }
 
 @media screen and (max-width:920px) {
+    .title {
+        color: white;
+        font-weight: 200;
+        text-align: center;
+    }
+}
+
+@media screen and (max-width:920px) {
     .popularSectionContainer {
         width: 250px;
     }
 
-    .card{
-    top: -155px;
-    left: 20px;
+    .card {
+        top: -155px;
+        left: 20px;
     }
 
-   .destImage{
-    height:220px;
-   }
+    .destImage {
+        height: 220px;
+    }
+
     .img {
         height: 100%;
         width: 100%;
         object-fit: cover;
     }
-    .overlayInfo{
+
+    .overlayInfo {
         justify-content: end;
-        align-items:start;
+        align-items: start;
         left: 0;
     }
-    .destFooterContenedor{
-    height: 50px;
-    }
-
 }

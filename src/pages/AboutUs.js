@@ -9,7 +9,7 @@ import Navbar from './Navbar'
 
 const NayaariLogo = 'https://drive.google.com/uc?export=view&id=1Gx08yGg-rGq0tUe5yVHWxbkaMfmrUOk0'
 const personalImage = 'https://drive.google.com/uc?export=view&id=1qNHWRp0bzELTHr12AUKak1jSNNziG1k7'
-import { Fade, Slide } from "react-awesome-reveal";
+import { Slide } from "react-awesome-reveal";
 import Image from 'next/image';
 function AboutUs() {
     const valuesInfo = [
@@ -100,7 +100,7 @@ function AboutUs() {
         }
     ]
     return (
-        <div>
+        <div className={Styles.container}>
             <div className={Styles.navbar}>
                 <Navbar></Navbar>
             </div>

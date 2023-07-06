@@ -5,22 +5,21 @@ function CataloguePrices({ trip }) {
     const disc = trip && trip.discount.available;
     const discAmount = trip && trip.discount.amount;
     var keyp = 0;
-    //(disc)
     return (
         <div>
             <div className={Styles.precios}>
                 {disc ? trip.price?.slice(0, 1).map(p => (
-                    <p className={Styles.catp} key={keyp++}>{p.priceType} ${p.priceAmount}</p>
-                )) : <p />
+                    <div className={Styles.catp} key={keyp++}>{p.priceType} ${p.priceAmount}</div>
+                )) : <div />
                 }
             </div>
             <div className={Styles.descuentosPrecios}>
-                {disc  ? trip.price?.map(p => (
-                    p.priceType=="Adulto" ? <p className={Styles.catp} key={keyp++}>{p.priceType} ${Math.round(p.priceAmount - discAmount)}</p>
-                    : <p className={Styles.catp} key={keyp++}>{p.priceType} ${p.priceAmount}</p>
-                    
+                {disc ? trip.price?.map(p => (
+                    p.priceType == "Adulto" ? <div className={Styles.catp} key={keyp++}>{p.priceType} ${Math.round(p.priceAmount - discAmount)}</div>
+                        : <div className={Styles.catp} key={keyp++}>{p.priceType} ${p.priceAmount}</div>
+
                 )) : trip.price?.map(p => (
-                    <p className={Styles.catp} key={keyp++}>{p.priceType} ${p.priceAmount}</p>
+                    <div className={Styles.catp} key={keyp++}>{p.priceType} ${p.priceAmount}</div>
                 ))}
 
 

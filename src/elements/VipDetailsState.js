@@ -61,10 +61,13 @@ const VipDetailsState = ({ data }) => {
             <div className={Styles.contenedorDatos}>
                 <div className={Styles.grupoTexto}>
                     <div className={Styles.subtitle}> Tipo de viaje: </div> <p>VIP</p>
-                    <div className={Styles.subtitle}> Usuario: </div><p>{data.request.requestUser}</p>
+                    <div className={Styles.subtitle}> Correo: </div><p>{data.request.requestUser}</p>
                 </div>
                 <div className={Styles.grupoTexto}>
                     <div className={Styles.subtitle}> Lugar: </div><p>{data.request.requestTrip}</p>
+                    <div className={Styles.subtitle}> Usuario: </div><p>{data.request.requestName}</p>
+                </div>
+                <div className={Styles.grupoTexto}>
                     <div className={Styles.subtitle}> Estado del viaje: </div>
                     <p>{currentStatus === "pending" ? "Pendiente"
                         : currentStatus === "accepted" ? "Aceptada"

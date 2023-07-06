@@ -48,6 +48,7 @@ function ModalVIP({ titleText, text, send, date, trip }) {
 				await addRequest({
 					variables: {
 						requestUser: data.me.email,
+						requestName: data.me.name,
 						requestCell: data.me.cellphone,
 						requestDate: date,
 						requestTrip: trip,

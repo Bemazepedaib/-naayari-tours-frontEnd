@@ -112,7 +112,7 @@ const VipManagerView = ({ requests }) => {
             <div className={Styles.miniFlex}>
               <div className={Styles.textHid}>Viaje:&nbsp; </div>{request.requestTrip}</div>
             <div className={Styles.miniFlex}><div className={Styles.textHid}>Fecha:&nbsp;</div>{request.requestDate}</div>
-            <div className={Styles.miniFlex}><div className={Styles.textHid}>Usuario:&nbsp;</div>{request.requestUser}</div>
+            <div className={Styles.miniFlex}><div className={Styles.textHid}>Usuario:&nbsp;</div>{request.requestName}</div>
             <button className={Styles.btn} onClick={() => { clickEvent(request.requestUser); }}> Ver más</button>
           </div>
         ))}

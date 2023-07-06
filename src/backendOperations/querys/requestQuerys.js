@@ -4,6 +4,7 @@ const GET_REQUESTS = gql`
   query getRequests {
     requests {
       requestUser
+      requestName
       requestCell
       requestDate
       requestTrip
@@ -16,6 +17,7 @@ const GET_REQUEST = gql`
   query getRequest($requestUser: String) {
     request(requestUser: $requestUser) {
       requestUser
+      requestName
       requestCell
       requestDate
       requestTrip

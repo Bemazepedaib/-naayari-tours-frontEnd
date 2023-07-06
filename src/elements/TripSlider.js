@@ -46,7 +46,7 @@ const TripSlider = ({ title, preferencesData }) => {
 			window.removeEventListener('resize', handleResize);
 		};
 	}, []);
-	
+
 	return (
 		<div>
 			<div className={Styles.header}>
@@ -59,7 +59,7 @@ const TripSlider = ({ title, preferencesData }) => {
 					</div>
 				</div>
 				<div className={Styles.sliderContainer}>
-					<Slider ref={sliderRef} {...settings} className={Styles.prueba}>
+					<Slider ref={sliderRef} {...settings} className={Styles.sliderContainer}>
 						{
 							preferencesData.map(preference => (
 								<div className={Styles.cardsContainer} key={a++}>

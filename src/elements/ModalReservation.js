@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
 import Image from 'next/image'
@@ -16,6 +16,7 @@ function ModalReservation({ datosCompanion, datosUsuario, datosPrecio }) {
     const image = 'https://drive.google.com/uc?export=view&id=1hKQxSheX5io9bPjn99_TedN8SCTNcsoK'
 
     const [show, setShow] = useState(false);
+    const [counter, setCounter] = useState();
     const handleClose = () => setShow(false);
     const handleShow = () => {
         for (let i = 0; i < 3; i++) {
@@ -44,6 +45,13 @@ function ModalReservation({ datosCompanion, datosUsuario, datosPrecio }) {
 
     const [doReservation] = useMutation(UPDATE_USERS)
 
+    useEffect(() => {
+		counter == 0 ? Router.push({ pathname: '/ReservationPayment', query: { anticipo: anticipo } }) : ""
+		const timer =
+			counter > 0 && setInterval(() => setCounter(counter - 1), 1000);
+		return () => clearInterval(timer);
+	}, [counter]);
+
     const total = datosPrecio[0].price * datosPrecio[0].number +
         datosPrecio[1].price * datosPrecio[1].number +
         datosPrecio[2].price * datosPrecio[2].number
@@ -53,6 +61,7 @@ function ModalReservation({ datosCompanion, datosUsuario, datosPrecio }) {
     let id = 1;
 
     const makeReservation = async () => {
+        setCounter(2);
         let a = [];
         datosCompanion.map(type => { type.current.map(companion => { a.push(companion) }) })
         try {
@@ -73,7 +82,6 @@ function ModalReservation({ datosCompanion, datosUsuario, datosPrecio }) {
                 }
             })
             setConfirmMessage(res.data.updateEventUsers)
-            Router.push({ pathname: '/ReservationPayment', query: { anticipo: anticipo } })
         } catch (error) {
             setConfirmMessage(error.message)
         }

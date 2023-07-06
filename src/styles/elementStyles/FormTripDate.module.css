@@ -1,4 +1,6 @@
 .lbl {
+  margin-top: 20px;
+  margin-bottom: 20px;
   width: 100%;
 }
 
@@ -224,7 +226,7 @@
 }
 
 .inputDate{
-  margin-top: 40px;
+  margin-top: 5px;
   margin-bottom: -15px;
   display: flex;
   text-align: center;

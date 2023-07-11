@@ -17,7 +17,7 @@ function CatalogueCards() {
                 <div>
                     <div id={Styles.catalogue}>{data.trips.map(trip => (
                         trip.tripStatus ?
-                        <Catalogue key={key++} trip={trip}/> :""
+                            <Catalogue key={key++} trip={trip} /> : null
                     ))}
                     </div>
                 </div>

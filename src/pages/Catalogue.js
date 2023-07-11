@@ -20,7 +20,7 @@ function Catalogue({ trip }) {
             query: { name }
         })
     }
-    if (trip) { for (let index = 1; index <= trip.tripRating; index++) stars = stars + "⋆"; }
+    if (trip) { for (let index = 1; index <= Math.round(trip.tripRating); index++) stars = stars + "⋆"; }
     return trip && (
         <section className={Styles.popularSectionContainer} onClick={clickViajes}>
             <div className={Styles.secContainer} >
@@ -48,7 +48,7 @@ function Catalogue({ trip }) {
                             <div className={Styles.destFooterContenedor}>
                                 <div className={Styles.lugar}>{trip.tripInformation.place}</div>
                                 <div className={Styles.StarsContainer}>
-                                    <div className={Styles.starsNumber}>{trip && trip.tripRating + ".0 "}</div>
+                                    <div className={Styles.starsNumber}>{trip && trip.tripRating.toFixed(1)}</div>
                                     <div className={Styles.stars}>{stars}</div>
                                 </div>
                             </div>

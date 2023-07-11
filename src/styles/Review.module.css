@@ -1,0 +1,160 @@
+@import url('https://fonts.googleapis.com/css2?family=Oswald:wght@300&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Genos:ital,wght@1,700&display=swap');
+
+.mainContainer {
+    background-color: black;
+}
+
+.linea {
+    border: 1px solid white;
+}
+
+.titleContainer {
+    color: #fff;
+    text-align: center;
+    font-family: 'Oswald', sans-serif;
+    font-size: 80px;
+    padding-top: 20px;
+    text-transform: uppercase;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.titleContainer>hr {
+    color: white;
+    width: 100%;
+}
+
+.btnReview {
+    appearance: none;
+    background-color: transparent;
+    border: solid 3px#fff;
+    border-radius: 5px;
+    box-sizing: border-box;
+    color: #fff;
+    cursor: pointer;
+    font-family: Roobert, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+    font-size: 15px;
+    font-weight: 600;
+    line-height: normal;
+    min-height: 10px;
+    outline: none;
+    text-decoration: none;
+    transition: all 300ms cubic-bezier(.23, 1, 0.32, 1);
+    user-select: none;
+    -webkit-user-select: none;
+    touch-action: manipulation;
+    will-change: transform;
+    margin-top: 20px;
+    height: 50px;
+    width: 50%;
+}
+
+.btnReview:active {
+    box-shadow: none;
+    transform: translateY(0);
+}
+
+.btnReview:hover {
+    color: #000;
+    background-color: #83BB49;
+    border: none;
+    box-shadow: rgba(0, 0, 0, 0.25) 0 8px 15px;
+    transform: translateY(-2px);
+}
+
+.btnInputReview {
+    appearance: none;
+    background-color: transparent;
+    border: solid 3px#000;
+    border-radius: 5px;
+    box-sizing: border-box;
+    color: #000;
+    cursor: pointer;
+    font-family: Roobert, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+    font-size: 15px;
+    font-weight: 600;
+    line-height: normal;
+    min-height: 10px;
+    outline: none;
+    text-decoration: none;
+    transition: all 300ms cubic-bezier(.23, 1, 0.32, 1);
+    user-select: none;
+    -webkit-user-select: none;
+    touch-action: manipulation;
+    will-change: transform;
+    margin-top: 20px;
+    height: 50px;
+    width: 50%;
+}
+
+.btnInputReview:active {
+    box-shadow: none;
+    transform: translateY(0);
+}
+
+.btnInputReview:hover {
+    color: #000;
+    background-color: #83BB49;
+    border: none;
+    box-shadow: rgba(0, 0, 0, 0.25) 0 8px 15px;
+    transform: translateY(-2px);
+}
+
+.paragraph {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+}
+
+.modalHeader {
+    font-family: 'Genos', sans-serif;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 10px;
+    margin: 5px 30px;
+}
+
+.modalTitle {
+    font-family: 'Genos', sans-serif;
+    font-size: 35px;
+    margin-bottom: 5px;
+}
+
+.inputContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+
+.buttonContainer {
+    width: 100%;
+}
+
+.imageContainer {
+    position: relative;
+}
+
+.icon {
+    cursor: pointer;
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    color: #83BB49;
+    font-size: 20px;    
+}
+
+.icon:hover {
+    border: none;
+    transform: translateY(-2px);
+}
+
+.icon:active {
+    box-shadow: none;
+    transform: translateY(0);
+}

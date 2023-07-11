@@ -30,15 +30,15 @@ const Detalles = ({ trip }) => {
                                 <div className={Styles.tourInfo}>
                                     <label className={Styles.labelTitle}>Categorias
                                         <i className={Styles.icons}><FontAwesomeIcon icon={faTags} /></i></label>
-                                        <div className={Styles.tourActivities}>
-                                            <DetailActivities act={trip.trip.tripInformation.activities}></DetailActivities>
-                                        </div>
+                                    <div className={Styles.tourActivities}>
+                                        <DetailActivities act={trip.trip.tripInformation.activities}></DetailActivities>
+                                    </div>
                                 </div>
                             </div>
-                            <FormTripDate 
-                                dates={trip.trip.tripInformation.date} 
+                            <FormTripDate
+                                dates={trip.trip.tripInformation.date}
                                 selectedTrip={trip.trip.tripName}
-                                />
+                            />
                             <div className={Styles.tourDescription}>
                                 {trip.trip.tripInformation.description}
                             </div>
@@ -47,7 +47,7 @@ const Detalles = ({ trip }) => {
                 </div>
             </div>
             <div>
-                <Gallery tripReviews = {trip.trip.tripReview}/>
+                <Gallery tripReviews={trip.trip.tripReview} />
             </div>
         </div>
     )

@@ -1,7 +1,7 @@
 import { gql } from "@apollo/client";
 
 const ADD_TRIP = gql`
-    mutation addTrip($tripName: String!, $tripInformation: InputTripInformation!, $tripKit: String!, $tripRating: Int!, 
+    mutation addTrip($tripName: String!, $tripInformation: InputTripInformation!, $tripKit: String!, $tripRating: Float!, 
         $tripStatus: Boolean!, $tripReview: [InputTripReview!]){
             addTrip(tripName: $tripName, tripInformation: $tripInformation, tripKit: $tripKit, tripRating: $tripRating, 
                 tripStatus: $tripStatus, tripReview: $tripReview)
@@ -24,4 +24,4 @@ const UPDATE_TRIP = gql`
                 tripKit:$tripKit,tripRating:$tripRating,tripStatus:$tripStatus,tripReview:$tripReview)
         }
 `;
-export { ADD_TRIP,DELETE_TRIP,UPDATE_TRIP_STATUS,UPDATE_TRIP}
+export { ADD_TRIP,DELETE_TRIP,UPDATE_TRIP_STATUS,UPDATE_TRIP }

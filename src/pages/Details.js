@@ -47,12 +47,8 @@ const Detalles = ({ trip }) => {
                     </div>
                 </div>
             </div>
-            <div>
-                <Review tripName={trip.trip.tripName} />
-            </div>
-            <div>
-                <Gallery tripReviews={trip.trip.tripReview} />
-            </div>
+            <Review tripName={trip.trip.tripName} />
+            <Gallery tripReviews={trip.trip.tripReview} />
         </div>
     )
 }

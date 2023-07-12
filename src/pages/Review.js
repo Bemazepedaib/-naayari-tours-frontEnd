@@ -50,7 +50,7 @@ const Review = ({ tripName }) => {
         const config = { headers: { 'Content-Type': 'multipart/form-data; boundary=${data._boundary}`,' } }
         try {
             setFile(null)
-            setInfoMessage(<Spinner/>)
+            setInfoMessage(<Spinner />)
             const response = await axios.post(url, formData, config)
             setInfoMessage(response.data);
             setInfoState(true)
@@ -58,7 +58,7 @@ const Review = ({ tripName }) => {
             setFileAux(null)
         } catch (error) {
             setFile(null)
-            setInfoMessage(<Spinner/>)
+            setInfoMessage(<Spinner />)
             console.error('Error uploading file:', error.message);
             setInfoMessage(error.response.data)
             setInfoState(false)
@@ -72,12 +72,12 @@ const Review = ({ tripName }) => {
             <div className={Styles.titleContainer}>
                 <hr className={Styles.linea} />
                 ¿Que opinas de este viaje?
-                <hr className={Styles.linea} />
-            </div>
-            <div className={Styles.buttonContainer}>
-                <div className={Styles.btnReview} onClick={handleShow}>
-                    <div className={Styles.paragraph}>¡Déjanos tu opinion!</div>
+                <div className={Styles.buttonContainer}>
+                    <div className={Styles.btnReview} onClick={handleShow}>
+                        <div className={Styles.paragraph}>¡Déjanos tu opinion!</div>
+                    </div>
                 </div>
+                <hr className={Styles.linea} />
             </div>
             <Modal show={show} onHide={handleClose} size="lg" backdrop="static" keyboard={false}>
                 <Modal.Header closeButton bsPrefix={Styles.modalHeader}>

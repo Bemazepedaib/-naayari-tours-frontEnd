@@ -6,6 +6,7 @@ import { faClock, faTags } from '@fortawesome/free-solid-svg-icons'
 import FormTripDate from "../elements/FormTripDate";
 import Gallery from "../elements/Gallery";
 import DetailActivities from "../elements/DetailActivities";
+import Review from "./Review";
 
 const Detalles = ({ trip }) => {
 
@@ -31,7 +32,7 @@ const Detalles = ({ trip }) => {
                                     <label className={Styles.labelTitle}>Categorias
                                         <i className={Styles.icons}><FontAwesomeIcon icon={faTags} /></i></label>
                                     <div className={Styles.tourActivities}>
-                                        <DetailActivities act={trip.trip.tripInformation.activities}></DetailActivities>
+                                        <DetailActivities act={trip.trip.tripInformation.activities} />
                                     </div>
                                 </div>
                             </div>
@@ -45,6 +46,9 @@ const Detalles = ({ trip }) => {
                         </div>
                     </div>
                 </div>
+            </div>
+            <div>
+                <Review tripName={trip.trip.tripName} />
             </div>
             <div>
                 <Gallery tripReviews={trip.trip.tripReview} />

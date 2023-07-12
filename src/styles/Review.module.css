@@ -3,6 +3,7 @@
 
 .mainContainer {
     background-color: black;
+    padding-bottom: 30px;
 }
 
 .linea {
@@ -13,7 +14,7 @@
     color: #fff;
     text-align: center;
     font-family: 'Oswald', sans-serif;
-    font-size: 80px;
+    font-size: 100px;
     padding-top: 20px;
     text-transform: uppercase;
     display: flex;
@@ -130,14 +131,24 @@
     align-items: center;
     justify-content: center;
     text-align: center;
+    gap: 20px;
 }
 
 .buttonContainer {
+    display: flex;
+    align-items: center;
+    justify-content: center;
     width: 100%;
 }
 
 .imageContainer {
     position: relative;
+}
+
+.reviewContainer {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
 }
 
 .icon {
@@ -146,7 +157,7 @@
     top: 10px;
     right: 10px;
     color: #83BB49;
-    font-size: 20px;    
+    font-size: 20px;
 }
 
 .icon:hover {
@@ -157,4 +168,27 @@
 .icon:active {
     box-shadow: none;
     transform: translateY(0);
+}
+
+.textArea {
+    font-size: 16px;
+    border: 2px solid black;
+    resize: none;
+}
+
+.success{
+    text-align: center;
+    text-transform: uppercase;
+    padding-bottom: 10px;
+    font-size: 25px;
+    font-weight: bold;
+    color: #00a748;
+}
+.failure{
+    text-align: center;
+    text-transform: uppercase;
+    padding-bottom: 10px;
+    font-size: 25px;
+    font-weight: bold;
+    color: red;
 }

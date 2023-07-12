@@ -2,6 +2,7 @@
 import { React, useState } from 'react'
 import { useQuery, useMutation } from '@apollo/client'
 import SearchTripView from "./SearchTripView"
+import SearchTripReview from './SearchTripReview';
 import { Spinner } from 'react-bootstrap';
 
 //APOLLO REQUEST
@@ -498,9 +499,7 @@ const CreateTripView = ({ trip }) => {
                     }
                 </form>
             </div>
-            <div className={action === "Crear" ? "" : Styles.noUpdateWindow}>
-                <SearchTripView newTrip={newTrip} />
-            </div>
+            {action === "Crear" ? <SearchTripView newTrip={newTrip} /> : trip && <SearchTripReview tripName={trip.trip.tripName}/>}
         </div >
     );
 }

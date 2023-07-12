@@ -81,7 +81,7 @@ const Review = ({ tripName }) => {
             </div>
             <Modal show={show} onHide={handleClose} size="lg" backdrop="static" keyboard={false}>
                 <Modal.Header closeButton bsPrefix={Styles.modalHeader}>
-                    <Image className={Styles.imageVIP} src={image} width={70} height={70} alt="Naayari tours" />
+                    <Image src={image} width={70} height={70} alt="Naayari tours" />
                     <Modal.Title bsPrefix={Styles.modalTitle}>¡Déjanos tu opinion!</Modal.Title>
                 </Modal.Header>
                 <Modal.Body>

@@ -28,7 +28,7 @@ const GET_TRIPS = gql
   }
 }
     `;
-const GET_PI_TRIPS  = gql
+const GET_PI_TRIPS = gql
   `query getTrips {
     trips{
     tripName
@@ -45,7 +45,22 @@ const GET_PI_TRIPS  = gql
     tripStatus
   }
 }
-    `;
+`;
+
+const GET_REVIEW_TRIPS = gql`
+  query getTrip($tripName: String){
+    trip(tripName:$tripName){
+    tripName
+    tripReview{
+      user
+      rating
+      review
+      date
+      photo
+    }
+  }
+}
+`;
 
 const GET_TRIPTYPES = gql`
     query getTripTypes {
@@ -116,4 +131,4 @@ const GET_TRIP = gql
 }
 `;
 
-export { GET_TRIPTYPES, GET_TRIPS, GET_TRIP, GET_TRIP_PRICES,GET_PI_TRIPS};
+export { GET_TRIPTYPES, GET_TRIPS, GET_TRIP, GET_TRIP_PRICES, GET_PI_TRIPS, GET_REVIEW_TRIPS };

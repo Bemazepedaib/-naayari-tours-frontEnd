@@ -86,28 +86,25 @@ const SearchDataTrip = ({ dataM, newTrip }) => {
                         </tr>
                     </thead>
                     <tbody>
-                        {
-                            trips
-                                .map(trips => (
-
-                                    <tr key={trips.tripName}>
-                                        <td className={Styles.column}>
-                                            {trips.tripName}
-                                        </td>
-                                        <td className={Styles.column}>
-                                            {trips.tripInformation.place}
-                                        </td>
-                                        <td className={Styles.column}>
-                                            ${trips.tripInformation.price[0].priceAmount}
-                                        </td>
-                                        {trips.tripStatus
-                                            ? <td><div className={Styles.yes}></div></td>
-                                            : <td><div className={Styles.no}></div></td>}
-                                        <td>
-                                            <ModalTrips tripInfo={trips} updateTrip={updateTrip} />
-                                        </td>
-                                    </tr>
-                                ))}
+                        {trips.map(trips => (
+                            <tr key={trips.tripName}>
+                                <td className={Styles.column}>
+                                    {trips.tripName}
+                                </td>
+                                <td className={Styles.column}>
+                                    {trips.tripInformation.place}
+                                </td>
+                                <td className={Styles.column}>
+                                    ${trips.tripInformation.price[0].priceAmount}
+                                </td>
+                                {trips.tripStatus
+                                    ? <td><div className={Styles.yes}></div></td>
+                                    : <td><div className={Styles.no}></div></td>}
+                                <td>
+                                    <ModalTrips tripInfo={trips} updateTrip={updateTrip} />
+                                </td>
+                            </tr>
+                        ))}
                     </tbody>
                 </Table>
             </div>

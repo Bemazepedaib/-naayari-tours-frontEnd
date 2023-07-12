@@ -1,0 +1,96 @@
+@import url('https://fonts.googleapis.com/css2?family=Oswald:wght@300&display=swap');
+
+.mainContainer {
+    font-family: 'Oswald', sans-serif;
+}
+
+.inputContainer {
+    text-align: center;
+    width: 100%;
+    border-radius: 5px;
+    font-size: 14px;
+}
+
+.inputText {
+    width: 60%;
+    margin-top: 20px;
+
+}
+
+.tableContainer {
+    max-height: 500px;
+    padding: 20px;
+    overflow-y: scroll;
+}
+
+.table {
+    height: 5px;
+    border: 1px solid #1D2128;
+}
+
+.tHead {
+    background-color: #1D2128;
+    color: #fff;
+    border: #fff;
+}
+
+.column {
+    text-align: center;
+}
+
+.yes {
+    margin: auto;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background: #00a748;
+}
+
+.no {
+    margin: auto;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background: red;
+}
+
+.btnContainer {
+    display: flex;
+    justify-content: center;
+}
+
+.btnStateActive {
+    background: #00a748;
+    color: white;
+    width: 200px;
+    height: 30px;
+    border-radius: 10px;
+    font-size: 1rem;
+    box-shadow: 0 0px 10px rgba(0, 0, 0, .3);
+    border: none;
+    cursor: pointer;
+}
+
+.btnStateActive {
+    background: #00a748;
+    color: white;
+    width: 200px;
+    height: 30px;
+    border-radius: 10px;
+    font-size: 1rem;
+    box-shadow: 0 0px 10px rgba(0, 0, 0, .3);
+    border: none;
+    cursor: pointer;
+}
+
+.btnStateInactive {
+    background: red;
+    color: white;
+    width: 200px;
+    height: 30px;
+    border-radius: 10px;
+    font-size: 1rem;
+    box-shadow: 0 0px 10px rgba(0, 0, 0, .3);
+    border: none;
+    cursor: pointer;
+}

@@ -13,11 +13,10 @@ const Review = () => {
     };
 
     const handleImageUpload = async () => {
-        // Create a FormData object to send the image file
-        const url = 'http://localhost:4000/uploadImage'
+        const url = 'https://naayari-tours-backend.up.railway.app/uploadImage'
         const formData = new FormData();
         formData.append('fileData', fileAux);
-        formData.append('tripName', "tripname");
+        formData.append('tripName', "Real de Acuitapilco");
         formData.append('user', "user");
         formData.append('rating', 3);
         formData.append('review', "review");
@@ -28,7 +27,7 @@ const Review = () => {
         }
         try {
             const response = await axios.post(url, formData, config)
-            console.log(response.data); // File uploaded successfully
+            console.log(response.data);
         } catch (error) {
             console.error('Error uploading file:', error.message);
             console.error(error.response.data)

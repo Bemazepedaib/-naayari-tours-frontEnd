@@ -21,7 +21,13 @@ const Review = ({ tripName }) => {
     const [review, setReview] = useState("")
     const [rating, setRating] = useState(0)
     const [show, setShow] = useState(false);
-    const handleClose = () => setShow(false);
+    const handleClose = () => {
+        setFile(null)
+        setFileAux(null)
+        setReview("")
+        setRating(0)
+        setShow(false);
+    }
     const handleShow = () => setShow(true);
     const [infoMessage, setInfoMessage] = useState("")
     const [infoState, setInfoState] = useState(null)
@@ -48,23 +54,19 @@ const Review = ({ tripName }) => {
         formData.append('rating', rating);
         formData.append('review', review);
         const config = { headers: { 'Content-Type': 'multipart/form-data; boundary=${data._boundary}`,' } }
+        setFile(null)
+        setInfoMessage(<Spinner />)
         try {
-            setFile(null)
-            setInfoMessage(<Spinner />)
             const response = await axios.post(url, formData, config)
             setInfoMessage(response.data);
             setInfoState(true)
-            setCounter(2);
-            setFileAux(null)
         } catch (error) {
-            setFile(null)
-            setInfoMessage(<Spinner />)
             console.error('Error uploading file:', error.message);
             setInfoMessage(error.response.data)
             setInfoState(false)
-            setCounter(2);
-            setFileAux(null)
         }
+        setCounter(2);
+        setFileAux(null)
     };
 
     return !loading && !error && (
@@ -97,9 +99,9 @@ const Review = ({ tripName }) => {
                             <div className={Styles.reviewContainer}>
                                 <div className={Styles.imageContainer}>
                                     <FontAwesomeIcon icon={faX} className={Styles.icon} onClick={() => { setFile(null) }} />
-                                    <Image src={file} width={500} height={500} alt='Review image' />
+                                    <Image className={Styles.img} src={file} width={500} height={500} alt='Review image' />
                                 </div>
-                                <label>{`Calificación: ${rating}`}</label>
+                                <label className={Styles.label} >{`Calificación: ${rating}`}</label>
                                 <Form.Range
                                     value={rating}
                                     onChange={(e) => setRating(e.target.value)}
@@ -111,7 +113,7 @@ const Review = ({ tripName }) => {
                                     placeholder='¡Dejanos tu opinion!'
                                     value={review}
                                     onChange={(e) => setReview(e.target.value)}
-                                    className={Styles}
+                                    className={Styles.textArea}
                                 />
                                 <div className={Styles.buttonContainer}>
                                     <div className={Styles.btnInputReview} onClick={handleImageUpload}>

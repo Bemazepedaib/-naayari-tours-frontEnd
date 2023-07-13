@@ -10,6 +10,10 @@
     border: 1px solid white;
 }
 
+.label {
+    font-family: 'Oswald', sans-serif;
+}
+
 .titleContainer {
     color: #fff;
     text-align: center;
@@ -174,6 +178,7 @@
     font-size: 16px;
     border: 2px solid black;
     resize: none;
+    border-radius: 5px;
 }
 
 .success{
@@ -191,4 +196,27 @@
     font-size: 25px;
     font-weight: bold;
     color: red;
+}
+
+@media (max-width: 600px) {
+    .titleContainer {
+        font-size: 1.5rem;
+    }
+    .paragraph {
+        font-size: 0.7rem;
+    }
+    .modalTitle {
+        font-size: 1rem;
+    }
+    .img {
+        width: 200px;
+        height: 200px;
+    }
+    .label {
+        font-size: 0.8rem;
+    }
+    .textArea {
+        width: 200px;
+        font-size: 0.8rem;
+    }
 }

@@ -9,7 +9,10 @@ import ModalReview from './ModalReview';
 function SearchDataReview({ dataReview }) {
 
     let a = 0;
-    const [data, setData] = useState([...dataReview.tripReview]);
+
+    const newData = dataReview.tripReview.map(({ __typename, ...rest }) => { return rest }) 
+
+    const [data, setData] = useState(newData);
     const [reviews, setReviews] = useState(data);
     const [reviewsTable, setReviewsTable] = useState(data);
 
@@ -39,7 +42,7 @@ function SearchDataReview({ dataReview }) {
                             <th className={Styles.column}>Usuario</th>
                             <th className={Styles.column}>Fecha</th>
                             <th className={Styles.column}>Rating</th>
-                            <th className={Styles.column}>Actualizar</th>
+                            <th className={Styles.column}>Visualizar</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -55,7 +58,7 @@ function SearchDataReview({ dataReview }) {
                                     {review.rating}
                                 </td>
                                 <td>
-                                    <ModalReview review={review}/>
+                                    <ModalReview tripName={dataReview.tripName} review={review}/>
                                 </td>
                             </tr>
                         ))}

@@ -24,4 +24,9 @@ const UPDATE_TRIP = gql`
                 tripKit:$tripKit,tripRating:$tripRating,tripStatus:$tripStatus,tripReview:$tripReview)
         }
 `;
-export { ADD_TRIP,DELETE_TRIP,UPDATE_TRIP_STATUS,UPDATE_TRIP }
+const DELETE_REVIEW = gql`
+    mutation deleteReview($tripName: String, $tripReview: InputTripReview){
+        deleteReview(tripName: $tripName, tripReview: $tripReview)
+    }
+`;
+export { ADD_TRIP,DELETE_TRIP,UPDATE_TRIP_STATUS,UPDATE_TRIP,DELETE_REVIEW }

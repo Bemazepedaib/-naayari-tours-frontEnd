@@ -21,7 +21,6 @@
     padding: 10px;
 }
 
-
 .modalHeader {
     font-family: 'Genos', sans-serif;
     display: flex;
@@ -46,6 +45,12 @@
     gap: 20px;
 }
 
+.modalBody {
+    font-family: 'Oswald', sans-serif;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
 .miniTitulo {
     font-family: 'Genos', sans-serif;
     font-size: 20px;
@@ -57,8 +62,10 @@
     justify-content: center;
     font-family: 'Oswald', sans-serif;
     margin-bottom: 20px;
+    gap: 10px;
 }
 
+.btnConfirm,
 .btnDelete {
     color: white;
     width: 120px;
@@ -70,10 +77,14 @@
     cursor: pointer;
 }
 
+.btnConfirm:hover,
 .btnDelete:hover {
     opacity: 0.8;
 }
 
 .btnDelete {
     background-color: #ff0000;
+}
+.btnConfirm{
+    background-color: #00a748;
 }

@@ -4,8 +4,6 @@ import Modal from 'react-bootstrap/Modal';
 
 import Button from 'react-bootstrap/Button';
 
-import Image from 'next/image'
-
 import { useMutation } from '@apollo/client';
 import { UPDATE_REQUEST } from "../backendOperations/mutations/requestMutations";
 
@@ -92,7 +90,7 @@ const VipDetailsState = ({ data }) => {
                 </button>
                 <Modal show={showConfirm1} centered backdrop="static" keyboard={false}>
                     <Modal.Header bsPrefix={Styles.confirmModalHeader}>
-                        <Image src={image} className={Styles.image} width={70} height={70} alt="Naayari tours" />
+                        <img src={image} className={Styles.image} width={70} height={70} alt="Naayari tours" />
                         <Modal.Title></Modal.Title>
                     </Modal.Header>
                     <Modal.Body bsPrefix={Styles.confirmModalBody}>{confirmMessage1}</Modal.Body>

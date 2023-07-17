@@ -1,6 +1,5 @@
 import Carousel from 'react-bootstrap/Carousel';
 import Styles from '../styles/elementStyles/CarouselNa.module.css'
-import Image from 'next/image';
 
 const img1 = "https://drive.google.com/uc?export=view&id=1gLFwQRLxqA6nVmjnAk3rNB0dUcVXKuHJ";
 const img2 = "https://drive.google.com/uc?export=view&id=1YOTphLVm2fxmKHhg9EmXPCgEUGEqhxAK";
@@ -9,7 +8,7 @@ function CarouselNa() {
   return (
     <Carousel fade className={Styles.carouselContainer}>
       <Carousel.Item className={Styles.carouselItem}>
-        <Image  className={Styles.CarouselImage}
+        <img className={Styles.carouselImage}
           width={2000}
           height={2000}
           src={img1}
@@ -19,7 +18,7 @@ function CarouselNa() {
         </Carousel.Caption>
       </Carousel.Item>
       <Carousel.Item className={Styles.carouselItem}>
-        <Image className={Styles.CarouselImage}
+        <img className={Styles.carouselImage}
           width={2000}
           height={2000}
           src={img2}
@@ -29,7 +28,7 @@ function CarouselNa() {
         </Carousel.Caption>
       </Carousel.Item>
       <Carousel.Item className={Styles.carouselItem}>
-        <Image className={Styles.CarouselImage}
+        <img className={Styles.carouselImage}
           width={2000}
           height={2000}
           src={img3}

@@ -9,7 +9,6 @@ import { UPDATE_TRIP_STATUS } from '../backendOperations/mutations/tripMutations
 
 //COMPONENTS
 import Modal from 'react-bootstrap/Modal';
-import Image from 'next/image'
 
 //ICONS
 import { faPenToSquare } from '@fortawesome/free-solid-svg-icons'
@@ -53,7 +52,7 @@ const ModalTrips = ({ tripInfo, updateTrip }) => {
             <Modal show={show} onHide={handleClose}>
                 <Modal.Header closeButton>
                     <Modal.Title className={Styles.modalTitle}>
-                        <Image className={Styles.image} src={image} width={100} height={100} alt="Naayari tours" />
+                        <img className={Styles.image} src={image} width={100} height={100} alt="Naayari tours" />
                         ¿QUE ACCIÓN QUIERES HACER?
                     </Modal.Title>
                 </Modal.Header>
@@ -71,7 +70,7 @@ const ModalTrips = ({ tripInfo, updateTrip }) => {
             <Modal show={show1} onHide={handleClose1}>
                 <Modal.Header closeButton>
                     <Modal.Title className={Styles.modalTitle}>
-                        <Image className={Styles.image} src={image} width={100} height={100} alt="Naayari tours" />
+                        <img className={Styles.image} src={image} width={100} height={100} alt="Naayari tours" />
                         CONFIRMAR CAMBIO
                     </Modal.Title>
                 </Modal.Header>

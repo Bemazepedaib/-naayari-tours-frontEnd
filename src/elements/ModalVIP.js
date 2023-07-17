@@ -2,7 +2,6 @@ import React, { useState, useEffect } from 'react';
 import Modal from 'react-bootstrap/Modal';
 import Styles from '../styles/elementStyles/FormTripDate.module.css'
 import Router from 'next/router';
-import Image from 'next/image';
 import { useMutation, useQuery } from '@apollo/client';
 import { ADD_REQUEST } from '../backendOperations/mutations/requestMutations';
 import { ME } from '../backendOperations/querys/userQuerys';
@@ -72,7 +71,7 @@ function ModalVIP({ titleText, text, send, date, trip }) {
 			<Modal show={show} onHide={handleClose}>
 				<Modal.Header closeButton>
 					<Modal.Title className={Styles.h3}>
-						<Image className={Styles.imageVIP} src={image} width={70} height={70} alt="Naayari tours" />
+						<img className={Styles.imageVIP} src={image} width={70} height={70} alt="Naayari tours" />
 						{titleText}
 					</Modal.Title>
 				</Modal.Header>

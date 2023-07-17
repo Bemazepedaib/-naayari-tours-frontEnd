@@ -1,5 +1,4 @@
 import React, { useRef } from 'react'
-import Image from 'next/image'
 
 import Styles from '../styles/elementStyles/ReservationPayment.module.css'
 
@@ -42,7 +41,7 @@ function ReservationPayment() {
             <div className={Styles.mainContainer}>
                 <Button onClick={generarTicket} bsPrefix={Styles.confirmButton}> Click para descargar voucher </Button>
                 <div className={Styles.voucherView} ref={innerRef}>
-                    <Image src={Header} width={650} height={92} alt='Header' className={Styles.img}></Image>
+                    <img src={Header} width={650} height={92} alt='Header' className={Styles.img}></img>
                     <div className={Styles.voucher}>
                         <p>Para concluir con su proceso de reserva, por favor pagar la cantidad de:</p>
                         <p><b>${anticipo}</b></p>
@@ -55,7 +54,7 @@ function ReservationPayment() {
                         <p>Con gusto los recibiremos.</p>
                         <p>¡Gracias!</p>
                     </div>
-                    <Image src={Futer} width={650} height={92} alt='Footer' className={Styles.img}></Image>
+                    <img src={Futer} width={650} height={92} alt='Footer' className={Styles.img}></img>
                 </div>
             </div>
             <Footer />

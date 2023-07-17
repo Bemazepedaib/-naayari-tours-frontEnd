@@ -10,7 +10,6 @@ import Navbar from './Navbar'
 const NayaariLogo = 'https://drive.google.com/uc?export=view&id=1Gx08yGg-rGq0tUe5yVHWxbkaMfmrUOk0'
 const personalImage = 'https://drive.google.com/uc?export=view&id=1qNHWRp0bzELTHr12AUKak1jSNNziG1k7'
 import { Slide } from "react-awesome-reveal";
-import Image from 'next/image';
 function AboutUs() {
     const valuesInfo = [
         {
@@ -123,7 +122,7 @@ function AboutUs() {
                 <div className={Styles.infoContainer}>
                     <div className={Styles.infoImageContainer}>
                         <Slide direction="up" triggerOnce={true}>
-                            <Image
+                            <img
                                 width={500}
                                 alt='ProfileImage'
                                 height={500}
@@ -153,7 +152,7 @@ function AboutUs() {
                     <div className={Styles.valuesContainer}>
                         <Slide direction="up" triggerOnce={true}>
                             <div className={Styles.valueContainerImg}>
-                                <Image className={Styles.valueImg}
+                                <img className={Styles.valueImg}
                                     alt='ProfileImage'
                                     width={500}
                                     height={500}

@@ -3,7 +3,6 @@ import Modal from 'react-bootstrap/Modal';
 import Styles from '../styles/elementStyles/ModalWindow.module.css'
 import Router from 'next/router';
 
-import Image from 'next/image'
 const image = 'https://drive.google.com/uc?export=view&id=1Gx08yGg-rGq0tUe5yVHWxbkaMfmrUOk0'
 
 function ModalWindow({titleText,text,send}) {
@@ -28,7 +27,7 @@ function ModalWindow({titleText,text,send}) {
       <Modal show={show} onHide={handleClose}>
         <Modal.Header closeButton>
           <Modal.Title>
-          <Image className={Styles.image} src={image} width={70} height={70} alt="Naayari tours" />
+          <img className={Styles.image} src={image} width={70} height={70} alt="Naayari tours" />
             {titleText}
             </Modal.Title>
         </Modal.Header>

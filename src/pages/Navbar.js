@@ -5,7 +5,6 @@ import Link from 'next/link'
 import { useRef } from "react";
 
 import { faBars, faX } from '@fortawesome/free-solid-svg-icons'
-import Image from 'next/image'
 
 const image = 'https://drive.google.com/uc?export=view&id=1hKQxSheX5io9bPjn99_TedN8SCTNcsoK'
 
@@ -42,7 +41,7 @@ function Navbar() {
     return (
         <div className={Styles.navbarHeader}>
             <Link href="/">
-                <Image src={image}
+                <img src={image}
                     width={55}
                     height={55}
                     alt="Naayari Tours"

@@ -5,7 +5,6 @@ import Modal from 'react-bootstrap/Modal';
 import { Table } from 'react-bootstrap';
 import { Spinner } from 'react-bootstrap';
 
-import Image from 'next/image'
 import Router from "next/router";
 
 import Styles from '../styles/elementStyles/ModalEvent.module.css'
@@ -105,7 +104,7 @@ function ModalEvent({ user, trip, date, deleteReservation, updateReservation }) 
             </button>
             <Modal show={show} onHide={handleClose} size='xl' backdrop="static" keyboard={false} centered>
                 <Modal.Header bsPrefix={Styles.modalHeader} closeButton>
-                    <Image src={image} className={Styles.image} width={70} height={70} alt="Naayari tours" />
+                    <img src={image} className={Styles.image} width={70} height={70} alt="Naayari tours" />
                     <Modal.Title bsPrefix={Styles.modalTitle}>Datos de {user.userEmail} </Modal.Title>
                 </Modal.Header>
                 <Modal.Body bsPrefix={Styles.modalBody}>
@@ -195,7 +194,7 @@ function ModalEvent({ user, trip, date, deleteReservation, updateReservation }) 
                     </Button>
                     <Modal show={showConfirm2} centered backdrop="static" keyboard={false}>
                         <Modal.Header bsPrefix={Styles.confirmModalHeader}>
-                            <Image src={image} className={Styles.image} width={70} height={70} alt="Naayari tours" />
+                            <img src={image} className={Styles.image} width={70} height={70} alt="Naayari tours" />
                             <Modal.Title></Modal.Title>
                         </Modal.Header>
                         <Modal.Body bsPrefix={Styles.confirmModalBody}>
@@ -246,7 +245,7 @@ function ModalEvent({ user, trip, date, deleteReservation, updateReservation }) 
                     </Button>
                     <Modal show={showConfirm1} centered backdrop="static" keyboard={false}>
                         <Modal.Header bsPrefix={Styles.confirmModalHeader}>
-                            <Image src={image} className={Styles.image} width={70} height={70} alt="Naayari tours" />
+                            <img src={image} className={Styles.image} width={70} height={70} alt="Naayari tours" />
                             <Modal.Title></Modal.Title>
                         </Modal.Header>
                         <Modal.Body bsPrefix={Styles.confirmModalBody}>{confirmMessage1}</Modal.Body>

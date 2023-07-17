@@ -1,7 +1,6 @@
 import React, { useState, useRef } from 'react';
 import Styles from '../styles/elementStyles/Gallery.module.css'
 import PhotoGallery from "./photoGallery";
-import Image from 'next/image';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faXmark } from '@fortawesome/free-solid-svg-icons';
 function Gallery({ tripReviews }) {
@@ -32,8 +31,8 @@ function Gallery({ tripReviews }) {
             <div className={Styles.mainContainer}>
                 <div className={imgSelected ? Styles.imgOpen : Styles.imgClosed}>
                     <div className={Styles.cardContainer}>
-                        <Image className={Styles.image} width={500} height={500} alt={'Image Selected'}
-                            src={'https://drive.google.com/uc?export=view&id=' + reviewInfo.current.photo}></Image>
+                        <img className={Styles.image} width={500} height={500} alt={'Image Selected'}
+                            src={'https://drive.google.com/uc?export=view&id=' + reviewInfo.current.photo} />
                         <div className={Styles.cardInformation}>
                             <h2 className={Styles.user}>{reviewInfo.current.user}</h2>
                             <hr className={Styles.horizontalLine} />

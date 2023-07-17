@@ -1,5 +1,4 @@
 import React from 'react'
-import Image from 'next/image'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
 import { faLocationDot, faPhone, faEnvelope } from '@fortawesome/free-solid-svg-icons'
@@ -14,7 +13,7 @@ function Footer() {
             <div className={Styles.footerDistributed} id="Footer" name="Footer">
                 <div className={Styles.titleImg}>
                     <div className={Styles.title}>
-                        <Image src={image} className={Styles.img} width={70} height={70} alt="Naayari tours" />Naayari Tours © 2023
+                        <img src={image} className={Styles.img} width={70} height={70} alt="Naayari tours" />Naayari Tours © 2023
                     </div>
                     <div className={Styles.titleRight}>#ViajarEsCultura</div>
                 </div>

@@ -71,11 +71,9 @@ function Login() {
                 <div className={Styles.wrapper}>
                     <div className={Styles.left}>
                         <div className={Styles.showcase}>
-                            <div>
-                                <h1 className={Styles.showcaseText}>
-                                    <strong>¡Viajar es Cultura!</strong>
-                                </h1>
-                            </div>
+                            <h1 className={Styles.showcaseText}>
+                                <strong>¡Viajar es Cultura!</strong>
+                            </h1>
                         </div>
                     </div>
                     <div className={Styles.right}>

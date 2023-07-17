@@ -3,7 +3,6 @@ import Styles from '../styles/elementStyles/ModalReview.module.css'
 
 import Modal from 'react-bootstrap/Modal';
 import Button from 'react-bootstrap/Button';
-import Image from 'next/image'
 
 import { faPenToSquare } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
@@ -57,14 +56,14 @@ function ModalReview({ tripName, review }) {
             </div>
             <Modal show={show} onHide={handleClose} backdrop="static" keyboard={false}>
                 <Modal.Header closeButton bsPrefix={Styles.modalHeader}>
-                    <Image src={image} width={70} height={70} alt="Naayari tours" priority={true} />
+                    <img src={image} width={70} height={70} alt="Naayari tours" priority={true} />
                     <Modal.Title bsPrefix={Styles.modalTitle}>Manejo de reseña</Modal.Title>
                 </Modal.Header>
                 <Modal.Body>
                     <div className={Styles.reviewContainer}>
                         {review.user}
                         <div className={Styles.miniTitulo}>Foto:</div>
-                        <Image src={'https://drive.google.com/uc?export=view&id=' + review.photo} width={300} height={300} alt="Reseña" />
+                        <img src={'https://drive.google.com/uc?export=view&id=' + review.photo} width={300} height={300} alt="Reseña" />
                         {review.review}
                     </div>
                 </Modal.Body>
@@ -72,7 +71,7 @@ function ModalReview({ tripName, review }) {
                     <button className={Styles.btnDelete} onClick={handleSubShow}>Eliminar reseña</button>
                     <Modal show={subShow} size='sm' centered backdrop="static" keyboard={false}>
                         <Modal.Header bsPrefix={Styles.modalHeader}>
-                            <Image src={image} className={Styles.image} width={70} height={70} alt="Naayari tours" />
+                            <img src={image} className={Styles.image} width={70} height={70} alt="Naayari tours" />
                         </Modal.Header>
                         <Modal.Body bsPrefix={Styles.modalBody}>{message}</Modal.Body>
                         <Modal.Footer bsPrefix={Styles.modalFooter}>

@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
-import Image from 'next/image'
 
 import Styles from '../styles/elementStyles/ModalReservation.module.css'
 
@@ -108,7 +107,7 @@ function ModalReservation({ datosCompanion, datosUsuario, datosPrecio }) {
             </div>
             <Modal id={datosCompanion} show={show} onHide={handleClose} size="lg" centered backdrop="static" keyboard={false}>
                 <Modal.Header bsPrefix={Styles.modalHeader} closeButton>
-                    <Image src={image} className={Styles.image} width={70} height={70} alt="Naayari tours" />
+                    <img src={image} className={Styles.image} width={70} height={70} alt="Naayari tours" />
                     <Modal.Title bsPrefix={Styles.modalTitle}>Confirma tus datos</Modal.Title>
                 </Modal.Header>
                 <Modal.Body bsPrefix={Styles.modalBody}>
@@ -207,7 +206,7 @@ function ModalReservation({ datosCompanion, datosUsuario, datosPrecio }) {
                     </Button>
                     <Modal id={datosUsuario} show={showConfirm} onHide={handleCloseConfirm} centered backdrop="static" keyboard={false}>
                         <Modal.Header bsPrefix={Styles.confirmModalHeader}>
-                            <Image src={image} className={Styles.image} width={70} height={70} alt="Naayari tours" />
+                            <img src={image} className={Styles.image} width={70} height={70} alt="Naayari tours" />
                             <Modal.Title></Modal.Title>
                         </Modal.Header>
                         <Modal.Body bsPrefix={Styles.confirmModalBody}>{confirmMessage}</Modal.Body>

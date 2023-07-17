@@ -1,18 +1,14 @@
-import { React, useEffect, useState } from 'react'
+import { React, useState } from 'react'
 import { faPenToSquare } from '@fortawesome/free-solid-svg-icons'
 import Styles from '../styles/elementStyles/ModalAdmin.module.css'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { Button } from 'react-bootstrap'
 import { Modal } from 'react-bootstrap'
-import Image from 'next/image'
-import InputComponent from './Input'
 
 import ReactDatePicker from 'react-datepicker'
 import "react-datepicker/dist/react-datepicker.css"
 
 function ModalAdmin({ message, value, setNew, err, exp }) {
-
-
 
     const image = 'https://drive.google.com/uc?export=view&id=1Gx08yGg-rGq0tUe5yVHWxbkaMfmrUOk0'
 
@@ -21,9 +17,7 @@ function ModalAdmin({ message, value, setNew, err, exp }) {
     const [newValue, setNewValue] = useState("");
     const [show, setShow] = useState(false);
     const [error, setError] = useState("");
-
     const [selectedDate, setSelectedDate] = useState("");
-
 
     //ONCHANGE FOR INPUT METHODS
     const onChange = (e) => {
@@ -82,9 +76,7 @@ function ModalAdmin({ message, value, setNew, err, exp }) {
             }
         } else {
 
-
         }
-
     }
 
 
@@ -99,7 +91,7 @@ function ModalAdmin({ message, value, setNew, err, exp }) {
             <Modal show={show} onHide={handleClose}>
                 <Modal.Header closeButton>
                     <Modal.Title className={Styles.modalTitle}>
-                        <Image className={Styles.image} src={image} width={100} height={100} alt="Naayari tours" />
+                        <img className={Styles.image} src={image} width={100} height={100} alt="Naayari tours" />
                         {message}
                     </Modal.Title>
                 </Modal.Header>
@@ -122,19 +114,7 @@ function ModalAdmin({ message, value, setNew, err, exp }) {
                                 placeholderText={message}
                             />
                         </div>
-                        //      <InputComponent
-                        //      estado={date}
-                        //      cambiarEstado={setDate}
-                        //      tipo="date"
-                        //      label="Fecha de nacimiento"
-                        //      placeholder="Fecha de nacimiento"
-                        //      name="dateNac"
-                        //      errorMsg="Elija una fecha válida"
-                        //      funcion={validarFecha}
-                        //  />
-
                     }
-
                 </Modal.Body>
                 <Modal.Footer className={Styles.modalFooter}>
                     <Button className={Styles.btnSave} variant="btn btn-dark" onClick={changeData}>

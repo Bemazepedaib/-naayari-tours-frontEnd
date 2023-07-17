@@ -4,7 +4,6 @@ import Styles from '../styles/elementStyles/ModalMe.module.css'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { Button } from 'react-bootstrap'
 import { Modal } from 'react-bootstrap'
-import Image from 'next/image'
 
 import { UPDATE_USER_NAME, UPDATE_USER_CELL } from '../backendOperations/mutations/userMutations';
 import { useMutation } from '@apollo/client';
@@ -67,7 +66,7 @@ function ModalMe({ title, message, setState }) {
             <Modal show={show} onHide={handleClose}>
                 <Modal.Header closeButton>
                     <Modal.Title className={Styles.modalTitle}>
-                        <Image className={Styles.image} src={image} width={100} height={100} alt="Naayari tours" />
+                        <img className={Styles.image} src={image} width={100} height={100} alt="Naayari tours" />
                         {title}
                     </Modal.Title>
                 </Modal.Header>

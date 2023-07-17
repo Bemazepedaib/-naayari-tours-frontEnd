@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import Styles from '../styles/Review.module.css'
-import Image from 'next/image';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faX } from '@fortawesome/free-solid-svg-icons'
 
@@ -83,7 +82,7 @@ const Review = ({ tripName }) => {
             </div>
             <Modal show={show} onHide={handleClose} size="lg" backdrop="static" keyboard={false}>
                 <Modal.Header closeButton bsPrefix={Styles.modalHeader}>
-                    <Image src={image} width={70} height={70} alt="Naayari tours" />
+                    <img src={image} width={70} height={70} alt="Naayari tours" />
                     <Modal.Title bsPrefix={Styles.modalTitle}>¡Déjanos tu opinion!</Modal.Title>
                 </Modal.Header>
                 <Modal.Body>
@@ -99,7 +98,7 @@ const Review = ({ tripName }) => {
                             <div className={Styles.reviewContainer}>
                                 <div className={Styles.imageContainer}>
                                     <FontAwesomeIcon icon={faX} className={Styles.icon} onClick={() => { setFile(null) }} />
-                                    <Image className={Styles.img} src={file} width={500} height={500} alt='Review image' />
+                                    <img className={Styles.img} src={file} width={500} height={500} alt='Review image' />
                                 </div>
                                 <label className={Styles.label} >{`Calificación: ${rating}`}</label>
                                 <Form.Range

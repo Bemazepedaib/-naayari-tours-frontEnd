@@ -4,7 +4,6 @@ import Styles from '../styles/elementStyles/PDFContract.module.css'
 
 import { useRouter } from 'next/router';
 
-import Image from 'next/image';
 import html2canvas from 'html2canvas';
 import jsPDF from 'jspdf';
 
@@ -85,7 +84,7 @@ function PDFContract() {
             </div>
             <div className={Styles.pdf} ref={pdfRef}>
                 <div>
-                    <Image src={Header} width={792} height={92} alt='Header' className={Styles.imgHeader} ></Image>
+                    <img src={Header} width={792} height={92} alt='Header' className={Styles.imgHeader} ></img>
                     <div className={Styles.header}>CONTRATO DE RESERVA NAAYARI TOURS</div>
                     <div className={Styles.fecha}>Tepic, Nay. A <u>{dia}</u> de <u>{mes}</u> del <u>{año}</u></div>
                 </div>
@@ -124,7 +123,7 @@ function PDFContract() {
                         <b>FAVOR DE CONSERVAR ESTE COMPROBANTE PARA FUTURAS ACLARACIONES.</b>
                     </ol>
                 </div>
-                <Image src={Footer} width={792} height={92} alt='Futer' className={Styles.imgFooter}></Image>
+                <img src={Footer} width={792} height={92} alt='Futer' className={Styles.imgFooter}></img>
             </div>
         </div>
     )

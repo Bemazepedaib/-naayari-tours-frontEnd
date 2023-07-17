@@ -1,5 +1,4 @@
 import React, { useState } from 'react'
-import Image from 'next/image'
 
 import Styles from '../styles/elementStyles/EventDetailsView.module.css'
 
@@ -153,7 +152,7 @@ function EventDetailsView({ event }) {
                     </button>
                     <Modal show={showConfirm1} centered backdrop="static" keyboard={false}>
                         <Modal.Header bsPrefix={Styles.confirmModalHeader}>
-                            <Image src={image} className={Styles.image} width={70} height={70} alt="Naayari tours" />
+                            <img src={image} className={Styles.image} width={70} height={70} alt="Naayari tours" />
                             <Modal.Title></Modal.Title>
                         </Modal.Header>
                         <Modal.Body bsPrefix={Styles.confirmModalBody}>{confirmMessage1}</Modal.Body>
@@ -185,7 +184,7 @@ function EventDetailsView({ event }) {
                     </button>
                     <Modal show={showConfirm2} centered backdrop="static" keyboard={false}>
                         <Modal.Header bsPrefix={Styles.confirmModalHeader}>
-                            <Image src={image} className={Styles.image} width={70} height={70} alt="Naayari tours" />
+                            <img src={image} className={Styles.image} width={70} height={70} alt="Naayari tours" />
                             <Modal.Title></Modal.Title>
                         </Modal.Header>
                         <Modal.Body bsPrefix={Styles.confirmModalBody}>{confirmMessage2}</Modal.Body>

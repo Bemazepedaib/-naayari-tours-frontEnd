@@ -51,6 +51,7 @@ function EventDetailsView({ event }) {
     const changeStatus = async () => {
         try {
             if (eventStatus === '' || eventStatus === currentStatus) { setConfirmMessage1("¡Seleccione un valor válido!"); return; }
+            if (event.event.eventGuide === "Guia" || currentGuide === undefined) { setConfirmMessage1("¡Seleccione un guía válido antes de cambiar el estado!"); return;  }
             const res = await updateStatus({
                 variables: {
                     eventDate: eventDate,

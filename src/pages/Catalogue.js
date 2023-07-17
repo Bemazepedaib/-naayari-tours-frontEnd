@@ -1,6 +1,5 @@
 import React from "react";
 import Styles from '../styles/Catalogue.module.css'
-import Image from "next/image";
 import Router from "next/router";
 import CataloguePrices from "../elements/CataloguePrices"
 
@@ -27,7 +26,7 @@ function Catalogue({ trip }) {
                 <div className={Styles.mainContentGrid}>
                     <div className={Styles.singleDestination}>
                         <div className={Styles.destImage}>
-                            <Image height={1000}
+                            <img height={1000}
                                 width={1000} className={Styles.img} src={link + back} alt="Imagen tour" />
                             <div className={Styles.overlayTitle}>
                                 {

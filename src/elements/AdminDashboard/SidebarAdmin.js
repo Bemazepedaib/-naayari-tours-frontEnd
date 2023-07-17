@@ -11,7 +11,6 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 
 import Link from "next/link";
-import Image from "next/image";
 
 function CheckForToken() {
   const [login, setLogin] = useState();
@@ -40,12 +39,11 @@ function SidebarAdmin() {
     <div className={Styles.sidebar} id={Styles.sidebarAdmin}>
       <div className={Styles.stick}>
         <div className={Styles.sidebarAdminTitle}>
-          <Image
+          <img
             src={image}
             width={55}
             height={55}
             alt="Naayari Tours"
-            priority={true}
           />
           <div className={Styles.fTitle}>Naayari tours</div>
         </div>

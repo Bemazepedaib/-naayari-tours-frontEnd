@@ -56,7 +56,7 @@ function ModalReview({ tripName, review }) {
             </div>
             <Modal show={show} onHide={handleClose} backdrop="static" keyboard={false}>
                 <Modal.Header closeButton bsPrefix={Styles.modalHeader}>
-                    <img src={image} width={70} height={70} alt="Naayari tours" priority={true} />
+                    <img src={image} width={70} height={70} alt="Naayari tours" />
                     <Modal.Title bsPrefix={Styles.modalTitle}>Manejo de reseña</Modal.Title>
                 </Modal.Header>
                 <Modal.Body>

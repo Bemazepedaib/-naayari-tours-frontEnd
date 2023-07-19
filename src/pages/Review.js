@@ -45,7 +45,7 @@ const Review = ({ tripName }) => {
     };
 
     const handleImageUpload = async () => {
-        const url = 'https://naayari-tours-backend.up.railway.app/uploadImage'
+        const url = 'https://naayari-tours-backend-production.up.railway.app/uploadImage'
         const formData = new FormData();
         formData.append('fileData', fileAux);
         formData.append('tripName', tripName);

@@ -83,20 +83,20 @@ function AboutUs() {
             roleInfo: 'Tonatiuh es un guia al cual le encanta visitar los pueblos magicos para ver la cultura de cada una de ellos,' +
                 'probando la gastronomia de cada lugar al que visita.'
         },
-        {
-            id: 2,
-            pImage: 'https://drive.google.com/uc?export=view&id=19btwSGikY2d9n7lfNn0crS_9wlaottm-',
-            role: 'JEFE DE LOGISTICA Y OPERACIONES',
-            roleInfo: 'Tonatiuh es un guia al cual le encanta visitar los pueblos magicos para ver la cultura de cada una de ellos,' +
-                'probando la gastronomia de cada lugar al que visita.'
-        },
-        {
-            id: 3,
-            pImage: 'https://drive.google.com/uc?export=view&id=19btwSGikY2d9n7lfNn0crS_9wlaottm-',
-            role: 'JEFE DE LOGISTICA Y OPERACIONES',
-            roleInfo: 'Tonatiuh es un guia al cual le encanta visitar los pueblos magicos para ver la cultura de cada una de ellos,' +
-                'probando la gastronomia de cada lugar al que visita.'
-        }
+        // {
+        //     id: 2,
+        //     pImage: 'https://drive.google.com/uc?export=view&id=19btwSGikY2d9n7lfNn0crS_9wlaottm-',
+        //     role: 'JEFE DE LOGISTICA Y OPERACIONES',
+        //     roleInfo: 'Tonatiuh es un guia al cual le encanta visitar los pueblos magicos para ver la cultura de cada una de ellos,' +
+        //         'probando la gastronomia de cada lugar al que visita.'
+        // },
+        // {
+        //     id: 3,
+        //     pImage: 'https://drive.google.com/uc?export=view&id=19btwSGikY2d9n7lfNn0crS_9wlaottm-',
+        //     role: 'JEFE DE LOGISTICA Y OPERACIONES',
+        //     roleInfo: 'Tonatiuh es un guia al cual le encanta visitar los pueblos magicos para ver la cultura de cada una de ellos,' +
+        //         'probando la gastronomia de cada lugar al que visita.'
+        // }
     ]
     return (
         <div className={Styles.container}>

@@ -2,7 +2,7 @@ import { ApolloClient, createHttpLink, InMemoryCache } from "@apollo/client";
 import { setContext } from '@apollo/client/link/context';
 
 const httpLink = createHttpLink({
-    uri: 'https://naayari-tours-backend.up.railway.app/NaayarAPI',
+    uri: 'https://naayari-tours-backend-production.up.railway.app/NaayarAPI',
 });
 
 const authLink = setContext((_, { headers }) => {

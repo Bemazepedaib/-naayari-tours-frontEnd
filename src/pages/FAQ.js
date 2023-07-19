@@ -123,10 +123,10 @@ function Preguntas(link) {
                     <b>Paso 6:</b> Continúa el proceso mediante whatsapp con el administrador.
                 </div>)
         },
-        {
-            eventKey: "12", header: "¿Qué viajes ofrecen?",
-            body: (<div>Da clic para ver nuestro catálogo → <a href={linkCatalogo}>Catalogo</a> </div>)
-        },
+        // {
+        //     eventKey: "12", header: "¿Qué viajes ofrecen?",
+        //     body: (<div>Da clic para ver nuestro catálogo → <a href={linkCatalogo}>Catalogo</a> </div>)
+        // },
     ]
 
     return (
